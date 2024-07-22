@@ -1,4 +1,5 @@
-import { inube, Stack } from "@inube/design-system";
+import { Stack } from "@inubekit/stack";
+
 import { Divider } from "@src/components/layout/Divider";
 import { MenuHeading } from "../MenuHeading";
 import { ISection } from "./types";
@@ -33,8 +34,8 @@ function MenuSection(props: MenuSectionProps) {
           {section.title && <MenuHeading title={section.title} />}
           <Stack
             direction="column"
-            gap={spacing === "compact" ? inube.spacing.s050 : inube.spacing.s0}
-            margin={`${inube.spacing.s075} ${inube.spacing.s0}`}
+            gap={spacing === "compact" ? "4px" : "0px"}
+            margin={"6px 0px"}
           >
             {section.links.map((link, linkIndex) => (
               <MenuItem

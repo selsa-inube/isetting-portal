@@ -1,4 +1,6 @@
-import { Grid, Textfield, Textarea } from "@inube/design-system";
+import { Grid } from "@inubekit/grid";
+import { Textfield } from "@inubekit/textfield";
+import { Textarea } from "@inubekit/textarea";
 import { RenderMessage } from "@components/feedback/RenderMessage";
 import { FormButtons } from "@components/forms/submit/FormButtons";
 import { IMessageState } from "@pages/privileges/outlets/users/types/forms.types";
@@ -8,7 +10,6 @@ import { IGeneralInformationEntry } from ".";
 function stateValue(formik: FormikValues, attribute: string) {
   if (!formik.touched[attribute]) return undefined;
   if (formik.touched[attribute] && formik.errors[attribute]) return "invalid";
-  return "valid";
 }
 
 interface GeneralInformationFormUIProps {
@@ -52,9 +53,8 @@ export function GeneralInformationFormUI(props: GeneralInformationFormUIProps) {
             size="compact"
             fullwidth
             message={
-              stateValue(formik, "n_Grupo") === "valid"
-                ? "El nombre del cargo es valido"
-                : formik.errors.n_Grupo
+              stateValue(formik, "n_Grupo") === "invalid"
+                && formik.errors.n_Grupo
             }
             status={stateValue(formik, "n_Grupo")}
             onBlur={formik.handleBlur}
@@ -71,13 +71,10 @@ export function GeneralInformationFormUI(props: GeneralInformationFormUIProps) {
             id="n_Uso"
             value={formik.values.n_Uso}
             message={
-              stateValue(formik, "n_Uso") === "valid"
-                ? "La descripción del cargo es valido"
-                : formik.errors.n_Uso
+              stateValue(formik, "n_Uso") === "invalid"
+                && formik.errors.n_Uso
             }
             status={stateValue(formik, "n_Uso")}
-            type="text"
-            size="compact"
             fullwidth
             maxLength={100}
             onBlur={formik.handleBlur}

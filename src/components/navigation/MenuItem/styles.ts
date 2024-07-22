@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { inube } from "@inube/design-system";
+import { inube } from "@inubekit/foundations";
 
 import { MenuItemSpacingType } from "./types";
 
@@ -17,19 +17,19 @@ const StyledMenuItemLink = styled(Link)<IStyledMenuItemLink>`
   height: ${(props) => (props.spacing === "wide" ? "40px" : "36px")};
   padding: ${(props) =>
     props.spacing === "wide"
-      ? `${inube.spacing.s100} ${inube.spacing.s200}`
-      : `${inube.spacing.s050} ${inube.spacing.s200}`};
+      ? "8px 16px"
+      : "4px 16px"};
   background-color: ${(props) =>
     props.disabled
       ? props.theme.color?.surface?.gray?.disabled ||
-        inube.color.surface.gray.disabled
+        inube.palette.neutral.N20
       : props.theme.color?.surface?.light?.clear ||
-        inube.color.surface.light.clear};
+        inube.palette.neutral.N0};
 
   &:hover {
     cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
     background-color: ${({ theme }) =>
-      theme.color?.surface?.gray?.hover || inube.color.surface.gray.hover};
+      theme.color?.surface?.gray?.hover || inube.palette.neutral.N20};
   }
 `;
 

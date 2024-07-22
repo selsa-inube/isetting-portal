@@ -1,7 +1,11 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { MdLogout } from "react-icons/md";
 import { Outlet } from "react-router-dom";
-import { Header, Nav, Grid, useMediaQuery } from "@inube/design-system";
+
+import { Header } from "@inubekit/header";
+import { Nav } from "@inubekit/nav";
+import { Grid } from "@inubekit/grid";
+import { useMediaQuery } from "@inubekit/hooks";
 
 import { AppContext } from "@context/AppContext";
 import { MenuSection } from "@components/navigation/MenuSection";
