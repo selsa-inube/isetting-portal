@@ -1,4 +1,5 @@
-import { Stack, SectionMessage } from "@inube/design-system";
+import { Stack } from "@inubekit/stack";
+import { Flag } from "@inubekit/flag";
 import { StyledMessageContainer } from "./styles";
 import { IUsersMessage } from "@pages/privileges/outlets/users/types/users.types";
 
@@ -20,13 +21,14 @@ const RenderMessage = (props: IRenderMessageProps) => {
   return (
     <StyledMessageContainer>
       <Stack justifyContent="flex-end" width="100%">
-        <SectionMessage
-          appearance={message.data.appearance}
-          closeSectionMessage={closeMessageAndExecuteCallback}
+        <Flag
+          appearance={"success"}
+          closeFlag={closeMessageAndExecuteCallback}
           description={message.data.description}
           duration={4000}
           icon={message.data.icon}
           title={message.data.title}
+          isMessageResponsive
         />
       </Stack>
     </StyledMessageContainer>

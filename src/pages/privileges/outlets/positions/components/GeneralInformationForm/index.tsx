@@ -6,7 +6,6 @@ import { validationMessages } from "@src/validations/validationMessages";
 import { IMessageState } from "@pages/privileges/outlets/users/types/forms.types";
 import { generalMessage } from "../../add-position/config/messages.config";
 import { IHandleUpdateDataSwitchstep } from "../../add-position/types";
-//import { updateItemData } from "@src/mocks/utils/dataMock.service";
 
 const LOADING_TIMEOUT = 1500;
 export interface IGeneralInformationEntry {
@@ -36,7 +35,7 @@ export const GeneralInformationForm = forwardRef(
   ) {
     const {
       initialValues,
-      //id,
+      
       withSubmitButtons,
       handleSubmit,
       onFormValid,
@@ -48,15 +47,6 @@ export const GeneralInformationForm = forwardRef(
       visible: false,
     });
 
-    /*const editDataPosition = async () => {
-      await updateItemData({
-        key: "k_Grupo",
-        nameDB: "linix-positions",
-        identifier: id!,
-        editData: formik.values,
-      });
-    };*/
-
     const formik = useFormik({
       initialValues,
       validationSchema,
@@ -65,7 +55,6 @@ export const GeneralInformationForm = forwardRef(
         setLoading(true);
         setTimeout(() => {
           handleSubmit && handleSubmit(formik.values);
-          //editDataPosition();
           setLoading(false);
           setMessage({
             visible: true,
@@ -124,8 +113,7 @@ export const GeneralInformationForm = forwardRef(
           onFormValid && onFormValid(Object.keys(errors).length === 0);
         });
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [formik.values, onFormValid]);
+    }, [formik.values, onFormValid, formik]);
 
     return (
       <GeneralInformationFormUI

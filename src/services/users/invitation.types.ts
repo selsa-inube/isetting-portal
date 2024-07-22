@@ -1,4 +1,4 @@
-import { IOptionInitialiceEntry } from "@src/pages/privileges/outlets/positions/add-position/types";
+import { IOptionInitialiceEntry } from "@pages/privileges/outlets/positions/add-position/types";
 
 export interface IInvitationsEntry {
   customerId: string;
