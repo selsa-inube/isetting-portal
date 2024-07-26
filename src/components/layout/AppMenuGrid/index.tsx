@@ -3,6 +3,7 @@ import { Grid } from "@inubekit/grid";
 import { useMediaQuery } from "@inubekit/hooks";
 
 import { AppMenuCardProps } from "@components/cards/AppMenuCard";
+import { basic } from "@design/tokens";
 
 interface AppMenuGridProps {
   appOptions: AppMenuCardProps[];
@@ -19,7 +20,7 @@ function AppMenuGrid(props: AppMenuGridProps) {
         screenMovil ? "1fr" : "repeat(auto-fill,minmax(auto, 205px))"
       }
       autoRows="auto"
-      gap="s300"
+      gap={basic.spacing.s24}
     >
       {appOptions.map((item) => (
         <AppMenuCard

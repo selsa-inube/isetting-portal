@@ -8,6 +8,7 @@
   import { StyledBackdropBlanket, StyledModal } from "./styles";
   import { MdClose } from "react-icons/md";
   import { Link } from "react-router-dom";
+  import { basic } from "@design/tokens";
   
   interface ILogoutModalProps {
     handleShowBlanket: () => void;
@@ -22,8 +23,8 @@
       <StyledBackdropBlanket>
         <Blanket>
           <StyledModal $smallScreen={smallScreen}>
-            <Stack direction="column" gap={"24px"} padding="s300">
-              <Stack direction="column" gap={"24px"}>
+            <Stack direction="column" gap={basic.spacing.s24} padding={basic.spacing.s24}>
+              <Stack direction="column" gap={basic.spacing.s24}>
                 <Stack direction="row" justifyContent="space-between">
                   <Text
                     type="title"

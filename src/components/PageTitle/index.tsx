@@ -4,6 +4,7 @@ import { Icon} from "@inubekit/icon";
 import { useMediaQuery} from "@inubekit/hooks";
 import { MdArrowBack } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { basic } from "@design/tokens";
 
 interface PageTitleProps {
   title: string;
@@ -20,8 +21,8 @@ function PageTitle(props: PageTitleProps) {
 
   return (
     <>
-      <Stack gap="8px" direction="column">
-        <Stack gap="8px" alignItems="center">
+      <Stack gap={basic.spacing.s8} direction="column">
+        <Stack gap={basic.spacing.s8} alignItems="center">
           {icon ? (
             <Icon
               appearance="dark"

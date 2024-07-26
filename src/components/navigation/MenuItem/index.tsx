@@ -1,6 +1,7 @@
 import { Icon } from "@inubekit/icon"
 import { Text } from "@inubekit/text"
 import { Stack } from "@inubekit/stack"
+import { basic } from "@design/tokens";
 
 
 import { StyledMenuItemLink } from "./styles";
@@ -36,7 +37,7 @@ function MenuItem(props: MenuItemProps) {
       to={path}
       onClick={onClick}
     >
-      <Stack gap={"12px"} alignItems="center">
+      <Stack gap={basic.spacing.s12} alignItems="center">
         {iconBefore && (
           <Icon
             icon={iconBefore}
@@ -46,7 +47,7 @@ function MenuItem(props: MenuItemProps) {
             disabled={isDisabled}
           />
         )}
-        <Stack direction="column" gap={"4px"}>
+        <Stack direction="column" gap={basic.spacing.s4}>
           <Text type="label" size="large" disabled={isDisabled}>
             {title}
           </Text>

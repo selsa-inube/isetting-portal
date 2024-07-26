@@ -2,14 +2,15 @@ import { Button } from "@inubekit/button";
 import { Stack } from "@inubekit/stack";
 import { inube } from "@inubekit/foundations";
 import { ThemeProvider } from "styled-components";
+import { basic } from "@design/tokens";
 
 interface FormButtonsProps {
   handleReset: () => void;
   handleSubmit: () => void;
   cancelButtonText?: string;
   children?: React.ReactNode;
-  disabledButtons?: boolean;
-  disableReset?: boolean;
+  with_disabledButtons?: boolean;
+  with_disableReset?: boolean;
   loading?: boolean;
   submitButtonText?: string;
 }
@@ -20,26 +21,26 @@ function FormButtons(props: FormButtonsProps) {
     handleReset,
     cancelButtonText = "Cancelar",
     children,
-    disabledButtons,
-    disableReset,
+    with_disabledButtons,
+    with_disableReset,
     loading,
     submitButtonText = "Guardar",
   } = props;
 
   let disableCancel: boolean | undefined;
 
-  if (disableReset === undefined || disableReset === null) {
-    if (disabledButtons !== undefined && disabledButtons !== null) {
-      disableCancel = disabledButtons;
+  if (with_disableReset === undefined || with_disableReset === null) {
+    if (with_disabledButtons !== undefined && with_disabledButtons !== null) {
+      disableCancel = with_disabledButtons;
     }
   } else {
-    disableCancel = disableReset;
+    disableCancel = with_disableReset;
   }
 
   return (
-    <Stack direction="column" gap={"24px"}>
+    <Stack direction="column" gap={basic.spacing.s24}>
       <Stack direction="column">{children}</Stack>
-      <Stack justifyContent="flex-end" gap={"8px"}>
+      <Stack justifyContent="flex-end" gap={basic.spacing.s8}>
         <ThemeProvider theme={inube}>
           <Button
             appearance="gray"
@@ -53,7 +54,7 @@ function FormButtons(props: FormButtonsProps) {
             appearance="primary"
             onClick={handleSubmit}
             loading={loading}
-            disabled={disabledButtons}
+            disabled={with_disabledButtons}
             type="button"
           >
             {submitButtonText}

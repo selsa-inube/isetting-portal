@@ -1,4 +1,5 @@
 import { Text } from "@inubekit/text";
+import { basic } from "@design/tokens"
 
 interface MenuHeadingProps {
   title: string;
@@ -12,7 +13,7 @@ function MenuHeading(props: MenuHeadingProps) {
       type="title"
       size="small"
       appearance="gray"
-      padding="16px 16px 8px 16px"
+      padding= {`${basic.spacing.s16} ${basic.spacing.s16} ${basic.spacing.s8} ${basic.spacing.s16}`}
     >
       {title}
     </Text>

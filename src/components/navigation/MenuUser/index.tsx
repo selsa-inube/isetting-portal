@@ -1,4 +1,5 @@
-import { Text, Stack, Avatar, inube } from "@inube/design-system";
+import { Text, Stack, Avatar } from "@inube/design-system";
+import { basic } from "@design/tokens";
 
 interface MenuUserProps {
   userName: string;
@@ -10,7 +11,7 @@ function MenuUser(props: MenuUserProps) {
   const { userName, businessUnit = "Linix", avatar = true } = props;
 
   return (
-    <Stack gap={inube.spacing.s150} padding="s150 s200">
+    <Stack gap={basic.spacing.s12} padding={`${basic.spacing.s12} ${basic.spacing.s16}`}>
       {avatar && (
         <Stack direction="column" justifyContent="center">
           <Avatar />

@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { inube } from "@inubekit/foundations";
+import { basic } from "@design/tokens";
 
 const StyledAppMenuCard = styled(Link)`
   box-sizing: border-box;
-  padding: 16px;
+  padding: ${basic.spacing.s16};
   width: 191px;
   height: 140px;
   text-decoration: none;
@@ -25,7 +26,7 @@ const StyledAppMenuCard = styled(Link)`
     display: flex;
     width: 100%;
     height: 72px;
-    padding: 16px 8px;
+    padding: ${basic.spacing.s16} ${basic.spacing.s8};
     & div:first-child {
       flex-direction: row;
       gap: 8px;
