@@ -4,7 +4,7 @@ import { IOptionItemCheckedProps } from "./OptionItem";
 import { Size, Status } from "./types";
 import { SelectcheckUI } from "./interface";
 
-export interface ISelectcheckProps {
+export interface SelectcheckProps {
   disabled?: boolean;
   fullwidth?: boolean;
   id: string;
@@ -12,7 +12,7 @@ export interface ISelectcheckProps {
   message?: string;
   name: string;
   onBlur?: (event: FocusEvent) => void;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>, name: string) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>, name: string) => void;
   onChangeCheck?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onClick?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onFocus?: (event: FocusEvent) => void;
@@ -25,7 +25,7 @@ export interface ISelectcheckProps {
   value: string | number;
 }
 
-export const Selectcheck = (props: ISelectcheckProps) => {
+export const Selectcheck = (props: SelectcheckProps) => {
   const {
     disabled = false,
     fullwidth = false,

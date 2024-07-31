@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Selectcheck, ISelectcheckProps } from "..";
+import { Selectcheck, SelectcheckProps } from "..";
 
-export const ControllerSelectCheck = (props: ISelectcheckProps) => {
+export const ControllerSelectCheck = (props: SelectcheckProps) => {
   const { options } = props;
 
   const [data, setData] = useState(options);

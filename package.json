@@ -20,6 +20,7 @@
     "@inubekit/icon": "^2.0.1",
     "@inubekit/label": "^2.7.0",
     "@inubekit/stack": "^3.0.0",
+    "@inubekit/tag": "^3.5.0",
     "@inubekit/text": "^2.7.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

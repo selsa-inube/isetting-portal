@@ -14,9 +14,9 @@ import { OptionItemChecked } from "./OptionItem";
 import { OptionList } from "./OptionList";
 import { Size } from "./types";
 import { StyledContainer, StyledInputContainer, StyledInput } from "./styles";
-import { ISelectcheckProps } from ".";
+import { SelectcheckProps } from ".";
 
-export interface ISelectcheckUIProps extends ISelectcheckProps {
+export interface SelectcheckUIProps extends SelectcheckProps {
   focused?: boolean;
   displayList: boolean;
 }
@@ -29,7 +29,7 @@ const getTypo = (size: Size) => {
 };
 
 const Message = (
-  props: Pick<ISelectcheckProps, "disabled" | "status"> & { message?: string }
+  props: Pick<SelectcheckProps, "disabled" | "status"> & { message?: string }
 ) => {
   const { disabled, status, message } = props;
 
@@ -55,8 +55,8 @@ const Message = (
   );
 };
 
-export const SelectcheckUI = forwardRef<HTMLDivElement, ISelectcheckUIProps>(
-  (props: ISelectcheckUIProps, ref) => {
+export const SelectcheckUI = forwardRef<HTMLDivElement, SelectcheckUIProps>(
+  (props: SelectcheckUIProps, ref) => {
     const {
       label,
       name,
@@ -150,7 +150,7 @@ export const SelectcheckUI = forwardRef<HTMLDivElement, ISelectcheckUIProps>(
         )}
         {displayList && !disabled && (
           <OptionList onClick={onChangeCheck}>
-            {options.map((optionItem) => (
+            {options && (options.map((optionItem) => (
               <OptionItemChecked
                 key={optionItem.id}
                 id={optionItem.id}
@@ -158,7 +158,7 @@ export const SelectcheckUI = forwardRef<HTMLDivElement, ISelectcheckUIProps>(
                 checked={optionItem.checked}
                 onchange={onChangeCheck}
               />
-            ))}
+            )))}
           </OptionList>
         )}
       </StyledContainer>
