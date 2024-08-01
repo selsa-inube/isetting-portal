@@ -5,9 +5,10 @@ import { StyledContainer, StyledSelection } from "./styles";
 import { IOptionItemCheckedProps } from "@components/inputs/SelectCheck/OptionItem";
 import { useState } from "react";
 
-
 interface MultipleChoicesProps {
-    onHandleSelectCheckChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onHandleSelectCheckChange: (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => void;
     labelSelected: string;
     labelSelect: string;
     options: IOptionItemCheckedProps[];
@@ -16,7 +17,6 @@ interface MultipleChoicesProps {
 }
 
 const MultipleChoices = (props: MultipleChoicesProps) => {
-
     const {
         onHandleSelectCheckChange,
         labelSelected,
@@ -26,9 +26,11 @@ const MultipleChoices = (props: MultipleChoicesProps) => {
         required = false,
     } = props;
 
-    const [optionsSelect, setOptionsSelect] = useState(options)
+    const [optionsSelect, setOptionsSelect] = useState(options);
 
-    const onHandleSelectCheck = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const onHandleSelectCheck = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
         const { checked, id } = event.target;
         const newOptions = optionsSelect.map((option) => {
             if (option.id === id) {
@@ -37,8 +39,8 @@ const MultipleChoices = (props: MultipleChoicesProps) => {
             return option;
         });
         setOptionsSelect(newOptions);
-        onHandleSelectCheckChange(event)
-    }
+        onHandleSelectCheckChange(event);
+    };
 
     const onRemoveTag = (id: string) => {
         const newOptions = optionsSelect.map((option) => {
@@ -48,13 +50,12 @@ const MultipleChoices = (props: MultipleChoicesProps) => {
             return option;
         });
         setOptionsSelect(newOptions);
-    }
+    };
 
     return (
         <StyledContainer>
-            {
-                optionsSelect.length > 0 && optionsSelect.some(option => option.checked) &&
-                 (
+            {optionsSelect.length > 0 &&
+                optionsSelect.some((option) => option.checked) && (
                     <>
                         <Text
                             margin="0px 0px 4px 0px"
@@ -62,18 +63,27 @@ const MultipleChoices = (props: MultipleChoicesProps) => {
                             type="label"
                             size="medium"
                             weight="bold"
-                        >{labelSelected}</Text>
+                        >
+                            {labelSelected}
+                        </Text>
                         <StyledSelection>
-                            {
-                                optionsSelect.filter(option => option.checked).map((option) => (
-                                    <Tag key={option.id} appearance="primary" label={option.label} weight="strong" removable onClose={() => { onRemoveTag(option.id) }} />
-                                ))
-                            }
+                            {optionsSelect
+                                .filter((option) => option.checked)
+                                .map((option) => (
+                                    <Tag
+                                        key={option.id}
+                                        appearance="primary"
+                                        label={option.label}
+                                        weight="strong"
+                                        removable
+                                        onClose={() => {
+                                            onRemoveTag(option.id);
+                                        }}
+                                    />
+                                ))}
                         </StyledSelection>
                     </>
-
-                )
-            }
+                )}
 
             <Selectcheck
                 id={id}
@@ -85,12 +95,11 @@ const MultipleChoices = (props: MultipleChoicesProps) => {
                 required={required}
                 value=""
                 size="compact"
-
             />
         </StyledContainer>
-    )
-}
+    );
+};
 
-export { MultipleChoices }
+export { MultipleChoices };
 
-export type { MultipleChoicesProps }
+export type { MultipleChoicesProps };
