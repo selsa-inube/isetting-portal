@@ -3,9 +3,10 @@ import { Textfield } from "@inubekit/textfield";
 import { Textarea } from "@inubekit/textarea";
 import { RenderMessage } from "@components/feedback/RenderMessage";
 import { FormButtons } from "@components/forms/submit/FormButtons";
-import { IMessageState } from "@pages/privileges/outlets/users/types/forms.types";
+import { IMessageState } from "@pages/privileges/outlets/types/forms.types";
 import { FormikValues } from "formik";
 import { IGeneralInformationEntry } from ".";
+import { basic } from "@design/tokens";
 
 function stateValue(formik: FormikValues, attribute: string) {
   if (!formik.touched[attribute]) return undefined;
@@ -42,7 +43,7 @@ export function GeneralInformationFormUI(props: GeneralInformationFormUIProps) {
   return (
     <>
       <form>
-        <Grid templateColumns="1fr" gap="s200" width="100%" autoRows="unset">
+        <Grid templateColumns="1fr" gap={basic.spacing.s16} width="100%" autoRows="unset">
           <Textfield
             label="Nombre Cargo"
             placeholder="Nombre del cargo"

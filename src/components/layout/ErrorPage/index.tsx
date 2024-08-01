@@ -36,7 +36,7 @@ function ErrorPage(props: ErrorPageProps) {
 
   return (
     <Stack
-      padding={matches["(max-width: 600px)"] ? "s400" : "s1000"}
+      padding={matches["(max-width: 600px)"] ? `{${basic.spacing.s32}}` : `{${basic.spacing.s80}}`}// //
       gap={matches["(max-width: 1000px)"] ? "64px" : "120px"}
       direction="column"
     >

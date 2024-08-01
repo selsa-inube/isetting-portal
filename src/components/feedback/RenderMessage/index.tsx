@@ -1,7 +1,7 @@
 import { Stack } from "@inubekit/stack";
 import { Flag } from "@inubekit/flag";
 import { StyledMessageContainer } from "./styles";
-import { IUsersMessage } from "@pages/privileges/outlets/users/types/users.types";
+import { IUsersMessage } from "@pages/privileges/outlets/types/users.types";
 
 interface IRenderMessageProps {
   message: IUsersMessage;

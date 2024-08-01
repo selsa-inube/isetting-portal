@@ -1,4 +1,3 @@
-import { IInvitationsEntry } from "@services/users/invitation.types";
 import { EMessageType, IMessage } from "@src/types/messages.types";
 
 interface IAssignmentFormEntry {
@@ -8,7 +7,7 @@ interface IAssignmentFormEntry {
 }
 
 interface IFormsInvitation {
-  generalInformation: { entries?: IInvitationsEntry };
+  generalInformation: {entries?: [] };
   branches: { entries: IAssignmentFormEntry[] };
   projects: { entries: IAssignmentFormEntry[] };
   events: { entries: IAssignmentFormEntry[] };

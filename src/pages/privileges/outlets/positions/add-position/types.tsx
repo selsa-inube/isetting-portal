@@ -1,12 +1,12 @@
 import { FormikProps } from "formik";
 import { IGeneralInformationEntry } from "../components/GeneralInformationForm";
-import { IAssignmentFormEntry } from "../../users/types/forms.types";
 
 export const titleButtonTextAssited = {
   before: "Anterior",
   after: "Siguiente",
   finish: "Enviar",
 };
+
 interface IRolByPosition {
   k_Rol: string;
 }
@@ -18,7 +18,6 @@ export interface IPosition {
   n_Uso: string;
   rolesPorCargo?: IRolByPosition[];
 }
-
 export interface IStep {
   id: number;
   label: string;
@@ -41,5 +40,4 @@ export interface IFormAddPositionRef {
 }
 
 export type IHandleUpdateDataSwitchstep =
-  | IGeneralInformationEntry
-  | IAssignmentFormEntry[];
+  | IGeneralInformationEntry;

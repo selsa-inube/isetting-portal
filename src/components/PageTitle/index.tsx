@@ -2,6 +2,7 @@ import { Stack } from "@inubekit/stack";
 import { Text } from "@inubekit/text";
 import { Icon} from "@inubekit/icon";
 import { useMediaQuery} from "@inubekit/hooks";
+import { isMobile580 } from "@src/config/environment";
 import { MdArrowBack } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { basic } from "@design/tokens";
@@ -16,7 +17,7 @@ interface PageTitleProps {
 function PageTitle(props: PageTitleProps) {
   const { title, icon, description, navigatePage } = props;
 
-  const smallScreen = useMediaQuery("(max-width: 580px)");
+  const smallScreen = useMediaQuery(isMobile580);
   const navigate = useNavigate();
 
   return (

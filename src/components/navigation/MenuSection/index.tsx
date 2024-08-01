@@ -7,6 +7,8 @@ import { MenuItemSpacingType } from "../MenuItem/types";
 
 import { MenuItem } from "../MenuItem";
 
+import { basic } from "@design/tokens";
+
 interface MenuSectionProps {
   sections: ISection[];
   spacing?: MenuItemSpacingType;
@@ -34,7 +36,7 @@ function MenuSection(props: MenuSectionProps) {
           {section.title && <MenuHeading title={section.title} />}
           <Stack
             direction="column"
-            gap={spacing === "compact" ? "4px" : "0px"}
+            gap={spacing === "compact" ? `{${basic.spacing.s4}}` : `{${basic.spacing.s0}}`}
             margin={"6px 0px"}
           >
             {section.links.map((link, linkIndex) => (

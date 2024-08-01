@@ -1,6 +1,7 @@
 import { AppMenuCard } from "@components/cards/AppMenuCard/index";
 import { Grid } from "@inubekit/grid";
 import { useMediaQuery } from "@inubekit/hooks";
+import { isMobile580 } from "@src/config/environment";
 
 import { AppMenuCardProps } from "@components/cards/AppMenuCard";
 import { basic } from "@design/tokens";
@@ -12,7 +13,7 @@ interface AppMenuGridProps {
 function AppMenuGrid(props: AppMenuGridProps) {
   const { appOptions } = props;
 
-  const screenMovil = useMediaQuery("(max-width: 580px)");
+  const screenMovil = useMediaQuery(isMobile580);
 
   return (
     <Grid

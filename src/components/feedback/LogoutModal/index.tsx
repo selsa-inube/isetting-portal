@@ -4,6 +4,7 @@
   import { Text } from "@inubekit/text";
   import { Icon } from "@inubekit/icon";
   import { useMediaQuery } from "@inubekit/hooks";
+  import { isMobile743 } from "@src/config/environment";
 
   import { StyledBackdropBlanket, StyledModal } from "./styles";
   import { MdClose } from "react-icons/md";
@@ -17,7 +18,7 @@
   
   function LogoutModal(props: ILogoutModalProps) {
     const { logoutPath, handleShowBlanket } = props;
-    const smallScreen = useMediaQuery("(max-width: 743px)");
+    const smallScreen = useMediaQuery(isMobile743);
   
     return (
       <StyledBackdropBlanket>
@@ -45,7 +46,7 @@
                   ¿Realmente quieres cerrar sesión?
                 </Text>
               </Stack>
-              <Stack justifyContent="flex-end" gap="8px">
+              <Stack justifyContent="flex-end" gap={basic.spacing.s8}>
                 <Button
                   appearance="gray"
                   spacing={smallScreen ? "compact" : "wide"}

@@ -3,11 +3,10 @@ import { GeneralInformationFormUI } from "./interface";
 import { FormikProps, useFormik } from "formik";
 import * as Yup from "yup";
 import { validationMessages } from "@src/validations/validationMessages";
-import { IMessageState } from "@pages/privileges/outlets/users/types/forms.types";
+import { IMessageState } from "@pages/privileges/outlets/types/forms.types";
 import { generalMessage } from "../../add-position/config/messages.config";
 import { IHandleUpdateDataSwitchstep } from "../../add-position/types";
 
-const LOADING_TIMEOUT = 1500;
 export interface IGeneralInformationEntry {
   n_Grupo: string;
   n_Uso: string;
@@ -27,7 +26,6 @@ interface IGeneralInformationFormProps {
   onFormValid?: React.Dispatch<React.SetStateAction<boolean>>;
   onHasChanges?: (hasChanges: boolean) => void;
 }
-
 export const GeneralInformationForm = forwardRef(
   function GeneralInformationForm(
     props: IGeneralInformationFormProps,
@@ -60,7 +58,7 @@ export const GeneralInformationForm = forwardRef(
             visible: true,
             data: generalMessage.success,
           });
-        }, LOADING_TIMEOUT);
+        }, );
       },
     });
 

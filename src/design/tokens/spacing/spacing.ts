@@ -27,6 +27,7 @@ const spacing = {
     s50: "50px",
     s64: "64px",
     s80: "80px",
+    s120: "120px",
   };
   
   export { spacing };

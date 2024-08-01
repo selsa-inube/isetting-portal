@@ -29,7 +29,7 @@ const StyledAppMenuCard = styled(Link)`
     padding: ${basic.spacing.s16} ${basic.spacing.s8};
     & div:first-child {
       flex-direction: row;
-      gap: 8px;
+      gap: ${basic.spacing.s8};
     }
     & p {
       text-align: left;

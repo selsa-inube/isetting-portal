@@ -6,6 +6,7 @@ import { Header } from "@inubekit/header";
 import { Nav } from "@inubekit/nav";
 import { Grid } from "@inubekit/grid";
 import { useMediaQuery } from "@inubekit/hooks";
+import { isMobile849 } from "@src/config/environment";
 
 import { AppContext } from "@context/AppContext";
 import { MenuSection } from "@components/navigation/MenuSection";
@@ -40,7 +41,7 @@ function AppPage() {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const userMenuRef = useRef<HTMLDivElement>(null);
 
-  const smallScreen = useMediaQuery("(max-width: 849px)");
+  const smallScreen = useMediaQuery(isMobile849);
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
