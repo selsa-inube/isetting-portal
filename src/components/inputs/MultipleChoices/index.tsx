@@ -1,28 +1,30 @@
 import { Tag } from "@inubekit/tag";
 import { Text } from "@inubekit/text";
-import { SelectCheck } from "../SelectCheck";
-import { StyledContainer, StyledSelection } from "./styles";
-import { IOptionItemCheckedProps } from "@components/inputs/SelectCheck/OptionItem";
 import { useState } from "react";
 
+import { IOptionItemCheckedProps } from "@components/inputs/SelectCheck/OptionItem";
+
+import { SelectCheck } from "../SelectCheck";
+import { StyledContainer, StyledSelection } from "./styles";
+
 interface MultipleChoicesProps {
+  id: string;
+  labelSelect: string;
+  labelSelected: string;
   onHandleSelectCheckChange: (
     event: React.ChangeEvent<HTMLInputElement>
   ) => void;
-  labelSelected: string;
-  labelSelect: string;
   options: IOptionItemCheckedProps[];
-  id: string;
   required?: boolean;
 }
 
 const MultipleChoices = (props: MultipleChoicesProps) => {
   const {
-    onHandleSelectCheckChange,
-    labelSelected,
-    labelSelect,
-    options,
     id,
+    labelSelect,
+    labelSelected,
+    onHandleSelectCheckChange,
+    options,
     required = false,
   } = props;
 
