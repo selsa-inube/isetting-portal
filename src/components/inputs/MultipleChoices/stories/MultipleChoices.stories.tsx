@@ -23,12 +23,13 @@ export const Default: Story = (args: MultipleChoicesProps) => (
   <MultipleChoices {...args} />
 );
 Default.args = {
-  labelSelected: "Categorias Seleccionadas",
+  id: "MultipleOptionesCategorias",
   labelSelect: "Selecciones las categorias",
-  id: "MultipleChoicesCategorias",
-  options: options,
+  labelSelected: "Categorias Seleccionadas",
   onHandleSelectCheckChange: () => true,
+  options: options,
   required: false,
+  placeholderSelect: "Selecciona una categoria",
 };
 
 export default meta;

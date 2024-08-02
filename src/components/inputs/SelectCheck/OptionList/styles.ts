@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { inube } from "@inubekit/foundations";
 
 interface IStyledOptionList {
-    onClick?: React.ChangeEventHandler<HTMLInputElement>;
+    $onClick?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 export const StyledOptionList = styled.ul<IStyledOptionList>`

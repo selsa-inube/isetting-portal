@@ -15,6 +15,7 @@ interface MultipleChoicesProps {
     event: React.ChangeEvent<HTMLInputElement>
   ) => void;
   options: IOptionItemCheckedProps[];
+  placeholderSelect?: string;
   required?: boolean;
 }
 
@@ -25,6 +26,7 @@ const MultipleChoices = (props: MultipleChoicesProps) => {
     labelSelected,
     onHandleSelectCheckChange,
     options,
+    placeholderSelect = "",
     required = false,
   } = props;
 
@@ -91,7 +93,7 @@ const MultipleChoices = (props: MultipleChoicesProps) => {
         name={id}
         onChangeCheck={onHandleSelectCheck}
         options={optionsSelect}
-        placeholder="Seleccione una opción"
+        placeholder={ placeholderSelect }
         required={required}
         value=""
         size="compact"

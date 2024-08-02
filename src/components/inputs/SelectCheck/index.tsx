@@ -7,6 +7,9 @@ import { SelectCheckUI } from "./interface";
 export interface SelectCheckProps {
   id: string;
   name: string;
+  options: IOptionItemCheckedProps[];
+  value: string | number;
+
   disabled?: boolean;
   fullwidth?: boolean;
   label?: string;
@@ -16,35 +19,34 @@ export interface SelectCheckProps {
   onChangeCheck?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onClick?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onFocus?: (event: FocusEvent) => void;
-  options: IOptionItemCheckedProps[];
   placeholder?: string;
   readonly?: boolean;
   required?: boolean;
   size?: Size;
   status?: Status;
-  value: string | number;
 }
 
 export const SelectCheck = (props: SelectCheckProps) => {
   const {
+    id,
+    name,
+    options,
+    value,
+
     disabled = false,
     fullwidth = false,
-    id,
     label,
     message,
-    name,
     onBlur,
     onChange,
     onChangeCheck,
     onClick,
     onFocus,
-    options,
     placeholder,
     readonly = false,
     required = false,
     size = "wide",
     status = "pending",
-    value,
   } = props;
 
   const [focused, setFocused] = useState(false);
@@ -87,27 +89,28 @@ export const SelectCheck = (props: SelectCheckProps) => {
 
   return (
     <SelectCheckUI
-      disabled={disabled}
       displayList={displayList}
+      id={id}
+      name={name}
+      options={options}
+      value={value}
+
+      disabled={disabled}
       focused={focused}
       fullwidth={fullwidth}
-      id={id}
       label={label}
       message={message}
-      name={name}
       onBlur={handleBlur}
       onChange={onChange}
       onChangeCheck={onChangeCheck}
       onClick={handleClick}
       onFocus={handleFocus}
-      options={options}
       placeholder={placeholder}
       readonly={readonly}
       ref={selectRef}
       required={required}
       size={size}
       status={status}
-      value={value}
     />
   );
 };

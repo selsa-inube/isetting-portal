@@ -8,7 +8,7 @@ export interface OptionListProps {
 const OptionList = (props: OptionListProps) => {
     const { children, onClick } = props;
 
-    return <StyledOptionList onClick={onClick}>{children}</StyledOptionList>;
+    return <StyledOptionList $onClick={onClick}>{children}</StyledOptionList>;
 };
 
 export { OptionList };

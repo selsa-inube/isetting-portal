@@ -4,7 +4,6 @@ import {
   MdCheckCircle,
   MdOutlineArrowDropDown,
 } from "react-icons/md";
-
 import { Text } from "@inubekit/text";
 import { Icon } from "@inubekit/icon";
 import { Label } from "@inubekit/label";
@@ -17,8 +16,8 @@ import { StyledContainer, StyledInputContainer, StyledInput } from "./styles";
 import { SelectCheckProps } from ".";
 
 export interface SelectCheckUIProps extends SelectCheckProps {
-  focused?: boolean;
   displayList: boolean;
+  focused?: boolean;
 }
 
 const getTypo = (size: Size) => {
@@ -58,26 +57,27 @@ const Message = (
 export const SelectCheckUI = forwardRef<HTMLDivElement, SelectCheckUIProps>(
   (props: SelectCheckUIProps, ref) => {
     const {
-      label,
-      name,
-      id,
-      placeholder,
       disabled,
+      id,
+      name,
+      options,
+      value,
+
+      displayList,
+      focused,
+      fullwidth,
+      label,
+      message,
+      onBlur,
+      onChange,
+      onChangeCheck,
+      onClick,
+      onFocus,
+      placeholder,
       readonly,
       required,
-      status,
-      message,
       size,
-      value,
-      fullwidth,
-      options,
-      focused,
-      onFocus,
-      onBlur,
-      onClick,
-      onChange,
-      displayList,
-      onChangeCheck,
+      status,
     } = props;
 
     return (
