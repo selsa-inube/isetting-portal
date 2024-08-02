@@ -1,6 +1,6 @@
 import { sizes, status } from "../types";
 import { ArgTypes } from "@storybook/react";
-import { SelectcheckProps } from "..";
+import { SelectCheckProps } from "..";
 
 export const parameters = {
   docs: {
@@ -14,7 +14,7 @@ export const parameters = {
   },
 };
 
-export const props: Partial<ArgTypes<SelectcheckProps>> = {
+export const props: Partial<ArgTypes<SelectCheckProps>> = {
   label: {
     description: "prompts the user what value to enter",
   },
