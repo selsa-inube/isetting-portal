@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@inubekit/button": "^4.5.0",
+    "@inubekit/datefield": "^2.10.0",
     "@inubekit/foundations": "^5.2.0",
     "@inubekit/grid": "^2.3.0",
     "@inubekit/header": "^2.5.0",
