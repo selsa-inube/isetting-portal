@@ -3,7 +3,7 @@ import { Toggle } from "@inubekit/toggle";
 import { Textfield } from "@inubekit/textfield";
 import { Grid } from "@inubekit/grid";
 import { Datefield } from "@inubekit/datefield";
-import { StyledSquare } from "./styles";
+import { Stack } from "@inubekit/stack";
 
 
 export interface InputRangeProps {
@@ -72,8 +72,8 @@ export const InputRange = (props: InputRangeProps) => {
                 value={valueToggle}
             />
             {toogleCheck && (
-                <Grid templateColumns="repeat(2, 1fr)" margin="10px 0px">
-                    <StyledSquare>
+                <Grid templateColumns="repeat(2, 1fr)" margin="10px 0px" gap="12px">
+                    <Stack>
                         {typeInput === "number" && (
                             <Textfield
                                 id={`${id}TextFieldFrom`}
@@ -97,8 +97,8 @@ export const InputRange = (props: InputRangeProps) => {
                                 />
                             )
                         }
-                    </StyledSquare>
-                    <StyledSquare>
+                    </Stack>
+                    <Stack gap="12px">
                         {typeInput === "number" && (
                             <Textfield
                                 id={`${id}TextFieldTo`}
@@ -122,7 +122,7 @@ export const InputRange = (props: InputRangeProps) => {
                                 />
                             )
                         }
-                    </StyledSquare>
+                    </Stack>
                 </Grid>
             )}
         </>

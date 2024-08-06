@@ -16,7 +16,13 @@ const meta: Meta<typeof InputRange> = {
 
 type Story = StoryObj<typeof InputRange>;
 
-export const Default: Story = (args: InputRangeProps) => <InputRange {...args} />;
+const style = {
+  width : "400px",
+};
+
+export const Default: Story = (args: InputRangeProps) => 
+  <div style={style}><InputRange {...args} /></div>
+;
 Default.args = {
   checked: false,
   handleToggleChange: () => {},
