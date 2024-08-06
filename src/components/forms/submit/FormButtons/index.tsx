@@ -9,8 +9,8 @@ interface FormButtonsProps {
   handleSubmit: () => void;
   cancelButtonText?: string;
   children?: React.ReactNode;
-  with_disabledButtons?: boolean;
-  with_disableReset?: boolean;
+  withDisabledButtons?: boolean;
+  withDisableReset?: boolean;
   loading?: boolean;
   submitButtonText?: string;
 }
@@ -21,20 +21,20 @@ function FormButtons(props: FormButtonsProps) {
     handleReset,
     cancelButtonText = "Cancelar",
     children,
-    with_disabledButtons,
-    with_disableReset,
+    withDisabledButtons,
+    withDisableReset,
     loading,
     submitButtonText = "Guardar",
   } = props;
 
   let disableCancel: boolean | undefined;
 
-  if (with_disableReset === undefined || with_disableReset === null) {
-    if (with_disabledButtons !== undefined && with_disabledButtons !== null) {
-      disableCancel = with_disabledButtons;
+  if (withDisableReset === undefined || withDisableReset === null) {
+    if (withDisabledButtons !== undefined && withDisabledButtons !== null) {
+      disableCancel = withDisabledButtons;
     }
   } else {
-    disableCancel = with_disableReset;
+    disableCancel = withDisableReset;
   }
 
   return (
@@ -54,7 +54,7 @@ function FormButtons(props: FormButtonsProps) {
             appearance="primary"
             onClick={handleSubmit}
             loading={loading}
-            disabled={with_disabledButtons}
+            disabled={withDisabledButtons}
             type="button"
           >
             {submitButtonText}

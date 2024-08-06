@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { inube } from "@inubekit/foundations";
 import { basic } from "@design/tokens";
+import { isMobile580 } from "@src/config/environment";
 
 const StyledAppMenuCard = styled(Link)`
   box-sizing: border-box;
@@ -22,7 +23,7 @@ const StyledAppMenuCard = styled(Link)`
     }
   }
 
-  @media (max-width: 580px) {
+  @media (${isMobile580}) {
     display: flex;
     width: 100%;
     height: 72px;

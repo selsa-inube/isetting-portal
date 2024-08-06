@@ -90,7 +90,7 @@ export function GeneralInformationFormUI(props: GeneralInformationFormUIProps) {
         <FormButtons
           handleSubmit={handleSubmitForm}
           handleReset={formik.resetForm}
-          with_disabledButtons={!disabledButtons(formik.values)}
+          withDisabledButtons={!disabledButtons(formik.values)}
           loading={loading}
           children=""
         />
