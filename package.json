@@ -22,6 +22,7 @@
     "@inubekit/foundations": "^5.1.0",
     "@inubekit/grid": "^2.3.0",
     "@inubekit/header": "^2.5.0",
+    "@inubekit/icon": "^2.7.2",
     "@inubekit/textarea": "^2.11.0",
     "@inubekit/textfield": "^2.7.0",
     "formik": "^2.4.1",
