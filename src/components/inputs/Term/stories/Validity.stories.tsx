@@ -1,23 +1,25 @@
 import { Meta, StoryObj } from "@storybook/react";
 
 import { parameters, props } from "./props";
-import { Validity, ValidityProps } from "..";
+import { Term, TermProps } from "..";
 
-const meta: Meta<typeof Validity> = {
-  title: "components/Validity",
-  component: Validity,
+const meta: Meta<typeof Term> = {
+  title: "components/inputs/Term",
+  component: Term,
   parameters,
   argTypes: props,
 };
 
-type Story = StoryObj<typeof Validity>;
+type Story = StoryObj<typeof Term>;
 
 const style = {
-  width : "402px",
+  width: "402px",
 };
 
-export const Default: Story = (args: ValidityProps) => (
- <div style={style}><Validity {...args} /></div> 
+export const Default: Story = (args: TermProps) => (
+  <div style={style}>
+    <Term {...args} />
+  </div>
 );
 Default.args = {
   onHandleStartChange: () => {},
