@@ -18,7 +18,7 @@
     "@inubekit/blanket": "^2.5.0",
     "@inubekit/breadcrumbs": "^2.6.0",
     "@inubekit/button": "^4.5.0",
-    "@inubekit/flag": "^4.16.0",
+    "@inubekit/datefield": "^2.10.0",
     "@inubekit/foundations": "^5.2.0",
     "@inubekit/grid": "^2.3.0",
     "@inubekit/header": "^2.5.0",
