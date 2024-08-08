@@ -13,7 +13,7 @@ const options = [
 ];
 
 const meta: Meta<typeof SingleChoice> = {
-  title: "components/SingleChoice",
+  title: "components/inputs/SingleChoice",
   component: SingleChoice,
   parameters,
   argTypes: props,
