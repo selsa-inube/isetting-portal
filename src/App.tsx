@@ -3,7 +3,6 @@ import {
   RouterProvider,
   createBrowserRouter,
   createRoutesFromElements,
-  Navigate
 } from "react-router-dom";
 
 import { ErrorPage } from "@components/layout/ErrorPage";
@@ -14,6 +13,7 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "@src/config/theme";
 import { useAuth0 } from "@auth0/auth0-react";
 import { environment } from "./config/environment";
+import { RulesRoutes } from "./routes/rules";
 
 function LogOut() {
   localStorage.clear();
@@ -25,11 +25,12 @@ function LogOut() {
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/" element={<AppPage />}/>
-      <Route index element={<Navigate to="/privileges" replace />} />
-      <Route path="privileges/*" element={<PrivilegesRoutes />} />
+      <Route path="/" element={<AppPage />}>
+        <Route path="privileges/*" element={<PrivilegesRoutes />} />
+        <Route path="rules/*" element={<RulesRoutes />} />
+      </Route>
       <Route path="logout" element={<LogOut />} />
-      <Route path="/*" errorElement={<ErrorPage />} />
+      <Route errorElement={<ErrorPage />} />
     </>
   )
 );

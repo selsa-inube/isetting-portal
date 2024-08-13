@@ -6,13 +6,12 @@ import { Header } from "@inubekit/header";
 import { Nav } from "@inubekit/nav";
 import { Grid } from "@inubekit/grid";
 import { useMediaQuery } from "@inubekit/hooks";
-import { isMobile849 } from "@src/config/environment";
 
+import { isMobile849 } from "@src/config/environment";
 import { AppContext } from "@context/AppContext";
 import { MenuSection } from "@components/navigation/MenuSection";
 import { MenuUser } from "@components/navigation/MenuUser";
 import { LogoutModal } from "@components/feedback/LogoutModal";
-
 import { nav, logoutConfig } from "@src/config/nav";
 import linparLogo from "@assets/images/linpar.png";
 
@@ -86,7 +85,7 @@ function AppPage() {
         </StyledHeaderContainer>
         {showUserMenu && (
           <StyledMenuContainer ref={userMenuRef}>
-            <MenuUser userName={user.username} businessUnit={user.company} />
+            <MenuUser userName={"Dora Lucia"} businessUnit={user.company} />
             <MenuSection
               sections={[
                 {

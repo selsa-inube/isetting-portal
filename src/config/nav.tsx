@@ -1,7 +1,6 @@
 import { INav } from "@components/layout/AppPage/types";
-import { MdOutlineStart } from "react-icons/md";
+import { MdOutlineStart, MdVpnKey, MdOutlineSettings } from "react-icons/md";
 
-import { MdVpnKey } from "react-icons/md";
 
 const appsConfig = [
   {
@@ -39,6 +38,12 @@ const nav: INav = {
           label: "Privilegios",
           icon: <MdOutlineStart />,
           path: "/privileges",
+        },
+        rules:{
+          id: "rules",
+          label: "Reglas",
+          icon: <MdOutlineSettings />,
+          path: "/rules/options",
         },
       },
     },
