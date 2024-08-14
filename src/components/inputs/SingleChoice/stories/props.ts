@@ -14,17 +14,9 @@ export const parameters = {
 };
 
 export const props: Partial<ArgTypes<SingleChoiceProps>> = {
-  checked: {
-    description:
-      "is a boolean attribute that indicates whether the **Toggle Component** is checked or not.",
-  },
   handleSelectChange: {
     description:
       "is a function that will be called when the **Select Component** value changes.",
-  },
-  handleToggleChange: {
-    description:
-      "is a function that will be called when the **Toggle Component** value changes.",
   },
   id: {
     description:
@@ -33,10 +25,6 @@ export const props: Partial<ArgTypes<SingleChoiceProps>> = {
   labelSelect: {
     description:
       "is the text that will be displayed as the label for the **Select Component**.",
-  },
-  labelToggle: {
-    description:
-      "is the text that will be displayed as the label for the **Toggle Component**.",
   },
   name: {
     description:

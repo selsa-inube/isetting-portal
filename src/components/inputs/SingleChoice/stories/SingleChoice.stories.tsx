@@ -27,11 +27,8 @@ Default.args = {
   id: "membresia",
   options,
   name: "membresia",
-  labelToggle: "Nivel de membresía",
   labelSelect: "Seleccione la membresía",
-  handleToggleChange: ()=>{},
   handleSelectChange: ()=>{},
-  checked: true,
 };
 
 export default meta;
