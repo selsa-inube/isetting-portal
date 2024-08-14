@@ -20,21 +20,34 @@ const style = {
   width : "400px",
 };
 
-export const Default: Story = (args: InputRangeProps) => 
+export const Currency: Story = (args: InputRangeProps) => 
   <div style={style}><InputRange {...args} /></div>
 ;
-Default.args = {
-  checked: false,
-  handleToggleChange: () => {},
+Currency.args = {
   handleInputChangeFrom: () => {},
   handleInputChangeTo: () => {},
   id: "inputRango",
-  label: "Antiguedad del cliente",
-  valueToggle: "",
-  valueFrom: "",
-  valueTo: "",
-  typeInput: "date",
+  valueFrom: 0,
+  valueTo: 0,
+  typeInput: "currency",
   required: false,
+  labelFrom: "Desde",
+  labelTo: "Hasta",
+};
+
+export const Number: Story = (args: InputRangeProps) => 
+  <div style={style}><InputRange {...args} /></div>
+;
+Number.args = {
+  handleInputChangeFrom: () => {},
+  handleInputChangeTo: () => {},
+  id: "inputRango",
+  valueFrom: 0,
+  valueTo: 0,
+  typeInput: "number",
+  required: false,
+  labelFrom: "Desde",
+  labelTo: "Hasta",
 };
 
 export default meta;

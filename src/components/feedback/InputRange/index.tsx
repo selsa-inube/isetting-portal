@@ -1,130 +1,86 @@
 import { useState } from "react";
-import { Toggle } from "@inubekit/toggle";
 import { Textfield } from "@inubekit/textfield";
 import { Grid } from "@inubekit/grid";
-import { Datefield } from "@inubekit/datefield";
 import { Stack } from "@inubekit/stack";
 
+import { currencyFormat, parseCurrencyString } from "@src/utils/currency";
 
 export interface InputRangeProps {
-    checked?: boolean;
-    handleToggleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    handleInputChangeFrom: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    handleInputChangeTo: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    handleInputChangeFrom: (valueFrom: number) => void;
+    handleInputChangeTo: (valueTo: number) => void;
     id: string;
-    label: string;
-    valueToggle?: string;
-    valueFrom?: string | number;
-    valueTo?: string | number;
+    labelFrom: string;
+    labelTo: string;
     typeInput: ITextfieldInputType;
     required?: boolean;
+    valueFrom?: number;
+    valueTo?: number;
 }
 
 export declare type ITextfieldInputType = (typeof inputTypes)[number];
 
-declare const inputTypes: readonly ["date", "number"];
+declare const inputTypes: readonly ["currency", "number"];
 
 export const InputRange = (props: InputRangeProps) => {
     const {
-        id,
-        label,
-        checked = false,
-        valueToggle = "",
-        handleToggleChange,
         handleInputChangeFrom,
-        handleInputChangeTo,        
-        valueFrom = "",
-        valueTo = "",
+        handleInputChangeTo,
+        id,
+        labelFrom,
+        labelTo,
         typeInput,
         required = false,
+        valueFrom = 0,
+        valueTo = 0,
     } = props;
 
-    const [toogleCheck, setToogleCheck] = useState(checked),
-          [inputValueFrom, setInputValueFrom] = useState(valueFrom),
+    const [inputValueFrom, setInputValueFrom] = useState(valueFrom),
           [inputValueTo, setInputValueTo] = useState(valueTo);
 
-    const handleToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setToogleCheck(e.target.checked);
-        handleToggleChange(e);
+    const handleChangeFrom = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const valueFrom = typeInput === "currency" ? parseCurrencyString(e.target.value) : Number(e.target.value);
+        setInputValueFrom(valueFrom);
+        handleInputChangeFrom(valueFrom);
     };
 
-    const handleChangeFrom = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setInputValueFrom(e.target.value);
-        handleInputChangeFrom(e);
-    }
-
     const handleChangeTo = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setInputValueTo(e.target.value);
-        handleInputChangeTo(e);
-    }
-    
+        const valueTo = typeInput === "currency" ? parseCurrencyString(e.target.value) : Number(e.target.value);
+        setInputValueTo(valueTo);
+        handleInputChangeTo(valueTo);
+    };
 
     return (
-        <>
-            <Toggle
-                checked={toogleCheck}
-                id={`${id}Toggle`}
-                label={label}
-                margin="0px"
-                onChange={handleToggle}
-                padding="0px"
-                size="large"
-                value={valueToggle}
-            />
-            {toogleCheck && (
-                <Grid templateColumns="repeat(2, 1fr)" margin="10px 0px" gap="12px">
-                    <Stack>
-                        {typeInput === "number" && (
-                            <Textfield
-                                id={`${id}TextFieldFrom`}
-                                label="Desde"
-                                onChange={handleChangeFrom}
-                                required={required}
-                                size="compact"
-                                type="number"
-                                value={inputValueFrom}
-                            />
-                        )}
-                        {
-                            typeInput === "date" && (
-                                <Datefield
-                                    id={`${id}DateFieldFrom`}
-                                    label="Desde"
-                                    onChange={handleChangeFrom}
-                                    required={required}
-                                    size="compact"
-                                    value={inputValueFrom}
-                                />
-                            )
-                        }
-                    </Stack>
-                    <Stack gap="12px">
-                        {typeInput === "number" && (
-                            <Textfield
-                                id={`${id}TextFieldTo`}
-                                label="Hasta"
-                                onChange={handleChangeTo}
-                                required={required}
-                                size="compact"
-                                type="number"
-                                value={inputValueTo}
-                            />
-                        )}
-                        {
-                            typeInput === "date" && (
-                                <Datefield
-                                    id={`${id}DateFieldTo`}
-                                    label="Hasta"
-                                    onChange={handleChangeTo}
-                                    required={required}
-                                    size="compact"
-                                    value={inputValueTo}
-                                />
-                            )
-                        }
-                    </Stack>
-                </Grid>
-            )}
-        </>
+        <Grid templateColumns="repeat(2, 1fr)" margin="10px 0px" gap="12px">
+            <Stack>
+                <Textfield
+                    id={`${id}TextFieldFrom`}
+                    label={labelFrom}
+                    onChange={handleChangeFrom}
+                    required={required}
+                    size="compact"
+                    type={typeInput === "number" ? "number" : "text"}
+                    value={
+                        typeInput === "currency"
+                            ? currencyFormat(inputValueFrom)
+                            : inputValueFrom
+                    }
+                />
+            </Stack>
+            <Stack gap="12px">
+                <Textfield
+                    id={`${id}TextFieldTo`}
+                    label={labelTo}
+                    onChange={handleChangeTo}
+                    required={required}
+                    size="compact"
+                    type={typeInput === "number" ? "number" : "text"}
+                    value={
+                        typeInput === "currency"
+                            ? currencyFormat(inputValueTo)
+                            : inputValueTo
+                    }
+                />
+            </Stack>
+        </Grid>
     );
 };

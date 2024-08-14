@@ -14,14 +14,6 @@ export const parameters = {
 };
 
 export const props: Partial<ArgTypes<InputRangeProps>> = {
-  checked: {
-    description:
-      "is a boolean attribute that indicates whether the **Toggle Component** is checked or not.",
-  },
-  handleToggleChange: {
-    description:
-      "is a function that is called when the **Toggle Component** is clicked.",
-  },
   handleInputChangeFrom: {
     description:
       "is a function that is called when the **Textfield Component** is clicked.",
@@ -33,12 +25,13 @@ export const props: Partial<ArgTypes<InputRangeProps>> = {
   id: {
     description: "is a string that is used to identify the **Toggle Component**.",
   },
-  label: {
-    description: "is a string that is used to display the **Toggle Component**.",
-  },
-  valueToggle: {
+  labelFrom: {
     description:
-      "is a string that is used to display the value of the **Toggle Component**.",
+      "is a string that is used to display the label of the **Textfield Component**.",
+  },
+  labelTo: {
+    description:
+      "is a string that is used to display the label of the **Textfield Component**.",
   },
   valueFrom: {
     description:
@@ -50,7 +43,7 @@ export const props: Partial<ArgTypes<InputRangeProps>> = {
   },
   typeInput: {
     description:
-      "is a string that is used to determine the type of the **Textfield Component**.",
+      "is a string that is used to determine the type of the **Textfield Component**. (Value: 'money' or 'number')",
   },
 
 };
