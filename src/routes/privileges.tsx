@@ -3,6 +3,7 @@ import { PositionsProvider } from "@context/positionsContext";
 
 import { Privileges } from "@pages/privileges";
 import { PrivilegesOptions } from "@src/pages/privileges/outlets/options";
+import { Positions } from "@pages/privileges/outlets/positions";
 import { ErrorPage } from "@components/layout/ErrorPage";
 
 function PrivilegesRoutes() {
@@ -11,6 +12,7 @@ function PrivilegesRoutes() {
       <Routes>
         <Route path="/" element={<Privileges />}>
           <Route path="options" element={<PrivilegesOptions />} />
+          <Route path="positions" element={<Positions />} />
         </Route>
         <Route path="/*" element={<ErrorPage />} />
       </Routes>

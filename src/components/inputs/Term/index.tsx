@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Stack } from "@inubekit/stack";
 import { Text } from "@inubekit/text";
 import { Datefield } from "@inubekit/datefield";
+import { basic } from "@design/tokens";
 
 import { StyledInputCheckbox } from "./styles";
 
@@ -64,7 +65,7 @@ export const Term = (props: TermProps) => {
           alignContent="center"
           justifyContent="center"
           wrap="wrap"
-          gap="4px"
+          gap={basic.spacing.s4}
         >
           <StyledInputCheckbox
             type="checkbox"
@@ -76,7 +77,7 @@ export const Term = (props: TermProps) => {
           </Text>
         </Stack>
       </Stack>
-      <Stack justifyContent="space-between" gap="24px">
+      <Stack justifyContent="space-between" gap={basic.spacing.s24}>
         <Stack width="189px">
           <Datefield
             id="dateStart"

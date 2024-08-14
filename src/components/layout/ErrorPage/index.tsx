@@ -36,8 +36,8 @@ function ErrorPage(props: ErrorPageProps) {
 
   return (
     <Stack
-      padding={matches["(max-width: 600px)"] ? `{${basic.spacing.s32}}` : `{${basic.spacing.s80}}`}// //
-      gap={matches["(max-width: 1000px)"] ? "64px" : "120px"}
+      padding={matches["(max-width: 600px)"] ? `{${basic.spacing.s32}}` : `{${basic.spacing.s80}}`}
+      gap={matches["(max-width: 1000px)"] ? `{${basic.spacing.s64}}` : `{${basic.spacing.s120}}`}
       direction="column"
     >
       <StyledCompanyLogo src={logo} alt={logoAlt} />
@@ -47,7 +47,7 @@ function ErrorPage(props: ErrorPageProps) {
           matches["(max-width: 600px)"] ? "auto" : "repeat(2, 1fr)"
         }
         alignItems="center"
-        gap={matches["(max-width: 600px)"] ? "s800" : "120px"}
+        gap={matches["(max-width: 600px)"] ? `{${basic.spacing.s64}}` : `{${basic.spacing.s120}}`}
       >
         <Stack gap={basic.spacing.s24} direction="column">
           <Stack gap={basic.spacing.s16} direction="column">

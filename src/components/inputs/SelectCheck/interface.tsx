@@ -14,6 +14,7 @@ import { OptionList } from "./OptionList";
 import { Size } from "./types";
 import { StyledContainer, StyledInputContainer, StyledInput } from "./styles";
 import { SelectCheckProps } from ".";
+import { basic } from "@design/tokens";
 
 export interface SelectCheckUIProps extends SelectCheckProps {
   displayList: boolean;
@@ -34,7 +35,7 @@ const Message = (
 
   return (
     status !== "pending" && (
-      <Stack alignItems="center" gap="4px" margin="4px 0px 0px 16px">
+      <Stack alignItems="center" gap={basic.spacing.s4} margin="4px 0px 0px 16px">
         <Icon
           appearance={status === "invalid" ? "danger" : "success"}
           disabled={disabled}
@@ -86,8 +87,8 @@ export const SelectCheckUI = forwardRef<HTMLDivElement, SelectCheckUIProps>(
           <Stack
             alignItems="center"
             margin="0px 0px 4px 0px"
-            padding="0px 0px 0px 16px"
-            gap={"4px"}
+            padding={`${basic.spacing.s0} ${basic.spacing.s0} ${basic.spacing.s0} ${basic.spacing.s16}`}
+            gap={basic.spacing.s4}
           >
             {label && (
               <Label

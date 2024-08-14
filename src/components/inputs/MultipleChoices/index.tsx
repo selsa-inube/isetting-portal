@@ -6,6 +6,7 @@ import { IOptionItemCheckedProps } from "@components/inputs/SelectCheck/OptionIt
 
 import { SelectCheck } from "../SelectCheck";
 import { StyledContainer, StyledSelection } from "./styles";
+import { basic } from "@design/tokens";
 
 interface MultipleChoicesProps {
   id: string;
@@ -61,7 +62,7 @@ const MultipleChoices = (props: MultipleChoicesProps) => {
           <>
             <Text
               margin="0px 0px 4px 0px"
-              padding="0px 0px 0px 16px"
+              padding={`${basic.spacing.s0} ${basic.spacing.s0} ${basic.spacing.s0} ${basic.spacing.s16}`}
               type="label"
               size="medium"
               weight="bold"
