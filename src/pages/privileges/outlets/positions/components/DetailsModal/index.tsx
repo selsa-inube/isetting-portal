@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MdOutlineAssignmentTurnedIn } from "react-icons/md";
-import { Icon } from "@inube/design-system";
+import { Icon } from "@inubekit/icon";
 
 import { InteractiveModal } from "@components/feedback/InteractiveModal";
 

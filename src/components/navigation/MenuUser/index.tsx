@@ -1,4 +1,6 @@
-import { Text, Stack, Avatar } from "@inube/design-system";
+import { Text } from "@inubekit/text";
+import { Stack } from "@inubekit/stack";
+import { Avatar } from "@inubekit/avatar";
 import { basic } from "@design/tokens";
 
 interface MenuUserProps {

@@ -1,6 +1,6 @@
 import { MdOutlineDelete } from "react-icons/md";
 
-import { Icon } from "@inube/design-system";
+import { Icon } from "@inubekit/icon";
 import { DecisionModal } from "@components/feedback/DecisionModal";
 import { EMessageType } from "@src/types/messages.types";
 import { deletePositionModal } from "./config/deletePositions.config";
