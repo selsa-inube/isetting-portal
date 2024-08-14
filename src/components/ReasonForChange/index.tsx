@@ -1,7 +1,8 @@
+import { useState } from "react";
+
 import { Stack } from "@inubekit/stack";
 import { Text } from "@inubekit/text";
 import { Textarea } from "@inubekit/textarea";
-import { useState } from "react";
 
 interface ReasonForChangeProps {
     label: string;
