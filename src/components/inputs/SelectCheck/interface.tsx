@@ -9,12 +9,13 @@ import { Icon } from "@inubekit/icon";
 import { Label } from "@inubekit/label";
 import { Stack } from "@inubekit/stack";
 
+import { basic } from "@design/tokens";
+
 import { OptionItemChecked } from "./OptionItem";
 import { OptionList } from "./OptionList";
 import { Size } from "./types";
 import { StyledContainer, StyledInputContainer, StyledInput } from "./styles";
 import { SelectCheckProps } from ".";
-import { basic } from "@design/tokens";
 
 export interface SelectCheckUIProps extends SelectCheckProps {
   displayList: boolean;
@@ -35,7 +36,7 @@ const Message = (
 
   return (
     status !== "pending" && (
-      <Stack alignItems="center" gap={basic.spacing.s4} margin="4px 0px 0px 16px">
+      <Stack alignItems="center" gap={basic.spacing.s4} margin={`${basic.spacing.s4} ${basic.spacing.s0} ${basic.spacing.s0} ${basic.spacing.s16}`}>
         <Icon
           appearance={status === "invalid" ? "danger" : "success"}
           disabled={disabled}
@@ -86,7 +87,7 @@ export const SelectCheckUI = forwardRef<HTMLDivElement, SelectCheckUIProps>(
         {(label || required) && (
           <Stack
             alignItems="center"
-            margin="0px 0px 4px 0px"
+            margin={`${basic.spacing.s0} ${basic.spacing.s0} ${basic.spacing.s4} ${basic.spacing.s0}`}
             padding={`${basic.spacing.s0} ${basic.spacing.s0} ${basic.spacing.s0} ${basic.spacing.s16}`}
             gap={basic.spacing.s4}
           >
@@ -97,7 +98,7 @@ export const SelectCheckUI = forwardRef<HTMLDivElement, SelectCheckUIProps>(
                 focused={!readonly && focused}
                 invalid={status === "invalid" && !readonly}
                 size={getTypo(size!)}
-                margin="0px 0px 0px 2px"
+                margin={`${basic.spacing.s0} ${basic.spacing.s0} ${basic.spacing.s0} ${basic.spacing.s2}`}
               >
                 {label}
               </Label>

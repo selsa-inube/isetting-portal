@@ -1,6 +1,9 @@
 import { Stack } from "@inubekit/stack";
 import { Breadcrumbs } from "@inubekit/breadcrumbs";
 import { PageTitle } from "@components/PageTitle";
+
+import { basic } from "@design/tokens";
+
 import { StyledAppMenu } from "./styles";
 import { IRoute } from "./types";
 
@@ -17,7 +20,7 @@ function AppMenu(props: AppMenuProps) {
   return (
     <StyledAppMenu>
       <Breadcrumbs crumbs={appRoute} />
-      <Stack margin="24px 0px 48px 0px">
+      <Stack margin={`${basic.spacing.s24} ${basic.spacing.s0} ${basic.spacing.s48} ${basic.spacing.s0}`}>
         <PageTitle
           title={appName}
           description={appDescription}

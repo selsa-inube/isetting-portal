@@ -8,10 +8,10 @@ import { Blanket } from "@inubekit/blanket";
 import { Icon } from "@inubekit/icon";
 import { useMediaQuery } from "@inubekit/hooks";
 import { Button } from "@inubekit/button";
-import { StyledModal } from "./styles";
 import { basic } from "@design/tokens";
-import { isMobile580 } from "@src/config/environment";
+import { isMobile580 } from "@config/environment";
 
+import { StyledModal } from "./styles";
 interface DecisionModalProps {
   title: string;
   description: string;

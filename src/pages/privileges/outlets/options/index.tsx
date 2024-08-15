@@ -1,5 +1,5 @@
-import { appsConfig } from "@src/config/nav";
-import { PrivilegesOptionsUI } from "@src/pages/privileges/outlets/options/interface";
+import { appsConfig } from "@config/nav";
+import { PrivilegesOptionsUI } from "@pages/privileges/outlets/options/interface";
 
 import { privilegeOptionsConfig } from "../../config/privileges.config";
 

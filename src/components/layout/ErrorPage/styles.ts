@@ -1,10 +1,12 @@
+import { basic } from "@design/tokens";
+
 import styled from "styled-components";
 
 const StyledCompanyLogo = styled.img`
   max-width: 300px;
 
   @media screen and (max-width: 1000px) {
-    margin: 0 auto;
+    margin: ${basic.spacing.s0} auto;
     max-width: 250px;
   }
 `;

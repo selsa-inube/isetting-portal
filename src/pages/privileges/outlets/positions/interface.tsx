@@ -1,11 +1,13 @@
 import { useLocation } from "react-router-dom";
-import { privilegeOptionsConfig } from "../../config/privileges.config";
+
 import { useMediaQuery } from "@inubekit/hooks";
 import { Stack } from "@inubekit/stack";
 import { Breadcrumbs } from "@inubekit/breadcrumbs";
 import { PageTitle } from "@components/PageTitle";
 import { basic } from "@design/tokens";
-import { isMobile580 } from "@src/config/environment";
+import { isMobile580 } from "@config/environment";
+
+import { privilegeOptionsConfig } from "../../config/privileges.config";
 
 export function PositionsUI() {
 

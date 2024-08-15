@@ -1,5 +1,6 @@
 import { inube } from "@inubekit/foundations";
 import styled from "styled-components";
+import { basic } from "@design/tokens";
 
 interface IStyledSubjectSearchCard {
   $isActive: boolean;
@@ -7,14 +8,14 @@ interface IStyledSubjectSearchCard {
 }
 
 const StyledSubjectSearchCardText = styled.div`
-  padding: 8px 16px;
+  padding: ${basic.spacing.s8} ${basic.spacing.s16};
 `;
 
 const StyledSubjectSearchCard = styled.div<IStyledSubjectSearchCard>`
   width: 100%;
   height: ${({ $smallScreen }) => ($smallScreen ? "56px" : "auto")};
   box-sizing: border-box;
-  border-radius: 8px;
+  border-radius: ${basic.spacing.s8};
   border: 1px solid
     ${({ theme }) =>
       theme?.color?.surface?.gray?.regular || inube.palette.neutral.N30};

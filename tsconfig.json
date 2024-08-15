@@ -11,12 +11,13 @@
       "@components/*": ["src/components/*"],
       "@hooks/*": ["src/hooks/*"],
       "@utils/*": ["src/utils/*"],
-      "@types/*": ["src/types/*"],
+      "@ptypes/*": ["src/types/*"],
       "@mocks/*": ["src/mocks/*"],
       "@context/*": ["src/context/*"],
       "@pages/*": ["src/pages/*"],
       "@assets/*": ["src/assets/*"],
       "@services/*": ["src/services/*"],
+      "@config/*": ["./src/config/*"],
       "@design/*": ["src/design/*"]
     },
 

@@ -1,4 +1,4 @@
-import { IMessage } from "@src/types/messages.types";
+import { IMessage } from "@ptypes/messages.types";
 
 interface IUsersMessage {
   visible: boolean;

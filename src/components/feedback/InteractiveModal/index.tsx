@@ -1,16 +1,19 @@
 import { createPortal } from "react-dom";
 import { MdClear } from "react-icons/md";
+
 import { Stack } from "@inubekit/stack"
 import { Text } from "@inubekit/text"
 import { Blanket } from "@inubekit/blanket"
 import { useMediaQuery } from "@inubekit/hooks"
 import { Icon } from "@inubekit/icon"
 
-import { StyledModal, StyledDivider } from "./styles";
-import { InteractiveModalProps } from "./types";
 import { SubjectSearchCard } from "@components/cards/SubjectSearchCard";
 import { basic } from "@design/tokens";
-import { isMobile580 } from "@src/config/environment";
+import { isMobile580 } from "@config/environment";
+
+import { StyledModal, StyledDivider } from "./styles";
+import { InteractiveModalProps } from "./types";
+
 
 const InteractiveModal = ({
   actions = [],
@@ -19,6 +22,7 @@ const InteractiveModal = ({
   divider,
   infoData,
   idLabel = "userID",
+  nameLabel = "username",
   infoTitle,
   portalId,
   searchData,
@@ -30,13 +34,16 @@ const InteractiveModal = ({
   const hasActions = actions.length > 0;
   const node = document.getElementById(portalId);
 
-
   const renderCard = (data: { [key: string]: string }) => {
     if (data[idLabel] !== selectedItem) return null;
 
     return (
       <SubjectSearchCard
-        key={data[idLabel]}
+      subjectSearchData={{
+        id: data[idLabel],
+        name: data[nameLabel],
+      }}
+      closeIcon
       />
     );
   };

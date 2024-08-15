@@ -1,4 +1,4 @@
-import { EMessageType, IMessage } from "@src/types/messages.types";
+import { EMessageType, IMessage } from "@ptypes/messages.types";
 
 interface IAssignmentFormEntry {
   id: string;

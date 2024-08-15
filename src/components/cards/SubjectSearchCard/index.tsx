@@ -6,18 +6,24 @@ import { Text } from "@inubekit/text";
 import { useMediaQuery } from "@inubekit/hooks";
 import { Icon } from "@inubekit/icon";
 import { Grid } from "@inubekit/grid";
-import { isMobile970 } from "@src/config/environment";
+import { basic } from "@design/tokens";
+import { isMobile970 } from "@config/environment";
 
 import { StyledSubjectSearchCard, StyledSubjectSearchCardText } from "./styles";
+interface SubjectSearchCardProps {
+  subjectSearchData: { [key: string]: string | number };
+  closeIcon?: boolean;
+  closeSearchCard?: () => void;
+}
 
-function SubjectSearchCard() {
+function SubjectSearchCard(props: SubjectSearchCardProps) {
+  const { subjectSearchData,  closeIcon} = props;
   const [isActive, setIsActive] = useState(false);
   const smallScreen = useMediaQuery(isMobile970);
 
   const handleToggleModal = () => {
     setIsActive(!isActive);
   };
-
   return (
     <>
       <StyledSubjectSearchCard $smallScreen={smallScreen} $isActive={isActive}>
@@ -25,15 +31,15 @@ function SubjectSearchCard() {
           <StyledSubjectSearchCardText onClick={handleToggleModal}>
             <Stack direction="column">
               <Text type="label" size="medium" textAlign="start">
-                
+              {Object.values(subjectSearchData)[0]}
               </Text>
               <Text size="medium" textAlign="start">
-                
+              {Object.values(subjectSearchData)[1]}
               </Text>
             </Stack>
           </StyledSubjectSearchCardText>
-          {(
-            <Stack justifyContent="end" padding="8px 16px 0px 0px">
+          {closeIcon && (
+            <Stack justifyContent="end" padding={`${basic.spacing.s8} ${basic.spacing.s16} ${basic.spacing.s0} ${basic.spacing.s0}`}>
               <Icon
                 icon={<MdClear />}
                 appearance="dark"
@@ -48,3 +54,4 @@ function SubjectSearchCard() {
 }
 
 export { SubjectSearchCard };
+export type { SubjectSearchCardProps };

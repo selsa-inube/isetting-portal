@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import { inube } from "@inubekit/foundations";
+import { basic } from "@design/tokens";
 
 interface IStyledDivider {
   $dashed?: boolean;
 }
 
 const StyledDivider = styled.hr<IStyledDivider>`
-  margin: 0;
+  margin: ${basic.spacing.s0};
   width: 100%;
   height: 0px;
   border: none;

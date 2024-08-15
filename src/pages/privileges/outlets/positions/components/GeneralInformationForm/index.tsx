@@ -1,9 +1,11 @@
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
-import { GeneralInformationFormUI } from "./interface";
-import { FormikProps, useFormik } from "formik";
+
 import * as Yup from "yup";
 import { validationMessages } from "@src/validations/validationMessages";
 import { IMessageState } from "@pages/privileges/outlets/types/forms.types";
+
+import { FormikProps, useFormik } from "formik";
+import { GeneralInformationFormUI } from "./interface";
 import { generalMessage } from "../../add-position/config/messages.config";
 import { IHandleUpdateDataSwitchstep } from "../../add-position/types";
 

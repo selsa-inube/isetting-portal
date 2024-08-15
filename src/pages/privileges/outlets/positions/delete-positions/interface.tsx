@@ -2,7 +2,8 @@ import { MdOutlineDelete } from "react-icons/md";
 
 import { Icon } from "@inubekit/icon";
 import { DecisionModal } from "@components/feedback/DecisionModal";
-import { EMessageType } from "@src/types/messages.types";
+import { EMessageType } from "@ptypes/messages.types";
+
 import { deletePositionModal } from "./config/deletePositions.config";
 
 interface DeletePositionUIProps {

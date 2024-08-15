@@ -1,10 +1,11 @@
+import { MdArrowBack } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+
 import { Stack } from "@inubekit/stack";
 import { Text } from "@inubekit/text";
 import { Icon} from "@inubekit/icon";
 import { useMediaQuery} from "@inubekit/hooks";
-import { isMobile580 } from "@src/config/environment";
-import { MdArrowBack } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+import { isMobile580 } from "@config/environment";
 import { basic } from "@design/tokens";
 
 interface PageTitleProps {

@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { PositionsProvider } from "@context/positionsContext";
 
 import { Privileges } from "@pages/privileges";
-import { PrivilegesOptions } from "@src/pages/privileges/outlets/options";
+import { PrivilegesOptions } from "@pages/privileges/outlets/options";
 import { Positions } from "@pages/privileges/outlets/positions";
 import { ErrorPage } from "@components/layout/ErrorPage";
 

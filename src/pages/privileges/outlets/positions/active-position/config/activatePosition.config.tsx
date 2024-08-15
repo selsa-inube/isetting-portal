@@ -1,5 +1,5 @@
 import { MdErrorOutline, MdThumbUpOffAlt } from "react-icons/md";
-import { EAppearance } from "@src/types/colors.types";
+import { EAppearance } from "@ptypes/colors.types";
 
 const activatePositionModal = {
   activation: {

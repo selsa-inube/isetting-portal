@@ -1,4 +1,4 @@
-import { EAppearance } from "@src/types/colors.types";
+import { EAppearance } from "@ptypes/colors.types";
 
 export const deletePositionModal = {
   delete: {

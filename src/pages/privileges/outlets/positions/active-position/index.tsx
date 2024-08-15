@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 import { updateActive } from "@mocks/utils/dataMock.service";
-import { EAppearance } from "@src/types/colors.types";
-import { EMessageType, IMessage } from "@src/types/messages.types";
+import { EAppearance } from "@ptypes/colors.types";
+import { EMessageType, IMessage } from "@ptypes/messages.types";
 
 import { ActivatePositionUI } from "./interface";
 import { IMessageState } from "../../types/forms.types";

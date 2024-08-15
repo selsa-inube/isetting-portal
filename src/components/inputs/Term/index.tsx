@@ -49,11 +49,11 @@ export const Term = (props: TermProps) => {
 
   return (
     <>
-      <Stack direction="row" justifyContent="space-between" margin="10px 0px">
+      <Stack direction="row" justifyContent="space-between" margin={`${basic.spacing.s10} ${basic.spacing.s0}`}>
         <Stack>
           <Text
             appearance="gray"
-            margin="10px 0px"
+            margin={`${basic.spacing.s10} ${basic.spacing.s0}`}
             size="medium"
             type="title"
             weight="bold"
