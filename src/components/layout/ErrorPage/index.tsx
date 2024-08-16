@@ -7,10 +7,10 @@ import { useMediaQueries } from "@inubekit/hooks";
 
 import selsaLogo from "@assets/images/selsa.png";
 import errorImage from "@assets/images/timeout.png";
+import { basic } from "@design/tokens";
 
 import { StyledCompanyLogo, StyledErrorImage } from "./styles";
 
-import { basic } from "@design/tokens";
 
 interface ErrorPageProps {
   logo?: string;
@@ -36,7 +36,7 @@ function ErrorPage(props: ErrorPageProps) {
 
   return (
     <Stack
-      padding={matches["(max-width: 600px)"] ? `{${basic.spacing.s32}}` : `{${basic.spacing.s80}}`}// //
+      padding={matches["(max-width: 600px)"] ? `${basic.spacing.s32}` : `${basic.spacing.s80}`}
       gap={matches["(max-width: 1000px)"] ? "64px" : "120px"}
       direction="column"
     >
