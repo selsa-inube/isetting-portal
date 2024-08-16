@@ -7,7 +7,7 @@ import {
 
 
 const meta: Meta<typeof InputRange> = {
-  title: "components/InputRange",
+  title: "components/inputs/InputRange",
   component: InputRange,
   parameters,
   argTypes: props,
