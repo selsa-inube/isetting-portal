@@ -18,7 +18,7 @@ export const Default: Story = (args: RulesViewCardProps) => (
 Default.args = {
     children: (
         <div>
-            <p>Criteria</p>
+            <p>Decision</p>
         </div>
     ),
     handleDelete: () => {},
@@ -26,33 +26,19 @@ Default.args = {
     id: "1",
 };
 
+const criteriaArray = Array(7).fill("Decision");
+
 export const Container: Story = (args: RulesViewCardProps) => (
     <RulesViewCard {...args} />
 );
 Container.args = {
     children: (
         <>
-            <div>
-                <p>Criteria</p>
-            </div>
-            <div>
-                <p>Criteria</p>
-            </div>
-            <div>
-                <p>Criteria</p>
-            </div>
-            <div>
-                <p>Criteria</p>
-            </div>
-            <div>
-                <p>Criteria</p>
-            </div>
-            <div>
-                <p>Criteria</p>
-            </div>
-            <div>
-                <p>Criteria</p>
-            </div>
+            {criteriaArray.map((criteria, index) => (
+                <div key={index}>
+                    <p>{criteria}</p>
+                </div>
+            ))}
         </>
     ),
     handleDelete: () => {},
