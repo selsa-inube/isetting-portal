@@ -25,6 +25,7 @@
     "@inubekit/header": "^2.5.0",
     "@inubekit/icon": "^2.0.1",
     "@inubekit/label": "^2.7.0",
+    "@inubekit/select": "^5.10.1",
     "@inubekit/stack": "^3.0.0",
     "@inubekit/tag": "^3.11.0",
     "@inubekit/text": "^2.7.0",

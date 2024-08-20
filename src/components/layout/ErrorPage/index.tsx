@@ -7,10 +7,10 @@ import { useMediaQueries } from "@inubekit/hooks";
 
 import selsaLogo from "@assets/images/selsa.png";
 import errorImage from "@assets/images/timeout.png";
+import { basic } from "@design/tokens";
 
 import { StyledCompanyLogo, StyledErrorImage } from "./styles";
 
-import { basic } from "@design/tokens";
 
 interface ErrorPageProps {
   logo?: string;

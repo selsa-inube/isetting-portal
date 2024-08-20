@@ -86,7 +86,7 @@ function AppPage() {
         </StyledHeaderContainer>
         {showUserMenu && (
           <StyledMenuContainer ref={userMenuRef}>
-            <MenuUser userName={user.username} businessUnit={user.company} />
+            <MenuUser userName={"Dora Lucia"} businessUnit={user.company} />
             <MenuSection
               sections={[
                 {
