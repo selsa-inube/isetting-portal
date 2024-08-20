@@ -49,6 +49,7 @@ export const DeletePositionUI = (props: DeletePositionUIProps) => {
       </div>
       {showModal && (
         <DecisionModal
+          portalId="portal"
           title={title}
           description={description(namePosition)}
           actionText={actionText}

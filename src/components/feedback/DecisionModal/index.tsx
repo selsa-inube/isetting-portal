@@ -14,6 +14,7 @@ import { isMobile580 } from "@config/environment";
 import { StyledModal } from "./styles";
 interface DecisionModalProps {
   title: string;
+  portalId: string;
   description: string;
   actionText: string;
   loading?: boolean;
@@ -25,6 +26,7 @@ interface DecisionModalProps {
 function DecisionModal(props: DecisionModalProps) {
   const {
     title,
+    portalId,
     description,
     actionText,
     loading = true,
@@ -51,8 +53,16 @@ function DecisionModal(props: DecisionModalProps) {
     );
   };
 
+  const node = document.getElementById(portalId);
+
+  if (!node) {
+    throw new Error(
+      "The portal node is not defined. This can occur when the specific node used to render the portal has not been defined correctly."
+    );
+  }
+
   return createPortal(
-    <Blanket>
+     <Blanket>
       <StyledModal $smallScreen={smallScreen}>
         <Stack
           direction="column"
@@ -92,7 +102,7 @@ function DecisionModal(props: DecisionModalProps) {
         </Stack>
       </StyledModal>
     </Blanket>,
-    document.getElementById("decision")!
+  node
   );
 }
 

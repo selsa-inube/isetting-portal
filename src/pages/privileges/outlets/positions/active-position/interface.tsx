@@ -59,6 +59,7 @@ export function ActivatePositionUI(props: IActivatePositionUI) {
 
       {showActivatePositionModal && (
         <DecisionModal
+          portalId="portal"  
           title={title}
           description={description(id)}
           actionText={textAction}

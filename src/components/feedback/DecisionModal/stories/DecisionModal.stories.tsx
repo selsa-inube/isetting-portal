@@ -14,6 +14,7 @@ const Template: StoryFn<DecisionModalProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
+  portalId: "portal",
   title: "Text title",
   description: "Text description",
   actionText: "Text Action",
@@ -25,6 +26,7 @@ Default.args = {
 export const Error = Template.bind({});
 Error.args = {
   title: "Text title",
+  portalId: "portal",
   description: "Text description",
   actionText: "Text Action",
   closeModal: action("DecisionModal closed"),
@@ -35,6 +37,7 @@ Error.args = {
 export const Warning = Template.bind({});
 Warning.args = {
   title: "Text title",
+  portalId: "portal",
   description: "Text description",
   actionText: "Text Action",
   closeModal: action("DecisionModal closed"),
