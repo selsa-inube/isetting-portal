@@ -4,7 +4,7 @@ import { parameters, props } from "./props";
 import { ReasonForChange, ReasonForChangeProps } from "..";
 
 const meta: Meta<typeof ReasonForChange> = {
-  title: "components/ReasonForChange",
+  title: "components/inputs/ReasonForChange",
   component: ReasonForChange,
   parameters,
   argTypes: props,
@@ -17,6 +17,7 @@ export const Default: Story = (args: ReasonForChangeProps) => (
 );
 Default.args = {
   label: "Motivo del cambio",
+  labelText: "Cambio",
   onHandleChange: () => {},
   placeholder: "Escribe aquí el motivo del cambio",
   required: false,

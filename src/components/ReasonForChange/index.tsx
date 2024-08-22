@@ -6,14 +6,22 @@ import { Textarea } from "@inubekit/textarea";
 
 interface ReasonForChangeProps {
     label: string;
+    labelText: string;
     onHandleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     placeholder: string;
-    required?: boolean;
+    required: boolean;
     value?: string;
 }
 
 export const ReasonForChange = (props: ReasonForChangeProps) => {
-    const { label, onHandleChange, placeholder, required = false, value = "" } = props;
+    const {
+        label,
+        labelText,
+        onHandleChange,
+        placeholder,
+        required,
+        value = "",
+    } = props;
 
     const [valueTextarea, setTextarea] = useState(value);
 
@@ -24,7 +32,14 @@ export const ReasonForChange = (props: ReasonForChangeProps) => {
 
     return (
         <Stack direction="column" margin="10px 5px">
-            <Text size="large" appearance="gray" weight="bold" margin="10px 0px">Cambio</Text>
+            <Text
+                size="large"
+                appearance="gray"
+                weight="bold"
+                margin="10px 0px"
+            >
+                {labelText}
+            </Text>
             <Stack margin="10px 0px">
                 <Textarea
                     id="reasonChange"
@@ -34,7 +49,7 @@ export const ReasonForChange = (props: ReasonForChangeProps) => {
                     required={required}
                     value={valueTextarea}
                     maxLength={120}
-                ></Textarea>
+                />
             </Stack>
         </Stack>
     );

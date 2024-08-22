@@ -18,6 +18,9 @@ export const props: Partial<ArgTypes<ReasonForChangeProps>> = {
     label: {
         description: "The label of the textarea",
     },
+    labelText: {
+        description: "The label text of the textarea",
+    },
     onHandleChange: {
         description: "Function to handle the change event",
     },
