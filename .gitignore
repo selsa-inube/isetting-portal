@@ -26,4 +26,3 @@ dist-ssr
 *storybook.log
 # Environment
 .env
-package-lock.json

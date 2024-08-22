@@ -26,6 +26,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<AppPage />}>
+        <Route path="/" element={<PrivilegesRoutes />} />
         <Route path="privileges/*" element={<PrivilegesRoutes />} />
         <Route path="rules/*" element={<RulesRoutes />} />
       </Route>
