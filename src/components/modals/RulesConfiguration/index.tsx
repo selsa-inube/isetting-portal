@@ -16,8 +16,6 @@ export interface RulesConfigurationProps {
 export const RulesConfiguration = (props: RulesConfigurationProps) => {
     const { children, portalId, onCloseModal, title } = props;
     const node = document.getElementById(portalId);
-    console.log("portalId", portalId);
-    console.log("node", node);
     if (!node) {
         throw new Error(
             "The portal node is not defined. This can occur when the specific node used to render the portal has not been defined correctly."

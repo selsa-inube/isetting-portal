@@ -8,7 +8,7 @@ import { RulesConfiguration, RulesConfigurationProps } from "..";
 
 
 const meta: Meta<typeof RulesConfiguration> = {
-  title: "modals/RulesConfiguration",
+  title: "components/modals/RulesConfiguration",
   component: RulesConfiguration,
   decorators: [
     (Story: StoryFn) => (
