@@ -20,29 +20,6 @@ Default.args = {
   actionText: "Text Action",
   closeModal: action("DecisionModal closed"),
   handleClick: action("DecisionModal action"),
-  appearance: "primary",
-};
-
-export const Error = Template.bind({});
-Error.args = {
-  title: "Text title",
-  portalId: "portal",
-  description: "Text description",
-  actionText: "Text Action",
-  closeModal: action("DecisionModal closed"),
-  handleClick: action("DecisionModal action"),
-  appearance: "primary",
-};
-
-export const Warning = Template.bind({});
-Warning.args = {
-  title: "Text title",
-  portalId: "portal",
-  description: "Text description",
-  actionText: "Text Action",
-  closeModal: action("DecisionModal closed"),
-  handleClick: action("DecisionModal action"),
-  appearance: "error",
 };
 
 export default story;

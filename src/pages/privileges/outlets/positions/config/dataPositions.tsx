@@ -2,23 +2,18 @@ import { MdModeEdit } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 import { Icon } from "@inubekit/icon";
-import { deleteItemData } from "@mocks/utils/dataMock.service";
 
-import { activatePositionModal } from "../active-position/config/activatePosition.config.tsx";
 import { DetailsModal } from "../components/DetailsModal";
-import { ActivatePosition } from "../active-position";
 import { IPosition } from "../add-position/types";
-import { DeletePosition } from "../delete-positions";
-import { deletePositionModal } from "../delete-positions/config/deletePositions.config";
 
 export const titlesOptions = [
   {
-    id: "k_Grupo",
+    id: "public_code",
     titleName: "Code",
     priority: 0,
   },
   {
-    id: "n_Grupo",
+    id: "abbreviated_name",
     titleName: "Nombre",
     priority: 1,
   },
@@ -32,78 +27,40 @@ export const PositionsBreakPointsConfig = [
 ];
 
 export const actionsConfigPosition = (
-  linixPosition: IPosition[],
-  setIdDeleted: (show: string) => void
+  linixPosition: IPosition[]
 ) => {
-  const dataDetailsPosition = (k_Grupo: string) => {
+  const dataDetailsPosition = (public_code: string) => {
     const data = [
-      linixPosition.find((position) => position.k_Grupo === k_Grupo)!,
+      linixPosition.find((position) => position.public_code === public_code)!,
     ].map((positionSelected) => ({
-      Código: positionSelected?.k_Grupo,
-      Nombre: positionSelected?.n_Grupo,
-      Activo: positionSelected?.i_Activo === "Y" ? "activo" : "inactivo",
-      Descripción: positionSelected?.n_Uso,
+      Código: positionSelected?.public_code,
+      Nombre: positionSelected?.abbreviated_name,
     }));
 
     return [...data].shift();
   };
 
-  const selectedData = (k_Grupo: string) =>
-    linixPosition.find((position) => position.k_Grupo === k_Grupo);
+  const selectedData = (public_code: string) =>
+    linixPosition.find((position) => position.public_code === public_code);
 
   const actionsConfig = [
     {
-      id: "i_activo",
-      actionName: "Activo",
-      content: ({ k_Grupo }: { k_Grupo: string }) => {
-        const position = selectedData(k_Grupo);
-        const adjustedPosition = {
-          id: position?.k_Grupo || "",
-          active: position?.i_Activo === "Y" || false,
-          name: position?.n_Grupo || "",
-        };
-        return (
-          <ActivatePosition
-            handleActivate={() => {}}
-            data={adjustedPosition}
-            showComplete={false}
-            activateModalConfig={activatePositionModal}
-          />
-        );
-      },
-      type: "secondary",
-    },
-    {
       id: "Details",
       actionName: "Detalles",
-      content: ({ k_Grupo }: { k_Grupo: string }) => (
-        <DetailsModal data={dataDetailsPosition(k_Grupo)} />
+      content: ({ public_code }: { public_code: string }) => (
+        <DetailsModal data={dataDetailsPosition(public_code)} />
       ),
       type: "secondary",
     },
     {
       id: "Edit",
       actionName: "Editar",
-      content: ({ k_Grupo }: { k_Grupo: string }) => (
-        <Link to={`edit/${k_Grupo}`} onClick={() => selectedData(k_Grupo)}>
+      content: ({ public_code }: { public_code: string }) => (
+        <Link to={`edit/${public_code}`} onClick={() => selectedData(public_code)}>
           <Icon icon={<MdModeEdit />} size="16px" appearance="dark" />
         </Link>
       ),
       type: "primary",
-    },
-    {
-      id: "Delete",
-      actionName: "Eliminar",
-      content: ({ k_Grupo, n_Grupo }: { k_Grupo: string; n_Grupo: string }) => (
-        <DeletePosition
-          namePosition={n_Grupo}
-          linixPosition={k_Grupo}
-          deletePositionModal={deletePositionModal}
-          handleDeletePosition={deleteItemData}
-          setIdDeleted={setIdDeleted}
-        />
-      ),
-      type: "remove",
     },
   ];
 

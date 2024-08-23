@@ -7,7 +7,8 @@ interface IStyledModal {
 }
 
 const StyledModal = styled.div<IStyledModal>`
-  background-color: ${inube.palette.neutral.N0};
+  
+  background-color:  ${inube.palette.neutral.N0};
   min-width: ${(props) => (props.$smallScreen ? "300px" : "400px")};
   max-width: ${(props) => (props.$smallScreen ? "328px" : "500px")};
   height: auto;

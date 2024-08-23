@@ -1,6 +1,5 @@
 import { Grid } from "@inubekit/grid";
 import { Textfield } from "@inubekit/textfield";
-import { Textarea } from "@inubekit/textarea";
 import { RenderMessage } from "@components/feedback/RenderMessage";
 import { FormButtons } from "@components/forms/submit/FormButtons";
 import { IMessageState } from "@pages/privileges/outlets/types/forms.types";
@@ -47,37 +46,17 @@ export function GeneralInformationFormUI(props: GeneralInformationFormUIProps) {
           <Textfield
             label="Nombre Cargo"
             placeholder="Nombre del cargo"
-            name="n_Grupo"
-            id="n_Grupo"
-            value={formik.values.n_Grupo}
+            name="abbreviated_name"
+            id="abbreviated_name"
+            value={formik.values.abbreviated_name}
             type="text"
             size="compact"
             fullwidth
             message={
-              stateValue(formik, "n_Grupo") === "invalid"
-                && formik.errors.n_Grupo
+              stateValue(formik, "abbreviated_name") === "invalid"
+                && formik.errors.abbreviated_name
             }
-            status={stateValue(formik, "n_Grupo")}
-            onBlur={formik.handleBlur}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-              handleChangeForm(event)
-            }
-            required
-          />
-
-          <Textarea
-            label="Descripción"
-            placeholder="Ingresar descripción del cargo."
-            name="n_Uso"
-            id="n_Uso"
-            value={formik.values.n_Uso}
-            message={
-              stateValue(formik, "n_Uso") === "invalid"
-                && formik.errors.n_Uso
-            }
-            status={stateValue(formik, "n_Uso")}
-            fullwidth
-            maxLength={100}
+            status={stateValue(formik, "abbreviated_name")}
             onBlur={formik.handleBlur}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
               handleChangeForm(event)
