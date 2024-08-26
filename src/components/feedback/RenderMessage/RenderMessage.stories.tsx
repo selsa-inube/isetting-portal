@@ -1,7 +1,6 @@
 import { StoryFn } from "@storybook/react";
 import { IRenderMessageProps, RenderMessage } from ".";
 import { MdThumbUpOffAlt } from "react-icons/md";
-import { EAppearance } from "@ptypes/colors.types";
 
 const story = {
   component: [RenderMessage],
@@ -21,7 +20,7 @@ Default.args = {
       icon: <MdThumbUpOffAlt size={18} />,
       title: "Actualizacion de paleta exitosa",
       description: `La paleta de colores ha sido actualizada con exito`,
-      appearance: EAppearance.SUCCESS,
+      appearance: "success",
     },
   },
   handleCloseMessage: () => {},

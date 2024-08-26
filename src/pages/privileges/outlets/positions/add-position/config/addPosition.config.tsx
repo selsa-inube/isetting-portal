@@ -1,6 +1,5 @@
 import { MdErrorOutline, MdThumbUpOffAlt } from "react-icons/md";
 import { Icon } from "@inube/design-system";
-import { EAppearance } from "@src/types/colors.types";
 
 export const stepsAddPosition = {
   generalInformation: {
@@ -61,7 +60,7 @@ export const finishAssistedPositionModalConfig = {
   title: "Finalizar registro",
   description: "¿Está seguro de que desea finalizar el proceso de creación?",
   actionText: "Finalizar",
-  appearance: EAppearance.SUCCESS,
+  appearance: "success",
 };
 
 export const finishAssistedPositionMessagesConfig = {
@@ -71,7 +70,7 @@ export const finishAssistedPositionMessagesConfig = {
     title: "Creación exitosa",
     description: (value: string) =>
       `Hemos creado el cargo ${value} exitosamente.`,
-    appearance: EAppearance.SUCCESS,
+    appearance: "success",
   },
   failed: {
     id: 2,
@@ -79,7 +78,7 @@ export const finishAssistedPositionMessagesConfig = {
     title: "¡Uy, algo ha salido mal!",
     description: (value: string) =>
       `Hemos presentado un error creando el cargo ${value}.`,
-    appearance: EAppearance.ERROR,
+    appearance: "danger",
   },
 };
 
@@ -87,5 +86,5 @@ export const finishAssistedModalConfig = {
   title: "Finalizar registro",
   description: "¿Está seguro de que desea finalizar el proceso de creación?",
   actionText: "Finalizar",
-  appearance: EAppearance.SUCCESS,
+  appearance: "success",
 };

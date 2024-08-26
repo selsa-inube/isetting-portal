@@ -1,4 +1,4 @@
-import { EMessageType, IMessage } from "@ptypes/messages.types";
+import { IMessage } from "@ptypes/messages.types";
 
 interface IAssignmentFormEntry {
   id: string;
@@ -18,7 +18,7 @@ interface IFormsInvitation {
 interface IMessageState {
   visible: boolean;
   data?: IMessage;
-  type?: EMessageType;
+  type?: string;
 }
 
 export type { IFormsInvitation, IAssignmentFormEntry, IMessageState };

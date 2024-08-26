@@ -8,7 +8,6 @@ import { FormikProps, useFormik } from "formik";
 import { GeneralInformationFormUI } from "./interface";
 import { generalMessage } from "../../add-position/config/messages.config";
 import { IHandleUpdateDataSwitchstep } from "../../add-position/types";
-
 export interface IGeneralInformationEntry {
   abbreviated_name: string;
 }
