@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { inube } from "@inubekit/foundations";
-
+import { basic } from "@design/tokens";
 import { SelectCheckProps } from ".";
 
 interface IStyledInputContainer {
@@ -48,7 +48,7 @@ export const StyledInputContainer = styled.div<IStyledInputContainer>`
   grid-template-columns: 1fr auto;
   align-items: center;
   box-sizing: border-box;
-  border-radius: 8px;
+  border-radius: ${basic.spacing.s8};
   user-select: none;
   border-width: 1px;
   border-style: solid;
@@ -76,9 +76,9 @@ export const StyledInputContainer = styled.div<IStyledInputContainer>`
 
 export const StyledInput = styled.input<IStyledInput>`
   outline: none;
-  border-radius: 8px;
-  padding-right: 12px;
-  padding-left: 16px;
+  border-radius: ${basic.spacing.s8};
+  padding-right: ${basic.spacing.s12};
+  padding-left: ${basic.spacing.s16};
   border-style: none;
   font-family: ${({ theme }) =>
     theme?.typography?.body?.large?.font || inube.typography.body.large.font};

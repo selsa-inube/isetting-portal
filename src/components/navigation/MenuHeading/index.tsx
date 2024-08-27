@@ -13,7 +13,7 @@ function MenuHeading(props: MenuHeadingProps) {
       type="title"
       size="small"
       appearance="gray"
-      padding= {`${basic.spacing.s16} ${basic.spacing.s16} ${basic.spacing.s8} ${basic.spacing.s16}`}
+      padding={`${basic.spacing.s16} ${basic.spacing.s16} ${basic.spacing.s8} ${basic.spacing.s16}`}
     >
       {title}
     </Text>

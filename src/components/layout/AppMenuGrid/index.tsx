@@ -1,8 +1,7 @@
 import { AppMenuCard } from "@components/cards/AppMenuCard/index";
 import { Grid } from "@inubekit/grid";
 import { useMediaQuery } from "@inubekit/hooks";
-import { isMobile580 } from "@src/config/environment";
-
+import { isMobile580 } from "@config/environment";
 import { AppMenuCardProps } from "@components/cards/AppMenuCard";
 import { basic } from "@design/tokens";
 
