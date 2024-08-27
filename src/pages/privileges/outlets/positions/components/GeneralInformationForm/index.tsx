@@ -1,7 +1,7 @@
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 
 import * as Yup from "yup";
-import { validationMessages } from "@src/validations/validationMessages";
+import { validationMessages } from "@validations/validationMessages";
 import { IMessageState } from "@pages/privileges/outlets/types/forms.types";
 
 import { FormikProps, useFormik } from "formik";
