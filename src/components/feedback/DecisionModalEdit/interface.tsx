@@ -17,6 +17,7 @@ import {
     IValue,
     ICondition,
 } from "@src/pages/rules/types";
+import { ReasonForChange } from "@src/components/ReasonForChange";
 
 export interface DecisionModalEditUIProps {
     decision: IRuleDecision;
@@ -208,7 +209,9 @@ export const DecisionModalEditUI = (props: DecisionModalEditUIProps) => {
                     ))}
             </Stack>
             <Divider dashed />
-            <Stack direction="column"></Stack>
+            <Stack direction="column">
+                <ReasonForChange label="Motivo del cambio" labelText="Cambio" onHandleChange={()=>{}} placeholder="Describa brevemente el motivo del cambio" required={false}/>
+            </Stack>
             <Divider dashed />
             <Stack direction="column">
                 <Term

@@ -49,6 +49,7 @@ export const ReasonForChange = (props: ReasonForChangeProps) => {
                     required={required}
                     value={valueTextarea}
                     maxLength={120}
+                    fullwidth
                 />
             </Stack>
         </Stack>
