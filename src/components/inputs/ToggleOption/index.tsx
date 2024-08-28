@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Toggle } from "@inubekit/toggle";
 
 export interface ToggleOptionProps {
@@ -26,6 +26,10 @@ export const ToggleOption = (props: ToggleOptionProps) => {
         setToogleCheck(e.target.checked);
         handleToggleChange(e);
     };
+
+    useEffect(() => {
+        setToogleCheck(checked);
+    }, [checked]);
 
     return (
         <>

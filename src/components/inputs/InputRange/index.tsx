@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Textfield } from "@inubekit/textfield";
 import { Grid } from "@inubekit/grid";
-import { Stack } from "@inubekit/stack";
 
 import { currencyFormat, parseCurrencyString } from "@src/utils/currency";
 
@@ -50,14 +49,14 @@ export const InputRange = (props: InputRangeProps) => {
     };
 
     return (
-        <Grid templateColumns="repeat(2, 1fr)" margin="10px 0px" gap="12px">
-            <Stack>
+        <Grid templateColumns="repeat(2, 1fr)" margin="10px 0px" gap="12px" >
                 <Textfield
                     id={`${id}TextFieldFrom`}
                     label={labelFrom}
                     onChange={handleChangeFrom}
                     required={required}
                     size="compact"
+                    fullwidth
                     type={typeInput === "number" ? "number" : "text"}
                     value={
                         typeInput === "currency"
@@ -65,8 +64,6 @@ export const InputRange = (props: InputRangeProps) => {
                             : inputValueFrom
                     }
                 />
-            </Stack>
-            <Stack gap="12px">
                 <Textfield
                     id={`${id}TextFieldTo`}
                     label={labelTo}
@@ -74,13 +71,13 @@ export const InputRange = (props: InputRangeProps) => {
                     required={required}
                     size="compact"
                     type={typeInput === "number" ? "number" : "text"}
+                    fullwidth
                     value={
                         typeInput === "currency"
                             ? currencyFormat(inputValueTo)
                             : inputValueTo
                     }
                 />
-            </Stack>
         </Grid>
     );
 };

@@ -25,30 +25,29 @@ export const RulesConfiguration = (props: RulesConfigurationProps) => {
         <StyledContainer>
             <Blanket>
                 <StyledModal>
-                    <Stack direction="column" gap="20px">
-                        <Stack direction="column" gap="16px">
-                            <Stack direction="column" gap="8px">
-                                <Stack
-                                    alignItems="center"
-                                    justifyContent="space-between"
+                    <Stack direction="column" gap="24px">
+                        <Stack direction="column" gap="8px">
+                            <Stack
+                                alignItems="center"
+                                justifyContent="space-between"
+                            >
+                                <Text
+                                    type="title"
+                                    size="large"
+                                    appearance="dark"
+                                    weight="bold"
                                 >
-                                    <Text
-                                        type="title"
-                                        size="medium"
-                                        appearance="dark"
-                                    >
-                                        {title}
-                                    </Text>
-                                    <MdClear
-                                        size="24px"
-                                        cursor="pointer"
-                                        onClick={onCloseModal}
-                                    />
-                                </Stack>
+                                    {title}
+                                </Text>
+                                <MdClear
+                                    size="24px"
+                                    cursor="pointer"
+                                    onClick={onCloseModal}
+                                />
                             </Stack>
-
-                            {children}
                         </Stack>
+
+                        {children}
                     </Stack>
                 </StyledModal>
             </Blanket>

@@ -46,6 +46,7 @@ export const SingleChoice = (props: SingleChoiceProps) => {
             required={required}
             size="wide"
             value={valueSelect}
+            fullwidth={true}
         />
     );
 };
