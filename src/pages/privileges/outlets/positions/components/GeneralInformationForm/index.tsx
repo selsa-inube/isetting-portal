@@ -1,19 +1,19 @@
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
-import { GeneralInformationFormUI } from "./interface";
-import { FormikProps, useFormik } from "formik";
+
 import * as Yup from "yup";
-import { validationMessages } from "@src/validations/validationMessages";
+import { validationMessages } from "@validations/validationMessages";
 import { IMessageState } from "@pages/privileges/outlets/types/forms.types";
+
+import { FormikProps, useFormik } from "formik";
+import { GeneralInformationFormUI } from "./interface";
 import { generalMessage } from "../../add-position/config/messages.config";
 import { IHandleUpdateDataSwitchstep } from "../../add-position/types";
-
 export interface IGeneralInformationEntry {
-  n_Grupo: string;
-  n_Uso: string;
+  abbreviated_name: string;
 }
 
 const validationSchema = Yup.object({
-  n_Grupo: Yup.string().required(validationMessages.required),
+  abbreviated_name: Yup.string().required(validationMessages.required),
   n_Uso: Yup.string().required(validationMessages.required),
 });
 
@@ -33,7 +33,6 @@ export const GeneralInformationForm = forwardRef(
   ) {
     const {
       initialValues,
-      
       withSubmitButtons,
       handleSubmit,
       onFormValid,

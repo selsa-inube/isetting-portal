@@ -1,8 +1,10 @@
-import { Tag } from "@inubekit/tag";
-import { Text } from "@inubekit/text";
 import { useState } from "react";
 
+import { Tag } from "@inubekit/tag";
+import { Text } from "@inubekit/text";
+
 import { IOptionItemCheckedProps } from "@components/inputs/SelectCheck/OptionItem";
+import { basic } from "@design/tokens";
 
 import { SelectCheck } from "../SelectCheck";
 import { StyledContainer, StyledSelection } from "./styles";
@@ -60,8 +62,8 @@ const MultipleChoices = (props: MultipleChoicesProps) => {
         optionsSelect.some((option) => option.checked) && (
           <>
             <Text
-              margin="0px 0px 4px 0px"
-              padding="0px 0px 0px 16px"
+              margin={`${basic.spacing.s0} ${basic.spacing.s0} ${basic.spacing.s4} ${basic.spacing.s0}`}
+              padding={`${basic.spacing.s0} ${basic.spacing.s0} ${basic.spacing.s0} ${basic.spacing.s16}`}
               type="label"
               size="medium"
               weight="bold"

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Textfield } from "@inubekit/textfield";
 import { Grid } from "@inubekit/grid";
 
-import { currencyFormat, parseCurrencyString } from "@src/utils/currency";
+import { currencyFormat, parseCurrencyString } from "@utils/currency";
 
 export interface InputRangeProps {
     handleInputChangeFrom: (valueFrom: number) => void;
