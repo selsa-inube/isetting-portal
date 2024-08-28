@@ -31,7 +31,7 @@ export function PositionsUI() {
               <PageTitle
                 title={label.label}
                 description={label.description}
-                navigatePage="/privileges"
+                navigatePage="/privileges/options"
               />
             </>
           )}

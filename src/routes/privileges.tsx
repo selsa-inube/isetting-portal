@@ -7,18 +7,16 @@ import { Positions } from "@pages/privileges/outlets/positions";
 import { ErrorPage } from "@components/layout/ErrorPage";
 
 function PrivilegesRoutes() {
-  return (
-    <PositionsProvider>
-      <Routes>
-        <Route path="/" element={<Privileges />}>
-          <Route path="options" element={<PrivilegesOptions />} />
-          <Route path="positions" element={<Positions />} />
-        </Route>
-        <Route path="/*" element={<ErrorPage />} />
-      </Routes>
-    </PositionsProvider>
-    
-  );
+    return (
+        <PositionsProvider>
+            <Routes>
+                <Route path="/" element={<Privileges />} />
+                <Route path="/options" element={<PrivilegesOptions />} />
+                <Route path="positions" element={<Positions />} />
+                <Route path="/*" element={<ErrorPage />} />
+            </Routes>
+        </PositionsProvider>
+    );
 }
 
 export { PrivilegesRoutes };
