@@ -1,21 +1,21 @@
-export interface RuleDecision {
-    decision: Decision;
-    conditions?: Condition[];
+export interface IRuleDecision {
+    decision: IDecision;
+    conditions?: ICondition[];
 }
-export interface Condition {
+export interface ICondition {
     name: string;
     dataType: ValueType;
-    value: Value;
+    value: IValue;
 }
-export interface Decision {
+export interface IDecision {
     name: string;
     dataType: ValueType;
-    value: Value;
+    value: IValue;
     startDate: Date;
     endDate?: Date;
 }
 
-export interface Value {
+export interface IValue {
     value?: string | number;
     list?: string[];
     rangeTo?: number;
@@ -24,9 +24,9 @@ export interface Value {
 }
 
 export enum ValueType {
-    List = "list",
-    ListMultiple = "listMultiple",
-    Number = "number",
-    Range = "range",
-    String = "string",
+    LIST = "list",
+    LISTMULTIPLE = "listMultiple",
+    NUMBER = "number",
+    RANGE = "range",
+    STRING = "string",
 }

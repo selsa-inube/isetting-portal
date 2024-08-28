@@ -3,8 +3,8 @@ import { BrowserRouter } from "react-router-dom";
 import { Meta, StoryFn } from "@storybook/react";
 import { Button } from "@inubekit/button";
 
+import { IRuleDecision, ValueType } from "@src/pages/rules/types";
 import { DecisionModalEdit, DecisionModalEditProps } from "..";
-import { RuleDecision, ValueType } from "@src/pages/rules/types";
 
 const meta: Meta<typeof DecisionModalEdit> = {
     title: "components/DecisionModalEdit",
@@ -18,11 +18,11 @@ const meta: Meta<typeof DecisionModalEdit> = {
     ],
 };
 
-const getData = (): RuleDecision => {
-    const decision: RuleDecision = {
+const getData = (): IRuleDecision => {
+    const decision: IRuleDecision = {
         decision: {
             name: "TasaEfectivaAnual",
-            dataType: ValueType.List,
+            dataType: ValueType.LIST,
             value: {
                 list: ["10%", "15%", "20%", "25%"],
                 listSelected: ["20%"],
@@ -33,7 +33,7 @@ const getData = (): RuleDecision => {
         conditions: [
             {
                 name: "PlazoMeses",
-                dataType: ValueType.Range,
+                dataType: ValueType.RANGE,
                 value: {
                     rangeFrom: 1,
                     rangeTo: 12,
@@ -41,7 +41,7 @@ const getData = (): RuleDecision => {
             },
             {
                 name: "ScoringRiesgo",
-                dataType: ValueType.Range,
+                dataType: ValueType.RANGE,
                 value: {
                     rangeFrom: 100,
                     rangeTo: 700,
@@ -49,7 +49,7 @@ const getData = (): RuleDecision => {
             },
             {
                 name: "CategoriaCliente",
-                dataType: ValueType.ListMultiple,
+                dataType: ValueType.LISTMULTIPLE,
                 value: {
                     list: [
                         "Funcionario",
@@ -62,7 +62,7 @@ const getData = (): RuleDecision => {
             },
             {
                 name: "Riesgo",
-                dataType: ValueType.List,
+                dataType: ValueType.LIST,
                 value: {
                     list: ["Muy alto", "Alio", "Medio", "Bajo", "Muy bajo"],
                     listSelected: ["Medio"],
@@ -70,7 +70,7 @@ const getData = (): RuleDecision => {
             },
             {
                 name: "CarteraDescubierto",
-                dataType: ValueType.Range,
+                dataType: ValueType.RANGE,
                 value: {
                     rangeFrom: 1000000,
                     rangeTo: 15000000,
@@ -81,11 +81,11 @@ const getData = (): RuleDecision => {
     return decision;
 };
 
-const getNotCondition = (): RuleDecision => {
-    const decision: RuleDecision = {
+const getNotCondition = (): IRuleDecision => {
+    const decision: IRuleDecision = {
         decision: {
             name: "TasaEfectivaAnual",
-            dataType: ValueType.Number,
+            dataType: ValueType.NUMBER,
             value: {
                 value: 10,
             },
@@ -124,7 +124,7 @@ Default.args = {
     decision: getData(),
     portalId: "portal",
     onCancel: () => console.log("Cancel"),
-    onSubmitEvent: (data: RuleDecision) => console.log("Submit", data),
+    onSubmitEvent: (data: IRuleDecision) => console.log("Submit", data),
 };
 
 
@@ -135,14 +135,14 @@ NotConditions.args = {
     decision: getNotCondition(),
     portalId: "portal",
     onCancel: () => console.log("Cancel"),
-    onSubmitEvent: (data: RuleDecision) => console.log("Submit", data),
+    onSubmitEvent: (data: IRuleDecision) => console.log("Submit", data),
 };
 
-const getListMulti = (): RuleDecision => {
-    const decision: RuleDecision = {
+const getListMulti = (): IRuleDecision => {
+    const decision: IRuleDecision = {
         decision: {
             name: "TasaEfectivaAnual",
-            dataType: ValueType.ListMultiple,
+            dataType: ValueType.LISTMULTIPLE,
             value: {
                 list: ["10%", "15%", "20%", "25%"],
                 listSelected: ["20%", "25%"],
@@ -152,7 +152,7 @@ const getListMulti = (): RuleDecision => {
         conditions: [
             {
                 name: "ScoringRiesgo",
-                dataType: ValueType.Range,
+                dataType: ValueType.RANGE,
                 value: {
                     rangeFrom: 100,
                     rangeTo: 700,
@@ -160,7 +160,7 @@ const getListMulti = (): RuleDecision => {
             },
             {
                 name: "CategoriaCliente",
-                dataType: ValueType.ListMultiple,
+                dataType: ValueType.LISTMULTIPLE,
                 value: {
                     list: [
                         "Funcionario",
@@ -181,14 +181,14 @@ ListMutiple.args = {
     decision: getListMulti(),
     portalId: "portal",
     onCancel: () => console.log("Cancel"),
-    onSubmitEvent: (data: RuleDecision) => console.log("Submit", data),
+    onSubmitEvent: (data: IRuleDecision) => console.log("Submit", data),
 };
 
-const getRange = (): RuleDecision => {
-    const decision: RuleDecision = {
+const getRange = (): IRuleDecision => {
+    const decision: IRuleDecision = {
         decision: {
             name: "TasaEfectivaAnual",
-            dataType: ValueType.Range,
+            dataType: ValueType.RANGE,
             value: {
                 rangeFrom: 10,
                 rangeTo: 25,
@@ -199,7 +199,7 @@ const getRange = (): RuleDecision => {
         conditions: [
             {
                 name: "Riesgo",
-                dataType: ValueType.List,
+                dataType: ValueType.LIST,
                 value: {
                     list: ["Muy alto", "Alio", "Medio", "Bajo", "Muy bajo"],
                     listSelected: ["Medio"],
@@ -207,7 +207,7 @@ const getRange = (): RuleDecision => {
             },
             {
                 name: "CarteraDescubierto",
-                dataType: ValueType.Range,
+                dataType: ValueType.RANGE,
                 value: {
                     rangeFrom: 1000000,
                     rangeTo: 15000000,
@@ -223,7 +223,7 @@ Range.args = {
     decision: getRange(),
     portalId: "portal",
     onCancel: () => console.log("Cancel"),
-    onSubmitEvent: (data: RuleDecision) => console.log("Submit", data),
+    onSubmitEvent: (data: IRuleDecision) => console.log("Submit", data),
 };
 
 export default meta;
