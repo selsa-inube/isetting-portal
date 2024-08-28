@@ -1,13 +1,13 @@
 import { Stack } from "@inubekit/stack";
 
-import { Divider } from "@src/components/layout/Divider";
+import { Divider } from "@components/layout/Divider";
+
+import { basic } from "@design/tokens";
+
 import { MenuHeading } from "../MenuHeading";
 import { ISection } from "./types";
 import { MenuItemSpacingType } from "../MenuItem/types";
-
 import { MenuItem } from "../MenuItem";
-
-import { basic } from "@design/tokens";
 
 interface MenuSectionProps {
   sections: ISection[];
@@ -26,7 +26,7 @@ function MenuSection(props: MenuSectionProps) {
             <Stack
               key={index}
               width="280px"
-              margin="s0 s0 s0 s200"
+              margin={`${basic.spacing.s0} ${basic.spacing.s0} ${basic.spacing.s0} ${basic.spacing.s16}`}
               direction="column"
             >
               <Divider />
@@ -37,7 +37,7 @@ function MenuSection(props: MenuSectionProps) {
           <Stack
             direction="column"
             gap={spacing === "compact" ? `{${basic.spacing.s4}}` : `{${basic.spacing.s0}}`}
-            margin={"6px 0px"}
+            margin={`${basic.spacing.s6} ${basic.spacing.s0}`}
           >
             {section.links.map((link, linkIndex) => (
               <MenuItem

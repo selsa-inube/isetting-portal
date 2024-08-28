@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+
 import { inube } from "@inubekit/foundations";
 import { basic } from "@design/tokens";
-import { isMobile580 } from "@src/config/environment";
+import { isMobile580 } from "@config/environment";
 
 const StyledAppMenuCard = styled(Link)`
   box-sizing: border-box;
