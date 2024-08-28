@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Toggle } from "@inubekit/toggle";
+import { basic } from "@design/tokens";
 
 export interface ToggleOptionProps {
     checked: boolean;
@@ -33,10 +34,10 @@ export const ToggleOption = (props: ToggleOptionProps) => {
                 checked={toogleCheck}
                 id={id}
                 label={labelToggle}
-                margin="10px"
+                margin={basic.spacing.s10}
                 name={name}
                 onChange={handleToggle}
-                padding="0px"
+                padding={basic.spacing.s0}
                 size="small"
                 value={valueToggle}
             />

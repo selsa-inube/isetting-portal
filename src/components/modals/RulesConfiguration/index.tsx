@@ -4,6 +4,7 @@ import { Blanket } from "@inubekit/blanket";
 import { Stack } from "@inubekit/stack";
 import { Text } from "@inubekit/text";
 
+import { basic } from "@design/tokens";
 import { StyledContainer, StyledModal } from "./styles";
 
 export interface RulesConfigurationProps {
@@ -25,9 +26,9 @@ export const RulesConfiguration = (props: RulesConfigurationProps) => {
         <StyledContainer>
             <Blanket>
                 <StyledModal>
-                    <Stack direction="column" gap="20px">
-                        <Stack direction="column" gap="16px">
-                            <Stack direction="column" gap="8px">
+                    <Stack direction="column" gap={basic.spacing.s20}>
+                        <Stack direction="column" gap={basic.spacing.s16}>
+                            <Stack direction="column" gap={basic.spacing.s8}>
                                 <Stack
                                     alignItems="center"
                                     justifyContent="space-between"
