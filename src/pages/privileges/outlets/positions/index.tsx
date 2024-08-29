@@ -6,13 +6,14 @@ import { IPosition } from "./add-position/types";
 
 export function Positions() {
   const [searchPosition, setSearchPosition] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const [positions, setPositions] = useState<IPosition[]>([]);
 
   useEffect(() => {
     getAll("linix-positions")
       .then((data) => {
+        setLoading(true);
         if (data !== null) {
           setPositions(data as IPosition[]);
         }
@@ -23,7 +24,8 @@ export function Positions() {
       .finally(() => {
         setLoading(false);
       });
-  }, [positions]);
+  }, []);
+
   const handleSearchPositions = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchPosition(e.target.value);
   };
@@ -32,6 +34,7 @@ export function Positions() {
     handleSearchPositions={handleSearchPositions}
     searchPosition={searchPosition}
     loading={loading}
+    data={positions}
     />
   );
 }

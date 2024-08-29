@@ -1,14 +1,11 @@
 import { useState, useMemo } from "react";
-import { MockPositions } from "@mocks/privileges/positions/Positions.mock";
 import { pagerecord } from "@config/environment";
+import { IPosition } from "../../add-position/types";
 
 const pageLength = pagerecord;
-const usePagination = (searchPosition: string) => {
+const usePagination = (searchPosition: string, data: IPosition[]) => {
   
   const [currentPage, setCurrentPage] = useState(0);
-  
-  const [data] = useState(MockPositions);
-
   const totalRecords = data.length;
   const totalPages = Math.ceil(totalRecords / pageLength);
 

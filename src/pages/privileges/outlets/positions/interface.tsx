@@ -12,15 +12,15 @@ import { PageTitle } from "@components/PageTitle";
 import { basic } from "@design/tokens";
 import { isMobile580 } from "@config/environment";
 import { LoadingApp } from "@pages/login/outlets/LoadingApp";
-import { usePagination } from "@pages/privileges/outlets/positions/components/Pagination"
-
 import { privilegeOptionsConfig } from "../../config/privileges.config";
 import { titlesOptions, renderActionIcon } from "./config/dataPositions";
 import { IPosition } from "./add-position/types";
+import { usePagination } from "./components/GeneralInformationForm/utils";
 
 interface IPositionsProps{
   handleSearchPositions: (e: React.ChangeEvent<HTMLInputElement>) => void;
   searchPosition: string;
+  data: IPosition[];
   loading: boolean;
 }
 
@@ -29,6 +29,7 @@ export function PositionsUI(props: IPositionsProps) {
     handleSearchPositions,
     searchPosition,
     loading,
+    data
   } = props;
 
   const smallScreen = useMediaQuery(isMobile580);
@@ -37,6 +38,7 @@ export function PositionsUI(props: IPositionsProps) {
     (item) => item.url === location.pathname
   );
   
+
   const {
     filteredData,
     handleStartPage,
@@ -46,7 +48,7 @@ export function PositionsUI(props: IPositionsProps) {
     firstEntryInPage,
     lastEntryInPage,
     paginatedData,
-  } = usePagination(searchPosition);
+  } = usePagination(searchPosition, data);
 
 return (
     <Stack
@@ -95,7 +97,7 @@ return (
                 Solicitar nuevo cargo
               </Button>
           </Stack>
-          {loading ? (<LoadingApp />):(
+          {loading && data.length <= 0 ? (<LoadingApp />):(
             <Table>
               <Colgroup>
                 <Col width="80%" />

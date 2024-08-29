@@ -4,17 +4,19 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
+import { useEffect } from "react";
 
 import { ErrorPage } from "@components/layout/ErrorPage";
 import { AppPage } from "@components/layout/AppPage";
-import { GlobalStyles } from "./styles/global";
-import { PrivilegesRoutes } from "./routes/privileges";
-import { ThemeProvider } from "styled-components";
 import { theme } from "@config/theme";
 import { useAuth0 } from "@auth0/auth0-react";
 
+import { GlobalStyles } from "./styles/global";
+import { PrivilegesRoutes } from "./routes/privileges";
+import { ThemeProvider } from "styled-components";
 import { environment } from "./config/environment";
 import { RulesRoutes } from "./routes/rules";
+import { initializeDataDB } from "./mocks/utils/inicializeDataDB";
 
 function LogOut() {
   localStorage.clear();
@@ -32,12 +34,16 @@ const router = createBrowserRouter(
         <Route path="rules/*" element={<RulesRoutes />} />
       </Route>
       <Route path="logout" element={<LogOut />} />
-      <Route errorElement={<ErrorPage />} />
+      <Route path="/*" errorElement={<ErrorPage />} />
     </>
   )
 );
 
 function App() {
+  useEffect(() => {
+    initializeDataDB();
+  },[])
+
   return (
     <>
     <GlobalStyles />
