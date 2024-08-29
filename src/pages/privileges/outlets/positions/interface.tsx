@@ -64,7 +64,7 @@ return (
               <PageTitle
                 title={label.label}
                 description={label.description}
-                navigatePage="/privileges"
+                navigatePage="/privileges/options"
               />
             </>
           )}

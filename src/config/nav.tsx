@@ -37,7 +37,7 @@ const nav: INav = {
           id: "privileges",
           label: "Privilegios",
           icon: <MdOutlineStart />,
-          path: "/privileges",
+          path: "/privileges/options",
         },
         rules:{
           id: "rules",
