@@ -43,12 +43,13 @@ const showElement = (
                 ? value.list.map((item) => ({
                       id: item,
                       label: item,
+                      value: item,
                   }))
                 : [];
             return (
                 <SingleChoice
-                    handleSelectChange={(e, name) => {
-                        onDecision({ value: e.target.innerText }, name);
+                    handleSelectChange={(valueSelect, name) => {
+                        onDecision({ listSelected: [valueSelect], list: value.list }, name);
                     }}
                     id={name}
                     labelSelect={nameLabel}

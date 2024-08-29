@@ -15,8 +15,8 @@
   "dependencies": {
     "@auth0/auth0-react": "^2.2.4",
     "@inube/design-system": "^5.15.0",
-    "@inubekit/breadcrumbs": "^2.6.0",
     "@inubekit/blanket": "^2.8.0",
+    "@inubekit/breadcrumbs": "^2.6.0",
     "@inubekit/button": "^4.5.0",
     "@inubekit/datefield": "^2.10.0",
     "@inubekit/divider": "^0.6.0",
@@ -26,7 +26,7 @@
     "@inubekit/header": "^2.5.0",
     "@inubekit/icon": "^2.0.1",
     "@inubekit/label": "^2.7.0",
-    "@inubekit/select": "^5.10.1",
+    "@inubekit/select": "^6.16.0",
     "@inubekit/stack": "^3.0.0",
     "@inubekit/tag": "^3.11.0",
     "@inubekit/text": "^2.7.0",

@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Meta, StoryFn } from "@storybook/react";
 import { Button } from "@inubekit/button";
 
-import { IRuleDecision, ValueType } from "@src/pages/rules/types";
+import { IRuleDecision, ValueType } from "@pages/rules/types";
 import { DecisionModalEdit, DecisionModalEditProps } from "..";
 
 const meta: Meta<typeof DecisionModalEdit> = {

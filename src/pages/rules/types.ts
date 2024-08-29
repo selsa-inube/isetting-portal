@@ -4,12 +4,12 @@ export interface IRuleDecision {
 }
 export interface ICondition {
     name: string;
-    dataType: ValueType;
+    dataType: typeof ValueType[keyof typeof ValueType];
     value: IValue;
 }
 export interface IDecision {
     name: string;
-    dataType: ValueType;
+    dataType: typeof ValueType[keyof typeof ValueType];
     value: IValue;
     startDate: Date;
     endDate?: Date;
@@ -23,10 +23,10 @@ export interface IValue {
     listSelected?: string[];
 }
 
-export enum ValueType {
-    LIST = "list",
-    LISTMULTIPLE = "listMultiple",
-    NUMBER = "number",
-    RANGE = "range",
-    STRING = "string",
-}
+export const ValueType = {
+    LIST: "list",
+    LISTMULTIPLE: "listMultiple",
+    NUMBER: "number",
+    RANGE: "range",
+    STRING: "string",
+} as const;

@@ -1,15 +1,15 @@
-import { IOptionItem, Select } from "@inubekit/select";
+import { IOption, Select } from "@inubekit/select";
 import { useState } from "react";
 
 export interface SingleChoiceProps {
     handleSelectChange: (
-        event: React.ChangeEvent<HTMLInputElement>,
+        value: string,
         name: string
     ) => void;
     id: string;
     labelSelect: string;
     name: string;
-    options: IOptionItem[];
+    options: IOption[];
     required?: boolean;
     valueSelected?: string;
 }
@@ -28,11 +28,11 @@ export const SingleChoice = (props: SingleChoiceProps) => {
     const [valueSelect, setValueSelect] = useState(valueSelected);
 
     const handleSelect = (
-        event: React.ChangeEvent<HTMLInputElement>,
-        name: string
+        name: string,
+        value: string
     ) => {
-        setValueSelect(event.target.innerText);
-        handleSelectChange(event, name);
+        setValueSelect(value);
+        handleSelectChange(value, name);
     };
 
     return (

@@ -12,38 +12,37 @@ export interface DecisionModalEditProps {
     portalId: string;
 }
 
+const updateDataDecision = (prevDataDecision:IRuleDecision, field:string, value:IValue | Date) => {
+    return {
+        ...prevDataDecision,
+        decision: { ...prevDataDecision.decision, [field]: value },
+    };
+};
+
 export const DecisionModalEdit = (prop: DecisionModalEditProps) => {
     const { decision, onCloseModal, onCancel, onSubmitEvent, portalId } = prop;
     const [DataDecision, setDataDecision] = useState(decision);
     const onCondition = (value: IValue, nameCondition: string) => {
-        const conditions = DataDecision?.conditions?.map((condition) => {
-            if (condition.name === nameCondition) {
-                return { ...condition, value };
-            }
-            return condition;
+        setDataDecision((DataDecisionRule) => {
+            const conditions = DataDecisionRule?.conditions?.map((condition) => {
+                if (condition.name === nameCondition) {
+                    return { ...condition, value };
+                }
+                return condition;
+            });
+            return { ...DataDecisionRule, conditions };
         });
-        setDataDecision({ ...DataDecision, conditions });
     };
     const onDecision = (value: IValue) => {
-        setDataDecision({
-            ...DataDecision,
-            decision: { ...DataDecision.decision, value },
-        });
+        setDataDecision((prevDataDecision) => updateDataDecision(prevDataDecision, 'value', value));
     };
+
     const onStartChange = (value: string) => {
-        setDataDecision({
-            ...DataDecision,
-            decision: { ...DataDecision.decision, startDate: new Date(value) },
-        });
+        setDataDecision((prevDataDecision) => updateDataDecision(prevDataDecision, 'startDate', new Date(value)));
     };
+
     const onEndChange = (value: string) => {
-        setDataDecision({
-            ...DataDecision,
-            decision: { ...DataDecision.decision, endDate: new Date(value) },
-        });
-    };
-    const onSubmit = () => {
-        onSubmitEvent(DataDecision);
+        setDataDecision((prevDataDecision) => updateDataDecision(prevDataDecision, 'endDate', new Date(value)));
     };
     return (
         <RulesConfiguration
@@ -54,7 +53,7 @@ export const DecisionModalEdit = (prop: DecisionModalEditProps) => {
             <DecisionModalEditUI
                 decision={DataDecision}
                 onCancel={onCancel}
-                onSubmit={onSubmit}
+                onSubmit={()=>onSubmitEvent(DataDecision)}
                 onChangeCondition={onCondition}
                 onChangeDecision={onDecision}
                 onStartChange={onStartChange}
