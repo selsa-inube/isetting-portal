@@ -7,7 +7,18 @@ import { Textfield } from "@inubekit/textfield";
 import { Stack } from "@inubekit/stack";
 import { Button } from "@inubekit/button";
 import { Breadcrumbs } from "@inubekit/breadcrumbs";
-import { Col, Colgroup, Table, Tbody, Thead, Tr, Th, Td, Tfoot, Pagination} from "@inubekit/table";
+import {
+  Col,
+  Colgroup,
+  Table,
+  Tbody,
+  Thead,
+  Tr,
+  Th,
+  Td,
+  Tfoot,
+  Pagination,
+} from "@inubekit/table";
 import { PageTitle } from "@components/PageTitle";
 import { basic } from "@design/tokens";
 import { isMobile580 } from "@config/environment";
@@ -17,7 +28,9 @@ import { titlesOptions, renderActionIcon } from "./config/dataPositions";
 import { IPosition } from "./add-position/types";
 import { usePagination } from "./components/GeneralInformationForm/utils";
 
-interface IPositionsProps{
+const pagerecord = 10;
+
+interface IPositionsProps {
   handleSearchPositions: (e: React.ChangeEvent<HTMLInputElement>) => void;
   searchPosition: string;
   data: IPosition[];
@@ -25,19 +38,13 @@ interface IPositionsProps{
 }
 
 export function PositionsUI(props: IPositionsProps) {
-  const {
-    handleSearchPositions,
-    searchPosition,
-    loading,
-    data
-  } = props;
+  const { handleSearchPositions, searchPosition, loading, data } = props;
 
   const smallScreen = useMediaQuery(isMobile580);
   const location = useLocation();
   const label = privilegeOptionsConfig.find(
     (item) => item.url === location.pathname
   );
-  
 
   const {
     filteredData,
@@ -48,13 +55,17 @@ export function PositionsUI(props: IPositionsProps) {
     firstEntryInPage,
     lastEntryInPage,
     paginatedData,
-  } = usePagination(searchPosition, data);
+  } = usePagination(searchPosition, data, pagerecord);
 
-return (
+  return (
     <Stack
       direction="column"
       width="-webkit-fill-available"
-      padding={smallScreen ? `{${basic.spacing.s24}}` : `${basic.spacing.s32} ${basic.spacing.s64}`}
+      padding={
+        smallScreen
+          ? `{${basic.spacing.s24}}`
+          : `${basic.spacing.s32} ${basic.spacing.s64}`
+      }
     >
       <Stack gap={basic.spacing.s48} direction="column">
         <Stack gap={basic.spacing.s24} direction="column">
@@ -77,27 +88,29 @@ return (
         <Stack gap={basic.spacing.s32} direction="column">
           <Stack justifyContent="space-between" alignItems="center">
             <Textfield
-                name="searchPositions"
-                id="searchPositions"
-                placeholder="Búsqueda..."
-                type="search"
-                iconBefore={<MdSearch />}
-                size="compact"
-                value={searchPosition}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  handleSearchPositions(e)
-                }
-              />
-              <Button
-                iconBefore={<MdPersonAddAlt />}
-                spacing="wide"
-                type="link"
-                path="/privileges/positions/add-position"
-              >
-                Solicitar nuevo cargo
-              </Button>
+              name="searchPositions"
+              id="searchPositions"
+              placeholder="Búsqueda..."
+              type="search"
+              iconBefore={<MdSearch />}
+              size="compact"
+              value={searchPosition}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                handleSearchPositions(e)
+              }
+            />
+            <Button
+              iconBefore={<MdPersonAddAlt />}
+              spacing="wide"
+              type="link"
+              path="/privileges/positions/add-position"
+            >
+              Solicitar nuevo cargo
+            </Button>
           </Stack>
-          {loading && data.length <= 0 ? (<LoadingApp />):(
+          {loading && data.length <= 0 ? (
+            <LoadingApp />
+          ) : (
             <Table>
               <Colgroup>
                 <Col width="80%" />
@@ -105,7 +118,11 @@ return (
               <Thead>
                 <Tr border="bottom">
                   {titlesOptions.map((title, index) => (
-                    <Th key={index} action={title.action} align={title.action ? "center" : "left"}>
+                    <Th
+                      key={index}
+                      action={title.action}
+                      align={title.action ? "center" : "left"}
+                    >
                       {title.titleName}
                     </Th>
                   ))}
@@ -117,8 +134,13 @@ return (
                     {titlesOptions.map((header, colIndex) => {
                       const cellData = row[header.id as keyof IPosition];
                       return (
-                        <Td key={colIndex} align={header.action ? "center" : "left"}>
-                          {header.action ? renderActionIcon(header.id) : cellData}
+                        <Td
+                          key={colIndex}
+                          align={header.action ? "center" : "left"}
+                        >
+                          {header.action
+                            ? renderActionIcon(header.id)
+                            : cellData}
                         </Td>
                       );
                     })}
@@ -127,7 +149,11 @@ return (
               </Tbody>
               <Tfoot>
                 <Tr border="bottom">
-                  <Td colSpan={titlesOptions.length} type="custom" align="center">
+                  <Td
+                    colSpan={titlesOptions.length}
+                    type="custom"
+                    align="center"
+                  >
                     <Pagination
                       firstEntryInPage={firstEntryInPage}
                       lastEntryInPage={lastEntryInPage}
@@ -141,8 +167,7 @@ return (
                 </Tr>
               </Tfoot>
             </Table>
-          )
-          }
+          )}
         </Stack>
       </Stack>
     </Stack>

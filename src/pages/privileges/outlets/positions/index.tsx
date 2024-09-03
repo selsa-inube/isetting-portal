@@ -11,7 +11,7 @@ export function Positions() {
   const [positions, setPositions] = useState<IPosition[]>([]);
 
   useEffect(() => {
-    getAll("linix-positions")
+    getAll("staff-positions")
       .then((data) => {
         setLoading(true);
         if (data !== null) {
@@ -31,10 +31,10 @@ export function Positions() {
   };
   return (
     <PositionsUI
-    handleSearchPositions={handleSearchPositions}
-    searchPosition={searchPosition}
-    loading={loading}
-    data={positions}
+      handleSearchPositions={handleSearchPositions}
+      searchPosition={searchPosition}
+      loading={loading}
+      data={positions}
     />
   );
 }
