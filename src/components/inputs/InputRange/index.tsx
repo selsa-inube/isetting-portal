@@ -4,6 +4,7 @@ import { Grid } from "@inubekit/grid";
 import { Stack } from "@inubekit/stack";
 
 import { currencyFormat, parseCurrencyString } from "@utils/currency";
+import { basic } from "@design/tokens";
 
 export interface InputRangeProps {
     handleInputChangeFrom: (valueFrom: number) => void;
@@ -50,7 +51,7 @@ export const InputRange = (props: InputRangeProps) => {
     };
 
     return (
-        <Grid templateColumns="repeat(2, 1fr)" margin="10px 0px" gap="12px">
+        <Grid templateColumns="repeat(2, 1fr)" margin={`${basic.spacing.s10} ${basic.spacing.s0}`} gap={basic.spacing.s12}>
             <Stack>
                 <Textfield
                     id={`${id}TextFieldFrom`}
@@ -66,7 +67,7 @@ export const InputRange = (props: InputRangeProps) => {
                     }
                 />
             </Stack>
-            <Stack gap="12px">
+            <Stack gap={basic.spacing.s12}>
                 <Textfield
                     id={`${id}TextFieldTo`}
                     label={labelTo}

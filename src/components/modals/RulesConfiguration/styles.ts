@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { inube } from "@inubekit/foundations";
+import { basic } from "@design/tokens";
 
 const StyledContainer = styled.div`
   position: relative; 
@@ -13,7 +14,7 @@ const StyledModal = styled.div`
   height: auto;
   border-radius: 8px;
   & > div {
-    padding: 24px;
+    padding: ${basic.spacing.s24};
   }
 `;
 
