@@ -1,15 +1,14 @@
-import {
-  Assisted,
-  Breadcrumbs,
-  Button,
-  Stack,
-  useMediaQuery,
-  inube,
-} from "@inube/design-system";
+import { Assisted } from "@inubekit/assisted";
+import { Breadcrumbs } from "@inubekit/breadcrumbs";
+import { Button } from "@inubekit/button";
+import { Stack } from "@inubekit/stack";
+import { useMediaQuery } from "@inubekit/hooks";
 
+import { isMobile580 } from "@config/environment";
 import { PageTitle } from "@components/PageTitle";
 import { DecisionModal } from "@components/feedback/DecisionModal";
 import { RenderMessage } from "@components/feedback/RenderMessage";
+import { basic } from "@design/tokens";
 
 import {
   createPositionConfig,
@@ -82,18 +81,18 @@ export function AddPositionUI(props: AddPositionUIProps) {
   const { title, description, actionText } =
     finishAssistedModalConfig;
 
-  const smallScreen = useMediaQuery("(max-width: 580px)");
+  const smallScreen = useMediaQuery(isMobile580);
   const disabled = !isCurrentFormValid;
 
   return (
-    <Stack direction="column" padding={smallScreen ? "s200" : "s400 s800"}>
-      <Stack gap={inube.spacing.s600} direction="column">
-        <Stack gap={inube.spacing.s400} direction="column">
+    <Stack direction="column" padding={smallScreen ? `{${basic.spacing.s16}}` : `${basic.spacing.s32} ${basic.spacing.s64}`}>
+      <Stack gap={basic.spacing.s48} direction="column">
+        <Stack gap={basic.spacing.s32} direction="column">
           <Breadcrumbs crumbs={createPositionConfig[0].crumbs} />
           <Stack
             justifyContent="space-between"
             alignItems="center"
-            gap={inube.spacing.s650}
+            gap={basic.spacing.s50}
           >
             <PageTitle
               title={createPositionConfig[0].title}
@@ -119,7 +118,7 @@ export function AddPositionUI(props: AddPositionUIProps) {
             setIsCurrentFormValid
           )}
         </>
-        <Stack gap={inube.spacing.s200} justifyContent="flex-end">
+        <Stack gap={basic.spacing.s16} justifyContent="flex-end">
           <Button
             onClick={handlePreviousStep}
             type="button"

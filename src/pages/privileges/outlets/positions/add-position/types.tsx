@@ -1,5 +1,6 @@
 import { FormikProps } from "formik";
 import { IGeneralInformationEntry } from "../components/GeneralInformationForm";
+import React from "react";
 
 export const titleButtonTextAssited = {
   before: "Anterior",

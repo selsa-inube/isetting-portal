@@ -1,6 +1,6 @@
-import { INav } from "@components/layout/AppPage/types";
 import { MdOutlineStart, MdVpnKey, MdOutlineSettings } from "react-icons/md";
 
+import { INav } from "@components/layout/AppPage/types";
 
 const appsConfig = [
   {
@@ -23,9 +23,8 @@ const appsConfig = [
       },
     ],
     url: "/privileges",
-  },  
+  },
 ];
-
 
 const nav: INav = {
   title: "MENU",
@@ -37,9 +36,9 @@ const nav: INav = {
           id: "privileges",
           label: "Privilegios",
           icon: <MdOutlineStart />,
-          path: "/privileges/options",
+          path: "/privileges",
         },
-        rules:{
+        rules: {
           id: "rules",
           label: "Reglas",
           icon: <MdOutlineSettings />,
@@ -55,4 +54,4 @@ const logoutConfig = {
   logoutTitle: "Cerrar sesión",
 };
 
-export { appsConfig, nav, logoutConfig};
+export { appsConfig, nav, logoutConfig };

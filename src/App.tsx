@@ -3,19 +3,20 @@ import {
   RouterProvider,
   createBrowserRouter,
   createRoutesFromElements,
-  Navigate
 } from "react-router-dom";
+import { useEffect } from "react";
+import { ThemeProvider } from "styled-components";
 
 import { ErrorPage } from "@components/layout/ErrorPage";
 import { AppPage } from "@components/layout/AppPage";
 import { theme } from "@config/theme";
 import { useAuth0 } from "@auth0/auth0-react";
-import { environment } from "./config/environment";
+import { initializeDataDB } from "@mocks/utils/inicializeDataDB";
+import { environment } from "@config/environment";
+import { PrivilegesRoutes } from "@routes/privileges";
+import { RulesRoutes } from "@routes/rules";
 
 import { GlobalStyles } from "./styles/global";
-import { PrivilegesRoutes } from "./routes/privileges";
-import { ThemeProvider } from "styled-components";
-import { RulesRoutes } from "./routes/rules";
 
 function LogOut() {
   localStorage.clear();
@@ -28,7 +29,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<AppPage />}>
-        <Route index element={<Navigate to="/privileges" replace />} />
+        <Route path="/" element={<PrivilegesRoutes />} />
         <Route path="privileges/*" element={<PrivilegesRoutes />} />
         <Route path="rules/*" element={<RulesRoutes />} />
       </Route>
@@ -39,12 +40,16 @@ const router = createBrowserRouter(
 );
 
 function App() {
+  useEffect(() => {
+    initializeDataDB();
+  }, []);
+
   return (
     <>
-    <GlobalStyles />
-    <ThemeProvider theme={theme}> 
-      <RouterProvider router={router} /> 
-    </ThemeProvider>
+      <GlobalStyles />
+      <ThemeProvider theme={theme}>
+        <RouterProvider router={router} />
+      </ThemeProvider>
     </>
   );
 }
