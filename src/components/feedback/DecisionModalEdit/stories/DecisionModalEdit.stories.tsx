@@ -7,7 +7,7 @@ import { IRuleDecision, ValueDataType, ValueHowToSetUp } from "@pages/rules/type
 import { DecisionModalEdit, DecisionModalEditProps } from "..";
 
 const meta: Meta<typeof DecisionModalEdit> = {
-    title: "components/DecisionModalEdit",
+    title: "components/feedback/DecisionModalEdit",
     component: DecisionModalEdit,
     decorators: [
         (Story: StoryFn) => (

@@ -1,25 +1,25 @@
 import { useState } from "react";
 import { Button } from "@inubekit/button";
-import { Divider } from "@src/components/layout/Divider";
+import { Divider } from "@inubekit/divider";
 import { Stack } from "@inubekit/stack";
 import { Text } from "@inubekit/text";
 import { Toggle } from "@inubekit/toggle";
 
-import { InputRange } from "@src/components/inputs/InputRange";
-import { MultipleChoices } from "@src/components/inputs/MultipleChoices";
-import { SingleChoice } from "@src/components/inputs/SingleChoice";
-import { Term } from "@src/components/inputs/Term";
-import { ToggleOption } from "@src/components/inputs/ToggleOption";
+import { TextValue } from "@config/components/feedback/DecisionModalEdit";
+import { DynamicField } from "@components/inputs/DynamicField";
+import { InputRange } from "@components/inputs/InputRange";
+import { MultipleChoices } from "@components/inputs/MultipleChoices";
+import { ReasonForChange } from "@components/inputs/ReasonForChange";
+import { SingleChoice } from "@components/inputs/SingleChoice";
+import { Term } from "@components/inputs/Term";
+import { ToggleOption } from "@components/inputs/ToggleOption";
 import {
   IDecision,
   IRuleDecision,
   IValue,
   ICondition,
   ValueHowToSetUp,
-} from "@src/pages/rules/types";
-import { ReasonForChange } from "@src/components/ReasonForChange";
-import { TextValue } from "@config/components/feedback/DecisionModalEdit";
-import { DynamicField } from "@src/components/inputs/DynamicField";
+} from "@pages/rules/types";
 
 export interface DecisionModalEditUIProps {
   decision: IRuleDecision;
@@ -141,10 +141,20 @@ export const DecisionModalEditUI = (props: DecisionModalEditUIProps) => {
     onEndChange,
   } = props;
   const [checkNone, setCheckNone] = useState(false);
+  const [checkDisabledConfirm, setCheckDisabledConfirm] = useState(true);
 
   const handleToggleNone = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCheckNone(e.target.checked);
   };
+
+  const handleReasonForChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value);
+    if (e.target.value) {
+      setCheckDisabledConfirm(false);
+    }else{
+      setCheckDisabledConfirm(true);
+    }
+  }
 
   return (
     <Stack direction="column" gap="24px">
@@ -203,9 +213,9 @@ export const DecisionModalEditUI = (props: DecisionModalEditUIProps) => {
         <ReasonForChange
           label={TextValue.reasonForChange}
           labelText={TextValue.change}
-          onHandleChange={() => {}}
+          onHandleChange={handleReasonForChange}
           placeholder={TextValue.changePlaceholder}
-          required={false}
+          required={true}
         />
       </Stack>
       <Divider dashed />
@@ -227,7 +237,7 @@ export const DecisionModalEditUI = (props: DecisionModalEditUIProps) => {
         <Button appearance="gray" onClick={onCancel}>
           {TextValue.cancel}
         </Button>
-        <Button onClick={onSubmit}>{TextValue.confirm}</Button>
+        <Button onClick={onSubmit} disabled={checkDisabledConfirm} type="submit">{TextValue.confirm}</Button>
       </Stack>
     </Stack>
   );

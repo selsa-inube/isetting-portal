@@ -32,9 +32,9 @@ export const DynamicField = (props: DynamicFieldProps) => {
         [message, setMessage] = useState<string>("");
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+    const valueInput = e.target.value;
     if (type === "percentage") {
-      if (Number(e.target.value) < 0 || Number(e.target.value) > 100) {
+      if (Number(valueInput) < 0 || Number(valueInput) > 100) {
         setStatus("invalid");
         setMessage("El porcentaje debe estar entre 0 y 100");
         return;
@@ -43,8 +43,11 @@ export const DynamicField = (props: DynamicFieldProps) => {
       setMessage("");
     }
     if (type === "currency") {
-      setValue(parseCurrencyString(value as string));
+      setValue(parseCurrencyString(valueInput as string));
+      handleChange(value);
+      return;
     }
+    setValue(valueInput);
     handleChange(value);
   };
   return (
