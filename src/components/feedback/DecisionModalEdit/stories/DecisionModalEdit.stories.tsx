@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Meta, StoryFn } from "@storybook/react";
 import { Button } from "@inubekit/button";
 
-import { IRuleDecision, ValueType } from "@pages/rules/types";
+import { IRuleDecision, ValueDataType, ValueHowToSetUp } from "@pages/rules/types";
 import { DecisionModalEdit, DecisionModalEditProps } from "..";
 
 const meta: Meta<typeof DecisionModalEdit> = {
@@ -22,35 +22,42 @@ const getData = (): IRuleDecision => {
     const decision: IRuleDecision = {
         decision: {
             name: "TasaEfectivaAnual",
-            dataType: ValueType.LIST,
-            value: {
+            description: "Tasa de interés efectiva anual",
+            typeData:ValueDataType.ALPHABETICAL,
+            possibleValue: {
                 list: ["10%", "15%", "20%", "25%"],
                 listSelected: ["20%"],
             },
+            howToSetUp: ValueHowToSetUp.LIST_OF_VALUES,
             startDate: new Date("2024-08-15"),
             endDate: new Date("2024-09-15"),
         },
         conditions: [
             {
                 name: "PlazoMeses",
-                dataType: ValueType.RANGE,
-                value: {
+                description: "Plazo en meses",
+                typeData:ValueDataType.NUMBER,
+                possibleValue: {
                     rangeFrom: 1,
                     rangeTo: 12,
                 },
+                howToSetUp: ValueHowToSetUp.RANGE,
             },
             {
                 name: "ScoringRiesgo",
-                dataType: ValueType.RANGE,
-                value: {
+                description: "Scoring de riesgo",
+                typeData:ValueDataType.NUMBER,
+                possibleValue: {
                     rangeFrom: 100,
                     rangeTo: 700,
                 },
+                howToSetUp: ValueHowToSetUp.RANGE,
             },
             {
                 name: "CategoriaCliente",
-                dataType: ValueType.LISTMULTIPLE,
-                value: {
+                description: "Categoria del cliente",
+                typeData:ValueDataType.ALPHABETICAL,
+                possibleValue: {
                     list: [
                         "Funcionario",
                         "Independiente",
@@ -59,23 +66,55 @@ const getData = (): IRuleDecision => {
                     ],
                     listSelected: ["Independiente", "Pensionado"],
                 },
+                howToSetUp: ValueHowToSetUp.LIST_OF_VALUES_MULTI,
             },
             {
                 name: "Riesgo",
-                dataType: ValueType.LIST,
-                value: {
-                    list: ["Muy alto", "Alio", "Medio", "Bajo", "Muy bajo"],
+                description: "Riesgo",
+                typeData:ValueDataType.ALPHABETICAL,
+                possibleValue: {
+                    list: ["Muy alto", "Alto", "Medio", "Bajo", "Muy bajo"],
                     listSelected: ["Medio"],
                 },
+                howToSetUp: ValueHowToSetUp.LIST_OF_VALUES,
             },
             {
                 name: "CarteraDescubierto",
-                dataType: ValueType.RANGE,
-                value: {
+                description: "Cartera de descubierto",
+                typeData:ValueDataType.CURRENCY,
+                possibleValue: {
                     rangeFrom: 1000000,
                     rangeTo: 15000000,
                 },
+                howToSetUp: ValueHowToSetUp.RANGE,
             },
+            {
+                name: "FechaTasa",
+                description: "Fecha Tasa",
+                typeData:ValueDataType.DATE,
+                possibleValue: {
+                    value: "2024-08-15",
+                },
+                howToSetUp: ValueHowToSetUp.EQUAL,
+            },
+            {
+                name: "Porcentaje",
+                description: "Porcentaje",
+                typeData:ValueDataType.PERCENTAGE,
+                possibleValue: {
+                    value: 10,
+                },
+                howToSetUp: ValueHowToSetUp.EQUAL,
+            },
+            {
+                name: "Monto",
+                description: "Monto",
+                typeData:ValueDataType.CURRENCY,
+                possibleValue: {
+                    value: 1000000,
+                },
+                howToSetUp: ValueHowToSetUp.EQUAL,
+            }
         ],
     };
     return decision;
@@ -85,8 +124,10 @@ const getNotCondition = (): IRuleDecision => {
     const decision: IRuleDecision = {
         decision: {
             name: "TasaEfectivaAnual",
-            dataType: ValueType.NUMBER,
-            value: {
+            description: "Tasa de interés efectiva anual",
+            typeData: ValueDataType.NUMBER,
+            howToSetUp: ValueHowToSetUp.LIST_OF_VALUES,
+            possibleValue: {
                 value: 10,
             },
             startDate: new Date("2024-08-15"),
@@ -142,8 +183,10 @@ const getListMulti = (): IRuleDecision => {
     const decision: IRuleDecision = {
         decision: {
             name: "TasaEfectivaAnual",
-            dataType: ValueType.LISTMULTIPLE,
-            value: {
+            description: "Tasa de interés efectiva anual",
+            typeData: ValueDataType.ALPHABETICAL,
+            howToSetUp: ValueHowToSetUp.LIST_OF_VALUES_MULTI,
+            possibleValue: {
                 list: ["10%", "15%", "20%", "25%"],
                 listSelected: ["20%", "25%"],
             },
@@ -152,16 +195,19 @@ const getListMulti = (): IRuleDecision => {
         conditions: [
             {
                 name: "ScoringRiesgo",
-                dataType: ValueType.RANGE,
-                value: {
+                description: "Scoring de riesgo",
+                typeData: ValueDataType.NUMBER,
+                possibleValue: {
                     rangeFrom: 100,
                     rangeTo: 700,
                 },
+                howToSetUp: ValueHowToSetUp.RANGE,
             },
             {
                 name: "CategoriaCliente",
-                dataType: ValueType.LISTMULTIPLE,
-                value: {
+                description: "Categoria del cliente",
+                typeData: ValueDataType.ALPHABETICAL,
+                possibleValue: {
                     list: [
                         "Funcionario",
                         "Independiente",
@@ -170,6 +216,7 @@ const getListMulti = (): IRuleDecision => {
                     ],
                     listSelected: ["Independiente", "Pensionado"],
                 },
+                howToSetUp: ValueHowToSetUp.LIST_OF_VALUES_MULTI,
             },
         ],
     };
@@ -188,8 +235,10 @@ const getRange = (): IRuleDecision => {
     const decision: IRuleDecision = {
         decision: {
             name: "TasaEfectivaAnual",
-            dataType: ValueType.RANGE,
-            value: {
+            description: "Tasa de interés efectiva anual",
+            typeData: ValueDataType.NUMBER,
+            howToSetUp: ValueHowToSetUp.RANGE,
+            possibleValue: {
                 rangeFrom: 10,
                 rangeTo: 25,
             },
@@ -199,19 +248,23 @@ const getRange = (): IRuleDecision => {
         conditions: [
             {
                 name: "Riesgo",
-                dataType: ValueType.LIST,
-                value: {
-                    list: ["Muy alto", "Alio", "Medio", "Bajo", "Muy bajo"],
+                description: "Riesgo",
+                typeData: ValueDataType.ALPHABETICAL,
+                possibleValue: {
+                    list: ["Muy alto", "Alto", "Medio", "Bajo", "Muy bajo"],
                     listSelected: ["Medio"],
                 },
+                howToSetUp: ValueHowToSetUp.LIST_OF_VALUES,
             },
             {
                 name: "CarteraDescubierto",
-                dataType: ValueType.RANGE,
-                value: {
+                description: "Cartera de descubierto",
+                typeData: ValueDataType.CURRENCY,
+                possibleValue: {
                     rangeFrom: 1000000,
                     rangeTo: 15000000,
                 },
+                howToSetUp: ValueHowToSetUp.RANGE,
             },
         ],
     };

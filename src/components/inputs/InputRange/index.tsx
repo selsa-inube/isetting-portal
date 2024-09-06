@@ -19,7 +19,7 @@ export interface InputRangeProps {
 
 export declare type ITextfieldInputType = (typeof inputTypes)[number];
 
-declare const inputTypes: readonly ["currency", "number"];
+declare const inputTypes: readonly ["alphabetical", "date", "currency", "number",  "percentage"];
 
 export const InputRange = (props: InputRangeProps) => {
   const {

@@ -4,13 +4,18 @@ export interface IRuleDecision {
 }
 export interface ICondition {
     name: string;
-    dataType: typeof ValueType[keyof typeof ValueType];
-    value: IValue;
+    description: string;
+    typeData: typeof ValueDataType[keyof typeof ValueDataType];
+    possibleValue: IValue;
+    howToSetUp: typeof ValueHowToSetUp[keyof typeof ValueHowToSetUp];
+
 }
 export interface IDecision {
     name: string;
-    dataType: typeof ValueType[keyof typeof ValueType];
-    value: IValue;
+    description: string;
+    typeData: typeof ValueDataType[keyof typeof ValueDataType];
+    possibleValue: IValue;
+    howToSetUp: typeof ValueHowToSetUp[keyof typeof ValueHowToSetUp];
     startDate: Date;
     endDate?: Date;
 }
@@ -23,10 +28,19 @@ export interface IValue {
     listSelected?: string[];
 }
 
-export const ValueType = {
-    LIST: "list",
-    LISTMULTIPLE: "listMultiple",
+export const ValueDataType = {
+    ALPHABETICAL: "alphabetical",
+    DATE: "date",
+    CURRENCY: "currency",
     NUMBER: "number",
+    PERCENTAGE: "percentage",
+} as const;
+
+export const ValueHowToSetUp = {
+    EQUAL: "equal",
     RANGE: "range",
-    STRING: "string",
+    LESS_THAN: "less_than",
+    GREATER_THAN: "greater_than",
+    LIST_OF_VALUES: "list_of_values",
+    LIST_OF_VALUES_MULTI: "list_of_values_multi",
 } as const;
