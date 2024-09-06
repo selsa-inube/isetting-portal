@@ -8,8 +8,11 @@ export const titleButtonTextAssited = {
   finish: "Enviar",
 };
 export interface IPosition {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any;
   public_code: string;
   abbreviated_name: string;
+  n_roles?: string[];
 }
 export interface IStep {
   id: number;
@@ -31,5 +34,4 @@ export interface IFormAddPositionRef {
   generalInformation: React.RefObject<FormikProps<IGeneralInformationEntry>>;
 }
 
-export type IHandleUpdateDataSwitchstep =
-  | IGeneralInformationEntry;
+export type IHandleUpdateDataSwitchstep = IGeneralInformationEntry;

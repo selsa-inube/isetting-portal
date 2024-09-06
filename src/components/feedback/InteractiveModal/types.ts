@@ -1,18 +1,25 @@
+import { IPosition } from "@src/pages/privileges/outlets/positions/add-position/types";
+
 type ModalTypes = "fields" | "search";
 
 interface Field {
   id: string;
-  titleName: string;
+  labelName: string;
+  type?: string;
 }
 
 interface Action {
   id: string;
-  content: string | ((data: { [key: string]: string | number | boolean | React.ReactNode }) => React.ReactNode);
+  content:
+    | string
+    | ((data: {
+        [key: string]: string | number | boolean | React.ReactNode;
+      }) => React.ReactNode);
 }
 
 interface InteractiveModalProps {
   closeModal: () => void;
-  infoData: { [key: string]: string } | Record<string, string | number>;
+  infoData: IPosition;
   portalId: string;
   title: string;
   actionsTitle?: string;

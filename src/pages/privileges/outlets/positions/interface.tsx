@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom";
+import { useState } from "react";
 import { MdSearch, MdPersonAddAlt } from "react-icons/md";
 
 import { useMediaQuery } from "@inubekit/hooks";
@@ -23,10 +24,17 @@ import { PageTitle } from "@components/PageTitle";
 import { basic } from "@design/tokens";
 import { isMobile580 } from "@config/environment";
 import { LoadingApp } from "@pages/login/outlets/LoadingApp";
+
 import { privilegeOptionsConfig } from "../../config/privileges.config";
-import { titlesOptions, renderActionIcon } from "./config/dataPositions";
+import {
+  titlesOptions,
+  renderActionIcon,
+  labelsOptions,
+} from "./config/dataPositions";
 import { IPosition } from "./add-position/types";
 import { usePagination } from "./components/GeneralInformationForm/utils";
+import { StyledButtonWrapper } from "./styles";
+import { DetailsModal } from "./components/DetailsModal";
 
 const pagerecord = 10;
 
@@ -39,12 +47,33 @@ interface IPositionsProps {
 
 export function PositionsUI(props: IPositionsProps) {
   const { handleSearchPositions, searchPosition, loading, data } = props;
-
   const smallScreen = useMediaQuery(isMobile580);
   const location = useLocation();
   const label = privilegeOptionsConfig.find(
     (item) => item.url === location.pathname
   );
+
+  const [modalData, setModalData] = useState<IPosition | null>(null);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleToggleModal = () => {
+    setShowModal(!showModal);
+  };
+
+  const handleAction = (
+    event: React.MouseEvent,
+    row: IPosition,
+    actionType: string
+  ) => {
+    event.stopPropagation();
+
+    if (actionType === "details") {
+      setModalData(row);
+      handleToggleModal();
+    } else if (actionType === "edit") {
+      null;
+    }
+  };
 
   const {
     filteredData,
@@ -99,14 +128,16 @@ export function PositionsUI(props: IPositionsProps) {
                 handleSearchPositions(e)
               }
             />
-            <Button
-              iconBefore={<MdPersonAddAlt />}
-              spacing="wide"
-              type="link"
-              path="/privileges/positions/add-position"
-            >
-              Solicitar nuevo cargo
-            </Button>
+            <StyledButtonWrapper>
+              <Button
+                iconBefore={<MdPersonAddAlt />}
+                spacing="wide"
+                type="link"
+                path="/privileges/positions/add-position"
+              >
+                Solicitar nuevo cargo
+              </Button>
+            </StyledButtonWrapper>
           </Stack>
           {loading && data.length <= 0 ? (
             <LoadingApp />
@@ -137,6 +168,11 @@ export function PositionsUI(props: IPositionsProps) {
                         <Td
                           key={colIndex}
                           align={header.action ? "center" : "left"}
+                          onClick={(e) => {
+                            if (header.action) {
+                              handleAction(e, row, header.id);
+                            }
+                          }}
                         >
                           {header.action
                             ? renderActionIcon(header.id)
@@ -170,6 +206,14 @@ export function PositionsUI(props: IPositionsProps) {
           )}
         </Stack>
       </Stack>
+      {showModal && modalData && (
+        <DetailsModal
+          data={modalData}
+          showModal={showModal}
+          handleToggleModal={handleToggleModal}
+          labelsOptions={labelsOptions}
+        />
+      )}
     </Stack>
   );
 }

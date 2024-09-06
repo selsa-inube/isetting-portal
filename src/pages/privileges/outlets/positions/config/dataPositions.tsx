@@ -1,4 +1,8 @@
-import {  MdModeEdit, MdDelete, MdLaunch } from "react-icons/md";
+import {
+  MdModeEdit,
+  MdOutlineDelete,
+  MdOutlineRemoveRedEye,
+} from "react-icons/md";
 
 export const titlesOptions = [
   {
@@ -35,9 +39,28 @@ export const PositionsBreakPointsConfig = [
 ];
 
 const actionIcons: { [key: string]: JSX.Element | null } = {
-  details: <MdLaunch />,
-  edit: <MdModeEdit />,
-  delete: <MdDelete />,
+  details: <MdOutlineRemoveRedEye size={"16px"} />,
+  edit: <MdModeEdit size={"16px"} />,
+  delete: <MdOutlineDelete size={"16px"} />,
 };
 
-export const renderActionIcon = (actionType: string) => actionIcons[actionType] || null;
+export const renderActionIcon = (actionType: string) =>
+  actionIcons[actionType] || null;
+
+export const labelsOptions = [
+  {
+    id: "public_code",
+    labelName: "Código",
+    type: "text",
+  },
+  {
+    id: "abbreviated_name",
+    labelName: "Descripción Funcional",
+    type: "text",
+  },
+  {
+    id: "n_roles",
+    labelName: "Roles",
+    type: "table",
+  },
+];

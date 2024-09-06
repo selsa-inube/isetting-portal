@@ -1,37 +1,28 @@
-import { useState } from "react";
-import { MdOutlineAssignmentTurnedIn } from "react-icons/md";
-import { Icon } from "@inubekit/icon";
-
 import { InteractiveModal } from "@components/feedback/InteractiveModal";
+import { IPosition } from "../../add-position/types";
+interface Field {
+  id: string;
+  labelName: string;
+}
 
 interface IDetailsModalProps {
-  data?: { [key: string]: string | number };
+  data?: IPosition;
+  showModal: boolean;
+  handleToggleModal: () => void;
+  labelsOptions: Field[];
 }
 
 export const DetailsModal = (props: IDetailsModalProps) => {
-  const { data } = props;
-
-  const [showModal, setShowModal] = useState(false);
-
-  const handleToggleModal = () => {
-    setShowModal(!showModal);
-  };
-
+  const { data, showModal, handleToggleModal, labelsOptions } = props;
   return (
     <>
-      <Icon
-        icon={<MdOutlineAssignmentTurnedIn />}
-        size="16px"
-        appearance="dark"
-        onClick={handleToggleModal}
-        cursorHover
-      />
       {showModal && data && (
         <InteractiveModal
           portalId="portal"
           title="Detalles de cargo"
           infoData={data}
-          infoTitle="Información"
+          infoTitle=""
+          labels={labelsOptions}
           closeModal={handleToggleModal}
         />
       )}

@@ -33,8 +33,7 @@ const StyledDivider = styled.div<IStyledRespondInvitation>`
   border-radius: ${basic.spacing.s0};
   border: 1px dashed
     ${({ theme }) =>
-      theme?.color?.stroke?.divider?.regular ||
-      inube.palette.neutral.N40};
+      theme?.color?.stroke?.divider?.regular || inube.palette.neutral.N40};
 `;
 
 export { StyledModal, StyledDivider };
