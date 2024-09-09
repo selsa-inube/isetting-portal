@@ -19,6 +19,8 @@ interface MultipleChoicesProps {
   options: IOptionItemCheckedProps[];
   placeholderSelect?: string;
   required?: boolean;
+  message?: string;
+  onBlur?: () => void;
 }
 
 const MultipleChoices = (props: MultipleChoicesProps) => {
@@ -30,6 +32,8 @@ const MultipleChoices = (props: MultipleChoicesProps) => {
     options,
     placeholderSelect = "",
     required = false,
+    message,
+    onBlur,
   } = props;
 
   const [optionsSelect, setOptionsSelect] = useState(options);
@@ -100,6 +104,8 @@ const MultipleChoices = (props: MultipleChoicesProps) => {
         value=""
         size="compact"
         fullwidth
+        message={message}
+        onBlur={onBlur}
       />
     </StyledContainer>
   );

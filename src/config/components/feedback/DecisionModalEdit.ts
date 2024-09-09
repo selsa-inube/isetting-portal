@@ -10,5 +10,7 @@ export const TextValue = {
     termEnd: "Fecha de fin",
     cancel:"Cancelar",
     confirm:"Confirmar",
-
+    none: "Ninguno",
+    FactsThatConditionIt: "Hechos que condicionan",
+    criteria:"Criterios",
 };

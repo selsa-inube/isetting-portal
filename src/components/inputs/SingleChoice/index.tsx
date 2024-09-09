@@ -12,6 +12,8 @@ export interface SingleChoiceProps {
     options: IOption[];
     required?: boolean;
     valueSelected?: string;
+    message?: string;
+    onBlur?: () => void;
 }
 
 export const SingleChoice = (props: SingleChoiceProps) => {
@@ -23,6 +25,8 @@ export const SingleChoice = (props: SingleChoiceProps) => {
         options,
         required,
         valueSelected = "",
+        message,
+        onBlur,
     } = props;
 
     const [valueSelect, setValueSelect] = useState(valueSelected);
@@ -47,6 +51,8 @@ export const SingleChoice = (props: SingleChoiceProps) => {
             size="wide"
             value={valueSelect}
             fullwidth={true}
+            message={message}
+            onBlur={onBlur}
         />
     );
 };

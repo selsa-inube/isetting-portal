@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Textfield } from "@inubekit/textfield";
+import { ITextfieldStatus, Textfield } from "@inubekit/textfield";
 import { Grid } from "@inubekit/grid";
 
 import { currencyFormat, parseCurrencyString } from "@utils/currency";
@@ -15,6 +15,9 @@ export interface InputRangeProps {
   required?: boolean;
   valueFrom?: number;
   valueTo?: number;
+  message?: string;
+  status?: string;
+  onBlur?: () => void;
 }
 
 export declare type ITextfieldInputType = (typeof inputTypes)[number];
@@ -32,6 +35,9 @@ export const InputRange = (props: InputRangeProps) => {
     required = false,
     valueFrom = 0,
     valueTo = 0,
+    message,
+    status,
+    onBlur,
   } = props;
 
   const [inputValueFrom, setInputValueFrom] = useState(valueFrom),
@@ -74,6 +80,9 @@ export const InputRange = (props: InputRangeProps) => {
             ? currencyFormat(inputValueFrom)
             : inputValueFrom
         }
+        message={message}
+        status={status as ITextfieldStatus}
+        onBlur={onBlur}
       />
       <Textfield
         id={`${id}TextFieldTo`}
@@ -86,6 +95,9 @@ export const InputRange = (props: InputRangeProps) => {
         value={
           typeInput === "currency" ? currencyFormat(inputValueTo) : inputValueTo
         }
+        message={message}
+        status={status as ITextfieldStatus}
+        onBlur={onBlur}
       />
     </Grid>
   );

@@ -12,6 +12,9 @@ export interface DynamicFieldProps {
   label: string;
   valueInput: string | number;
   handleChange: (value: string | number) => void;
+  messageValidate?: string;
+  statusValidate?: string;
+  onBlur?: () => void;
 }
 
 export declare type ITextfieldInputType = (typeof inputTypes)[number];
@@ -25,11 +28,11 @@ declare const inputTypes: readonly [
 ];
 
 export const DynamicField = (props: DynamicFieldProps) => {
-  const { type, name, label, valueInput, handleChange } = props;
+  const { type, name, label, valueInput, handleChange, messageValidate, statusValidate, onBlur } = props;
 
   const [value, setValue] = useState(valueInput),
-        [status, setStatus] = useState<ITextfieldStatus>("pending"),
-        [message, setMessage] = useState<string>("");
+        [status, setStatus] = useState<ITextfieldStatus>(statusValidate as ITextfieldStatus),
+        [message, setMessage] = useState<string>(messageValidate as string);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const valueInput = e.target.value;
@@ -60,6 +63,9 @@ export const DynamicField = (props: DynamicFieldProps) => {
           type="number"
           value={value}
           fullwidth
+          message={message}
+          status={status}
+          onBlur={onBlur}
         />
       )}
       {type === "date" && (
@@ -69,6 +75,9 @@ export const DynamicField = (props: DynamicFieldProps) => {
           onChange={onChange}
           value={value}
           fullwidth
+          message={message}
+          status={status}
+          onBlur={onBlur}
         />
       )}
       {type === "alphabetical" && (
@@ -79,6 +88,9 @@ export const DynamicField = (props: DynamicFieldProps) => {
           type="text"
           value={value}
           fullwidth
+          message={message}
+          status={status}
+          onBlur={onBlur}
         />
       )}
       {type === "currency" && (
@@ -89,6 +101,9 @@ export const DynamicField = (props: DynamicFieldProps) => {
           type="text"
           value={currencyFormat(value as number)}
           fullwidth
+          message={message}
+          status={status}
+          onBlur={onBlur}
         />
       )}
       {type === "percentage" && (
@@ -102,6 +117,7 @@ export const DynamicField = (props: DynamicFieldProps) => {
           iconAfter={<Icon appearance="dark" icon={<MdOutlinePercent />} size="18px"/>}
           status={status}
           message={message}
+          onBlur={onBlur}
         />
       )}
     </>

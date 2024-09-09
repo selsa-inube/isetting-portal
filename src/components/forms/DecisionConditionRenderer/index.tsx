@@ -13,16 +13,19 @@ import { DynamicField } from "@src/components/inputs/DynamicField";
 interface DecisionConditionRendererProps {
   element: IDecision | ICondition;
   onDecision: (value: IValue, nameCondition: string) => void;
+  valueData: string | number |  { rangeFrom?: number | undefined; rangeTo?: number | undefined };
+  message: string;
+  status: string;
 }
 
 export const DecisionConditionRenderer = (
   props: DecisionConditionRendererProps
 ) => {
-  const { element, onDecision } = props;
+  const { element, onDecision, valueData, message, status } = props;
   const name = element.name.replace(" ", ""),
     value = element.possibleValue,
     nameLabel = element.name.split(/(?=[A-Z])/).join(" ");
-
+    let valueRangeInput;
   switch (element.howToSetUp) {
     case ValueHowToSetUp.LIST_OF_VALUES:
       return (
@@ -42,7 +45,8 @@ export const DecisionConditionRenderer = (
                 }))
               : []
           }
-          valueSelected={value.listSelected?.[0]}
+          valueSelected={valueData as string}
+          message={message}
         />
       );
     case ValueHowToSetUp.LIST_OF_VALUES_MULTI:
@@ -71,9 +75,11 @@ export const DecisionConditionRenderer = (
               : []
           }
           placeholderSelect={TextValue.selectOptions}
+          message={message}
         />
       );
     case ValueHowToSetUp.RANGE:
+      valueRangeInput = valueData as { rangeFrom?: number | undefined; rangeTo?: number | undefined };
       return (
         <InputRange
           handleInputChangeFrom={(valueRange) => {
@@ -86,8 +92,10 @@ export const DecisionConditionRenderer = (
           labelFrom={TextValue.rangeMin(nameLabel)}
           labelTo={TextValue.rangeMax(nameLabel)}
           typeInput={element.typeData}
-          valueFrom={value.rangeFrom}
-          valueTo={value.rangeTo}
+          valueFrom={valueRangeInput.rangeFrom}
+          valueTo={valueRangeInput.rangeTo}
+          message={message}
+          status={status}
         />
       );
     case ValueHowToSetUp.GREATER_THAN:
@@ -101,7 +109,9 @@ export const DecisionConditionRenderer = (
             onDecision({ value: value }, name);
           }}
           type={element.typeData}
-          valueInput={value.value as string}
+          valueInput={valueData as string}
+          messageValidate={message}
+          statusValidate={status}
         />
       );
     default:

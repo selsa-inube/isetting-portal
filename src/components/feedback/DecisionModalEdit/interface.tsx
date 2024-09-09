@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FormikValues } from "formik";
 import { Button } from "@inubekit/button";
 import { Divider } from "@inubekit/divider";
 import { Stack } from "@inubekit/stack";
@@ -11,12 +12,10 @@ import { Term } from "@components/inputs/Term";
 import { ToggleOption } from "@components/inputs/ToggleOption";
 import { DecisionConditionRenderer } from "@src/components/forms/DecisionConditionRenderer";
 import { basic } from "@design/tokens";
-import {
-  IRuleDecision,
-  IValue,
-} from "@pages/rules/types";
+import { IRuleDecision, IValue } from "@pages/rules/types";
 
 export interface DecisionModalEditUIProps {
+  formik: FormikValues;
   decision: IRuleDecision;
   onCancel: () => void;
   onChangeCondition: (value: IValue, nameCondition: string) => void;
@@ -29,6 +28,7 @@ export interface DecisionModalEditUIProps {
 export const DecisionModalEditUI = (props: DecisionModalEditUIProps) => {
   const {
     decision,
+    formik,
     onCancel,
     onChangeCondition,
     onChangeDecision,
@@ -44,26 +44,42 @@ export const DecisionModalEditUI = (props: DecisionModalEditUIProps) => {
   };
 
   const handleReasonForChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
     if (e.target.value) {
       setCheckDisabledConfirm(false);
-    }else{
+    } else {
       setCheckDisabledConfirm(true);
     }
-  }
+  };
+
+  const getFieldState = (formik: FormikValues, fieldName: string) => {
+    if (formik.errors[fieldName]) return "invalid";
+    return "pending";
+  };
 
   return (
     <Stack direction="column" gap={basic.spacing.s24}>
       <Stack direction="column" gap={basic.spacing.s16}>
         <Text weight="bold" size="medium">
-          Criterios
+          {TextValue.criteria}
         </Text>
-        {decision.decision && <DecisionConditionRenderer element={decision.decision} onDecision={onChangeDecision}/>}
+        {decision.decision && (
+          <DecisionConditionRenderer
+            element={decision.decision}
+            onDecision={onChangeDecision}
+            valueData={formik.values[decision.decision.name]}
+            message={formik.errors[decision.decision.name]}
+            status={getFieldState(formik, decision.decision.name)}
+          />
+        )}
       </Stack>
       <Divider dashed />
       <Stack direction="column">
-        <Stack direction="row" gap={basic.spacing.s16} justifyContent="space-between">
-          <Text>Hechos que lo condicionan</Text>
+        <Stack
+          direction="row"
+          gap={basic.spacing.s16}
+          justifyContent="space-between"
+        >
+          <Text>{TextValue.FactsThatConditionIt}</Text>
           <Toggle
             id="toogleNone"
             onChange={handleToggleNone}
@@ -73,7 +89,7 @@ export const DecisionModalEditUI = (props: DecisionModalEditUIProps) => {
             size="small"
           >
             <Text size="medium" type="label" weight="bold">
-              Ninguno
+              {TextValue.none}
             </Text>
           </Toggle>
         </Stack>
@@ -99,7 +115,15 @@ export const DecisionModalEditUI = (props: DecisionModalEditUIProps) => {
                 labelToggle={condition.name.split(/(?=[A-Z])/).join(" ")}
                 name={condition.name.replace(" ", "")}
               >
-                {<DecisionConditionRenderer element={condition} onDecision={onChangeCondition}/>}
+                {
+                  <DecisionConditionRenderer
+                    element={condition}
+                    onDecision={onChangeCondition}
+                    valueData={formik.values[condition.name]}
+                    message={formik.errors[condition.name]}
+                    status={getFieldState(formik, condition.name)}
+                  />
+                }
               </ToggleOption>
             </Stack>
           ))}
@@ -133,7 +157,13 @@ export const DecisionModalEditUI = (props: DecisionModalEditUIProps) => {
         <Button appearance="gray" onClick={onCancel}>
           {TextValue.cancel}
         </Button>
-        <Button onClick={onSubmit} disabled={checkDisabledConfirm} type="submit">{TextValue.confirm}</Button>
+        <Button
+          onClick={onSubmit}
+          disabled={checkDisabledConfirm || !formik.isValid}
+          type="submit"
+        >
+          {TextValue.confirm}
+        </Button>
       </Stack>
     </Stack>
   );
