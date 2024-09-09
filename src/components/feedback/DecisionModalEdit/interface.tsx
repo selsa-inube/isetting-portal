@@ -6,19 +6,14 @@ import { Text } from "@inubekit/text";
 import { Toggle } from "@inubekit/toggle";
 
 import { TextValue } from "@config/components/feedback/DecisionModalEdit";
-import { DynamicField } from "@components/inputs/DynamicField";
-import { InputRange } from "@components/inputs/InputRange";
-import { MultipleChoices } from "@components/inputs/MultipleChoices";
 import { ReasonForChange } from "@components/inputs/ReasonForChange";
-import { SingleChoice } from "@components/inputs/SingleChoice";
 import { Term } from "@components/inputs/Term";
 import { ToggleOption } from "@components/inputs/ToggleOption";
+import { DecisionConditionRenderer } from "@src/components/forms/DecisionConditionRenderer";
+import { basic } from "@design/tokens";
 import {
-  IDecision,
   IRuleDecision,
   IValue,
-  ICondition,
-  ValueHowToSetUp,
 } from "@pages/rules/types";
 
 export interface DecisionModalEditUIProps {
@@ -30,105 +25,6 @@ export interface DecisionModalEditUIProps {
   onStartChange: (value: string) => void;
   onSubmit: () => void;
 }
-const showElement = (
-  element: IDecision | ICondition,
-  onDecision: (value: IValue, nameCondition: string) => void
-) => {
-  const name = element.name.replace(" ", ""),
-    value = element.possibleValue,
-    nameLabel = element.name.split(/(?=[A-Z])/).join(" ");
-  let options = [],
-    optionsMultiple = [];
-  if (element.howToSetUp === ValueHowToSetUp.LIST_OF_VALUES) {
-    options = Array.isArray(value.list)
-      ? value.list.map((item) => ({
-          id: item,
-          label: item,
-          value: item,
-        }))
-      : [];
-    return (
-      <SingleChoice
-        handleSelectChange={(valueSelect, name) => {
-          onDecision({ listSelected: [valueSelect], list: value.list }, name);
-        }}
-        id={name}
-        labelSelect={nameLabel}
-        name={name}
-        options={options}
-        valueSelected={value.listSelected?.[0]}
-      />
-    );
-  } 
-  if (element.howToSetUp === ValueHowToSetUp.LIST_OF_VALUES_MULTI) {
-    optionsMultiple = Array.isArray(value.list)
-      ? value.list.map((item) => ({
-          id: item,
-          label: item,
-          checked: value.listSelected?.includes(item),
-        }))
-      : [];
-    return (
-      <MultipleChoices
-        id={name}
-        labelSelect={nameLabel}
-        labelSelected={TextValue.selectOption}
-        onHandleSelectCheckChange={(options) => {
-          onDecision(
-            {
-              listSelected: options
-                .filter((option) => option.checked)
-                .map((option) => option.id),
-            },
-            name
-          );
-        }}
-        options={optionsMultiple}
-        placeholderSelect={TextValue.selectOptions}
-      />
-    );
-  }
-  if (element.howToSetUp === ValueHowToSetUp.RANGE) {
-    return (
-      <InputRange
-        handleInputChangeFrom={(valueRange) => {
-          onDecision({ ...value, rangeFrom: valueRange }, name);
-        }}
-        handleInputChangeTo={(valueRange) => {
-          onDecision({ ...value, rangeTo: valueRange }, name);
-        }}
-        id={name}
-        labelFrom={TextValue.rangeMin(nameLabel)}
-        labelTo={TextValue.rangeMax(nameLabel)}
-        typeInput={element.typeData}
-        valueFrom={value.rangeFrom}
-        valueTo={value.rangeTo}
-      />
-    );
-  } 
-  if (
-    element.howToSetUp === ValueHowToSetUp.GREATER_THAN ||
-    element.howToSetUp === ValueHowToSetUp.LESS_THAN ||
-    element.howToSetUp === ValueHowToSetUp.EQUAL       
-  ) { 
-
-        return (
-          <DynamicField
-            label={nameLabel}
-            name={name}
-            handleChange={(value) => {
-              onDecision({ value: value }, name);
-            }}
-            type={element.typeData}
-            valueInput={value.value as string} 
-          />
-        );
-   
-      
-  }
-  return null;
-
-};
 
 export const DecisionModalEditUI = (props: DecisionModalEditUIProps) => {
   const {
@@ -157,22 +53,22 @@ export const DecisionModalEditUI = (props: DecisionModalEditUIProps) => {
   }
 
   return (
-    <Stack direction="column" gap="24px">
-      <Stack direction="column" gap="16px">
+    <Stack direction="column" gap={basic.spacing.s24}>
+      <Stack direction="column" gap={basic.spacing.s16}>
         <Text weight="bold" size="medium">
           Criterios
         </Text>
-        {decision.decision && showElement(decision.decision, onChangeDecision)}
+        {decision.decision && <DecisionConditionRenderer element={decision.decision} onDecision={onChangeDecision}/>}
       </Stack>
       <Divider dashed />
       <Stack direction="column">
-        <Stack direction="row" gap="16px" justifyContent="space-between">
+        <Stack direction="row" gap={basic.spacing.s16} justifyContent="space-between">
           <Text>Hechos que lo condicionan</Text>
           <Toggle
             id="toogleNone"
             onChange={handleToggleNone}
-            padding="0"
-            margin="0"
+            padding={basic.spacing.s0}
+            margin={basic.spacing.s0}
             checked={checkNone}
             size="small"
           >
@@ -203,7 +99,7 @@ export const DecisionModalEditUI = (props: DecisionModalEditUIProps) => {
                 labelToggle={condition.name.split(/(?=[A-Z])/).join(" ")}
                 name={condition.name.replace(" ", "")}
               >
-                {showElement(condition, onChangeCondition)}
+                {<DecisionConditionRenderer element={condition} onDecision={onChangeCondition}/>}
               </ToggleOption>
             </Stack>
           ))}
@@ -233,7 +129,7 @@ export const DecisionModalEditUI = (props: DecisionModalEditUIProps) => {
         />
       </Stack>
       <Divider dashed />
-      <Stack direction="row" justifyContent="end" gap="8px">
+      <Stack direction="row" justifyContent="end" gap={basic.spacing.s8}>
         <Button appearance="gray" onClick={onCancel}>
           {TextValue.cancel}
         </Button>
