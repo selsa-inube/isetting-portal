@@ -27,6 +27,7 @@ import { LoadingApp } from "@pages/login/outlets/LoadingApp";
 import { privilegeOptionsConfig } from "../../config/privileges.config";
 import { titlesOptions, actions } from "./config/dataPositions";
 import { IPosition } from "./add-position/types";
+import { IActions, IAction } from "./types";
 import { usePagination } from "./components/GeneralInformationForm/utils";
 import { StyledButtonWrapper } from "./styles";
 
@@ -46,17 +47,6 @@ export function PositionsUI(props: IPositionsProps) {
   const label = privilegeOptionsConfig.find(
     (item) => item.url === location.pathname
   );
-
-  interface IActions {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    [key: string]: any;
-  }
-
-  interface IAction {
-    id: string;
-    actionName: string;
-    content: (entry: IActions) => React.ReactNode;
-  }
 
   function ShowAction(actionContent: IAction[], entry: IActions) {
     return (

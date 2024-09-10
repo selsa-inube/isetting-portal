@@ -3,6 +3,7 @@ import { Icon } from "@inubekit/icon";
 
 import { DetailsModal } from "../components/DetailsModal";
 import { IPosition } from "../add-position/types";
+import { IActions, IAction } from "../types";
 
 export const titlesOptions = [
   {
@@ -37,17 +38,6 @@ export const labelsOptions = [
     type: "table",
   },
 ];
-
-interface IActions {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: any;
-}
-
-interface IAction {
-  id: string;
-  actionName: string;
-  content: (entry: IActions) => React.ReactNode;
-}
 
 export const actions: IAction[] = [
   {
