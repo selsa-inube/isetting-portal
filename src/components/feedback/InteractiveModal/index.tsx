@@ -59,7 +59,6 @@ const InteractiveModal = ({
       "The portal node is not defined. This can occur when the specific node used to render the portal has not been defined correctly."
     );
   }
-  console.log(infoData);
   return createPortal(
     <Blanket>
       <StyledModal $smallScreen={smallScreen} type={type}>
@@ -93,7 +92,7 @@ const InteractiveModal = ({
                 const fieldValue = infoData[field.id as keyof IPosition];
                 if (Array.isArray(fieldValue) && field.type === "table") {
                   return (
-                    <Table tableLayout="auto">
+                    <Table tableLayout="auto" key={field.id}>
                       <Thead>
                         <Tr>
                           <Th align="left">{field.labelName}</Th>

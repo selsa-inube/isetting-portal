@@ -1,5 +1,4 @@
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
 import { MdSearch, MdPersonAddAlt } from "react-icons/md";
 
 import { useMediaQuery } from "@inubekit/hooks";
@@ -26,15 +25,10 @@ import { isMobile580 } from "@config/environment";
 import { LoadingApp } from "@pages/login/outlets/LoadingApp";
 
 import { privilegeOptionsConfig } from "../../config/privileges.config";
-import {
-  titlesOptions,
-  renderActionIcon,
-  labelsOptions,
-} from "./config/dataPositions";
+import { titlesOptions, actions } from "./config/dataPositions";
 import { IPosition } from "./add-position/types";
 import { usePagination } from "./components/GeneralInformationForm/utils";
 import { StyledButtonWrapper } from "./styles";
-import { DetailsModal } from "./components/DetailsModal";
 
 const pagerecord = 10;
 
@@ -53,27 +47,34 @@ export function PositionsUI(props: IPositionsProps) {
     (item) => item.url === location.pathname
   );
 
-  const [modalData, setModalData] = useState<IPosition | null>(null);
-  const [showModal, setShowModal] = useState(false);
+  interface IActions {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    [key: string]: any;
+  }
 
-  const handleToggleModal = () => {
-    setShowModal(!showModal);
-  };
+  interface IAction {
+    id: string;
+    actionName: string;
+    content: (entry: IActions) => React.ReactNode;
+  }
 
-  const handleAction = (
-    event: React.MouseEvent,
-    row: IPosition,
-    actionType: string
-  ) => {
-    event.stopPropagation();
+  function ShowAction(actionContent: IAction[], entry: IActions) {
+    return (
+      <>
+        {actionContent.map((action) => (
+          <Td type="icon" key={`${entry.id}-${action.id}`}>
+            {action.content(entry)}
+          </Td>
+        ))}
+      </>
+    );
+  }
 
-    if (actionType === "details") {
-      setModalData(row);
-      handleToggleModal();
-    } else if (actionType === "edit") {
-      null;
-    }
-  };
+  function showActionTitle(actionTitle: IAction[]) {
+    return actionTitle.map((action) => (
+      <Th key={`action-${action.id}`}>{action.actionName}</Th>
+    ));
+  }
 
   const {
     filteredData,
@@ -157,38 +158,30 @@ export function PositionsUI(props: IPositionsProps) {
                       {title.titleName}
                     </Th>
                   ))}
+                  {showActionTitle(actions)}
                 </Tr>
               </Thead>
               <Tbody>
-                {paginatedData.map((row, rowIndex) => (
+                {paginatedData.map((entry, rowIndex) => (
                   <Tr key={rowIndex} border="bottom">
-                    {titlesOptions.map((header, colIndex) => {
-                      const cellData = row[header.id as keyof IPosition];
-                      return (
-                        <Td
-                          key={colIndex}
-                          align={header.action ? "center" : "left"}
-                          onClick={(e) => {
-                            if (header.action) {
-                              handleAction(e, row, header.id);
-                            }
-                          }}
-                        >
-                          {header.action
-                            ? renderActionIcon(header.id)
-                            : cellData}
-                        </Td>
-                      );
-                    })}
+                    {titlesOptions.map((title) => (
+                      <Td
+                        key={`e-${entry[title.id]}`}
+                        align={entry.action ? "center" : "left"}
+                      >
+                        {entry[title.id]}
+                      </Td>
+                    ))}
+                    {ShowAction(actions, entry)}
                   </Tr>
                 ))}
               </Tbody>
               <Tfoot>
                 <Tr border="bottom">
                   <Td
-                    colSpan={titlesOptions.length}
+                    colSpan={titlesOptions.length + actions.length}
                     type="custom"
-                    align="center"
+                    align="right"
                   >
                     <Pagination
                       firstEntryInPage={firstEntryInPage}
@@ -206,14 +199,6 @@ export function PositionsUI(props: IPositionsProps) {
           )}
         </Stack>
       </Stack>
-      {showModal && modalData && (
-        <DetailsModal
-          data={modalData}
-          showModal={showModal}
-          handleToggleModal={handleToggleModal}
-          labelsOptions={labelsOptions}
-        />
-      )}
     </Stack>
   );
 }

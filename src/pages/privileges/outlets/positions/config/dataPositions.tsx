@@ -1,8 +1,8 @@
-import {
-  MdModeEdit,
-  MdOutlineDelete,
-  MdOutlineRemoveRedEye,
-} from "react-icons/md";
+import { MdModeEdit, MdOutlineDelete } from "react-icons/md";
+import { Icon } from "@inubekit/icon";
+
+import { DetailsModal } from "../components/DetailsModal";
+import { IPosition } from "../add-position/types";
 
 export const titlesOptions = [
   {
@@ -10,24 +10,6 @@ export const titlesOptions = [
     titleName: "Cargos",
     action: false,
     priority: 1,
-  },
-  {
-    id: "details",
-    titleName: "Detalle",
-    action: true,
-    priority: 2,
-  },
-  {
-    id: "edit",
-    titleName: "Editar",
-    action: true,
-    priority: 3,
-  },
-  {
-    id: "delete",
-    titleName: "Eliminar",
-    action: true,
-    priority: 4,
   },
 ];
 
@@ -37,15 +19,6 @@ export const PositionsBreakPointsConfig = [
   { breakpoint: "(max-width: 848px)", totalColumns: 2 },
   { breakpoint: "(max-width: 430px)", totalColumns: 1 },
 ];
-
-const actionIcons: { [key: string]: JSX.Element | null } = {
-  details: <MdOutlineRemoveRedEye size={"16px"} />,
-  edit: <MdModeEdit size={"16px"} />,
-  delete: <MdOutlineDelete size={"16px"} />,
-};
-
-export const renderActionIcon = (actionType: string) =>
-  actionIcons[actionType] || null;
 
 export const labelsOptions = [
   {
@@ -62,5 +35,38 @@ export const labelsOptions = [
     id: "n_roles",
     labelName: "Roles",
     type: "table",
+  },
+];
+
+interface IActions {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any;
+}
+
+interface IAction {
+  id: string;
+  actionName: string;
+  content: (entry: IActions) => React.ReactNode;
+}
+
+export const actions: IAction[] = [
+  {
+    id: "details",
+    actionName: "Detalle",
+    content: (data: IActions) => (
+      <DetailsModal data={data as IPosition} labelsOptions={labelsOptions} />
+    ),
+  },
+  {
+    id: "edit",
+    actionName: "Editar",
+    content: () => <Icon icon={<MdModeEdit />} size="16px" appearance="dark" />,
+  },
+  {
+    id: "delete",
+    actionName: "Eliminar",
+    content: () => (
+      <Icon icon={<MdOutlineDelete />} size="16px" appearance="dark" />
+    ),
   },
 ];

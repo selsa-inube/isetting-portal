@@ -1,3 +1,8 @@
+import { useState } from "react";
+import { MdOutlineRemoveRedEye } from "react-icons/md";
+
+import { Icon } from "@inubekit/icon";
+
 import { InteractiveModal } from "@components/feedback/InteractiveModal";
 import { IPosition } from "../../add-position/types";
 interface Field {
@@ -7,15 +12,28 @@ interface Field {
 
 interface IDetailsModalProps {
   data?: IPosition;
-  showModal: boolean;
-  handleToggleModal: () => void;
   labelsOptions: Field[];
 }
 
 export const DetailsModal = (props: IDetailsModalProps) => {
-  const { data, showModal, handleToggleModal, labelsOptions } = props;
+  const { data, labelsOptions } = props;
+
+  const [showModal, setShowModal] = useState<boolean>(false);
+
+  const handleToggleModal = () => {
+    setShowModal(!showModal);
+    handleToggleModal;
+  };
+
   return (
     <>
+      <Icon
+        icon={<MdOutlineRemoveRedEye />}
+        size="16px"
+        appearance="dark"
+        onClick={handleToggleModal}
+        cursorHover
+      />
       {showModal && data && (
         <InteractiveModal
           portalId="portal"
