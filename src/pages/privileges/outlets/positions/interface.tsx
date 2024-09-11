@@ -23,10 +23,13 @@ import { PageTitle } from "@components/PageTitle";
 import { basic } from "@design/tokens";
 import { isMobile580 } from "@config/environment";
 import { LoadingApp } from "@pages/login/outlets/LoadingApp";
+
 import { privilegeOptionsConfig } from "../../config/privileges.config";
-import { titlesOptions, renderActionIcon } from "./config/dataPositions";
+import { titlesOptions, actions } from "./config/dataPositions";
 import { IPosition } from "./add-position/types";
+import { IActions, IAction } from "./types";
 import { usePagination } from "./components/GeneralInformationForm/utils";
+import { StyledButtonWrapper } from "./styles";
 
 const pagerecord = 10;
 
@@ -39,12 +42,29 @@ interface IPositionsProps {
 
 export function PositionsUI(props: IPositionsProps) {
   const { handleSearchPositions, searchPosition, loading, data } = props;
-
   const smallScreen = useMediaQuery(isMobile580);
   const location = useLocation();
   const label = privilegeOptionsConfig.find(
     (item) => item.url === location.pathname
   );
+
+  function ShowAction(actionContent: IAction[], entry: IActions) {
+    return (
+      <>
+        {actionContent.map((action) => (
+          <Td type="icon" key={`${entry.id}-${action.id}`}>
+            {action.content(entry)}
+          </Td>
+        ))}
+      </>
+    );
+  }
+
+  function showActionTitle(actionTitle: IAction[]) {
+    return actionTitle.map((action) => (
+      <Th key={`action-${action.id}`}>{action.actionName}</Th>
+    ));
+  }
 
   const {
     filteredData,
@@ -99,14 +119,16 @@ export function PositionsUI(props: IPositionsProps) {
                 handleSearchPositions(e)
               }
             />
-            <Button
-              iconBefore={<MdPersonAddAlt />}
-              spacing="wide"
-              type="link"
-              path="/privileges/positions/add-position"
-            >
-              Solicitar nuevo cargo
-            </Button>
+            <StyledButtonWrapper>
+              <Button
+                iconBefore={<MdPersonAddAlt />}
+                spacing="wide"
+                type="link"
+                path="/privileges/positions/add-position"
+              >
+                Solicitar nuevo cargo
+              </Button>
+            </StyledButtonWrapper>
           </Stack>
           {loading && data.length <= 0 ? (
             <LoadingApp />
@@ -126,33 +148,30 @@ export function PositionsUI(props: IPositionsProps) {
                       {title.titleName}
                     </Th>
                   ))}
+                  {showActionTitle(actions)}
                 </Tr>
               </Thead>
               <Tbody>
-                {paginatedData.map((row, rowIndex) => (
+                {paginatedData.map((entry, rowIndex) => (
                   <Tr key={rowIndex} border="bottom">
-                    {titlesOptions.map((header, colIndex) => {
-                      const cellData = row[header.id as keyof IPosition];
-                      return (
-                        <Td
-                          key={colIndex}
-                          align={header.action ? "center" : "left"}
-                        >
-                          {header.action
-                            ? renderActionIcon(header.id)
-                            : cellData}
-                        </Td>
-                      );
-                    })}
+                    {titlesOptions.map((title) => (
+                      <Td
+                        key={`e-${entry[title.id]}`}
+                        align={entry.action ? "center" : "left"}
+                      >
+                        {entry[title.id]}
+                      </Td>
+                    ))}
+                    {ShowAction(actions, entry)}
                   </Tr>
                 ))}
               </Tbody>
               <Tfoot>
                 <Tr border="bottom">
                   <Td
-                    colSpan={titlesOptions.length}
+                    colSpan={titlesOptions.length + actions.length}
                     type="custom"
-                    align="center"
+                    align="right"
                   >
                     <Pagination
                       firstEntryInPage={firstEntryInPage}

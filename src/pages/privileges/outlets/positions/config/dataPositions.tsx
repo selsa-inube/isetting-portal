@@ -1,4 +1,9 @@
-import {  MdModeEdit, MdDelete, MdLaunch } from "react-icons/md";
+import { MdModeEdit, MdOutlineDelete } from "react-icons/md";
+import { Icon } from "@inubekit/icon";
+
+import { DetailsModal } from "../components/DetailsModal";
+import { IPosition } from "../add-position/types";
+import { IActions, IAction } from "../types";
 
 export const titlesOptions = [
   {
@@ -6,24 +11,6 @@ export const titlesOptions = [
     titleName: "Cargos",
     action: false,
     priority: 1,
-  },
-  {
-    id: "details",
-    titleName: "Detalle",
-    action: true,
-    priority: 2,
-  },
-  {
-    id: "edit",
-    titleName: "Editar",
-    action: true,
-    priority: 3,
-  },
-  {
-    id: "delete",
-    titleName: "Eliminar",
-    action: true,
-    priority: 4,
   },
 ];
 
@@ -34,10 +21,42 @@ export const PositionsBreakPointsConfig = [
   { breakpoint: "(max-width: 430px)", totalColumns: 1 },
 ];
 
-const actionIcons: { [key: string]: JSX.Element | null } = {
-  details: <MdLaunch />,
-  edit: <MdModeEdit />,
-  delete: <MdDelete />,
-};
+export const labelsOptions = [
+  {
+    id: "public_code",
+    labelName: "Código",
+    type: "text",
+  },
+  {
+    id: "abbreviated_name",
+    labelName: "Descripción Funcional",
+    type: "text",
+  },
+  {
+    id: "n_roles",
+    labelName: "Roles",
+    type: "table",
+  },
+];
 
-export const renderActionIcon = (actionType: string) => actionIcons[actionType] || null;
+export const actions: IAction[] = [
+  {
+    id: "details",
+    actionName: "Detalle",
+    content: (data: IActions) => (
+      <DetailsModal data={data as IPosition} labelsOptions={labelsOptions} />
+    ),
+  },
+  {
+    id: "edit",
+    actionName: "Editar",
+    content: () => <Icon icon={<MdModeEdit />} size="16px" appearance="dark" />,
+  },
+  {
+    id: "delete",
+    actionName: "Eliminar",
+    content: () => (
+      <Icon icon={<MdOutlineDelete />} size="16px" appearance="dark" />
+    ),
+  },
+];
