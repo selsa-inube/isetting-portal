@@ -1,49 +1,22 @@
 import { Assisted } from "@inubekit/assisted";
 import { Breadcrumbs } from "@inubekit/breadcrumbs";
-import { Button } from "@inubekit/button";
 import { Stack } from "@inubekit/stack";
 import { useMediaQuery } from "@inubekit/hooks";
 
 import { isMobile580 } from "@config/environment";
 import { PageTitle } from "@components/PageTitle";
-import { DecisionModal } from "@components/feedback/DecisionModal";
-import { RenderMessage } from "@components/feedback/RenderMessage";
 import { basic } from "@design/tokens";
 
-import {
-  createPositionConfig,
-  finishAssistedModalConfig,
-  stepsAddPosition,
-} from "./config/addPosition.config";
+import { createPositionConfig } from "./config/addPosition.config";
 import {
   IFormAddPosition,
   IFormAddPositionRef,
   IStep,
   titleButtonTextAssited,
 } from "./types";
-import { GeneralInformationForm } from "../components/GeneralInformationForm";
+
 import { StyledContainerAssisted } from "./styles";
 import { IMessageState } from "../../types/forms.types";
-
-const renderStepContent = (
-  currentStep: number,
-  formReferences: IFormAddPositionRef,
-  dataAddPositionLinixForm: IFormAddPosition,
-  setIsCurrentFormValid: React.Dispatch<React.SetStateAction<boolean>>
-) => {
-  return (
-    <>
-      {currentStep === stepsAddPosition.generalInformation.id && (
-        <GeneralInformationForm
-          initialValues={dataAddPositionLinixForm.generalInformation.values}
-          ref={formReferences.generalInformation}
-          onFormValid={setIsCurrentFormValid}
-        />
-      )}
-    </>
-  );
-};
-
 interface AddPositionUIProps {
   currentStep: number;
   steps: IStep[];
@@ -65,27 +38,23 @@ export function AddPositionUI(props: AddPositionUIProps) {
   const {
     currentStep,
     steps,
-    showModal,
     isCurrentFormValid,
-    dataAddPositionLinixForm,
-    formReferences,
-    loading,
-    message,
-    setIsCurrentFormValid,
     handleNextStep,
     handlePreviousStep,
-    handleToggleModal,
-    handleCloseSectionMessage,
   } = props;
-
-  const { title, description, actionText } =
-    finishAssistedModalConfig;
 
   const smallScreen = useMediaQuery(isMobile580);
   const disabled = !isCurrentFormValid;
 
   return (
-    <Stack direction="column" padding={smallScreen ? `{${basic.spacing.s16}}` : `${basic.spacing.s32} ${basic.spacing.s64}`}>
+    <Stack
+      direction="column"
+      padding={
+        smallScreen
+          ? `{${basic.spacing.s16}}`
+          : `${basic.spacing.s32} ${basic.spacing.s64}`
+      }
+    >
       <Stack gap={basic.spacing.s48} direction="column">
         <Stack gap={basic.spacing.s32} direction="column">
           <Breadcrumbs crumbs={createPositionConfig[0].crumbs} />
@@ -111,52 +80,8 @@ export function AddPositionUI(props: AddPositionUIProps) {
               titleButtonText={titleButtonTextAssited}
             />
           </StyledContainerAssisted>
-          {renderStepContent(
-            currentStep,
-            formReferences,
-            dataAddPositionLinixForm,
-            setIsCurrentFormValid
-          )}
         </>
-        <Stack gap={basic.spacing.s16} justifyContent="flex-end">
-          <Button
-            onClick={handlePreviousStep}
-            type="button"
-            disabled={currentStep === steps[0].id}
-            spacing="compact"
-            variant="none"
-            appearance="gray"
-          >
-            Atrás
-          </Button>
-
-          <Button
-            onClick={handleNextStep}
-            spacing="compact"
-            disabled={disabled}
-          >
-            {currentStep === steps.length ? "Enviar" : "Siguiente"}
-          </Button>
-        </Stack>
       </Stack>
-      {showModal && (
-        <DecisionModal
-          title={title}
-          portalId="portal"
-          description={description}
-          actionText={actionText}
-          loading={loading}
-          closeModal={handleToggleModal}
-          handleClick={handleCloseSectionMessage}
-        />
-      )}
-      {message.visible && (
-        <RenderMessage
-          message={message}
-          handleCloseMessage={handleCloseSectionMessage}
-          onMessageClosed={handleCloseSectionMessage}
-        />
-      )}
     </Stack>
   );
 }

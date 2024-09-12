@@ -2,6 +2,7 @@ import { IGeneralInformationEntry } from "../../components/GeneralInformationFor
 
 const generalInformation: IGeneralInformationEntry = {
   abbreviated_name: "",
+  n_Uso: "",
 };
 
 export const initalValuesPositions = {

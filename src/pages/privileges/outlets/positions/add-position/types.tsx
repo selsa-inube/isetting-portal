@@ -3,9 +3,9 @@ import { IGeneralInformationEntry } from "../components/GeneralInformationForm";
 import React from "react";
 
 export const titleButtonTextAssited = {
-  before: "Anterior",
+  before: "Atrás",
   after: "Siguiente",
-  finish: "Enviar",
+  finish: "Confirmar",
 };
 export interface IPosition {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
