@@ -2,12 +2,16 @@ import { Assisted } from "@inubekit/assisted";
 import { Breadcrumbs } from "@inubekit/breadcrumbs";
 import { Stack } from "@inubekit/stack";
 import { useMediaQuery } from "@inubekit/hooks";
+import { Button } from "@inubekit/button";
 
 import { isMobile580 } from "@config/environment";
 import { PageTitle } from "@components/PageTitle";
 import { basic } from "@design/tokens";
 
-import { createPositionConfig } from "./config/addPosition.config";
+import {
+  createPositionConfig,
+  stepsAddPosition,
+} from "./config/addPosition.config";
 import {
   IFormAddPosition,
   IFormAddPositionRef,
@@ -15,8 +19,28 @@ import {
   titleButtonTextAssited,
 } from "./types";
 
+import { GeneralInformationForm } from "../components/GeneralInformationForm";
 import { StyledContainerAssisted } from "./styles";
 import { IMessageState } from "../../types/forms.types";
+
+const renderStepContent = (
+  currentStep: number,
+  formReferences: IFormAddPositionRef,
+  dataAddPositionLinixForm: IFormAddPosition,
+  setIsCurrentFormValid: React.Dispatch<React.SetStateAction<boolean>>
+) => {
+  return (
+    <>
+      {currentStep === stepsAddPosition.generalInformation.id && (
+        <GeneralInformationForm
+          initialValues={dataAddPositionLinixForm.generalInformation.values}
+          ref={formReferences.generalInformation}
+          onFormValid={setIsCurrentFormValid}
+        />
+      )}
+    </>
+  );
+};
 interface AddPositionUIProps {
   currentStep: number;
   steps: IStep[];
@@ -38,7 +62,10 @@ export function AddPositionUI(props: AddPositionUIProps) {
   const {
     currentStep,
     steps,
+    formReferences,
+    dataAddPositionLinixForm,
     isCurrentFormValid,
+    setIsCurrentFormValid,
     handleNextStep,
     handlePreviousStep,
   } = props;
@@ -80,7 +107,32 @@ export function AddPositionUI(props: AddPositionUIProps) {
               titleButtonText={titleButtonTextAssited}
             />
           </StyledContainerAssisted>
+          {renderStepContent(
+            currentStep,
+            formReferences,
+            dataAddPositionLinixForm,
+            setIsCurrentFormValid
+          )}
         </>
+        <Stack gap={basic.spacing.s16} justifyContent="flex-end">
+          <Button
+            onClick={handlePreviousStep}
+            type="button"
+            disabled={currentStep === steps[0].id}
+            spacing="compact"
+            variant="none"
+            appearance="gray"
+          >
+            Atrás
+          </Button>
+          <Button
+            onClick={handleNextStep}
+            spacing="compact"
+            disabled={disabled}
+          >
+            {currentStep === steps.length ? "Confirmar" : "Siguiente"}
+          </Button>
+        </Stack>
       </Stack>
     </Stack>
   );
