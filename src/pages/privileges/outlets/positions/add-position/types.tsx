@@ -5,7 +5,7 @@ import React from "react";
 export const titleButtonTextAssited = {
   before: "Atrás",
   after: "Siguiente",
-  finish: "Confirmar",
+  finish: "Enviar",
 };
 export interface IPosition {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
