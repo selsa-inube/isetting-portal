@@ -2,13 +2,9 @@ import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FormikProps } from "formik";
 
-
 import { IGeneralInformationEntry } from "../components/GeneralInformationForm";
 import { stepsAddPosition } from "./config/addPosition.config";
-import {
-  IFormAddPosition,
-  IFormAddPositionRef,
-} from "./types";
+import { IFormAddPosition, IFormAddPositionRef } from "./types";
 import { initalValuesPositions } from "./config/initialValues";
 import { addPositionStepsRules } from "./utils";
 import { AddPositionUI } from "./interface";
@@ -22,7 +18,7 @@ export function AddPosition() {
 
   const steps = Object.values(stepsAddPosition);
   const [loading, setLoading] = useState(false);
-  const [isCurrentFormValid, setIsCurrentFormValid] = useState(false);
+  const [isCurrentFormValid, setIsCurrentFormValid] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [message, setMessage] = useState<IMessageState>({
     visible: false,

@@ -7,10 +7,10 @@ export const stepsAddPosition = {
     label: "Información general",
     description: "Por favor completa la información general.",
   },
-  rolesPorCargos: {
+  roles: {
     id: 2,
-    label: "Roles",
-    description: "Por favor completa la información de roles.",
+    label: "Selección de roles",
+    description: "Selecciona los roles que necesites.",
   },
   summary: {
     id: 3,
@@ -24,8 +24,9 @@ export const stepsAddPosition = {
 export const createPositionConfig = [
   {
     id: 1,
-    title: "Agregar cargo",
-    description: "Completa la información para agregar cargo",
+    title: "Consulta de cargos vigentes",
+    description:
+      "Consultar, crear, editar y eliminar los privilegios de un cargo.",
     route: "/privileges/positions/add-position",
     crumbs: [
       {
@@ -48,7 +49,7 @@ export const createPositionConfig = [
       },
       {
         path: "/privileges/positions/add-position",
-        label: "Agregar cargo",
+        label: "Solicitar nuevo cargo",
         id: "/privileges/positions/add-position",
         isActive: true,
       },
