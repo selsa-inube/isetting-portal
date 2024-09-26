@@ -40,17 +40,17 @@ export function GeneralInformationFormUI(props: GeneralInformationFormUIProps) {
           <Textfield
             label="Nombre Cargo"
             placeholder="Nombre del cargo"
-            name="abbreviated_name"
-            id="abbreviated_name"
-            value={formik.values.abbreviated_name}
+            name="abbreviatedName"
+            id="abbreviatedName"
+            value={formik.values.abbreviatedName}
             type="text"
             size="compact"
             fullwidth
             message={
-              stateValue(formik, "abbreviated_name") !== "invalid" &&
-              formik.errors.abbreviated_name
+              stateValue(formik, "abbreviatedName") !== "invalid" &&
+              formik.errors.abbreviatedName
             }
-            status={stateValue(formik, "abbreviated_name")}
+            status={stateValue(formik, "abbreviatedName")}
             onBlur={formik.handleBlur}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
               handleChangeForm(event)
@@ -60,13 +60,13 @@ export function GeneralInformationFormUI(props: GeneralInformationFormUIProps) {
           <Textarea
             label="Descripción Funcional"
             placeholder="Agregue una breve descripción"
-            name="n_Uso"
-            id="n_Uso"
-            value={formik.values.n_Uso}
+            name="nUso"
+            id="nUso"
+            value={formik.values.nUso}
             message={
-              stateValue(formik, "n_Uso") !== "invalid" && formik.errors.n_Uso
+              stateValue(formik, "nUso") !== "invalid" && formik.errors.nUso
             }
-            status={stateValue(formik, "n_Uso")}
+            status={stateValue(formik, "nUso")}
             fullwidth
             maxLength={100}
             onBlur={formik.handleBlur}

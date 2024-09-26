@@ -9,13 +9,13 @@ import { GeneralInformationFormUI } from "./interface";
 import { generalMessage } from "../../add-position/config/messages.config";
 import { IHandleUpdateDataSwitchstep } from "../../add-position/types";
 export interface IGeneralInformationEntry {
-  abbreviated_name: string;
-  n_Uso: string;
+  abbreviatedName: string;
+  nUso: string;
 }
 
 const validationSchema = Yup.object({
-  abbreviated_name: Yup.string().required(validationMessages.required),
-  n_Uso: Yup.string().required(validationMessages.required),
+  abbreviatedName: Yup.string().required(validationMessages.required),
+  nUso: Yup.string().required(validationMessages.required),
 });
 
 interface IGeneralInformationFormProps {
