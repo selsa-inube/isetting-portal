@@ -1,7 +1,6 @@
 import { Grid } from "@inubekit/grid";
 import { Textfield } from "@inubekit/textfield";
-import { RenderMessage } from "@components/feedback/RenderMessage";
-import { FormButtons } from "@components/forms/submit/FormButtons";
+import { Textarea } from "@inubekit/textarea";
 import { IMessageState } from "@pages/privileges/outlets/types/forms.types";
 import { FormikValues } from "formik";
 import { IGeneralInformationEntry } from ".";
@@ -27,36 +26,49 @@ interface GeneralInformationFormUIProps {
 }
 
 export function GeneralInformationFormUI(props: GeneralInformationFormUIProps) {
-  const {
-    formik,
-    loading,
-    withSubmitButtons,
-    message,
-    disabledButtons,
-    handleCloseSectionMessage,
-    handleReset,
-    handleChangeForm,
-    handleSubmitForm,
-  } = props;
+  const { formik, handleChangeForm } = props;
 
   return (
     <>
       <form>
-        <Grid templateColumns="1fr" gap={basic.spacing.s16} width="100%" autoRows="unset">
+        <Grid
+          templateColumns="1fr"
+          gap={basic.spacing.s16}
+          width="100%"
+          autoRows="unset"
+        >
           <Textfield
             label="Nombre Cargo"
             placeholder="Nombre del cargo"
-            name="abbreviated_name"
-            id="abbreviated_name"
-            value={formik.values.abbreviated_name}
+            name="abbreviatedName"
+            id="abbreviatedName"
+            value={formik.values.abbreviatedName}
             type="text"
             size="compact"
             fullwidth
             message={
-              stateValue(formik, "abbreviated_name") === "invalid"
-                && formik.errors.abbreviated_name
+              stateValue(formik, "abbreviatedName") !== "invalid" &&
+              formik.errors.abbreviatedName
             }
-            status={stateValue(formik, "abbreviated_name")}
+            status={stateValue(formik, "abbreviatedName")}
+            onBlur={formik.handleBlur}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+              handleChangeForm(event)
+            }
+            required
+          />
+          <Textarea
+            label="Descripción Funcional"
+            placeholder="Agregue una breve descripción"
+            name="nUso"
+            id="nUso"
+            value={formik.values.nUso}
+            message={
+              stateValue(formik, "nUso") !== "invalid" && formik.errors.nUso
+            }
+            status={stateValue(formik, "nUso")}
+            fullwidth
+            maxLength={100}
             onBlur={formik.handleBlur}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
               handleChangeForm(event)
@@ -65,22 +77,6 @@ export function GeneralInformationFormUI(props: GeneralInformationFormUIProps) {
           />
         </Grid>
       </form>
-      {withSubmitButtons && (
-        <FormButtons
-          handleSubmit={handleSubmitForm}
-          handleReset={formik.resetForm}
-          withDisabledButtons={!disabledButtons(formik.values)}
-          loading={loading}
-          children=""
-        />
-      )}
-      {message.visible && (
-        <RenderMessage
-          message={message}
-          handleCloseMessage={handleCloseSectionMessage}
-          onMessageClosed={handleReset}
-        />
-      )}
     </>
   );
 }

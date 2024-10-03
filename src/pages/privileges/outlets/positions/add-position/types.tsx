@@ -1,6 +1,8 @@
+import React from "react";
 import { FormikProps } from "formik";
 import { IGeneralInformationEntry } from "../components/GeneralInformationForm";
-import React from "react";
+
+import { IAssignmentFormEntry } from "../../types/forms.types";
 
 export const titleButtonTextAssited = {
   before: "Atrás",
@@ -34,4 +36,6 @@ export interface IFormAddPositionRef {
   generalInformation: React.RefObject<FormikProps<IGeneralInformationEntry>>;
 }
 
-export type IHandleUpdateDataSwitchstep = IGeneralInformationEntry;
+export type IHandleUpdateDataSwitchstep =
+  | IGeneralInformationEntry
+  | IAssignmentFormEntry[];

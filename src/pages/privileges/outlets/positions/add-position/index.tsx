@@ -18,7 +18,7 @@ export function AddPosition() {
 
   const steps = Object.values(stepsAddPosition);
   const [loading, setLoading] = useState(false);
-  const [isCurrentFormValid, setIsCurrentFormValid] = useState(true);
+  const [isCurrentFormValid, setIsCurrentFormValid] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [message, setMessage] = useState<IMessageState>({
     visible: false,
