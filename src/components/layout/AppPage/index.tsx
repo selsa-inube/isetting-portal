@@ -13,7 +13,7 @@ import { MenuSection } from "@components/navigation/MenuSection";
 import { MenuUser } from "@components/navigation/MenuUser";
 import { LogoutModal } from "@components/feedback/LogoutModal";
 
-import { nav, logoutConfig } from "@config/nav";
+import { nav, actions } from "@config/nav";
 import linparLogo from "@assets/images/linpar.png";
 
 import {
@@ -120,8 +120,8 @@ function AppPage() {
               <StyledContainerNav>
                 <Nav
                   navigation={nav}
-                  logoutPath={logoutConfig.logoutPath}
-                  logoutTitle={logoutConfig.logoutTitle}
+                  actions={actions}
+                  //logoutTitle={logoutConfig.logoutTitle}
                 />
               </StyledContainerNav>
             )}

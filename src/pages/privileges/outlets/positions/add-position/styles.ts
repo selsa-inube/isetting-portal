@@ -15,6 +15,6 @@ export const StyledContainerAssisted = styled.div<IStyledContainerAssisted>`
     color: ${({ $cursorDisabled }) =>
       $cursorDisabled
         ? inube.color.text.dark.disabled
-        : inube.color.text.primary.regular};
+        : inube.color.text.dark.disabled};
   }
 `;
