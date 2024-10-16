@@ -5,6 +5,7 @@ import { Icon } from "@inubekit/icon";
 import { Text } from "@inubekit/text";
 import { useMediaQuery } from "@inubekit/hooks";
 import { Divider } from "@components/layout/Divider";
+import { isMobile450 } from "@config/environment";
 
 import { StyledContainer, StyledHead } from "./styles";
 
@@ -20,7 +21,7 @@ export const Accordion = (props: IAccordionProps) => {
 
   const handleToggleOpen = () => setIsOpen(!isOpen);
 
-  const isMobile = useMediaQuery("(max-width: 450px)");
+  const isMobile = useMediaQuery(isMobile450);
 
   return (
     <StyledContainer>

@@ -1,4 +1,5 @@
 import { useMediaQuery } from "@inubekit/hooks";
+import { isMobile740 } from "@config/environment";
 import { VerificationAddPositionUI } from "./interface";
 import { IAttributes, IDataVerificationStep } from "./types";
 import {
@@ -34,7 +35,7 @@ function filterAndMapData(
 export const VerificationAddPosition = (props: IControllerAccordionProps) => {
   const { steps, setCurrentStep } = props;
 
-  const isMobile = useMediaQuery("(max-width: 740px)");
+  const isMobile = useMediaQuery(isMobile740);
 
   const dataVerificationStep: IDataVerificationStep[] = [steps].map((data) => ({
     sections: {

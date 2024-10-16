@@ -8,6 +8,7 @@ import { basic } from "@design/tokens";
 import { PageTitle } from "@components/PageTitle";
 import { DecisionModal } from "@components/feedback/DecisionModal";
 import { RenderMessage } from "@components/feedback/RenderMessage";
+import { isMobile580 } from "@config/environment";
 
 import {
   createPositionConfig,
@@ -114,7 +115,7 @@ export function AddPositionUI(props: AddPositionUIProps) {
   const { title, description, actionText, appearance } =
     finishAssistedModalConfig;
 
-  const smallScreen = useMediaQuery("(max-width: 580px)");
+  const smallScreen = useMediaQuery(isMobile580);
   const disabled = !isCurrentFormValid || validateActiveRoles();
 
   return (

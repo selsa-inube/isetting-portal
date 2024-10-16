@@ -25,6 +25,7 @@ import { basic } from "@design/tokens";
 import { MultipleChoices } from "@components/inputs/MultipleChoices";
 import { IOptionInitialiceEntryApp } from "@pages/privileges/outlets/positions/add-position/types";
 import { IOptionItemCheckedProps } from "@components/inputs/SelectCheck/OptionItem";
+import { isMobile650 } from "@config/environment";
 
 import {
   StyledForm,
@@ -63,7 +64,7 @@ function AssignmentFormUI(props: AssignmentFormUIProps) {
     valueSelect,
   } = props;
 
-  const smallScreen = useMediaQuery("(max-width: 650px)");
+  const smallScreen = useMediaQuery(isMobile650);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [filteredRows, setFilteredRows] = useState<IEntry[]>(entries);
   const [filterValue, setFilterValue] = useState("");
