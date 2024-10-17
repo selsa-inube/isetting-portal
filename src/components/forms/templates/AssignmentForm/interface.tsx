@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { MdOutlineMoreHoriz, MdSearch } from "react-icons/md";
 import { Button } from "@inubekit/button";
 import { Stack } from "@inubekit/stack";
@@ -23,111 +23,58 @@ import { Menu } from "@components/navigation/Menu";
 import { IOption } from "@components/navigation/Menu/types";
 import { basic } from "@design/tokens";
 import { MultipleChoices } from "@components/inputs/MultipleChoices";
-import { IOptionInitialiceEntryApp } from "@pages/privileges/outlets/positions/add-position/types";
-import { IOptionItemCheckedProps } from "@components/inputs/SelectCheck/OptionItem";
 import { isMobile650 } from "@config/environment";
-
+import { IOptionItemCheckedProps } from "@components/inputs/SelectCheck/OptionItem";
 import {
   StyledForm,
   StyledOptionsContainer,
   StyledToggleContainer,
 } from "./styles";
-import { IEntry, titlesOptions, Option } from "./types";
+import { IEntry, Option, titlesOptions } from "./types";
 
 interface AssignmentFormUIProps {
-  title: string;
-  filter: string;
-  handleFilter: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleToggleAllEntries: (allocate: boolean) => void;
-  handleToggleEntry: (id: string) => void;
   entries: IEntry[];
-  showMenu: boolean;
-  handleToggleMenuInvitation: () => void;
-  handleCloseMenuInvitation: () => void;
-  menuOptions: IOption[];
+  filter: string;
+  filteredRows: IEntry[];
+  filterValue: string;
   isAssignAll: boolean;
+  menuOptions: IOption[];
+  options: Option[];
+  showMenu: boolean;
+  title: string;
+  handleCloseMenuInvitation: () => void;
+  handleFilter: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSelectChange: (options: IOptionItemCheckedProps[]) => void;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  handleToggleAllEntries: (allocate: boolean) => void;
+  handleToggleMenuInvitation: () => void;
+  onHandleSelectCheckChange: (id: string) => void;
+  handleFilterInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
   readOnly?: boolean;
-  valueSelect: IOptionInitialiceEntryApp[];
 }
 
 function AssignmentFormUI(props: AssignmentFormUIProps) {
   const {
     title,
     handleToggleAllEntries,
-    handleToggleEntry,
     entries,
     showMenu,
+    options,
+    handleSubmit,
     handleToggleMenuInvitation,
     handleCloseMenuInvitation,
+    handleSelectChange,
+    onHandleSelectCheckChange,
+    handleFilterInput,
+    filterValue,
     menuOptions,
     isAssignAll,
-    valueSelect,
+    filteredRows,
   } = props;
 
   const smallScreen = useMediaQuery(isMobile650);
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
-  const [filteredRows, setFilteredRows] = useState<IEntry[]>(entries);
-  const [filterValue, setFilterValue] = useState("");
-
-  const options: Option[] = valueSelect.map((entry) => ({
-    id: entry.k_uso,
-    label: entry.n_uso,
-    checked: selectedOptions.includes(entry.k_uso),
-  }));
-
-  const handleSelectChange = (options: IOptionItemCheckedProps[]) => {
-    const selectedIds = options
-      .filter((option) => option.checked)
-      .map((option) => option.id);
-    setSelectedOptions(selectedIds);
-  };
-
-  useEffect(() => {
-    if (selectedOptions.length === 0 && filterValue.length === 0) {
-      setFilteredRows(entries);
-      return;
-    }
-    let newfilter = filteredRows;
-
-    if (selectedOptions.length > 0) {
-      newfilter = entries.filter(
-        (entry) => entry.k_uso && selectedOptions.includes(entry.k_uso)
-      );
-    }
-
-    if (filterValue.length > 0) {
-      newfilter = newfilter.filter(
-        (entry) =>
-          entry.value.toLowerCase().includes(filterValue.toLowerCase()) ||
-          (entry.n_uso ?? "").toLowerCase().includes(filterValue.toLowerCase())
-      );
-    }
-    setFilteredRows(newfilter);
-  }, [selectedOptions, filterValue]);
-
-  const handleFilterInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFilterValue(e.target.value);
-  };
 
   const dataValidations = entries.length === 0;
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-  };
-
-  const onHandleSelectCheckChange = (id: string) => {
-    setFilteredRows((prevRows) =>
-      prevRows.map((entry) =>
-        entry.id === id
-          ? {
-              ...entry,
-              isActive: !entry.isActive,
-            }
-          : entry
-      )
-    );
-    handleToggleEntry(id);
-  };
 
   return (
     <StyledForm onSubmit={handleSubmit}>
