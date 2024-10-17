@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { IOption } from "@components/navigation/Menu/types";
+import { IOptionInitialiceEntryApp } from "@pages/privileges/outlets/positions/add-position/types";
 import { AssignmentFormUI } from "./interface";
 import { IEntry } from "./types";
-import { IOptionInitialiceEntryApp } from "@pages/privileges/outlets/positions/add-position/types";
 
 interface AssignmentFormProps {
   handleChange: (entries: IEntry[]) => void;

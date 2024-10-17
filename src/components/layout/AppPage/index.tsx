@@ -118,11 +118,7 @@ function AppPage() {
           >
             {!smallScreen && (
               <StyledContainerNav>
-                <Nav
-                  navigation={nav}
-                  actions={actions}
-                  //logoutTitle={logoutConfig.logoutTitle}
-                />
+                <Nav navigation={nav} actions={actions} />
               </StyledContainerNav>
             )}
 

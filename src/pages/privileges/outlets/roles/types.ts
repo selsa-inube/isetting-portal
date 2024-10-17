@@ -1,8 +1,4 @@
 import { FormikProps } from "formik";
-
-//import { IAncillaryAccountsForm } from "./components/AncillaryAccountsForm";
-//import { IAssignmentFormEntry } from "@ptypes/forms.types";
-
 export interface IDeleteForMessage {
   id: number;
   successfulDiscard: boolean;
@@ -54,7 +50,6 @@ export interface IRol {
 
 export interface IFormAddRoleRef {
   generalInformation: React.RefObject<FormikProps<IGeneralInformationForm>>;
-  //ancillaryAccounts: React.RefObject<FormikProps<IAncillaryAccountsForm>>;
 }
 
 export interface IStep {
@@ -77,7 +72,6 @@ interface IGeneralInformation {
 
 interface IAncillaryAccounts {
   isValid: boolean;
-  //values: IAncillaryAccountsForm;
 }
 
 export interface IInitialiceFormRole {
@@ -108,5 +102,3 @@ export interface IApplication {
 }
 
 export type IHandleChangeFormData = IGeneralInformationForm;
-//| IAncillaryAccountsForm
-//| IAssignmentFormEntry[];

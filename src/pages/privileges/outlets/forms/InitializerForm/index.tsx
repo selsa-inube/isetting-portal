@@ -79,7 +79,6 @@ export function InitializerForm(props: IInitializerForm) {
       setIsLoading(false);
       setMessage({
         visible: true,
-        //data: generalMessage.success,
       });
     }, LOADING_TIMEOUT);
   };

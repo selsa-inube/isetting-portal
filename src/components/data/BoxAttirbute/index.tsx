@@ -1,12 +1,12 @@
 import { Text } from "@inubekit/text";
 import { StyledBoxAttribute } from "./styles";
 
-export interface IBoxAttributeProps {
+export interface BoxAttributeProps {
   attribute: string;
   value: string | number;
 }
 
-export function BoxAttribute(props: IBoxAttributeProps) {
+export function BoxAttribute(props: BoxAttributeProps) {
   const { attribute, value } = props;
 
   return (

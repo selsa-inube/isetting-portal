@@ -9,7 +9,7 @@ export const StyledBoxAttribute = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border-radius: 8px;
+  border-radius: ${basic.spacing.s8};
   padding: ${basic.spacing.s6} ${basic.spacing.s16};
   background-color: ${({ theme }) =>
     theme?.color?.surface?.gray?.clear || inube.palette.neutral.N10};
