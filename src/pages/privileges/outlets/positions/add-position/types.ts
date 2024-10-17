@@ -1,7 +1,8 @@
 import React from "react";
 import { FormikProps } from "formik";
-import { IGeneralInformationEntry } from "../components/GeneralInformationForm";
 import { IAssignmentFormEntry } from "@ptypes/forms.types";
+
+import { IGeneralInformationEntry } from "../components/GeneralInformationForm";
 
 export interface DataToAssignmentFormEntryProps {
   dataOptions: Record<string, unknown>[];
