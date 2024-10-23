@@ -2,6 +2,7 @@ import { ValueDataType, ValueHowToSetUp } from "@src/pages/rules/types";
 import { IRuleDecision } from "@isettingkit/input";
 
 const decision1: IRuleDecision = {
+  id: "decision-1",
   decisions: [
     {
       name: "TasaInteresAnual",
@@ -36,7 +37,7 @@ const decision1: IRuleDecision = {
       description: "Categoría del cliente",
       label: "Categoría del cliente",
       typeData: ValueDataType.ALPHABETICAL,
-          value: {
+      value: {
         list: ["Premium", "Leales"],
       },
       howToSetUp: ValueHowToSetUp.LIST_OF_VALUES_MULTI,
@@ -45,6 +46,7 @@ const decision1: IRuleDecision = {
 };
 
 const decision2: IRuleDecision = {
+  id: "decision-2",
   decisions: [
     {
       name: "TasaInteresAnual",
@@ -86,23 +88,24 @@ const decision2: IRuleDecision = {
 };
 
 const decision3: IRuleDecision = {
+  id: "decision-3",
   decisions: [
-      {
-        name: "TasaInteresAnual",
-        label: "Tasa de interés anual",
-        description: "Tasa de interés anual",
-        typeData: ValueDataType.PERCENTAGE,
-        value: 8,
-        howToSetUp: ValueHowToSetUp.LIST_OF_VALUES,
-      },
-      {
-        name: "TasaInteresMensual",
-        label: "Tasa de interés mensual",
-        description: "Tasa de interés mensual",
-        typeData: ValueDataType.PERCENTAGE,
-        value: 3,
-        howToSetUp: ValueHowToSetUp.LIST_OF_VALUES,
-      },
+    {
+      name: "TasaInteresAnual",
+      label: "Tasa de interés anual",
+      description: "Tasa de interés anual",
+      typeData: ValueDataType.PERCENTAGE,
+      value: 8,
+      howToSetUp: ValueHowToSetUp.LIST_OF_VALUES,
+    },
+    {
+      name: "TasaInteresMensual",
+      label: "Tasa de interés mensual",
+      description: "Tasa de interés mensual",
+      typeData: ValueDataType.PERCENTAGE,
+      value: 3,
+      howToSetUp: ValueHowToSetUp.LIST_OF_VALUES,
+    },
   ],
   startDate: new Date("2024-09-01"),
   endDate: new Date("2024-10-01"),
@@ -129,6 +132,7 @@ const decision3: IRuleDecision = {
 };
 
 const decision4: IRuleDecision = {
+  id: "decision-4",
   decisions: [
     {
       name: "PorcentajeDescuento",
@@ -170,6 +174,7 @@ const decision4: IRuleDecision = {
 };
 
 const decision5: IRuleDecision = {
+  id: "decision-5",
   decisions: [
     {
       name: "TasaDescuento",
@@ -220,4 +225,4 @@ const decisions = [
   decision5,
 ];
 
-export {decisions };
+export { decisions };

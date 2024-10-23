@@ -47,9 +47,9 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      <ThemeProvider theme={theme}>
+      {/* <ThemeProvider theme={theme}> */}
         <RouterProvider router={router} />
-      </ThemeProvider>
+      {/* </ThemeProvider> */}
     </>
   );
 }
