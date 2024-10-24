@@ -4,7 +4,6 @@ const getData = (): IRuleDecision => {
   const decision: IRuleDecision = {
     decision: {
       name: "TasaEfectivaAnual",
-      label: "Tasa de interés efectiva anual",
       description: "Tasa de interés efectiva anual",
       typeData: ValueDataType.ALPHABETICAL,
       possibleValue: {
@@ -18,7 +17,6 @@ const getData = (): IRuleDecision => {
     conditions: [
       {
         name: "PlazoMeses",
-        label: "Plazo en meses",
         description: "Plazo en meses",
         typeData: ValueDataType.NUMBER,
         possibleValue: {
@@ -27,15 +25,10 @@ const getData = (): IRuleDecision => {
           rangeFrom: 1,
           rangeTo: 12,
         },
-        value:{
-          labelFrom: "desde",
-          labelTo: "hasta",
-        },
         howToSetUp: ValueHowToSetUp.RANGE,
       },
       {
         name: "ScoringRiesgo",
-        label: "Scoring de riesgo",
         description: "Scoring de riesgo",
         typeData: ValueDataType.NUMBER,
         possibleValue: {
@@ -44,15 +37,10 @@ const getData = (): IRuleDecision => {
           rangeFrom: 100,
           rangeTo: 700,
         },
-        value:{
-          labelFrom: "desde",
-          labelTo: "hasta",
-        },
         howToSetUp: ValueHowToSetUp.RANGE,
       },
       {
         name: "CategoriaCliente",
-        label: "Categoria del cliente",
         description: "Categoria del cliente",
         typeData: ValueDataType.ALPHABETICAL,
         possibleValue: {
@@ -63,7 +51,6 @@ const getData = (): IRuleDecision => {
       },
       {
         name: "Riesgo",
-        label: "Riesgo",
         description: "Riesgo",
         typeData: ValueDataType.ALPHABETICAL,
         possibleValue: {
@@ -74,7 +61,6 @@ const getData = (): IRuleDecision => {
       },
       {
         name: "CarteraDescubierto",
-        label: "Cartera de descubierto",
         description: "Cartera de descubierto",
         typeData: ValueDataType.CURRENCY,
         possibleValue: {
@@ -91,7 +77,6 @@ const getData = (): IRuleDecision => {
       },
       {
         name: "FechaTasa",
-        label: "Fecha Tasa",
         description: "Fecha Tasa",
         typeData: ValueDataType.DATE,
         possibleValue: {
@@ -101,7 +86,6 @@ const getData = (): IRuleDecision => {
       },
       {
         name: "Porcentaje",
-        label: "Porcentaje",
         description: "Porcentaje",
         typeData: ValueDataType.PERCENTAGE,
         possibleValue: {
@@ -111,7 +95,6 @@ const getData = (): IRuleDecision => {
       },
       {
         name: "Monto",
-        label: "Monto",
         description: "Monto",
         typeData: ValueDataType.CURRENCY,
         possibleValue: {

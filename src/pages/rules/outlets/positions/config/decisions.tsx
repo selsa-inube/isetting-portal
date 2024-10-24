@@ -1,217 +1,253 @@
-import { ValueDataType, ValueHowToSetUp } from "@src/pages/rules/types";
-import { IRuleDecision } from "@isettingkit/input";
+import { IRuleDecision, ValueDataType, ValueHowToSetUp } from "@isettingkit/input";
 
 const decision1: IRuleDecision = {
-  id: "decision-1",
-  decisions: [
-    {
-      name: "TasaInteresAnual",
-      label: "Tasa de interés anual",
-      description: "Tasa de interés anual",
-      typeData: ValueDataType.PERCENTAGE,
-      value: 5.2,
-      howToSetUp: ValueHowToSetUp.LIST_OF_VALUES,
+  decision: {
+    name: "TasaInteresAnual",
+    description: "Tasa de interés anual",
+    typeData: ValueDataType.PERCENTAGE,
+    possibleValue: {
+      list: ["10%", "15%", "20%", "25%"],
+      listSelected: ["10%"],
     },
-    {
-      name: "TasaInteresMensual",
-      label: "Tasa de interés mensual",
-      description: "Tasa de interés mensual",
-      typeData: ValueDataType.PERCENTAGE,
-      value: 2,
-      howToSetUp: ValueHowToSetUp.LIST_OF_VALUES,
-    },
-  ],
-  startDate: new Date("2024-05-01"),
-  endDate: new Date("2024-06-01"),
+    howToSetUp: ValueHowToSetUp.LIST_OF_VALUES,
+    startDate: new Date("2024-08-15"),
+    endDate: new Date("2024-09-15"),
+  },
   conditions: [
     {
-      name: "IngresosAnuales",
-      label: "Ingresos anuales",
-      description: "Ingresos anuales",
-      typeData: ValueDataType.CURRENCY,
-      value: 35000,
-      howToSetUp: ValueHowToSetUp.EQUAL,
+      name: "PlazoMeses",
+      description: "Plazo en meses",
+      typeData: ValueDataType.NUMBER,
+      possibleValue: {
+        labelFrom: "1",
+        labelTo: "12",
+        rangeFrom: 1,
+        rangeTo: 12,
+      },
+      howToSetUp: ValueHowToSetUp.RANGE,
+    },
+    {
+      name: "ScoringRiesgo",
+      description: "Scoring de riesgo",
+      typeData: ValueDataType.NUMBER,
+      possibleValue: {
+        labelFrom: "1",
+        labelTo: "12",
+        rangeFrom: 100,
+        rangeTo: 700,
+      },
+      howToSetUp: ValueHowToSetUp.RANGE,
     },
     {
       name: "CategoriaCliente",
-      description: "Categoría del cliente",
-      label: "Categoría del cliente",
+      description: "Categoria del cliente",
       typeData: ValueDataType.ALPHABETICAL,
-      value: {
-        list: ["Premium", "Leales"],
+      possibleValue: {
+        list: ["Funcionario", "Independiente", "Pensionado", "Empleado"],
+        listSelected: ["Independiente", "Pensionado"],
       },
       howToSetUp: ValueHowToSetUp.LIST_OF_VALUES_MULTI,
+    },
+    {
+      name: "Riesgo",
+      description: "Riesgo",
+      typeData: ValueDataType.ALPHABETICAL,
+      possibleValue: {
+        list: ["Muy alto", "Alto", "Medio", "Bajo", "Muy bajo"],
+        listSelected: ["Medio"],
+      },
+      howToSetUp: ValueHowToSetUp.LIST_OF_VALUES,
+    },
+    {
+      name: "CarteraDescubierto",
+      description: "Cartera de descubierto",
+      typeData: ValueDataType.CURRENCY,
+      possibleValue: {
+        labelFrom: "1",
+        labelTo: "12",
+        rangeFrom: 1000000,
+        rangeTo: 15000000,
+      },
+      value:{
+        labelFrom: "desde",
+        labelTo: "hasta",
+      },
+      howToSetUp: ValueHowToSetUp.RANGE,
+    },
+    {
+      name: "FechaTasa",
+      description: "Fecha Tasa",
+      typeData: ValueDataType.DATE,
+      possibleValue: {
+        value: "2024-08-15",
+      },
+      howToSetUp: ValueHowToSetUp.EQUAL,
+    },
+    {
+      name: "Porcentaje",
+      description: "Porcentaje",
+      typeData: ValueDataType.PERCENTAGE,
+      possibleValue: {
+        value: 10,
+      },
+      howToSetUp: ValueHowToSetUp.EQUAL,
+    },
+    {
+      name: "Monto",
+      description: "Monto",
+      typeData: ValueDataType.CURRENCY,
+      possibleValue: {
+        value: 1000000,
+      },
+      howToSetUp: ValueHowToSetUp.EQUAL,
     },
   ],
 };
 
 const decision2: IRuleDecision = {
-  id: "decision-2",
-  decisions: [
-    {
-      name: "TasaInteresAnual",
-      label: "Tasa de interés anual",
-      description: "Tasa de interés anual",
-      typeData: ValueDataType.PERCENTAGE,
-      value: 4,
-      howToSetUp: ValueHowToSetUp.LIST_OF_VALUES,
+  decision: {
+    name: "TasaInteresAnual",
+    description: "Tasa de interés anual",
+    typeData: ValueDataType.PERCENTAGE,
+    possibleValue: {
+      list: ["10%", "15%", "23%", "25%"],
+      listSelected: ["23%"],
     },
-    {
-      name: "TasaInteresMensual",
-      label: "Tasa de interés mensual",
-      description: "Tasa de interés mensual",
-      typeData: ValueDataType.PERCENTAGE,
-      value: 2,
-      howToSetUp: ValueHowToSetUp.LIST_OF_VALUES,
-    },
-  ],
-  startDate: new Date("2024-07-01"),
-  endDate: new Date("2024-08-01"),
+    howToSetUp: ValueHowToSetUp.LIST_OF_VALUES,
+    startDate: new Date("2024-08-15"),
+    endDate: new Date("2024-09-15"),
+  },
   conditions: [
     {
       name: "AntiguedadCliente",
-      label: "Antigüedad del cliente",
       description: "Antigüedad del cliente (Días)",
       typeData: ValueDataType.NUMBER,
-      value: 365,
+      possibleValue: {
+        list: ["10%", "15%", "23%", "25%"],
+        listSelected: ["25%"],
+      },
       howToSetUp: ValueHowToSetUp.EQUAL,
     },
     {
       name: "ReciprocidadAhorro",
-      label: "Reciprocidad de ahorro",
       description: "Reciprocidad de ahorro",
       typeData: ValueDataType.CURRENCY,
-      value: 10000,
+      possibleValue: {
+        value: 10000,
+      },
       howToSetUp: ValueHowToSetUp.EQUAL,
     },
   ],
 };
 
 const decision3: IRuleDecision = {
-  id: "decision-3",
-  decisions: [
-    {
-      name: "TasaInteresAnual",
-      label: "Tasa de interés anual",
-      description: "Tasa de interés anual",
-      typeData: ValueDataType.PERCENTAGE,
-      value: 8,
-      howToSetUp: ValueHowToSetUp.LIST_OF_VALUES,
+  decision: {
+    name: "TasaInteresAnual",
+    description: "Tasa de interés anual",
+    typeData: ValueDataType.PERCENTAGE,
+    possibleValue: {
+      labelFrom: "1",
+      labelTo: "12",
+      rangeFrom: 12,
+      rangeTo: 28,
     },
-    {
-      name: "TasaInteresMensual",
-      label: "Tasa de interés mensual",
-      description: "Tasa de interés mensual",
-      typeData: ValueDataType.PERCENTAGE,
-      value: 3,
-      howToSetUp: ValueHowToSetUp.LIST_OF_VALUES,
-    },
-  ],
-  startDate: new Date("2024-09-01"),
-  endDate: new Date("2024-10-01"),
+    howToSetUp: ValueHowToSetUp.RANGE,
+    startDate: new Date("2024-08-15"),
+    endDate: new Date("2024-09-15"),
+  },
   conditions: [
     {
       name: "CategoriaCliente",
       description: "Categoría del cliente",
-      label: "Categoría del cliente",
       typeData: ValueDataType.ALPHABETICAL,
-      value: {
+      possibleValue: {
         list: ["Premium", "Leales"],
+        listSelected: ["Premium", "Leales"],
       },
       howToSetUp: ValueHowToSetUp.LIST_OF_VALUES_MULTI,
     },
     {
       name: "ReciprocidadInversion",
-      label: "Reciprocidad de inversión",
       description: "Reciprocidad de inversión",
       typeData: ValueDataType.CURRENCY,
-      value: 25000,
+      possibleValue: {
+        value: 25000,
+      },
       howToSetUp: ValueHowToSetUp.EQUAL,
     },
   ],
 };
 
 const decision4: IRuleDecision = {
-  id: "decision-4",
-  decisions: [
-    {
-      name: "PorcentajeDescuento",
-      label: "Porcentaje de descuento",
-      description: "Porcentaje de descuento",
-      typeData: ValueDataType.PERCENTAGE,
-      value: 10,
-      howToSetUp: ValueHowToSetUp.LIST_OF_VALUES,
+  decision: {
+    name: "PorcentajeDescuento",
+    description: "Porcentaje de descuento",
+    typeData: ValueDataType.PERCENTAGE,
+    possibleValue: {
+      labelFrom: "1",
+      labelTo: "12",
+      rangeFrom: 24,
+      rangeTo: 32,
     },
-    {
-      name: "TipoDescuento",
-      label: "Tipo de descuento",
-      description: "Tipo de descuento",
-      typeData: ValueDataType.ALPHABETICAL,
-      value: "Promocional",
-      howToSetUp: ValueHowToSetUp.EQUAL,
-    },
-  ],
-  startDate: new Date("2024-10-01"),
-  endDate: new Date("2024-12-31"),
+    howToSetUp: ValueHowToSetUp.RANGE,
+    startDate: new Date("2024-08-15"),
+    endDate: new Date("2024-09-15"),
+  },
   conditions: [
     {
       name: "FrecuenciaCompra",
-      label: "Frecuencia de compra",
       description: "Frecuencia de compra",
       typeData: ValueDataType.NUMBER,
-      value: 12,
+      possibleValue: {
+        value: 12,
+      },
       howToSetUp: ValueHowToSetUp.EQUAL,
     },
     {
       name: "Temporada",
-      label: "Temporada",
       description: "Temporada",
       typeData: ValueDataType.ALPHABETICAL,
-      value: "Festiva",
+      possibleValue: {
+        value: "Festiva",
+      },
       howToSetUp: ValueHowToSetUp.EQUAL,
     },
   ],
 };
 
 const decision5: IRuleDecision = {
-  id: "decision-5",
-  decisions: [
-    {
-      name: "TasaDescuento",
-      label: "Tasa de descuento",
-      description: "Tasa de descuento",
-      typeData: ValueDataType.PERCENTAGE,
-      value: 15,
-      howToSetUp: ValueHowToSetUp.LIST_OF_VALUES,
+  decision: {
+    name: "TasaDescuento",
+    description: "Tasa de descuento",
+    typeData: ValueDataType.PERCENTAGE,
+    possibleValue: {
+      labelFrom: "1",
+      labelTo: "12",
+      rangeFrom: 24,
+      rangeTo: 32,
     },
-    {
-      name: "ValorMaximo",
-      label: "Valor máximo de descuento",
-      description: "Valor máximo de descuento",
-      typeData: ValueDataType.CURRENCY,
-      value: 5000,
-      howToSetUp: ValueHowToSetUp.EQUAL,
-    },
-  ],
-  startDate: new Date("2024-11-01"),
-  endDate: new Date("2024-12-01"),
+    howToSetUp: ValueHowToSetUp.RANGE,
+    startDate: new Date("2024-08-15"),
+    endDate: new Date("2024-09-15"),
+  },
   conditions: [
     {
       name: "CategoriaProducto",
-      label: "Categoría del producto",
       description: "Categoría del producto",
       typeData: ValueDataType.ALPHABETICAL,
-      value: {
+      possibleValue: {
         list: ["Electrónica"],
+        listSelected: ["Electrónica"],
       },
       howToSetUp: ValueHowToSetUp.LIST_OF_VALUES_MULTI,
     },
     {
       name: "ReciprocidadCompra",
-      label: "Reciprocidad de compra",
       description: "Reciprocidad de compra",
       typeData: ValueDataType.CURRENCY,
-      value: 3000,
+      possibleValue: {
+        value: 3000,
+      },
       howToSetUp: ValueHowToSetUp.EQUAL,
     },
   ],

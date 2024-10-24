@@ -100,7 +100,7 @@ export function AddPositionUI(props: AddPositionUIProps) {
         <>
           <StyledContainerAssisted $cursorDisabled={disabled}>
             <Assisted
-              steps={steps}
+              step={steps}
               currentStepId={currentStep}
               handlePrev={handlePreviousStep}
               handleNext={handleNextStep}
