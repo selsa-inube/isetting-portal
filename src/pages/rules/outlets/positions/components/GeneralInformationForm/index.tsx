@@ -6,8 +6,9 @@ import { IMessageState } from "@pages/privileges/outlets/types/forms.types";
 
 import { FormikProps, useFormik } from "formik";
 import { GeneralInformationFormUI } from "./interface";
-import { generalMessage } from "../../add-position/config/messages.config";
-import { IHandleUpdateDataSwitchstep } from "../../add-position/types";
+import { generalMessage } from "@pages/privileges/outlets/positions/add-position/config/messages.config";
+import { IHandleUpdateDataSwitchstep } from "@pages/privileges/outlets/positions/add-position/types";
+
 export interface IGeneralInformationEntry {
   abbreviatedName: string;
   nUso: string;

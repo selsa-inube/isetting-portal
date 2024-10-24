@@ -9,7 +9,6 @@ import { PageTitle } from "@components/PageTitle";
 import { basic } from "@design/tokens";
 import { isMobile580 } from "@config/environment";
 import { LoadingApp } from "@pages/login/outlets/LoadingApp";
-import { IPosition } from "./add-position/types";
 import { privilegeOptionsConfig } from "@pages/privileges/config/privileges.config";
 import { BusinessRuleCard, BusinessRuleView, RulesForm } from "@isettingkit/business-rules";
 import { Grid } from "@inubekit/grid";
@@ -19,6 +18,7 @@ import { IRuleDecision } from "@isettingkit/input";
 import { useState } from "react";
 import { stepsMock } from "./config/stepmock";
 import { getData } from "./config/formMock";
+import { IPosition } from "@pages/privileges/outlets/positions/add-position/types";
 
 interface IPositionsUIProps {
   handleSearchPositions: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -27,10 +27,12 @@ interface IPositionsUIProps {
   data: IPosition[];
   decisions: IRuleDecision[];
   isModalOpen: boolean;
+  selectedDecision: IRuleDecision | null; // New prop for selected decision
   handleOpenModal: () => void;
   handleCloseModal: () => void;
   handleSubmitForm: (dataDecision: IRuleDecision) => void;
   handleDelete: (id: string) => void;
+  handleView: (decision: IRuleDecision) => void; // New prop for view handler
 }
 
 export function PositionsUI(props: IPositionsUIProps) {
@@ -39,10 +41,12 @@ export function PositionsUI(props: IPositionsUIProps) {
     data,
     decisions,
     isModalOpen,
+    selectedDecision,
     handleOpenModal,
     handleCloseModal,
     handleSubmitForm,
     handleDelete,
+    handleView, // Destructure handleView
   } = props;
 
   const smallScreen = useMediaQuery(isMobile580);
@@ -50,7 +54,7 @@ export function PositionsUI(props: IPositionsUIProps) {
   const label = privilegeOptionsConfig.find(
     (item) => item.url === location.pathname
   );
-  const [currentStepNumber, _] = useState(3);
+  const [currentStepNumber] = useState(3);
 
   const stepsList = Object.values(stepsMock);
   const currentStep = stepsList.find(
@@ -128,13 +132,13 @@ export function PositionsUI(props: IPositionsUIProps) {
               {decisions.map((decision, index) => (
                 <BusinessRuleCard
                   key={`decision-${index}`}
+                  id={`decision-${index}`}
                   handleDelete={() => {
                     handleDelete(decision.id!);
                   }}
                   handleView={() => {
-                    console.log(`Viewing item with id: ${decision.id}`);
+                    handleView(decision); // Trigger the modal for viewing/editing
                   }}
-                  id={`decision-${index}`}
                 >
                   <BusinessRuleView
                     decision={decision}
@@ -151,9 +155,9 @@ export function PositionsUI(props: IPositionsUIProps) {
                       cancel: "Cancelar",
                       confirm: "Confirmar",
                       none: "Ninguno",
-                      FactsThatConditionIt: "Hechos que condicionan",
+                      factsThatConditionIt: "Hechos que condicionan",
                       criteria: "Criterios",
-                      Terms: "Vigencia",
+                      terms: "Vigencia",
                     }}
                   />
                 </BusinessRuleCard>
@@ -167,14 +171,14 @@ export function PositionsUI(props: IPositionsUIProps) {
         <RulesConfiguration
           portalId="modal-portal"
           onCloseModal={handleCloseModal}
-          title="Configuración de Reglas"
+          title={selectedDecision ? "Editar Decisión" : "Configuración de Reglas"}
         >
           <RulesForm
-            decision={getData()}
+            id={selectedDecision ? selectedDecision.id! : `decision-${decisions.length + 1}`} 
+            decision={selectedDecision || getData()} 
             onCloseModal={handleCloseModal}
             onCancel={handleCloseModal}
             onSubmitEvent={(dataDecision: IRuleDecision) => {
-              console.log('dataDecision:', dataDecision),
               handleSubmitForm(dataDecision);
             }}
             textValues={{
@@ -190,9 +194,9 @@ export function PositionsUI(props: IPositionsUIProps) {
               cancel: "Cancelar",
               confirm: "Confirmar",
               none: "Ninguno",
-              FactsThatConditionIt: "Hechos que condicionan",
+              factsThatConditionIt: "Hechos que condicionan",
               criteria: "Criterios",
-              Terms: "Vigencia",
+              terms: "Vigencia",
             }}
           />
         </RulesConfiguration>

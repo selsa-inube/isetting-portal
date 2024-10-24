@@ -4,7 +4,8 @@ import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { Icon } from "@inubekit/icon";
 
 import { InteractiveModal } from "@components/feedback/InteractiveModal";
-import { IPosition } from "../../add-position/types";
+import { IPosition } from "@pages/privileges/outlets/positions/add-position/types";
+
 interface Field {
   id: string;
   labelName: string;

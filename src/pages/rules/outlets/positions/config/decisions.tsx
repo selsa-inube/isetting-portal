@@ -1,6 +1,7 @@
 import { IRuleDecision, ValueDataType, ValueHowToSetUp } from "@isettingkit/input";
 
 const decision1: IRuleDecision = {
+  id: "decision-1",
   decision: {
     name: "TasaInteresAnual",
     description: "Tasa de interés anual",
@@ -105,6 +106,7 @@ const decision1: IRuleDecision = {
 };
 
 const decision2: IRuleDecision = {
+  id: "decision-2",
   decision: {
     name: "TasaInteresAnual",
     description: "Tasa de interés anual",
@@ -141,6 +143,7 @@ const decision2: IRuleDecision = {
 };
 
 const decision3: IRuleDecision = {
+  id: "decision-3",
   decision: {
     name: "TasaInteresAnual",
     description: "Tasa de interés anual",
@@ -179,6 +182,7 @@ const decision3: IRuleDecision = {
 };
 
 const decision4: IRuleDecision = {
+  id: "decision-4",
   decision: {
     name: "PorcentajeDescuento",
     description: "Porcentaje de descuento",
@@ -216,6 +220,7 @@ const decision4: IRuleDecision = {
 };
 
 const decision5: IRuleDecision = {
+  id: "decision-5",
   decision: {
     name: "TasaDescuento",
     description: "Tasa de descuento",

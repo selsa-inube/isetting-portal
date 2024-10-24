@@ -1,5 +1,5 @@
+import { IPosition } from "@pages/privileges/outlets/positions/add-position/types";
 import { useState, useMemo } from "react";
-import { IPosition } from "../../add-position/types";
 
 const usePagination = (
   searchPosition: string,
