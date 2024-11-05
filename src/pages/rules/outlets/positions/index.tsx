@@ -52,7 +52,6 @@ export function Positions() {
         )
       );
     } else {
-      // If adding a new decision
       const newDecision = {
         ...dataDecision,
         id: `decision-${decisions.length + 1}`,

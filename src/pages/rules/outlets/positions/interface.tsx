@@ -27,12 +27,12 @@ interface IPositionsUIProps {
   data: IPosition[];
   decisions: IRuleDecision[];
   isModalOpen: boolean;
-  selectedDecision: IRuleDecision | null; // New prop for selected decision
+  selectedDecision: IRuleDecision | null; 
   handleOpenModal: () => void;
   handleCloseModal: () => void;
   handleSubmitForm: (dataDecision: IRuleDecision) => void;
   handleDelete: (id: string) => void;
-  handleView: (decision: IRuleDecision) => void; // New prop for view handler
+  handleView: (decision: IRuleDecision) => void;
 }
 
 export function PositionsUI(props: IPositionsUIProps) {
@@ -46,7 +46,7 @@ export function PositionsUI(props: IPositionsUIProps) {
     handleCloseModal,
     handleSubmitForm,
     handleDelete,
-    handleView, // Destructure handleView
+    handleView,
   } = props;
 
   const smallScreen = useMediaQuery(isMobile580);
@@ -137,7 +137,7 @@ export function PositionsUI(props: IPositionsUIProps) {
                     handleDelete(decision.id!);
                   }}
                   handleView={() => {
-                    handleView(decision); // Trigger the modal for viewing/editing
+                    handleView(decision);
                   }}
                 >
                   <BusinessRuleView
@@ -168,6 +168,7 @@ export function PositionsUI(props: IPositionsUIProps) {
       </Stack>
 
       {isModalOpen && (
+        console.log('selectedDecision: ',selectedDecision,' - decisions:' ,getData()),
         <RulesConfiguration
           portalId="modal-portal"
           onCloseModal={handleCloseModal}
