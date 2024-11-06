@@ -6,6 +6,7 @@ import { IRuleDecision } from "@isettingkit/input";
 import { decisions as initialDecisions } from "./config/decisions";
 import { PositionsUI } from "./interface";
 import { IPosition } from "@pages/privileges/outlets/positions/add-position/types";
+import { getData } from "./config/formMock";
 
 export function Positions() {
   const [searchPosition, setSearchPosition] = useState<string>("");
@@ -13,7 +14,8 @@ export function Positions() {
   const [positions, setPositions] = useState<IPosition[]>([]);
   const [decisions, setDecisions] = useState<IRuleDecision[]>(initialDecisions);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedDecision, setSelectedDecision] = useState<IRuleDecision | null>(null); // New state for selected decision
+  const [selectedDecision, setSelectedDecision] = useState<IRuleDecision | null>(null);
+  const [originalDecision, setOriginalDecision] = useState<IRuleDecision | null>(null);
 
   useEffect(() => {
     getAll("staff-positions")
@@ -35,31 +37,86 @@ export function Positions() {
     setSearchPosition(e.target.value);
   };
 
+  // const handleOpenModal = () => {
+  //   setSelectedDecision(null); 
+  //   setIsModalOpen(true);
+  // };
+
+
+  // const handleCloseModal = () => {
+  //   setIsModalOpen(false);
+  // };
+
+  // const handleSubmitForm = (dataDecision: IRuleDecision) => {
+  //   console.log('handleSubmitForm: dataDecision', dataDecision);
+  //   if (selectedDecision) {
+  //     setDecisions((prevDecisions) =>
+  //       prevDecisions.map((decision) =>
+  //         decision.id === selectedDecision.id ? dataDecision : decision
+  //       )
+  //     );
+  //   } else {
+  //     const newDecision = {
+  //       ...dataDecision,
+  //       id: `decision-${decisions.length + 1}`,
+  //     };
+  //     setDecisions((prevDecisions) => [...prevDecisions, newDecision]);
+  //   }
+  //   handleCloseModal();
+  // };
   const handleOpenModal = () => {
-    setSelectedDecision(null); 
+    const newDecision = selectedDecision || getData();
+    setOriginalDecision(newDecision);
     setIsModalOpen(true);
+    setSelectedDecision(null); 
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
+    setOriginalDecision(null);
   };
 
-  const handleSubmitForm = (dataDecision: IRuleDecision) => {
-    if (selectedDecision) {
-      setDecisions((prevDecisions) =>
-        prevDecisions.map((decision) =>
-          decision.id === selectedDecision.id ? dataDecision : decision
-        )
-      );
-    } else {
-      const newDecision = {
-        ...dataDecision,
-        id: `decision-${decisions.length + 1}`,
-      };
-      setDecisions((prevDecisions) => [...prevDecisions, newDecision]);
-    }
-    handleCloseModal();
+  const revertModalDisplayData = (dataDecision: IRuleDecision, originalDecision: IRuleDecision) => {
+    const conditionToRestore = {
+      name: dataDecision.name,
+      dataType: dataDecision.dataType,
+      value: dataDecision.value,
+      valueUse: dataDecision.valueUse,
+      possibleValue: dataDecision.possibleValue,
+      switchPlaces: true,
+    };
+  
+    return {
+      ...originalDecision,
+      conditions: dataDecision.conditions?.map((condition) =>
+        condition.hidden ? conditionToRestore : condition
+      ),
+    };
   };
+  
+
+const handleSubmitForm = (dataDecision: IRuleDecision) => {
+  const revertedDecision = revertModalDisplayData(dataDecision, originalDecision!);
+
+  if (selectedDecision) {
+    setDecisions((prevDecisions) =>
+      prevDecisions.map((decision) =>
+        decision.id === selectedDecision.id ? revertedDecision : decision
+      )
+    );
+    console.log('updatedDecision: ', revertedDecision);
+  } else {
+    const newDecision = {
+      ...revertedDecision,
+      id: `decision-${decisions.length + 1}`,
+    };
+    setDecisions((prevDecisions) => [...prevDecisions, newDecision]);
+    console.log('newDecision: ', newDecision);
+  }
+
+  handleCloseModal();
+};
+
 
   const handleDelete = (id: string) => {
     setDecisions((prevDecisions) =>
@@ -67,11 +124,16 @@ export function Positions() {
     );
   };
 
+  // const handleView = (decision: IRuleDecision) => {
+  //   setSelectedDecision(decision);
+  //   setIsModalOpen(true);
+  // };
   const handleView = (decision: IRuleDecision) => {
     setSelectedDecision(decision);
+    setOriginalDecision(decision);
     setIsModalOpen(true);
   };
-
+  
   return (
     <PositionsUI
       handleSearchPositions={handleSearchPositions}

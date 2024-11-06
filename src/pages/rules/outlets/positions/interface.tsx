@@ -10,7 +10,7 @@ import { basic } from "@design/tokens";
 import { isMobile580 } from "@config/environment";
 import { LoadingApp } from "@pages/login/outlets/LoadingApp";
 import { privilegeOptionsConfig } from "@pages/privileges/config/privileges.config";
-import { BusinessRuleCard, BusinessRuleView, RulesForm } from "@isettingkit/business-rules";
+import { BusinessRuleCard } from "@isettingkit/business-rules";
 import { Grid } from "@inubekit/grid";
 import { Assisted } from "@inubekit/assisted";
 import { RulesConfiguration } from "@components/modals/RulesConfiguration";
@@ -19,6 +19,8 @@ import { useState } from "react";
 import { stepsMock } from "./config/stepmock";
 import { getData } from "./config/formMock";
 import { IPosition } from "@pages/privileges/outlets/positions/add-position/types";
+import { BusinessRuleView } from "./config/businessRuleView";
+import { RulesForm } from "./config/form";
 
 interface IPositionsUIProps {
   handleSearchPositions: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -60,6 +62,58 @@ export function PositionsUI(props: IPositionsUIProps) {
   const currentStep = stepsList.find(
     (step: { number: number }) => step.number === currentStepNumber
   );
+
+
+  // const [conditionReplacement, setConditionReplacement] = useState<string | null>(null);
+
+// const getModalDisplayData = () => {
+//   const data = selectedDecision || getData();
+
+//   if (conditionReplacement) {
+//     const conditionToDisplay = data.conditions.find(
+//       (condition) => condition.name === conditionReplacement
+//     );
+//     if (conditionToDisplay) {
+//       return {
+//         ...data,
+//         name: conditionToDisplay.name,
+//         dataType: conditionToDisplay.dataType,
+//         value: conditionToDisplay.value,
+//         valueUse: conditionToDisplay.valueUse,
+//         possibleValue: conditionToDisplay.possibleValue,
+//         conditions: data.conditions.filter(
+//           (condition) => condition.name !== conditionReplacement
+//         ),
+//       };
+//     }
+//   }
+  
+//   return data;
+// };
+
+const getModalDisplayData = (decision) => {
+  const data = decision || getData();
+  const conditionToDisplay = data.conditions?.find((condition) => condition.switchPlaces);
+  if (conditionToDisplay) {
+    return {
+      ...data,
+      name: conditionToDisplay.name,
+      dataType: conditionToDisplay.dataType,
+      value: conditionToDisplay.value,
+      valueUse: conditionToDisplay.valueUse,
+      possibleValue: conditionToDisplay.possibleValue,
+      conditions: data.conditions.map((condition) =>
+        condition.name === conditionToDisplay.name
+          ? { ...condition, hidden: true }
+          : condition
+      ),
+    };
+  }
+
+  return data;
+};
+
+
 
   return (
     <Stack
@@ -110,6 +164,7 @@ export function PositionsUI(props: IPositionsUIProps) {
               submitText: "Enviar",
             }}
           />
+
           <Stack justifyContent="flex-end" alignItems="center">
             <Button
               iconBefore={<MdAddCircleOutline />}
@@ -141,7 +196,7 @@ export function PositionsUI(props: IPositionsUIProps) {
                   }}
                 >
                   <BusinessRuleView
-                    decision={decision}
+                    decision={getModalDisplayData(decision)}
                     textValues={{
                       selectOptions: "Seleccione las opciones",
                       selectOption: "Seleccione una opción",
@@ -168,7 +223,6 @@ export function PositionsUI(props: IPositionsUIProps) {
       </Stack>
 
       {isModalOpen && (
-        console.log('selectedDecision: ',selectedDecision,' - decisions:' ,getData()),
         <RulesConfiguration
           portalId="modal-portal"
           onCloseModal={handleCloseModal}
@@ -176,7 +230,7 @@ export function PositionsUI(props: IPositionsUIProps) {
         >
           <RulesForm
             id={selectedDecision ? selectedDecision.id! : `decision-${decisions.length + 1}`} 
-            decision={selectedDecision || getData()} 
+            decision={selectedDecision ? getModalDisplayData(selectedDecision) : getModalDisplayData(getData())} 
             onCloseModal={handleCloseModal}
             onCancel={handleCloseModal}
             onSubmitEvent={(dataDecision: IRuleDecision) => {

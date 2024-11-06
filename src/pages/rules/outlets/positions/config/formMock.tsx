@@ -29,6 +29,7 @@ const getData = (): IRuleDecision => {
           to: 700,
         },
         valueUse: ValueHowToSetUp.RANGE,
+        switchPlaces: true,
       },
       {
         name: "CategoriaCliente",
