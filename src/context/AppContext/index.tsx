@@ -1,16 +1,14 @@
-import { createContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import linparLogo from "@assets/images/linpar.png";
 import { useAuth0 } from "@auth0/auth0-react";
 
-import { IAppContext, AppContextProviderProps } from "@context/AppContext/types"
-import { IClient} from "@context/AppContext/types"
-
-
-export const AppContext = createContext<IAppContext>({
-  user: { username: "", id: "", company: "", operator: { name: "", logo: "" } },
-  handleClientChange: () => {},
-});
+import {
+  IAppContext,
+  AppContextProviderProps,
+} from "@context/AppContext/types";
+import { IClient } from "@context/AppContext/types";
+import { AppContext } from "./indexx";
 
 export default function AppContextProvider(props: AppContextProviderProps) {
   const { children } = props;

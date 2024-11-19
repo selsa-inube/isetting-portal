@@ -10,25 +10,25 @@ interface IRenderMessageProps {
 }
 
 const RenderMessage = (props: IRenderMessageProps) => {
-  const { message, handleCloseMessage, onMessageClosed } = props;
+  const { message } = props;
   if (!message.data) return null;
 
-  const closeMessageAndExecuteCallback = () => {
-    handleCloseMessage();
-    onMessageClosed();
-  };
+  // const closeMessageAndExecuteCallback = () => {
+  //   handleCloseMessage();
+  //   onMessageClosed();
+  // };
 
   return (
     <StyledMessageContainer>
       <Stack justifyContent="flex-end" width="100%">
         <Flag
           appearance={"success"}
-          closeFlag={closeMessageAndExecuteCallback}
+          // closeFlag={closeMessageAndExecuteCallback}
           description={message.data.description}
           duration={4000}
-          icon={message.data.icon}
+          // icon={message.data.icon}
           title={message.data.title}
-          isMessageResponsive
+          id={""} // isMessageResponsive
         />
       </Stack>
     </StyledMessageContainer>

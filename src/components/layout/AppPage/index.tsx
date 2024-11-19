@@ -8,7 +8,6 @@ import { Grid } from "@inubekit/grid";
 import { useMediaQuery } from "@inubekit/hooks";
 import { isMobile849 } from "@config/environment";
 
-import { AppContext } from "@context/AppContext";
 import { MenuSection } from "@components/navigation/MenuSection";
 import { MenuUser } from "@components/navigation/MenuUser";
 import { LogoutModal } from "@components/feedback/LogoutModal";
@@ -26,6 +25,7 @@ import {
   StyledMenuContainer,
   StyledHeaderContainer,
 } from "./styles";
+import { AppContext } from "@src/context/AppContext/indexx";
 
 const renderLogo = (imgUrl: string) => {
   return (
@@ -78,10 +78,10 @@ function AppPage() {
         <StyledHeaderContainer>
           <Header
             portalId="portal"
-            navigation={nav}
+            // navigation={nav}
             logoURL={renderLogo(linparLogo)}
-            userName={"Dora Lucia"}
-            client={"Selsa"}
+            menu={[]} // userName={"Dora Lucia"}
+            // client={"Selsa"}
           />
         </StyledHeaderContainer>
         {showUserMenu && (
