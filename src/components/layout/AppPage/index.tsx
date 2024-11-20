@@ -1,17 +1,11 @@
-import { useContext, useEffect, useRef, useState } from "react";
-import { MdLogout } from "react-icons/md";
+import { useEffect, useRef, useState } from "react";
 import { Outlet } from "react-router-dom";
-
 import { Header } from "@inubekit/header";
 import { Nav } from "@inubekit/nav";
 import { Grid } from "@inubekit/grid";
 import { useMediaQuery } from "@inubekit/hooks";
 import { isMobile849 } from "@config/environment";
-
-import { MenuSection } from "@components/navigation/MenuSection";
-import { MenuUser } from "@components/navigation/MenuUser";
 import { LogoutModal } from "@components/feedback/LogoutModal";
-
 import { nav, logoutConfig } from "@config/nav";
 import linparLogo from "@assets/images/linpar.png";
 
@@ -22,10 +16,10 @@ import {
   StyledLogo,
   StyledMain,
   StyledContainerNav,
-  StyledMenuContainer,
   StyledHeaderContainer,
 } from "./styles";
-import { AppContext } from "@src/context/AppContext/indexx";
+
+import { userMenu } from "./config/apps.config";
 
 const renderLogo = (imgUrl: string) => {
   return (
@@ -36,7 +30,6 @@ const renderLogo = (imgUrl: string) => {
 };
 
 function AppPage() {
-  const { user } = useContext(AppContext);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const userMenuRef = useRef<HTMLDivElement>(null);
@@ -78,31 +71,11 @@ function AppPage() {
         <StyledHeaderContainer>
           <Header
             portalId="portal"
-            // navigation={nav}
             logoURL={renderLogo(linparLogo)}
-            menu={[]} // userName={"Dora Lucia"}
-            // client={"Selsa"}
+            user={{ username: "Dora Lucia" }}
+            menu={userMenu}
           />
         </StyledHeaderContainer>
-        {showUserMenu && (
-          <StyledMenuContainer ref={userMenuRef}>
-            <MenuUser userName={"Dora Lucia"} businessUnit={user.company} />
-            <MenuSection
-              sections={[
-                {
-                  links: [
-                    {
-                      title: "Cerrar sesión",
-                      iconBefore: <MdLogout />,
-                      onClick: handleToggleLogoutModal,
-                    },
-                  ],
-                },
-              ]}
-              divider={true}
-            />
-          </StyledMenuContainer>
-        )}
 
         {showLogoutModal && (
           <LogoutModal

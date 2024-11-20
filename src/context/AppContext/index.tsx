@@ -8,9 +8,9 @@ import {
   AppContextProviderProps,
 } from "@context/AppContext/types";
 import { IClient } from "@context/AppContext/types";
-import { AppContext } from "./indexx";
+import { AppContext } from "../GlobalContext";
 
-export default function AppContextProvider(props: AppContextProviderProps) {
+function AppContextProvider(props: AppContextProviderProps) {
   const { children } = props;
   const { user } = useAuth0();
   const [clientSigla, setClientSigla] = useState(
@@ -44,3 +44,5 @@ export default function AppContextProvider(props: AppContextProviderProps) {
     <AppContext.Provider value={userContext}>{children}</AppContext.Provider>
   );
 }
+
+export { AppContextProvider };

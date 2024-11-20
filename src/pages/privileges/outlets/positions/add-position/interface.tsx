@@ -1,4 +1,3 @@
-import { Assisted } from "@inubekit/assisted";
 import { Breadcrumbs } from "@inubekit/breadcrumbs";
 import { Stack } from "@inubekit/stack";
 import { useMediaQuery } from "@inubekit/hooks";
@@ -12,15 +11,10 @@ import {
   createPositionConfig,
   stepsAddPosition,
 } from "./config/addPosition.config";
-import {
-  IFormAddPosition,
-  IFormAddPositionRef,
-  IStep,
-  titleButtonTextAssited,
-} from "./types";
+import { IFormAddPosition, IFormAddPositionRef, IStep } from "./types";
 
 import { GeneralInformationForm } from "../components/GeneralInformationForm";
-import { StyledContainerAssisted } from "./styles";
+
 import { IMessageState } from "../../types/forms.types";
 
 const renderStepContent = (
@@ -98,15 +92,6 @@ export function AddPositionUI(props: AddPositionUIProps) {
           </Stack>
         </Stack>
         <>
-          <StyledContainerAssisted $cursorDisabled={disabled}>
-            <Assisted
-              steps={steps}
-              currentStepId={currentStep}
-              handlePrev={handlePreviousStep}
-              handleNext={handleNextStep}
-              titleButtonText={titleButtonTextAssited}
-            />
-          </StyledContainerAssisted>
           {renderStepContent(
             currentStep,
             formReferences,
