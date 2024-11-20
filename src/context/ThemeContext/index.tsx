@@ -1,29 +1,11 @@
-import {
-  createContext,
-  useState,
-  useEffect,
-  Dispatch,
-  SetStateAction,
-  ReactNode,
-} from "react";
+import { useState, useEffect, ReactNode } from "react";
 import { ThemeProvider } from "styled-components";
 import { tokensWithReference } from "@src/design/tokensWithReference";
-
-type ThemeName = keyof typeof tokensWithReference;
-
-interface ThemeContextType {
-  themeName: ThemeName;
-  setThemeName: Dispatch<SetStateAction<ThemeName>>;
-}
+import { ThemeContext, ThemeName } from "./themeContext";
 
 interface ThemeProviderWrapperProps {
   children: ReactNode;
 }
-
-const ThemeContext = createContext<ThemeContextType>({
-  themeName: "sistemasenlinea",
-  setThemeName: () => {},
-});
 
 export const ThemeProviderWrapper = ({
   children,
@@ -46,5 +28,3 @@ export const ThemeProviderWrapper = ({
     </ThemeContext.Provider>
   );
 };
-
-export { ThemeContext };
