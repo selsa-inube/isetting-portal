@@ -11,7 +11,7 @@
       "strict": true,
       "forceConsistentCasingInFileNames": true,
       "module": "ESNext",
-      "moduleResolution": "Node",
+      "moduleResolution": "node",
       "resolveJsonModule": true,
       "isolatedModules": true,
       "noEmit": true,
@@ -34,9 +34,10 @@
         "@ptypes/*": ["./src/types/*"],
         "@forms/*": ["./src/shared/forms/*"]
       },
-      "types": ["vite/client"]
+      "types": ["vite/client", "rollup"]
     },
   
-    "include": ["src", "./manifest.d.ts", "vite-env.d.ts"],
+    "include": ["src", "types.d.ts", "vite-env.d.ts"],
+    "exclude": ["node_modules/@types/glob", "node_modules/@types/minimatch"],
     "references": [{ "path": "./tsconfig.node.json" }]
   }

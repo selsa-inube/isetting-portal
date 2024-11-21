@@ -15,7 +15,6 @@ import { PrivilegesRoutes } from "@routes/privileges";
 import { RulesRoutes } from "@routes/rules";
 
 import { GlobalStyles } from "./styles/global";
-import { ThemeProviderWrapper } from "./context/ThemeContext";
 import { ErrorPage } from "./components/layout/ErrorPage";
 
 function LogOut() {
@@ -47,9 +46,7 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      <ThemeProviderWrapper>
         <RouterProvider router={router} />
-      </ThemeProviderWrapper>
     </>
   );
 }
