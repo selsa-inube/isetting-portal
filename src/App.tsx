@@ -10,17 +10,17 @@ import { AppPage } from "@components/layout/AppPage";
 
 import { useAuth0 } from "@auth0/auth0-react";
 import { initializeDataDB } from "@mocks/utils/inicializeDataDB";
-import { environment } from "@config/environment";
 import { PrivilegesRoutes } from "@routes/privileges";
 import { RulesRoutes } from "@routes/rules";
 
 import { GlobalStyles } from "./styles/global";
 import { ThemeProviderWrapper } from "./context/ThemeContext";
 
+const redirect_uri = window.location.origin;
 function LogOut() {
   localStorage.clear();
   const { logout } = useAuth0();
-  logout({ logoutParams: { returnTo: environment.REDIRECT_URI } });
+  logout({ logoutParams: { returnTo: redirect_uri } });
   return <AppPage />;
 }
 
@@ -39,9 +39,18 @@ const router = createBrowserRouter(
 );
 
 function App() {
+  const { loginWithRedirect, isAuthenticated, isLoading } = useAuth0();
+
   useEffect(() => {
-    initializeDataDB();
-  }, []);
+    if (!isLoading && !isAuthenticated) {
+      loginWithRedirect();
+      initializeDataDB();
+    }
+  }, [isLoading, isAuthenticated, loginWithRedirect]);
+
+  if (!isAuthenticated) {
+    return null;
+  }
 
   return (
     <>
