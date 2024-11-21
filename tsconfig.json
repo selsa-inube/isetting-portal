@@ -1,42 +1,43 @@
 {
-  "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "@src/*": ["src/*"],
-      "@components/*": ["src/components/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@utils/*": ["src/utils/*"],
-      "@ptypes/*": ["src/types/*"],
-      "@mocks/*": ["src/mocks/*"],
-      "@context/*": ["src/context/*"],
-      "@pages/*": ["src/pages/*"],
-      "@assets/*": ["src/assets/*"],
-      "@services/*": ["src/services/*"],
-      "@config/*": ["./src/config/*"],
-      "@design/*": ["src/design/*"],
-      "@validations/*": ["src/validations/*"],
-      "@routes/*": ["src/routes/*"]
+    "compilerOptions": {
+      "target": "ESNext",
+      "useDefineForClassFields": true,
+      "lib": ["DOM", "DOM.Iterable", "ESNext"],
+      "allowJs": true,
+      "checkJs": false,
+      "skipLibCheck": true,
+      "esModuleInterop": false,
+      "allowSyntheticDefaultImports": true,
+      "strict": true,
+      "forceConsistentCasingInFileNames": true,
+      "module": "ESNext",
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "noEmit": true,
+      "jsx": "react-jsx",
+      "baseUrl": ".",
+      "paths": {
+        "@design/*": ["./src/design/*"],
+        "@components/*": ["./src/components/*"],
+        "@routes/*": ["./src/routes/*"],
+        "@utils/*": ["./src/utils/*"],
+        "@validations/*": ["./src/validations/*"],
+        "@assets/*": ["./src/assets/*"],
+        "@styles/*": ["./src/styles/*"],
+        "@content/*": ["./src/content/*"],
+        "@context/*": ["./src/context/*"],
+        "@config/*": ["./src/config/*"],
+        "@pages/*": ["./src/pages/*"],
+        "@hooks/*": ["./src/hooks/*"],
+        "@mocks/*": ["./src/mocks/*"],
+        "@ptypes/*": ["./src/types/*"],
+        "@forms/*": ["./src/shared/forms/*"]
+      },
+      "types": ["vite/client", "rollup"]
     },
-
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
-
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
-  },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
-}
+  
+    "include": ["src", "types.d.ts", "vite-env.d.ts"],
+    "exclude": ["node_modules/@types/glob", "node_modules/@types/minimatch"],
+    "references": [{ "path": "./tsconfig.node.json" }]
+  }
