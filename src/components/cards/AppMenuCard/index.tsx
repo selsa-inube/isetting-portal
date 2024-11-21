@@ -6,7 +6,7 @@ import { basic } from "@design/tokens";
 
 interface AppMenuCardProps {
   id: number;
-  icon: JSX.Element;
+  icon: React.ReactNode;
   label: string;
   description: string;
   url: string;
