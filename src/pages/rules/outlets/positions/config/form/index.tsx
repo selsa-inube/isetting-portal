@@ -3,8 +3,9 @@ import { useState } from "react";
 
 import { RulesFormUI } from "./interface";
 
-import { IRuleDecision, IValue, ValueValidationSchema } from "@isettingkit/input";
+import { IRuleDecision, IValue } from "@isettingkit/input";
 import { IRulesFormTextValues } from "../types";
+import { ValueValidationSchema } from "./utils";
 
 interface IRulesForm {
   id: string;

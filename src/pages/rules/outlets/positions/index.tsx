@@ -1,5 +1,4 @@
-// Positions.tsx
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
 import { getAll } from "@mocks/utils/dataMock.service";
 import { IRuleDecision } from "@isettingkit/input";
@@ -18,20 +17,23 @@ export function Positions() {
   const [originalDecision, setOriginalDecision] = useState<IRuleDecision | null>(null);
 
   useEffect(() => {
-    getAll("staff-positions")
-      .then((data) => {
-        setLoading(true);
-        if (data !== null) {
-          setPositions(data as IPosition[]);
-        }
-      })
-      .catch((error) => {
-        console.info(error.message);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    setLoading(true);
+    setTimeout(() => {
+      getAll("staff-positions")
+        .then((data) => {
+          if (data !== null) {
+            setPositions(data as IPosition[]);
+          }
+        })
+        .catch((error) => {
+          console.info(error.message);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }, 500);
   }, []);
+  
 
   const handleSearchPositions = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchPosition(e.target.value);
@@ -88,7 +90,7 @@ export function Positions() {
   
     return {
       ...originalDecision,
-      conditions: dataDecision.conditions?.map((condition) =>
+      conditions: dataDecision.conditions?.map((condition: any) =>
         condition.hidden ? conditionToRestore : condition
       ),
     };
@@ -148,6 +150,7 @@ const handleSubmitForm = (dataDecision: IRuleDecision) => {
       handleSubmitForm={handleSubmitForm}
       handleDelete={handleDelete}
       handleView={handleView} 
+      layoutMode="default"
     />
   );
 }

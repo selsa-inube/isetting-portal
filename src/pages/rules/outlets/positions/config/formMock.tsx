@@ -29,7 +29,7 @@ const getData = (): IRuleDecision => {
           to: 700,
         },
         valueUse: ValueHowToSetUp.RANGE,
-        switchPlaces: true,
+        // switchPlaces: true,
       },
       {
         name: "CategoriaCliente",
@@ -43,6 +43,9 @@ const getData = (): IRuleDecision => {
       {
         name: "Riesgo",
         dataType: ValueDataType.ALPHABETICAL,
+        possibleValue: {
+          list: ["Muy alto", "Alto", "Medio", "Bajo", "Muy bajo"],
+        },
         value: ["Medio"],
         valueUse: ValueHowToSetUp.LIST_OF_VALUES,
       },
@@ -78,4 +81,63 @@ const getData = (): IRuleDecision => {
 
 };
 
-export {getData};
+const decisionTemplate: IRuleDecision = {
+  name: "TasaEfectivaAnual",
+  dataType: ValueDataType.PERCENTAGE,
+  value: { from: -1, to: -1 },
+  valueUse: ValueHowToSetUp.RANGE,
+  startDate: "",
+  endDate: "",
+  conditions: [
+    {
+      name: "AntigüedadDelCliente(Días)",
+      dataType: ValueDataType.ALPHABETICAL,
+      value: "",
+      valueUse: ValueHowToSetUp.EQUAL,
+    },
+    {
+      name: "CategoríaDelCliente ",
+      dataType: ValueDataType.ALPHABETICAL,
+      possibleValue: {
+        list: ["Funcionario", "Independiente", "Pensionado", "Empleado"],
+      },
+      value: [],
+      valueUse: ValueHowToSetUp.LIST_OF_VALUES_MULTI,
+    },
+    {
+      name: "NivelDeMembresía",
+      dataType: ValueDataType.ALPHABETICAL,
+      possibleValue: {
+        list: ["Muy alto", "Alto", "Medio", "Bajo", "Muy bajo"],
+      },
+      value: "",
+      valueUse: ValueHowToSetUp.LIST_OF_VALUES,
+    },
+    {
+      name: "ReciprocidadDeAhorro",
+      dataType: ValueDataType.PERCENTAGE,
+      value: 0,
+      valueUse: ValueHowToSetUp.EQUAL,
+    },
+    {
+      name: "DestinoDelDinero",
+      dataType: ValueDataType.ALPHABETICAL,
+      value: "",
+      valueUse: ValueHowToSetUp.EQUAL,
+    },
+    {
+      name: "Temporada",
+      dataType: ValueDataType.ALPHABETICAL,
+      value: "",
+      valueUse: ValueHowToSetUp.EQUAL,
+    },
+    {
+      name: "ScoringDeRiesgo",
+      dataType: ValueDataType.ALPHABETICAL,
+      value: "",
+      valueUse: ValueHowToSetUp.EQUAL,
+    },
+  ],
+};
+
+export {decisionTemplate, getData };
