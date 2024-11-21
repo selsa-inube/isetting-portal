@@ -2,7 +2,7 @@ interface IMessage {
   show?: boolean;
   title: string;
   description: string;
-  icon: JSX.Element;
+  icon: Element;
   appearance: string;
 }
 

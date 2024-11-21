@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { forwardRef, useImperativeHandle, useState, useEffect } from "react";
 
 import * as Yup from "yup";
@@ -57,7 +58,7 @@ export const GeneralInformationForm = forwardRef(
           setLoading(false);
           setMessage({
             visible: true,
-            data: generalMessage.success,
+            data: generalMessage.success as any,
           });
         });
       },
@@ -76,7 +77,7 @@ export const GeneralInformationForm = forwardRef(
         if (Object.keys(errors).length > 0) {
           setMessage({
             visible: true,
-            data: generalMessage.failed,
+            data: generalMessage.failed as any,
           });
         }
 

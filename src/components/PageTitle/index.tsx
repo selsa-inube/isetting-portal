@@ -10,7 +10,7 @@ import { basic } from "@design/tokens";
 
 interface PageTitleProps {
   title: string;
-  icon?: JSX.Element;
+  icon?: React.ReactNode;
   description: string;
   navigatePage?: string;
 }

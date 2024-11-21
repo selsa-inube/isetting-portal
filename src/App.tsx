@@ -5,7 +5,7 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import { useEffect } from "react";
-import { ErrorPage } from "@components/layout/ErrorPage";
+
 import { AppPage } from "@components/layout/AppPage";
 
 import { useAuth0 } from "@auth0/auth0-react";
@@ -14,7 +14,7 @@ import { PrivilegesRoutes } from "@routes/privileges";
 import { RulesRoutes } from "@routes/rules";
 
 import { GlobalStyles } from "./styles/global";
-import { ThemeProviderWrapper } from "./context/ThemeContext";
+import { ErrorPage } from "./components/layout/ErrorPage";
 
 const redirect_uri = window.location.origin;
 function LogOut() {
@@ -55,11 +55,9 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      <ThemeProviderWrapper>
         <RouterProvider router={router} />
-      </ThemeProviderWrapper>
     </>
   );
 }
 
-export default App;
+export {App} ;
