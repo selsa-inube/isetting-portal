@@ -1,5 +1,5 @@
 import { createContext, Dispatch, SetStateAction, useContext } from "react";
-import { tokensWithReference } from "@src/design/tokensWithReference";
+import { tokensWithReference } from "@design/tokensWithReference";
 
 type ThemeName = keyof typeof tokensWithReference;
 

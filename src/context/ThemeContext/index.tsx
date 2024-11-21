@@ -1,6 +1,6 @@
 import { useState, useEffect, ReactNode } from "react";
 import { ThemeProvider } from "styled-components";
-import { tokensWithReference } from "@src/design/tokensWithReference";
+import { tokensWithReference } from "@design/tokensWithReference";
 import { ThemeContext, ThemeName } from "./themeContext";
 
 interface ThemeProviderWrapperProps {

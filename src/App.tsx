@@ -5,7 +5,7 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import { useEffect } from "react";
-import { ErrorPage } from "@components/layout/ErrorPage";
+
 import { AppPage } from "@components/layout/AppPage";
 
 import { useAuth0 } from "@auth0/auth0-react";
@@ -16,6 +16,7 @@ import { RulesRoutes } from "@routes/rules";
 
 import { GlobalStyles } from "./styles/global";
 import { ThemeProviderWrapper } from "./context/ThemeContext";
+import { ErrorPage } from "./components/layout/ErrorPage";
 
 function LogOut() {
   localStorage.clear();
@@ -53,4 +54,4 @@ function App() {
   );
 }
 
-export default App;
+export {App} ;
