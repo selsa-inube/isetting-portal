@@ -1,9 +1,9 @@
 import { registerApplication, start } from "single-spa";
 
 registerApplication({
-  name: "@app/credicar",
+  name: "credicar",
   app: () =>
-    System.import("http://localhost:3001/microfrontend.js"),
+    System.import("http://localhost:3001/src/main.tsx"),
   activeWhen: ["/credicar"], 
 });
 

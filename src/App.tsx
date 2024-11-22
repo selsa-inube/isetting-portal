@@ -18,8 +18,6 @@ import { GlobalStyles } from "./styles/global";
 import { ErrorPage } from "./components/layout/ErrorPage";
 import "systemjs";
 
-const isSingleSpaNavigate = window.singleSpaNavigate;
-
 function LogOut() {
   localStorage.clear();
   const { logout } = useAuth0();
@@ -47,21 +45,23 @@ const router = createBrowserRouter(
 
 function App() {
   useEffect(() => {
-
     initializeDataDB();
-
-
     const microfrontendRoot = document.getElementById("microfrontend-root");
 
-    if (isSingleSpaNavigate || microfrontendRoot) {
-
+    if (microfrontendRoot) {
+      console.log('loadMicrofrontend: ', microfrontendRoot);
       const loadMicrofrontend = () => {
         if (window.location.pathname.startsWith("/credicar")) {
           try {
-            System.import("@app/credicar")
+            const url =
+              process.env.NODE_ENV === "development"
+                ? "http://localhost:3001/src/main.tsx"
+                : "http://localhost:3001/microfrontend.js";
+
+            System.import(url)
               .then((module) => {
                 module.mount({
-                  domElement: document.getElementById("microfrontend-root"),
+                  domElement: microfrontendRoot,
                 });
               })
               .catch((error) => console.error("Failed to load credicar:", error));
@@ -70,10 +70,9 @@ function App() {
           }
         }
       };
-      console.log('loadMicrofrontend: ',loadMicrofrontend);
-      window.addEventListener("popstate", loadMicrofrontend);
-      loadMicrofrontend();
 
+      loadMicrofrontend();
+      window.addEventListener("popstate", loadMicrofrontend);
       return () => {
         window.removeEventListener("popstate", loadMicrofrontend);
       };

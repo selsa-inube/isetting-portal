@@ -37,7 +37,7 @@
       "types": ["vite/client", "rollup"]
     },
   
-    "include": ["src", "types.d.ts", "global.d.ts", "vite-env.d.ts"],
+    "include": ["src", "types.d.ts", "global.d.ts", "vite-env.d.ts", "root-config.ts"],
     "exclude": ["node_modules/@types/glob", "node_modules/@types/minimatch"],
     "references": [{ "path": "./tsconfig.node.json" }]
   }
