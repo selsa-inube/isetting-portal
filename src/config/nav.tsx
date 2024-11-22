@@ -44,6 +44,12 @@ const nav: INav = {
           icon: <MdOutlineSettings />,
           path: "/rules/options",
         },
+        microfrontend: {
+          id: "microfrontend",
+          label: "Credicar",
+          icon: <MdOutlineSettings />,
+          path: "/credicar",
+        },
       },
     },
   },
