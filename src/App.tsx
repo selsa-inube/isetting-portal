@@ -5,7 +5,7 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import { useEffect } from "react";
-
+import RemoteA from "remoteA/App"
 import { AppPage } from "@components/layout/AppPage";
 
 import { useAuth0 } from "@auth0/auth0-react";
@@ -34,7 +34,7 @@ const router = createBrowserRouter(
         <Route path="rules/*" element={<RulesRoutes />} />
         <Route
           path="credicar/*"
-          element={<div id="microfrontend-root" style={{ padding: "16px", background: "red" }} />}
+          element={<RemoteA />}
         />
       </Route>
       <Route path="logout" element={<LogOut />} />
@@ -46,37 +46,6 @@ const router = createBrowserRouter(
 function App() {
   useEffect(() => {
     initializeDataDB();
-    const microfrontendRoot = document.getElementById("microfrontend-root");
-
-    if (microfrontendRoot) {
-      console.log('loadMicrofrontend: ', microfrontendRoot);
-      const loadMicrofrontend = () => {
-        if (window.location.pathname.startsWith("/credicar")) {
-          try {
-            const url =
-              process.env.NODE_ENV === "development"
-                ? "http://localhost:3001/src/main.tsx"
-                : "http://localhost:3001/microfrontend.js";
-
-            System.import(url)
-              .then((module) => {
-                module.mount({
-                  domElement: microfrontendRoot,
-                });
-              })
-              .catch((error) => console.error("Failed to load credicar:", error));
-          } catch (error) {
-            console.error("SystemJS is not defined or failed to import the module:", error);
-          }
-        }
-      };
-
-      loadMicrofrontend();
-      window.addEventListener("popstate", loadMicrofrontend);
-      return () => {
-        window.removeEventListener("popstate", loadMicrofrontend);
-      };
-    }
   }, []);
 
   return (
