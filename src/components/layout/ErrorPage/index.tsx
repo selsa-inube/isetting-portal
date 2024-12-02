@@ -7,10 +7,9 @@ import { useMediaQueries } from "@inubekit/hooks";
 
 import selsaLogo from "@assets/images/selsa.png";
 import errorImage from "@assets/images/timeout.png";
-import { basic } from "@design/tokens";
 
 import { StyledCompanyLogo, StyledErrorImage } from "./styles";
-
+import { basic } from "@design/tokens";
 
 interface ErrorPageProps {
   logo?: string;
@@ -19,6 +18,8 @@ interface ErrorPageProps {
   description?: string;
   image?: string;
   imageAlt?: string;
+  nameButton?: string;
+  onClick?: () => void;
 }
 
 function ErrorPage(props: ErrorPageProps) {
@@ -29,34 +30,59 @@ function ErrorPage(props: ErrorPageProps) {
     description = "El servicio no se encuentra disponible en el momento. Por favor intenta de nuevo más tarde.",
     image = errorImage,
     imageAlt = "Ha surgido un error. Revisa la descripción",
+    nameButton = "volver",
+    onClick,
   } = props;
 
-  const mediaQueries = ["(max-width: 1000px)", "(max-width: 600px)"];
+  const mediaQueries = ["(min-width: 771px)", "(max-width: 770px)"];
   const matches = useMediaQueries(mediaQueries);
 
   return (
     <Stack
-      padding={matches["(max-width: 600px)"] ? `{${basic.spacing.s32}}` : `{${basic.spacing.s80}}`}
-      gap={matches["(max-width: 1000px)"] ? `{${basic.spacing.s64}}` : `{${basic.spacing.s120}}`}
+      padding={
+        matches["(max-width: 770px)"]
+          ? `${basic.spacing.s400}`
+          : `${basic.spacing.s1000}`
+      }
+      gap={
+        matches["(min-width: 771px)"]
+          ? `${basic.spacing.s600}`
+          : `${basic.spacing.s800}`
+      }
       direction="column"
     >
       <StyledCompanyLogo src={logo} alt={logoAlt} />
       <Grid
-        templateRows={matches["(max-width: 600px)"] ? "repeat(2, 1fr)" : "1fr"}
+        templateRows={matches["(max-width: 770px)"] ? "repeat(2, 1fr)" : "1fr"}
         templateColumns={
-          matches["(max-width: 600px)"] ? "auto" : "repeat(2, 1fr)"
+          matches["(max-width: 770px)"] ? "auto" : "repeat(2, 1fr)"
         }
         alignItems="center"
-        gap={matches["(max-width: 600px)"] ? `{${basic.spacing.s64}}` : `{${basic.spacing.s120}}`}
+        gap={
+          matches["(max-width: 770px)"]
+            ? `${basic.spacing.s0}`
+            : `${basic.spacing.s1000}`
+        }
       >
-        <Stack gap={basic.spacing.s24} direction="column">
-          <Stack gap={basic.spacing.s16} direction="column">
-            <Text type="title">{heading}</Text>
-            <Text type="title" size="medium">
+        <Stack gap={basic.spacing.s300} direction="column">
+          <Stack gap={basic.spacing.s300} direction="column">
+            <Text
+              type="title"
+              weight="bold"
+              size={matches["(max-width: 770px)"] ? "small" : "medium"}
+            >
+              {heading}
+            </Text>
+            <Text
+              type="title"
+              size={matches["(max-width: 770px)"] ? "small" : "medium"}
+            >
               {description}
             </Text>
           </Stack>
-          <Button iconBefore={<MdChevronLeft size={18} />}>Exit</Button>
+          <Button iconBefore={<MdChevronLeft size={18} />} onClick={onClick}>
+            {nameButton}
+          </Button>
         </Stack>
         <StyledErrorImage src={image} alt={imageAlt} />
       </Grid>

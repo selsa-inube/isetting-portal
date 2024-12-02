@@ -4,15 +4,14 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import { useEffect } from "react";
 import { ErrorPage } from "@components/layout/ErrorPage";
 import { AppPage } from "@components/layout/AppPage";
-
 import { useAuth0 } from "@auth0/auth0-react";
-import { initializeDataDB } from "@mocks/utils/inicializeDataDB";
 import { PrivilegesRoutes } from "@routes/privileges";
 import { RulesRoutes } from "@routes/rules";
-
+import { usePortalData } from "@hooks/usePortalData";
+import { useBusinessManagers } from "@hooks/useBusinessManagers";
+import { useAuthRedirect } from "@hooks/useAuthRedirect";
 import { GlobalStyles } from "./styles/global";
 import { ThemeProviderWrapper } from "./context/ThemeContext";
 
@@ -37,21 +36,33 @@ const router = createBrowserRouter(
     </>
   )
 );
-
+const url = new URL(window.location.href);
+const params = new URLSearchParams(url.search);
+const portalCode = params.get("portal");
 function App() {
-  const { loginWithRedirect, isAuthenticated, isLoading } = useAuth0();
+  const { portalData, hasError: portalError } = usePortalData(portalCode);
+  const { businessManagersData, hasError: businessError } =
+    useBusinessManagers(portalData);
 
-  useEffect(() => {
-    if (!isLoading && !isAuthenticated) {
-      loginWithRedirect();
-      initializeDataDB();
-    }
-  }, [isLoading, isAuthenticated, loginWithRedirect]);
+  const {
+    hasError: authError,
+    isLoading,
+    isAuthenticated,
+  } = useAuthRedirect(portalData, businessManagersData, portalCode);
+
+  const hasError = portalError || businessError || authError;
+
+  if (isLoading) {
+    return null;
+  }
+
+  if (hasError && !isAuthenticated) {
+    return <ErrorPage />;
+  }
 
   if (!isAuthenticated) {
     return null;
   }
-
   return (
     <>
       <GlobalStyles />
