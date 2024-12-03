@@ -6,7 +6,7 @@ import { Stack } from "@inubekit/stack";
 import { Textfield } from "@inubekit/textfield";
 import { Button } from "@inubekit/button";
 import { IBusinessUnitsPortalStaff, IBusinessUnitstate } from "./types";
-
+import { basic } from "@design/tokens";
 import {
   StyledBusinessUnits,
   StyledBusinessUnitsList,
@@ -53,7 +53,10 @@ function BusinessUnitsUI({
 }: BusinessUnitsUIProps) {
   return (
     <StyledBusinessUnits>
-      <Stack direction="column" padding="16px 0px">
+      <Stack
+        direction="column"
+        padding={`${basic.spacing.s16}${basic.spacing.s0}`}
+      >
         <Text type="title" as="h2" textAlign="center">
           Unidad de Negocios
         </Text>
@@ -81,9 +84,9 @@ function BusinessUnitsUI({
           <StyledBusinessUnitsList $scroll={businessUnits.length > 5}>
             <Stack
               direction="column"
-              padding="0px 8px"
+              padding={`${basic.spacing.s0}${basic.spacing.s8}`}
               alignItems="center"
-              gap="8px"
+              gap={basic.spacing.s8}
             >
               {filterBusinessUnits(businessUnits, search).map(
                 (businessUnit) => (

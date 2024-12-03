@@ -1,7 +1,7 @@
 import { Grid } from "@inubekit/grid";
 import { useMediaQueries } from "@inubekit/hooks";
 import { Text } from "@inubekit/text";
-
+import { basic } from "@design/tokens";
 import { StyledRadioBusinessUnit, StyledRadio, StyledImage } from "./styles";
 
 interface RadioBusinessUnitProps {
@@ -28,7 +28,7 @@ function RadioBusinessUnit(props: RadioBusinessUnitProps) {
         height={matches["(max-width: 532px)"] ? "auto" : "72px"}
         alignItems="center"
         alignContent="center"
-        gap="16px"
+        gap={basic.spacing.s16}
         width="100%"
       >
         <StyledRadio

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { basic } from "@design/tokens";
 
 interface StyledBusinessUnitsListProps {
   $scroll?: boolean;
@@ -39,7 +40,7 @@ const StyledBusinessUnitsList = styled.div<StyledBusinessUnitsListProps>`
 `;
 
 const StyledNoResults = styled.div`
-  margin: 12px 0px;
+  margin: ${basic.spacing.s12} ${basic.spacing.s0};
 `;
 
 const StyledBusinessUnitsItem = styled.li`
