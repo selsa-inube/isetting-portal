@@ -8,9 +8,10 @@ import {
   fetchTimeoutServices,
   maxRetriesServices,
 } from "@config/environment";
+import { IBusinessUnitsPortalStaff } from "src/services/staffPortal/getBusinessUnitsPortalStaff/types";
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: enviroment.IVITE_ISAAS_QUERY_PROCESS_SERVICE,
+  baseURL: enviroment.IVITE_IPORTAL_STAFF_QUERY_PROCESS_SERVICE,
   timeout: fetchTimeoutServices,
   headers: {
     "Content-type": "application/json; charset=UTF-8",
@@ -68,6 +69,20 @@ const getBusinessManagers = async (
   );
 };
 
+const getBusinessUnitsPortalStaff = async (
+  publicCode: string,
+  userAccount: string
+): Promise<IBusinessUnitsPortalStaff> => {
+  const config: AxiosRequestConfig = {
+    headers: {
+      "X-Action": "SearchBusinessUnitsForAnOfficerLinpar",
+    },
+  };
+  return fetchWithRetries<IBusinessUnitsPortalStaff>(
+    `/business-units-portal-staff/${userAccount}/${publicCode}`,
+    config
+  );
+};
 const getStaffPortalByBusinessManager = async (
   portalCode: string
 ): Promise<IStaffPortalByBusinessManager[]> => {
@@ -85,4 +100,8 @@ const getStaffPortalByBusinessManager = async (
   );
 };
 
-export { getBusinessManagers, getStaffPortalByBusinessManager };
+export {
+  getBusinessManagers,
+  getStaffPortalByBusinessManager,
+  getBusinessUnitsPortalStaff,
+};
