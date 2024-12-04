@@ -45,7 +45,7 @@ const SelectBusinessUnitsUI = () => {
         >
           <Stack direction="column" alignItems="center">
             <Text as="h1" type="headline" size="large">
-              Bienvenido a iSetting Credicar
+              Bienvenido a iSetting Portal
             </Text>
           </Stack>
           <StyledImage
