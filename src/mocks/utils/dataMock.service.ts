@@ -24,12 +24,14 @@ export async function getAll(option: string) {
   await fakeNetwork();
   try {
     const optionsData = await localforage.getItem(option);
-
-    if (!optionsData) throw new Error("No found");
-
+    if (!optionsData || !Array.isArray(optionsData)) {
+      console.warn(`Data for ${option} is missing or not an array.`);
+      return [];
+    }
     return optionsData;
   } catch (error) {
-    return error;
+    console.error(`Error fetching data for ${option}:`, error);
+    return [];
   }
 }
 
@@ -41,7 +43,7 @@ interface functionById {
   editData?:
     | IGeneralInformationEntry
     | { [key: string]: string }[]
-    | { [key: string]: string }
+    | { [key: string]: string };
 }
 
 export async function getById(props: functionById) {

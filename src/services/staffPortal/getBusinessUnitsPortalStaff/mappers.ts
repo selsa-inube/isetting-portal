@@ -1,25 +1,25 @@
-import { IBusinessUnitsPortalStaff } from "./types";
+import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
 
-const mapBusinessManagerPortalStaffApiToEntity = (
-  businessManagerPortalStaffApiToEntity: IBusinessUnitsPortalStaff
+const mapBusinessUnitsPortalStaffApiToEntity = (
+  businessUnit: IBusinessUnitsPortalStaff
 ): IBusinessUnitsPortalStaff => {
-  const business: IBusinessUnitsPortalStaff = {
-    businessUnitPublicCode: String(
-      businessManagerPortalStaffApiToEntity.businessUnitPublicCode
-    ),
-    abbreviatedName: String(
-      businessManagerPortalStaffApiToEntity.abbreviatedName
-    ),
-    descriptionUse: String(
-      businessManagerPortalStaffApiToEntity.descriptionUse
-    ),
-    urlLogo: String(businessManagerPortalStaffApiToEntity.urlLogo),
-    firstMonthOfFiscalYear: String(
-      businessManagerPortalStaffApiToEntity.firstMonthOfFiscalYear
-    ),
-    languageId: String(businessManagerPortalStaffApiToEntity.languageId),
+  const businessUnitData: IBusinessUnitsPortalStaff = {
+    publicCode: String(businessUnit.businessUnitPublicCode),
+    languageId: String(businessUnit.languageId),
+    abbreviatedName: String(businessUnit.abbreviatedName),
+    descriptionUse: String(businessUnit.descriptionUse),
+    firstMonthOfFiscalYear: String(businessUnit.firstMonthOfFiscalYear),
+    urlLogo: String(businessUnit.urlLogo),
   };
-  return business;
+  return businessUnitData;
 };
 
-export { mapBusinessManagerPortalStaffApiToEntity };
+const mapBusinessUnitsPortalStaffToEntities = (
+  resend: IBusinessUnitsPortalStaff[]
+): IBusinessUnitsPortalStaff[] => {
+  return resend.map(mapBusinessUnitsPortalStaffApiToEntity);
+};
+export {
+  mapBusinessUnitsPortalStaffToEntities,
+  mapBusinessUnitsPortalStaffApiToEntity,
+};

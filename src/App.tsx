@@ -14,6 +14,10 @@ import { useBusinessManagers } from "@hooks/useBusinessManagers";
 import { useAuthRedirect } from "@hooks/useAuthRedirect";
 import { GlobalStyles } from "./styles/global";
 import { ThemeProviderWrapper } from "./context/ThemeContext";
+import { useContext } from "react";
+import { AppContext, AppContextProvider } from "@context/AppContext";
+import { SelectBusinessUnits } from "@pages/selectBusinessUnits";
+import { SelectBusinessUnitsRoutes } from "@routes/selectBusinessunits";
 
 const redirect_uri = window.location.origin;
 function LogOut() {
@@ -22,17 +26,23 @@ function LogOut() {
   logout({ logoutParams: { returnTo: redirect_uri } });
   return <AppPage />;
 }
-
+function FirstPage() {
+  const { businessUnitSigla } = useContext(AppContext);
+  return businessUnitSigla.length === 0 ? <SelectBusinessUnits /> : <AppPage />;
+}
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/" element={<AppPage />}>
+      <Route
+        path="selectBusinessUnit/*"
+        element={<SelectBusinessUnitsRoutes />}
+      />
+      <Route path="/" element={<FirstPage />} errorElement={<ErrorPage />}>
         <Route path="/" element={<PrivilegesRoutes />} />
         <Route path="privileges/*" element={<PrivilegesRoutes />} />
         <Route path="rules/*" element={<RulesRoutes />} />
       </Route>
       <Route path="logout" element={<LogOut />} />
-      <Route path="/*" errorElement={<ErrorPage />} />
     </>
   )
 );
@@ -67,7 +77,9 @@ function App() {
     <>
       <GlobalStyles />
       <ThemeProviderWrapper>
-        <RouterProvider router={router} />
+        <AppContextProvider>
+          <RouterProvider router={router} />
+        </AppContextProvider>
       </ThemeProviderWrapper>
     </>
   );

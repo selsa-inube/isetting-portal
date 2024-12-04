@@ -1,5 +1,6 @@
 const businessUnitDataMock = [
   {
+    publicCode: "151615",
     businessUnitPublicCode: "151615",
     abbreviatedName: "Presente Fondo de Empleados Grupo Éxito",
     descriptionUse: "Presente",
@@ -7,12 +8,14 @@ const businessUnitDataMock = [
       "https://res.cloudinary.com/wfercanas/image/upload/w_500/v1671482962/linpar/presente_trxel5",
   },
   {
+    publicCode: "518481",
     businessUnitPublicCode: "518481",
     abbreviatedName: "Cooservunal Fuerza cooperativa y social",
     descriptionUse: "Cooservunal",
     urlLogo: "/cooservunal.png",
   },
   {
+    publicCode: "848123",
     businessUnitPublicCode: "848123",
     abbreviatedName:
       "Corbanca Corporación fondo de empleados bancarios y del sector financiero",
@@ -20,6 +23,7 @@ const businessUnitDataMock = [
     urlLogo: "/corbanca.png",
   },
   {
+    publicCode: "454813",
     businessUnitPublicCode: "454813",
     abbreviatedName:
       "Fondecom UnbusinessUnitPublicCodeos para soluciones de fondo",
@@ -27,6 +31,7 @@ const businessUnitDataMock = [
     urlLogo: "/fondecom.png",
   },
   {
+    publicCode: "5545451",
     businessUnitPublicCode: "5545451",
     abbreviatedName: "Sistemas Enlínea",
     descriptionUse: "sistemasenlinea",

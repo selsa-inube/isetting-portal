@@ -1,16 +1,13 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import {
-  IBusinessManagers,
-  IStaffPortalByBusinessManager,
-} from "@ptypes/staffPortal.types";
-import {
   enviroment,
   fetchTimeoutServices,
   maxRetriesServices,
 } from "@config/environment";
+import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: enviroment.IVITE_ISAAS_QUERY_PROCESS_SERVICE,
+  baseURL: enviroment.IVITE_IPORTAL_STAFF_QUERY_PROCESS_SERVICE,
   timeout: fetchTimeoutServices,
   headers: {
     "Content-type": "application/json; charset=UTF-8",
@@ -51,38 +48,22 @@ const fetchWithRetries = async <T>(
       }
     }
   }
-  throw new Error("Error al obtener los datos del operador.");
+  throw new Error("Error al obtener los de las unidades de negocio.");
 };
 
-const getBusinessManagers = async (
-  businessManagerId: string
-): Promise<IBusinessManagers> => {
+const getBusinessUnitsPortalStaff = async (
+  portalPublicCode: string,
+  userAccount: string
+): Promise<IBusinessUnitsPortalStaff[]> => {
   const config: AxiosRequestConfig = {
     headers: {
-      "X-Action": "SearchByIdBusinessManager",
+      "X-Action": "SearchBusinessUnitsForAnOfficer",
     },
   };
-  return fetchWithRetries<IBusinessManagers>(
-    `/business-managers/${businessManagerId}`,
+  return fetchWithRetries<IBusinessUnitsPortalStaff[]>(
+    `/business-units-portal-staff/${userAccount}/${portalPublicCode}`,
     config
   );
 };
 
-const getStaffPortalByBusinessManager = async (
-  portalCode: string
-): Promise<IStaffPortalByBusinessManager[]> => {
-  const queryParams = new URLSearchParams({
-    staffPortalId: portalCode,
-  });
-  const config: AxiosRequestConfig = {
-    headers: {
-      "X-Action": "SearchAllStaffPortalsByBusinessManager",
-    },
-  };
-  return fetchWithRetries<IStaffPortalByBusinessManager[]>(
-    `/staff-portals-by-business-manager?${queryParams.toString()}`,
-    config
-  );
-};
-
-export { getBusinessManagers, getStaffPortalByBusinessManager };
+export { getBusinessUnitsPortalStaff };

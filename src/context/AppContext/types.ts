@@ -1,30 +1,45 @@
-interface IOperator {
-    name: string;
-    logo: string;
-  }
-  
-  interface IUser {
-    username: string;
-    id: string;
-    company: string;
-    operator: IOperator;
-  }
-  
-  interface IClient {
-    id: string;
-    name: string;
-    sigla: string;
-    logo: string;
-  }
-  
-  interface IAppContext {
-    user: IUser;
-    handleClientChange: (client: IClient) => void;
-  }
-  
-  interface AppContextProviderProps {
-    children: React.ReactNode;
-  }
-  
-  export type { IAppContext, IClient, AppContextProviderProps };
-  
+import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
+
+interface IPortal {
+  abbreviatedName: string;
+  staffPortalCatalogId: string;
+  businessManagerId: string;
+  publicCode: string;
+}
+interface IBusinessManager {
+  publicCode: string;
+  abbreviatedName: string;
+  urlBrand: string;
+  urlLogo: string;
+}
+
+interface IUser {
+  userAccount: string;
+  userName: string;
+}
+
+interface IBusinessUnit {
+  publicCode: string;
+  abbreviatedName: string;
+  languageId: string;
+  urlLogo: string;
+}
+
+interface IAppData {
+  portal: IPortal;
+  businessManager: IBusinessManager;
+  businessUnit: IBusinessUnit;
+  user: IUser;
+}
+interface IAppContext {
+  appData: IAppData;
+  businessUnitSigla: string;
+  businessUnitsToTheStaff: IBusinessUnitsPortalStaff[];
+  setAppData: React.Dispatch<React.SetStateAction<IAppData>>;
+  setBusinessUnitSigla: React.Dispatch<React.SetStateAction<string>>;
+  setBusinessUnitsToTheStaff: React.Dispatch<
+    React.SetStateAction<IBusinessUnitsPortalStaff[]>
+  >;
+}
+
+export type { IAppContext, IAppData, IBusinessUnit };

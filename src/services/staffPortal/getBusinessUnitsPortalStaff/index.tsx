@@ -1,16 +1,16 @@
-import { getBusinessUnitsPortalStaff } from "src/api/isaasQuery";
-import { IBusinessUnitsPortalStaff } from "./types";
-import { mapBusinessManagerPortalStaffApiToEntity } from "./mappers";
+import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
+import { getBusinessUnitsPortalStaff } from "src/api/iPortalStaffQuery";
+import { mapBusinessUnitsPortalStaffToEntities } from "./mappers";
 
 const businessUnitsPortalStaff = async (
-  publicCode: string,
+  portalPublicCode: string,
   userAccount: string
-): Promise<IBusinessUnitsPortalStaff> => {
-  const data: IBusinessUnitsPortalStaff = await getBusinessUnitsPortalStaff(
-    publicCode,
+): Promise<IBusinessUnitsPortalStaff[]> => {
+  const data: IBusinessUnitsPortalStaff[] = await getBusinessUnitsPortalStaff(
+    portalPublicCode,
     userAccount
   );
-  return mapBusinessManagerPortalStaffApiToEntity(data);
+  return Array.isArray(data) ? mapBusinessUnitsPortalStaffToEntities(data) : [];
 };
 
 export { businessUnitsPortalStaff };
