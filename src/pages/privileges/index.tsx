@@ -1,6 +1,6 @@
-import { PrivilegesUI } from "./interface";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { PrivilegesUI } from "./interface";
 
 function Privileges() {
   const navigate = useNavigate();

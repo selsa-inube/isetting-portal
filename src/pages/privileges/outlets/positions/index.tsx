@@ -18,12 +18,12 @@ export function Positions() {
           setPositions(data as IPosition[]);
         } else {
           console.error("Data fetched is not an array:", data);
-          setPositions([]); // Manejar casos en los que no es un array
+          setPositions([]);
         }
       })
       .catch((error) => {
         console.info(error.message);
-        setPositions([]); // En caso de error, inicializar con un array vacío
+        setPositions([]);
       })
       .finally(() => {
         setLoading(false);

@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import { IPosition } from "../../add-position/types";
 const usePagination = (
   searchPosition: string,
-  data: IPosition[] = [], // Default to an empty array
+  data: IPosition[] = [],
   pagerecord: number
 ) => {
   const pageLength = pagerecord;

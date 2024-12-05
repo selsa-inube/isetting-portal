@@ -4,6 +4,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
+import { useContext } from "react";
 import { ErrorPage } from "@components/layout/ErrorPage";
 import { AppPage } from "@components/layout/AppPage";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -12,12 +13,12 @@ import { RulesRoutes } from "@routes/rules";
 import { usePortalData } from "@hooks/usePortalData";
 import { useBusinessManagers } from "@hooks/useBusinessManagers";
 import { useAuthRedirect } from "@hooks/useAuthRedirect";
-import { GlobalStyles } from "./styles/global";
-import { ThemeProviderWrapper } from "./context/ThemeContext";
-import { useContext } from "react";
+
 import { AppContext, AppContextProvider } from "@context/AppContext";
 import { SelectBusinessUnits } from "@pages/selectBusinessUnits";
 import { SelectBusinessUnitsRoutes } from "@routes/selectBusinessunits";
+import { GlobalStyles } from "./styles/global";
+import { ThemeProviderWrapper } from "./context/ThemeContext";
 
 const redirect_uri = window.location.origin;
 function LogOut() {

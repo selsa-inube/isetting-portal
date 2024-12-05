@@ -2,7 +2,9 @@ import React from "react";
 import { MdSearch } from "react-icons/md";
 import { Text } from "@inubekit/text";
 import { Stack } from "@inubekit/stack";
-
+import { Input } from "@inubekit/input";
+import { basic } from "@design/tokens";
+import { RadioBusinessUnit } from "@components/feedback/RadioBusinessUnit";
 import { Button } from "@inubekit/button";
 
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
@@ -13,9 +15,6 @@ import {
   StyledBusinessUnitsItem,
 } from "./styles";
 import { IBusinessUnitstate } from "./types";
-import { Input } from "@inubekit/input";
-import { basic } from "@design/tokens";
-import { RadioBusinessUnit } from "@components/feedback/RadioBusinessUnit";
 
 interface BusinessUnitsUIProps {
   businessUnits: IBusinessUnitsPortalStaff[];
