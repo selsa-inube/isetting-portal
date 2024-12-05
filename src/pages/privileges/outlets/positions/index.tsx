@@ -14,12 +14,16 @@ export function Positions() {
     getAll("staff-positions")
       .then((data) => {
         setLoading(true);
-        if (data !== null) {
+        if (Array.isArray(data)) {
           setPositions(data as IPosition[]);
+        } else {
+          console.error("Data fetched is not an array:", data);
+          setPositions([]);
         }
       })
       .catch((error) => {
         console.info(error.message);
+        setPositions([]);
       })
       .finally(() => {
         setLoading(false);

@@ -4,6 +4,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
+import { useContext } from "react";
 import { ErrorPage } from "@components/layout/ErrorPage";
 import { AppPage } from "@components/layout/AppPage";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -12,6 +13,10 @@ import { RulesRoutes } from "@routes/rules";
 import { usePortalData } from "@hooks/usePortalData";
 import { useBusinessManagers } from "@hooks/useBusinessManagers";
 import { useAuthRedirect } from "@hooks/useAuthRedirect";
+
+import { AppContext, AppContextProvider } from "@context/AppContext";
+import { SelectBusinessUnits } from "@pages/selectBusinessUnits";
+import { SelectBusinessUnitsRoutes } from "@routes/selectBusinessunits";
 import { GlobalStyles } from "./styles/global";
 import { ThemeProviderWrapper } from "./context/ThemeContext";
 
@@ -22,17 +27,23 @@ function LogOut() {
   logout({ logoutParams: { returnTo: redirect_uri } });
   return <AppPage />;
 }
-
+function FirstPage() {
+  const { businessUnitSigla } = useContext(AppContext);
+  return businessUnitSigla.length === 0 ? <SelectBusinessUnits /> : <AppPage />;
+}
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/" element={<AppPage />}>
+      <Route
+        path="selectBusinessUnit/*"
+        element={<SelectBusinessUnitsRoutes />}
+      />
+      <Route path="/" element={<FirstPage />} errorElement={<ErrorPage />}>
         <Route path="/" element={<PrivilegesRoutes />} />
         <Route path="privileges/*" element={<PrivilegesRoutes />} />
         <Route path="rules/*" element={<RulesRoutes />} />
       </Route>
       <Route path="logout" element={<LogOut />} />
-      <Route path="/*" errorElement={<ErrorPage />} />
     </>
   )
 );
@@ -67,7 +78,9 @@ function App() {
     <>
       <GlobalStyles />
       <ThemeProviderWrapper>
-        <RouterProvider router={router} />
+        <AppContextProvider>
+          <RouterProvider router={router} />
+        </AppContextProvider>
       </ThemeProviderWrapper>
     </>
   );

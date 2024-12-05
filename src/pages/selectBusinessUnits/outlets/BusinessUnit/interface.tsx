@@ -1,19 +1,20 @@
 import React from "react";
 import { MdSearch } from "react-icons/md";
 import { Text } from "@inubekit/text";
-
 import { Stack } from "@inubekit/stack";
-import { Textfield } from "@inubekit/textfield";
-import { Button } from "@inubekit/button";
-import { IBusinessUnitsPortalStaff, IBusinessUnitstate } from "./types";
+import { Input } from "@inubekit/input";
 import { basic } from "@design/tokens";
+import { RadioBusinessUnit } from "@components/feedback/RadioBusinessUnit";
+import { Button } from "@inubekit/button";
+
+import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
 import {
   StyledBusinessUnits,
   StyledBusinessUnitsList,
   StyledNoResults,
   StyledBusinessUnitsItem,
 } from "./styles";
-import { RadioBusinessUnit } from "@components/feedback/RadioBusinessUnit";
+import { IBusinessUnitstate } from "./types";
 
 interface BusinessUnitsUIProps {
   businessUnits: IBusinessUnitsPortalStaff[];
@@ -27,7 +28,7 @@ interface BusinessUnitsUIProps {
     businessUnits: IBusinessUnitsPortalStaff[],
     search: string
   ) => IBusinessUnitsPortalStaff[];
-  handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+  handleSubmit: () => void;
 }
 
 function NoResultsMessage({ search }: { search: string }) {
@@ -52,23 +53,20 @@ function BusinessUnitsUI({
   handleBussinessUnitChange,
   handleSubmit,
 }: BusinessUnitsUIProps) {
+  const filteredBusinessUnits = filterBusinessUnits(businessUnits, search);
+
   return (
     <StyledBusinessUnits>
-      <Stack
-        direction="column"
-        padding={`${basic.spacing.s16}${basic.spacing.s0}`}
-      >
-        <Text type="title" as="h2" textAlign="center">
-          Unidad de Negocios
-        </Text>
-        <Text size="medium" textAlign="center">
-          Seleccione la Unidad de Negocio
-        </Text>
-      </Stack>
+      <Text type="title" as="h2" textAlign="center">
+        Unidades de Negocios
+      </Text>
+      <Text size="medium" textAlign="center">
+        Seleccione la Unidad de Negocio
+      </Text>
       <form>
-        <Stack direction="column" alignItems="center">
-          {businessUnits.length > 10 && (
-            <Textfield
+        <Stack direction="column" alignItems="center" gap={basic.spacing.s300}>
+          {businessUnits.length > 5 && (
+            <Input
               placeholder="Buscar..."
               type="search"
               name="searchBusinessUnits"
@@ -79,40 +77,34 @@ function BusinessUnitsUI({
               iconBefore={<MdSearch size={22} />}
             />
           )}
-          {filterBusinessUnits(businessUnits, search).length === 0 && (
+          {filteredBusinessUnits.length === 0 && (
             <NoResultsMessage search={search} />
           )}
           <StyledBusinessUnitsList $scroll={businessUnits.length > 5}>
             <Stack
               direction="column"
-              padding={`${basic.spacing.s0}${basic.spacing.s8}`}
+              padding={`${basic.spacing.s0} ${basic.spacing.s100}`}
               alignItems="center"
-              gap={basic.spacing.s8}
+              gap={basic.spacing.s100}
             >
-              {filterBusinessUnits(businessUnits, search).map(
-                (businessUnit) => (
-                  <StyledBusinessUnitsItem
-                    key={businessUnit.businessUnitPublicCode}
-                  >
-                    <RadioBusinessUnit
-                      name="businessUnit"
-                      label={businessUnit.abbreviatedName}
-                      id={businessUnit.businessUnitPublicCode}
-                      value={businessUnit.abbreviatedName}
-                      logo={businessUnit.urlLogo}
-                      handleChange={handleBussinessUnitChange}
-                    />
-                  </StyledBusinessUnitsItem>
-                )
-              )}
+              {filteredBusinessUnits.map((businessUnit) => (
+                <StyledBusinessUnitsItem key={businessUnit.publicCode}>
+                  <RadioBusinessUnit
+                    name="businessUnit"
+                    label={businessUnit.abbreviatedName}
+                    id={businessUnit.publicCode}
+                    value={businessUnit.abbreviatedName}
+                    logo={businessUnit.urlLogo}
+                    handleChange={handleBussinessUnitChange}
+                  />
+                </StyledBusinessUnitsItem>
+              ))}
             </Stack>
           </StyledBusinessUnitsList>
           <Button
             type="button"
             disabled={businessUnit.value}
-            onClick={(e) =>
-              handleSubmit(e as unknown as React.FormEvent<HTMLFormElement>)
-            }
+            onClick={handleSubmit}
           >
             Continuar
           </Button>

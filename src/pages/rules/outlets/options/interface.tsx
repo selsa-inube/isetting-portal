@@ -12,7 +12,6 @@ interface RulesOptionsUIProps {
 
 function RulesOptionsUI(props: RulesOptionsUIProps) {
   const { appName, appDescription, appOptions, appRoute } = props;
-
   return (
     <AppMenu
       appName={appName}

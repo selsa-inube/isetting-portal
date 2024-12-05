@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { Header } from "@inubekit/header";
 import { Nav } from "@inubekit/nav";
@@ -20,6 +20,7 @@ import {
 } from "./styles";
 
 import { userMenu } from "./config/apps.config";
+import { AppContext } from "@context/AppContext";
 
 const renderLogo = (imgUrl: string) => {
   return (
@@ -64,7 +65,7 @@ function AppPage() {
     setShowLogoutModal(!showLogoutModal);
     setShowUserMenu(false);
   };
-
+  const { appData } = useContext(AppContext);
   return (
     <StyledAppPage>
       <Grid templateRows="auto 1fr" height="100vh" justifyContent="unset">
@@ -72,7 +73,10 @@ function AppPage() {
           <Header
             portalId="portal"
             logoURL={renderLogo(linparLogo)}
-            user={{ username: "Dora Lucia" }}
+            user={{
+              username: appData.user.userName,
+              breakpoint: "600px",
+            }}
             menu={userMenu}
           />
         </StyledHeaderContainer>

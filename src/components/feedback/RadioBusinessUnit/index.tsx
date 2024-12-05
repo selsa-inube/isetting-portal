@@ -5,11 +5,11 @@ import { basic } from "@design/tokens";
 import { StyledRadioBusinessUnit, StyledRadio, StyledImage } from "./styles";
 
 interface RadioBusinessUnitProps {
-  name: string;
   id: string;
-  value: string;
   label: string;
   logo: string;
+  name: string;
+  value: string;
   handleChange: React.ChangeEventHandler<HTMLInputElement>;
 }
 
@@ -22,13 +22,17 @@ function RadioBusinessUnit(props: RadioBusinessUnitProps) {
     <StyledRadioBusinessUnit>
       <Grid
         templateColumns={
-          matches["(max-width: 460px)"] ? "auto 1fr" : "auto 1fr 130px"
+          matches["(max-width: 532px)"] ? "auto 1fr" : "auto 1fr 130px"
         }
-        padding={matches["(max-width: 532px)"] ? "8px 16px" : "16px 24px"}
+        padding={
+          matches["(max-width: 532px)"]
+            ? `${basic.spacing.s100} ${basic.spacing.s200}`
+            : `${basic.spacing.s200} ${basic.spacing.s300}`
+        }
         height={matches["(max-width: 532px)"] ? "auto" : "72px"}
         alignItems="center"
         alignContent="center"
-        gap={basic.spacing.s16}
+        gap={basic.spacing.s200}
         width="100%"
       >
         <StyledRadio

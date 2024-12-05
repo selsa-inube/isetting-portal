@@ -1,14 +1,13 @@
 import { useState, useMemo } from "react";
 import { IPosition } from "../../add-position/types";
-
 const usePagination = (
   searchPosition: string,
-  data: IPosition[],
+  data: IPosition[] = [],
   pagerecord: number
 ) => {
   const pageLength = pagerecord;
   const [currentPage, setCurrentPage] = useState(0);
-  const totalRecords = data.length;
+  const totalRecords = Array.isArray(data) ? data.length : 0;
   const totalPages = Math.ceil(totalRecords / pageLength);
 
   const handleStartPage = () => setCurrentPage(0);
@@ -21,6 +20,10 @@ const usePagination = (
   const lastEntryInPage = Math.min(firstEntryInPage + pageLength, totalRecords);
 
   const filteredData = useMemo(() => {
+    if (!Array.isArray(data)) {
+      console.warn("Data is not an array:", data);
+      return [];
+    }
     return data.filter((row) => {
       return Object.values(row).some((value) =>
         value.toString().toLowerCase().includes(searchPosition.toLowerCase())
