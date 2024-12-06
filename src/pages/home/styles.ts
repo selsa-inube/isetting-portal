@@ -5,8 +5,12 @@ import { basic } from "@design/tokens";
 interface IStyledCollapseIcon {
   $collapse: boolean;
   $isTablet: boolean;
+  $smallScreen?: boolean;
 }
-
+interface IStyledContainer {
+  $smallScreen?: boolean;
+  $typeTabs?: boolean;
+}
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -15,14 +19,12 @@ const StyledContainer = styled.div`
   height: 100vh;
   overflow-y: auto;
 `;
-const StyledContainerSection = styled.div`
-  @media screen and (max-width: 532px) {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    padding: ${basic.spacing.s200};
-    gap: ${basic.spacing.s300};
-  }
+const StyledContainerSection = styled.div<IStyledContainer>`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: ${basic.spacing.s200};
+  gap: ${basic.spacing.s300};
 `;
 
 const StyledHeaderContainer = styled.div`
@@ -39,31 +41,31 @@ const StyledLogo = styled.img`
   max-width: 100px;
 `;
 
-const StyledTitle = styled.div`
-  padding: ${basic.spacing.s600} ${basic.spacing.s1600} ${basic.spacing.s1000};
+const StyledTitle = styled.div<IStyledContainer>`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-S300, ${basic.spacing.s300});
+  align-self: stretch;
 
-  @media screen and (max-width: 805px) {
-    display: flex;
-    padding: var(--spacing-S200, 16px);
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--spacing-S300, ${basic.spacing.s300});
-    align-self: stretch;
-  }
+  padding: ${(props) =>
+    props.$smallScreen
+      ? ` ${(basic.spacing.s200, basic.spacing.s16)} `
+      : `${basic.spacing.s600} ${basic.spacing.s1600} ${basic.spacing.s1000} `};
 `;
 
-const StyledContainerCards = styled.div`
+const StyledContainerCards = styled.div<IStyledContainer>`
   box-sizing: border-box;
-  padding: ${basic.spacing.s0} ${basic.spacing.s1400} ${basic.spacing.s400}
-    170px;
+  padding: 170px;
   display: flex;
   flex-wrap: wrap;
   gap: ${basic.spacing.s400};
 
-  @media screen and (max-width: 805px) {
-    justify-content: center;
-    padding: ${basic.spacing.s0};
-  }
+  justify-content: ${(props) => props.$smallScreen && "center"};
+  padding: ${(props) =>
+    props.$smallScreen
+      ? `${basic.spacing.s0}`
+      : `${basic.spacing.s0} ${basic.spacing.s1400} ${basic.spacing.s400}`};
 `;
 
 const StyledFooter = styled.footer`
@@ -71,11 +73,6 @@ const StyledFooter = styled.footer`
   margin-top: auto;
   padding: ${basic.spacing.s0} ${basic.spacing.s1600} ${basic.spacing.s0};
   justify-content: center;
-
-  @media screen and (max-width: 532px) {
-    padding-top: 50px;
-    margin: ${basic.spacing.s0};
-  }
 `;
 
 const StyledCollapseIcon = styled.div<IStyledCollapseIcon>`
