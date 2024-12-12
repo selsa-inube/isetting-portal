@@ -18,8 +18,7 @@ import { stepsMock } from "./config/stepmock";
 import { decisionTemplate } from "./config/formMock";
 import { IPosition } from "@pages/privileges/outlets/positions/add-position/types";
 
-
-interface IPositionsUIProps {
+interface IPositionsUI {
   handleSearchPositions: (e: React.ChangeEvent<HTMLInputElement>) => void;
   searchPosition: string;
   loading: boolean;
@@ -35,7 +34,7 @@ interface IPositionsUIProps {
   layoutMode?: "default" | "centered";
 }
 
-export function PositionsUI(props: IPositionsUIProps) {
+function PositionsUI(props: IPositionsUI) {
   const {
     loading,
     decisions,
@@ -168,8 +167,60 @@ export function PositionsUI(props: IPositionsUIProps) {
               submitText: "Enviar",
             }}
           />
-
+          {/* <Text type="title" size="medium" appearance="gray">
+             Asegurate de agregar una decision para cada una de las tasas de interes para que la evaluacion se realice correctamente.
+          </Text> */}
+           {/* <Text  as="span" type="title" size="medium" appearance="gray">
+             Asegurate de  <Text
+                  as="span"
+                  type="label"
+                  size="large"
+                  appearance="dark"
+                  weight="bold"
+                >
+                  Agregar una decision
+                </Text> para cada una de las tasas de interes para que la evaluacion se realice correctamente.
+          </Text> */}
+          {/* <Text  as="span" type="title" size="medium" appearance="gray">
+             Asegurate de  <Text
+                  as="span"
+                  type="label"
+                  size="large"
+                  appearance="primary"
+                  weight="bold"
+                >
+                  Agregar una decision
+                </Text> para cada una de las tasas de interes para que la evaluacion se realice correctamente.
+          </Text> */}
           <Stack justifyContent="flex-end" alignItems="center">
+          {/* <Stack justifyContent="space-between" alignItems="center">
+            <Stack width="450px"> */}
+           {/* <Text type="title" size="medium" appearance="gray">
+             Asegurate de agregar una decision para cada una de las tasas de interes para que la evaluacion se realice correctamente.
+          </Text>  */}
+                    {/* <Text  as="span" type="title" size="medium" appearance="gray">
+             Asegurate de  <Text
+                  as="span"
+                  type="label"
+                  size="large"
+                  appearance="dark"
+                  weight="bold"
+                >
+                  Agregar una decision
+                </Text> para cada una de las tasas de interes para que la evaluacion se realice correctamente.
+          </Text> */}
+          {/* <Text  as="span" type="title" size="medium" appearance="gray">
+             Asegurate de  <Text
+                  as="span"
+                  type="label"
+                  size="large"
+                  appearance="primary"
+                  weight="bold"
+                >
+                  Agregar una decision
+                </Text> para cada una de las tasas de interes para que la evaluacion se realice correctamente.
+          </Text> */}
+          {/* </Stack>  */}
             <Button
               iconBefore={<MdAddCircleOutline />}
               spacing="wide"
@@ -179,96 +230,31 @@ export function PositionsUI(props: IPositionsUIProps) {
               Agregar decisión
             </Button>
           </Stack>
-          {/* {loading && data.length <= 0 ? (
-            <LoadingApp />
-          ) : ( */}
-            
-            {/* // <Grid
-            //   templateColumns={templateColumns}
-            //   autoFlow="row dense"
-            //   gap={basic.spacing.s24}
-            //   alignItems="start"
-            //   justifyContent="center"
-            //   autoRows="1fr"
-            //   justifyItems="center"
-            //   padding="10px"
-            // >
-            //   {decisions.map((decision, index) => (
-            //     layoutMode === "centered"
-            //       ? (
-            //         <StyledCardContainer key={`decision-${index}`} >
-            //           <BusinessRuleCard
-            //             key={`decision-${index}`}
-            //             id={`decision-${index}`}
-            //             handleDelete={() => {
-            //               handleDelete(decision.id!);
-            //             }}
-            //             handleView={() => {
-            //               handleView(decision);
-            //             }}
-            //           >
-            //             <StyledViewContainer >
-            //               <BusinessRuleView
-            //                 decision={getModalDisplayData(decision)}
-            //                 textValues={{
-            //                   selectOptions: "Seleccione las opciones",
-            //                   selectOption: "Seleccione una opción",
-            //                   rangeMin: (label: string) => `${label} Minima`,
-            //                   rangeMax: (label: string) => `${label} Maxima`,
-            //                   reasonForChange: "Motivo del cambio",
-            //                   change: "Cambio",
-            //                   changePlaceholder: "Describa brevemente el motivo del cambio",
-            //                   termStart: "Fecha de inicio",
-            //                   termEnd: "Fecha de fin",
-            //                   cancel: "Cancelar",
-            //                   confirm: "Confirmar",
-            //                   none: "Ninguno",
-            //                   factsThatConditionIt: "Hechos que condicionan",
-            //                   criteria: "Criterios",
-            //                   terms: "Vigencia",
-            //                 }}
-            //               />
-            //             </StyledViewContainer>
-
-            //           </BusinessRuleCard>
-            //         </StyledCardContainer>
-            //       ) :
-            //       <BusinessRuleCard
-            //         key={`decision-${index}`}
-            //         id={`decision-${index}`}
-            //         handleDelete={() => {
-            //           handleDelete(decision.id!);
-            //         }}
-            //         handleView={() => {
-            //           handleView(decision);
-            //         }}
-            //       >
-            //         <StyledViewContainer >
-            //           <BusinessRuleView
-            //             decision={getModalDisplayData(decision)}
-            //             textValues={{
-            //               selectOptions: "Seleccione las opciones",
-            //               selectOption: "Seleccione una opción",
-            //               rangeMin: (label: string) => `${label} Minima`,
-            //               rangeMax: (label: string) => `${label} Maxima`,
-            //               reasonForChange: "Motivo del cambio",
-            //               change: "Cambio",
-            //               changePlaceholder: "Describa brevemente el motivo del cambio",
-            //               termStart: "Fecha de inicio",
-            //               termEnd: "Fecha de fin",
-            //               cancel: "Cancelar",
-            //               confirm: "Confirmar",
-            //               none: "Ninguno",
-            //               factsThatConditionIt: "Hechos que condicionan",
-            //               criteria: "Criterios",
-            //               terms: "Vigencia",
-            //             }}
-            //           />
-            //         </StyledViewContainer>
-
-            //       </BusinessRuleCard>
-            //   ))}
-            // </Grid> */}
+          {/* <Text type="title" size="medium" appearance="gray">
+             Asegurate de agregar una decision para cada una de las tasas de interes para que la evaluacion se realice correctamente.
+          </Text> */}
+          {/* <Text  as="span" type="title" size="medium" appearance="gray">
+             Asegurate de  <Text
+                  as="span"
+                  type="label"
+                  size="large"
+                  appearance="dark"
+                  weight="bold"
+                >
+                  Agregar una decision
+                </Text> para cada una de las tasas de interes para que la evaluacion se realice correctamente.
+          </Text> */}
+          {/* <Text  as="span" type="title" size="medium" appearance="gray">
+             Asegurate de  <Text
+                  as="span"
+                  type="label"
+                  size="large"
+                  appearance="primary"
+                  weight="bold"
+                >
+                  Agregar una decision
+                </Text> para cada una de las tasas de interes para que la evaluacion se realice correctamente.
+          </Text> */}
             <BusinessRules
               decisions={decisions}
               textValues={{
@@ -297,44 +283,11 @@ export function PositionsUI(props: IPositionsUIProps) {
               handleSubmitForm={handleSubmitForm}
               handleDelete={handleDelete}
             />
-          {/* )} */}
         </Stack>
       </Stack>
-
-      {/* {isModalOpen && (
-        <RulesConfiguration
-          portalId="modal-portal"
-          onCloseModal={handleCloseModal}
-          title={selectedDecision ? "Editar Decisión" : "Configuración de Reglas"}
-        >
-          <RulesForm
-            id={selectedDecision ? selectedDecision.id! : `decision-${decisions.length + 1}`}
-            decision={selectedDecision ? getModalDisplayData(selectedDecision) : getModalDisplayData(getData())}
-            onCloseModal={handleCloseModal}
-            onCancel={handleCloseModal}
-            onSubmitEvent={(dataDecision: IRuleDecision) => {
-              handleSubmitForm(dataDecision);
-            }}
-            textValues={{
-              selectOptions: "Seleccione las opciones",
-              selectOption: "Seleccione una opción",
-              rangeMin: (label: string) => `${label} Minima`,
-              rangeMax: (label: string) => `${label} Maxima`,
-              reasonForChange: "Motivo del cambio",
-              change: "Cambio",
-              changePlaceholder: "Describa brevemente el motivo del cambio",
-              termStart: "Fecha de inicio",
-              termEnd: "Fecha de fin",
-              cancel: "Cancelar",
-              confirm: "Confirmar",
-              none: "Ninguno",
-              factsThatConditionIt: "Hechos que condicionan",
-              criteria: "Criterios",
-              terms: "Vigencia",
-            }}
-          />
-        </RulesConfiguration>
-      )} */}
     </Stack>
   );
 }
+
+export {PositionsUI};
+export type {IPositionsUI};

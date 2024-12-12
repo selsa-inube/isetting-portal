@@ -159,8 +159,8 @@ const decision2: IRuleDecision = {
 // };
 
 const decisions = [
-  decision1,
-  decision2,
+   decision1,
+   decision2,
   // decision3,
   // decision4,
   // decision5,

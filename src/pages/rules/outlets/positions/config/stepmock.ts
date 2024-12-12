@@ -14,7 +14,7 @@ const stepsMock = [
   {
     id: "decisions",
     number: 3,
-    name: "Consulta de decisiones vigentes",
+    name: "Línea de crédito",
     description: "Por favor completa la información de consulta.",
   },
   {
