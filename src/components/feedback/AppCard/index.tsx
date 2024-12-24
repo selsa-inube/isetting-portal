@@ -5,7 +5,7 @@ import { basic } from "@design/tokens";
 import { SkeletonIcon, SkeletonLine } from "@inubekit/skeleton";
 import { StyledAppCard } from "./styles";
 
-interface AppCardProps {
+interface IAppCard {
   description?: string;
   icon?: React.ReactNode;
   label?: string;
@@ -13,7 +13,7 @@ interface AppCardProps {
   isLoading?: boolean;
 }
 
-function AppCard(props: AppCardProps) {
+function AppCard(props: IAppCard) {
   const { label, description, icon, url, isLoading } = props;
 
   return (
@@ -52,4 +52,4 @@ function AppCard(props: AppCardProps) {
 }
 
 export { AppCard };
-export type { AppCardProps };
+export type { IAppCard };

@@ -24,7 +24,7 @@ import {
   StyledTitle,
 } from "./styles";
 
-interface HomeProps {
+interface IHome {
   data?: ICardData[];
 }
 
@@ -36,7 +36,7 @@ const renderLogo = (imgUrl: string) => {
   );
 };
 
-function HomeUI(props: HomeProps) {
+function HomeUI(props: IHome) {
   const { data } = props;
 
   const { appData, businessUnitsToTheStaff, setBusinessUnitSigla } =
