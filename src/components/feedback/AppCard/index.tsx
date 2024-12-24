@@ -3,6 +3,8 @@ import { Text } from "@inubekit/text";
 import { Icon } from "@inubekit/icon";
 import { basic } from "@design/tokens";
 import { SkeletonIcon, SkeletonLine } from "@inubekit/skeleton";
+import { isMobile580 } from "@config/environment";
+import { useMediaQuery } from "@inubekit/hooks";
 import { StyledAppCard } from "./styles";
 
 interface AppCardProps {
@@ -14,9 +16,10 @@ interface AppCardProps {
 }
 
 function AppCard({ label, description, icon, url, isLoading }: AppCardProps) {
+  const smallScreen = useMediaQuery(isMobile580);
   if (isLoading) {
     return (
-      <StyledAppCard to={url ?? ""}>
+      <StyledAppCard to={url ?? ""} $smallScreen={smallScreen}>
         <Stack direction="column" gap={basic.spacing.s200}>
           <Stack width="70%">
             <SkeletonLine animated />
@@ -33,7 +36,7 @@ function AppCard({ label, description, icon, url, isLoading }: AppCardProps) {
   }
 
   return (
-    <StyledAppCard to={url ?? ""}>
+    <StyledAppCard to={url ?? ""} $smallScreen={smallScreen}>
       <Stack direction="column" gap={basic.spacing.s200}>
         <Text type="title" size="medium" weight="bold">
           {label}

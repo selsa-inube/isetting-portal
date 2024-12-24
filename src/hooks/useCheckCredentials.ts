@@ -37,4 +37,4 @@ const useCheckCredentials = (businessUnits: IBusinessUnitsPortalStaff[]) => {
   return checkCredentials;
 };
 
-export default useCheckCredentials;
+export { useCheckCredentials };

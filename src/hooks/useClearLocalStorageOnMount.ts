@@ -6,4 +6,4 @@ function useClearLocalStorageOnMount() {
   }, []);
 }
 
-export default useClearLocalStorageOnMount;
+export { useClearLocalStorageOnMount };

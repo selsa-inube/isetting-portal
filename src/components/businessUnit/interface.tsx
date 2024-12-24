@@ -5,17 +5,18 @@ import { Text } from "@inubekit/text";
 import { Stack } from "@inubekit/stack";
 import { Textfield } from "@inubekit/textfield";
 import { Button } from "@inubekit/button";
-import { IBusinessUnitsPortalStaff, IBusinessUnitstate } from "./types";
+
 import { basic } from "@design/tokens";
+import { RadioBusinessUnit } from "@components/feedback/RadioBusinessUnit";
 import {
   StyledBusinessUnits,
   StyledBusinessUnitsList,
   StyledNoResults,
   StyledBusinessUnitsItem,
 } from "./styles";
-import { RadioBusinessUnit } from "@components/feedback/RadioBusinessUnit";
+import { IBusinessUnitsPortalStaff, IBusinessUnitstate } from "./types";
 
-interface BusinessUnitsUIProps {
+interface IBusinessUnitsUI {
   businessUnits: IBusinessUnitsPortalStaff[];
   search: string;
   businessUnit: IBusinessUnitstate;
@@ -51,7 +52,7 @@ function BusinessUnitsUI({
   filterBusinessUnits,
   handleBussinessUnitChange,
   handleSubmit,
-}: BusinessUnitsUIProps) {
+}: IBusinessUnitsUI) {
   return (
     <StyledBusinessUnits>
       <Stack

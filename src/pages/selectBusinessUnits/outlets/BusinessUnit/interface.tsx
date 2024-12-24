@@ -16,7 +16,7 @@ import {
 } from "./styles";
 import { IBusinessUnitstate } from "./types";
 
-interface BusinessUnitsUIProps {
+interface IBusinessUnitsUI {
   businessUnits: IBusinessUnitsPortalStaff[];
   search: string;
   businessUnit: IBusinessUnitstate;
@@ -52,7 +52,7 @@ function BusinessUnitsUI({
   filterBusinessUnits,
   handleBussinessUnitChange,
   handleSubmit,
-}: BusinessUnitsUIProps) {
+}: IBusinessUnitsUI) {
   const filteredBusinessUnits = filterBusinessUnits(businessUnits, search);
 
   return (

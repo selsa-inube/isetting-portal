@@ -44,4 +44,4 @@ const useHomeLogic = () => {
   };
 };
 
-export default useHomeLogic;
+export { useHomeLogic };

@@ -2,7 +2,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { ErrorPage } from "@components/layout/ErrorPage";
 import clientNotFound from "@assets/images/Expired.png";
 import { enviroment } from "@config/environment";
-import useClearLocalStorageOnMount from "@hooks/useClearLocalStorageOnMount";
+import { useClearLocalStorageOnMount } from "@hooks/useClearLocalStorageOnMount";
 
 function ErrorNotBusinessUnit() {
   const { logout } = useAuth0();

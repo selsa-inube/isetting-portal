@@ -4,7 +4,7 @@ import { AppContext } from "@context/AppContext";
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
 import { IBusinessUnitstate } from "@components/businessUnit/types";
 
-export function useBusinessUnit(businessUnits: IBusinessUnitsPortalStaff[]) {
+function useBusinessUnit(businessUnits: IBusinessUnitsPortalStaff[]) {
   const { setBusinessUnitSigla } = useContext(AppContext);
   const [search, setSearch] = useState("");
   const [selectedBusinessUnit, setSelectedBusinessUnit] = useState<
@@ -66,3 +66,5 @@ export function useBusinessUnit(businessUnits: IBusinessUnitsPortalStaff[]) {
     filterBusinessUnits,
   };
 }
+
+export { useBusinessUnit };

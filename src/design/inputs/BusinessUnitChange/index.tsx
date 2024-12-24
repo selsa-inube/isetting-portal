@@ -19,7 +19,7 @@ interface BusinessUnitChangeProps {
   onLogoClick: (businessUnit: IBusinessUnitsPortalStaff) => void;
 }
 
-export const BusinessUnitChange = (props: BusinessUnitChangeProps) => {
+const BusinessUnitChange = (props: BusinessUnitChangeProps) => {
   const { businessUnits, selectedClient, onLogoClick } = props;
 
   return (
@@ -57,3 +57,5 @@ export const BusinessUnitChange = (props: BusinessUnitChangeProps) => {
     </StyledContainer>
   );
 };
+
+export { BusinessUnitChange };

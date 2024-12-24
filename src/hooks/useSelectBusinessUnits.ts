@@ -5,7 +5,7 @@ import { AppContext } from "@context/AppContext";
 import { useContext } from "react";
 import { validateBusinessUnities } from "@pages/selectBusinessUnits/utils";
 
-export function useSelectBusinessUnits() {
+function useSelectBusinessUnits() {
   const navigate = useNavigate();
   const location = useLocation();
   const { appData, setBusinessUnitsToTheStaff } = useContext(AppContext);
@@ -31,3 +31,5 @@ export function useSelectBusinessUnits() {
     }
   }, [location, navigate]);
 }
+
+export { useSelectBusinessUnits };

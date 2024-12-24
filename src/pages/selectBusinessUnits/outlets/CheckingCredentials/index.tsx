@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
-import useCheckCredentials from "@hooks/useCheckCredentials";
+import { useCheckCredentials } from "@hooks/useCheckCredentials";
 import { CheckingCredentialsUI } from "./interface";
 
 function CheckingCredentials({

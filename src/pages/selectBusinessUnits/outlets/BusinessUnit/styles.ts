@@ -1,5 +1,5 @@
-import { basic } from "@design/tokens";
 import styled from "styled-components";
+import { basic } from "@design/tokens";
 
 interface StyledBusinessUnitsListProps {
   $scroll?: boolean;

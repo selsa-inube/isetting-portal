@@ -1,8 +1,9 @@
 import { Grid } from "@inubekit/grid";
-import { useMediaQueries } from "@inubekit/hooks";
+import { useMediaQueries, useMediaQuery } from "@inubekit/hooks";
 import { Text } from "@inubekit/text";
 import { basic } from "@design/tokens";
 import { StyledRadioBusinessUnit, StyledRadio, StyledImage } from "./styles";
+import { isMobile580 } from "@config/environment";
 
 interface RadioBusinessUnitProps {
   id: string;
@@ -15,7 +16,7 @@ interface RadioBusinessUnitProps {
 
 function RadioBusinessUnit(props: RadioBusinessUnitProps) {
   const { name, id, value, label, logo, handleChange } = props;
-
+  const smallScreen = useMediaQuery(isMobile580);
   const mediaQueries = ["(max-width: 532px)", "(max-width: 460px)"];
   const matches = useMediaQueries(mediaQueries);
   return (
@@ -43,7 +44,11 @@ function RadioBusinessUnit(props: RadioBusinessUnitProps) {
           onChange={handleChange}
         />
         <Text size="medium">{label}</Text>
-        <StyledImage src={logo} alt="Logo de empresa" />
+        <StyledImage
+          src={logo}
+          alt="Logo de empresa"
+          $smallScreen={smallScreen}
+        />
       </Grid>
     </StyledRadioBusinessUnit>
   );
