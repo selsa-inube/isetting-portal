@@ -57,5 +57,6 @@ const BusinessUnitChange = (props: IBusinessUnitChange) => {
     </StyledContainer>
   );
 };
-export type { IBusinessUnitChange };
+
 export { BusinessUnitChange };
+export type { IBusinessUnitChange };

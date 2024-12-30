@@ -3,7 +3,7 @@ import { useMediaQuery } from "@inubekit/hooks";
 import { AppContext } from "@context/AppContext";
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
 
-export const useHomeLogic = () => {
+const useHomeLogic = () => {
   const { appData, businessUnitsToTheStaff, setBusinessUnitSigla } =
     useContext(AppContext);
 
@@ -40,3 +40,5 @@ export const useHomeLogic = () => {
     handleLogoClick,
   };
 };
+
+export { useHomeLogic };
