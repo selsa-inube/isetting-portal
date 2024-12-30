@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 
-import { IOptionItemCheckedProps } from "./OptionItem";
 import { Size, Status } from "./types";
 import { SelectCheckUI } from "./interface";
+import { IOptionItemChecked } from "./OptionItem";
 
-interface SelectCheckProps {
+interface ISelectCheck {
   id: string;
   name: string;
-  options: IOptionItemCheckedProps[];
+  options: IOptionItemChecked[];
   value: string | number;
 
   disabled?: boolean;
@@ -26,7 +26,7 @@ interface SelectCheckProps {
   status?: Status;
 }
 
-const SelectCheck = (props: SelectCheckProps) => {
+const SelectCheck = (props: ISelectCheck) => {
   const {
     id,
     name,
@@ -114,5 +114,5 @@ const SelectCheck = (props: SelectCheckProps) => {
   );
 };
 
-export type { SelectCheckProps };
+export type { ISelectCheck };
 export { SelectCheck };

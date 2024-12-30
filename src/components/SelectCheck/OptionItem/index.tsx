@@ -3,14 +3,14 @@ import { Stack } from "@inubekit/stack";
 
 import { StyledOptionItemChecked } from "./styles";
 
-interface IOptionItemCheckedProps {
+interface IOptionItemChecked {
   id: string;
   label: string;
   checked?: boolean;
   onchange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const OptionItemChecked = (props: IOptionItemCheckedProps) => {
+const OptionItemChecked = (props: IOptionItemChecked) => {
   const { id, label, checked = false, onchange } = props;
 
   return (
@@ -30,5 +30,5 @@ const OptionItemChecked = (props: IOptionItemCheckedProps) => {
   );
 };
 
-export type { IOptionItemCheckedProps };
+export type { IOptionItemChecked };
 export { OptionItemChecked };

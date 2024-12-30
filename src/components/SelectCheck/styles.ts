@@ -1,14 +1,15 @@
 import styled from "styled-components";
 import { inube } from "@inubekit/foundations";
 import { basic } from "@design/tokens";
-import { SelectCheckProps } from ".";
+import { ISelectCheck } from ".";
+import useBorderColor from "@hooks/useInputStyles";
 
 interface IStyledInputContainer {
-  disabled: SelectCheckProps["disabled"];
+  disabled: ISelectCheck["disabled"];
   $focused: boolean;
-  $status: SelectCheckProps["status"];
-  $readonly: SelectCheckProps["readonly"];
-  onClick: SelectCheckProps["onClick"];
+  $status: ISelectCheck["status"];
+  $readonly: ISelectCheck["readonly"];
+  onClick: ISelectCheck["onClick"];
 }
 
 const sizeOptions = {
@@ -22,19 +23,19 @@ const sizeOptions = {
 
 interface IStyledInput {
   $focused: boolean;
-  $size: SelectCheckProps["size"];
-  $status: SelectCheckProps["status"];
-  $fullwidth: SelectCheckProps["fullwidth"];
-  $required: SelectCheckProps["required"];
-  onClick?: SelectCheckProps["onClick"];
-  onFocus: SelectCheckProps["onFocus"];
-  onBlur?: SelectCheckProps["onBlur"];
-  onChange?: SelectCheckProps["onChange"];
+  $size: ISelectCheck["size"];
+  $status: ISelectCheck["status"];
+  $fullwidth: ISelectCheck["fullwidth"];
+  $required: ISelectCheck["required"];
+  onClick?: ISelectCheck["onClick"];
+  onFocus: ISelectCheck["onFocus"];
+  onBlur?: ISelectCheck["onBlur"];
+  onChange?: ISelectCheck["onChange"];
 }
 
 interface IStyledContainer {
-  disabled: SelectCheckProps["disabled"];
-  $fullwidth: SelectCheckProps["fullwidth"];
+  disabled: ISelectCheck["disabled"];
+  $fullwidth: ISelectCheck["fullwidth"];
 }
 
 const StyledContainer = styled.div<IStyledContainer>`
@@ -54,26 +55,13 @@ const StyledInputContainer = styled.div<IStyledInputContainer>`
   border-style: solid;
   background-color: ${({ theme, $readonly }) =>
     $readonly && (theme?.palette?.neutral?.N0 || inube.palette.neutral.N0)};
-  border-color: ${({ theme, disabled, $readonly, $status, $focused }) => {
-    if (disabled) {
-      return (
-        (theme?.palette?.neutral?.N20 || inube.palette.neutral.N20) +
-        "; pointer-events: none; opacity: 0.5;"
-      );
-    }
-    if ($focused && !$readonly) {
-      return theme?.palette?.blue?.B300 || inube.palette.blue.B300;
-    }
-    if ($status === "invalid" && !$readonly) {
-      return theme?.palette?.red?.R400 || inube.palette.red.R400;
-    }
-    return theme?.palette?.neutral?.N40 || inube.palette.neutral.N40;
-  }};
+
+  border-color: ${({ disabled, $readonly, $status, $focused }) =>
+    useBorderColor(disabled!, $readonly, $status, $focused)};
 
   opacity: ${({ disabled }) => (disabled ? "0.5" : "none")};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 `;
-
 const StyledInput = styled.input<IStyledInput>`
   outline: none;
   border-radius: ${basic.spacing.s8};

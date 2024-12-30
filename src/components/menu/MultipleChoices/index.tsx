@@ -5,15 +5,15 @@ import { Text } from "@inubekit/text";
 
 import { basic } from "@design/tokens";
 import { SelectCheck } from "@components/SelectCheck";
-import { IOptionItemCheckedProps } from "@components/SelectCheck/OptionItem";
+import { IOptionItemChecked } from "@components/SelectCheck/OptionItem";
 import { StyledContainer, StyledSelection } from "./styles";
 
 interface IMultipleChoicesProps {
   id: string;
   labelSelect: string;
   labelSelected: string;
-  onHandleSelectCheckChange: (options: IOptionItemCheckedProps[]) => void;
-  options: IOptionItemCheckedProps[];
+  onHandleSelectCheckChange: (options: IOptionItemChecked[]) => void;
+  options: IOptionItemChecked[];
   placeholderSelect?: string;
   required?: boolean;
   message?: string;

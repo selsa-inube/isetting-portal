@@ -15,9 +15,9 @@ import { OptionItemChecked } from "./OptionItem";
 import { OptionList } from "./OptionList";
 import { Size } from "./types";
 import { StyledContainer, StyledInputContainer, StyledInput } from "./styles";
-import { SelectCheckProps } from ".";
+import { ISelectCheck } from ".";
 
-interface SelectCheckUIProps extends SelectCheckProps {
+interface ISelectCheckUI extends ISelectCheck {
   displayList: boolean;
   focused?: boolean;
 }
@@ -30,7 +30,7 @@ const getTypo = (size: Size) => {
 };
 
 const Message = (
-  props: Pick<SelectCheckProps, "disabled" | "status"> & { message?: string }
+  props: Pick<ISelectCheck, "disabled" | "status"> & { message?: string }
 ) => {
   const { disabled, status, message } = props;
 
@@ -60,8 +60,8 @@ const Message = (
   );
 };
 
-const SelectCheckUI = forwardRef<HTMLDivElement, SelectCheckUIProps>(
-  (props: SelectCheckUIProps, ref) => {
+const SelectCheckUI = forwardRef<HTMLDivElement, ISelectCheckUI>(
+  (props: ISelectCheckUI, ref) => {
     const {
       disabled,
       id,
@@ -177,5 +177,5 @@ const SelectCheckUI = forwardRef<HTMLDivElement, SelectCheckUIProps>(
 
 SelectCheckUI.displayName = "SelectCheckUI";
 
-export type { SelectCheckUIProps };
+export type { ISelectCheckUI };
 export { SelectCheckUI };

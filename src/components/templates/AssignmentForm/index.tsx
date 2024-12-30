@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 
 import { IOptionInitialiceEntryApp } from "@pages/privileges/outlets/positions/add-position/types";
-import { IOptionItemCheckedProps } from "@components/SelectCheck/OptionItem";
-
+import { IOptionItemChecked } from "@components/SelectCheck/OptionItem";
+import { IOption } from "@components/menu/types";
 import { AssignmentFormUI } from "./interface";
 import { IEntry, Option } from "./types";
-import { IOption } from "@components/menu/types";
 
 interface AssignmentFormProps {
   handleChange: (entries: IEntry[]) => void;
@@ -106,7 +105,7 @@ function AssignmentForm(props: AssignmentFormProps) {
     checked: selectedOptions.includes(entry.k_uso),
   }));
 
-  const handleSelectChange = (options: IOptionItemCheckedProps[]) => {
+  const handleSelectChange = (options: IOptionItemChecked[]) => {
     const selectedIds = options
       .filter((option) => option.checked)
       .map((option) => option.id);

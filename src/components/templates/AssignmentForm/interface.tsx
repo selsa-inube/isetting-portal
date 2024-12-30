@@ -20,7 +20,7 @@ import { basic } from "@design/tokens";
 import { MultipleChoices } from "@components/menu/MultipleChoices";
 import { IOption } from "@components/menu/types";
 import { Fieldset } from "@inubekit/fieldset";
-import { IOptionItemCheckedProps } from "@components/SelectCheck/OptionItem";
+import { IOptionItemChecked } from "@components/SelectCheck/OptionItem";
 import { StyledForm, StyledToggleContainer } from "./styles";
 import { IEntry, Option, titlesOptions } from "./types";
 
@@ -36,7 +36,7 @@ interface AssignmentFormUIProps {
   title: string;
   handleCloseMenuInvitation: () => void;
   handleFilter: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleSelectChange: (options: IOptionItemCheckedProps[]) => void;
+  handleSelectChange: (options: IOptionItemChecked[]) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   handleToggleAllEntries: (allocate: boolean) => void;
   handleToggleMenuInvitation: () => void;

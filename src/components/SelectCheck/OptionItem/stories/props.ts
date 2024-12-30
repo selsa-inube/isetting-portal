@@ -1,5 +1,5 @@
 import { ArgTypes } from "@storybook/react";
-import { IOptionItemCheckedProps } from "..";
+import { IOptionItemChecked } from "..";
 
 const parameters = {
   docs: {
@@ -9,7 +9,7 @@ const parameters = {
   },
 };
 
-const props: Partial<ArgTypes<IOptionItemCheckedProps>> = {
+const props: Partial<ArgTypes<IOptionItemChecked>> = {
   id: {
     description: "uniquely identifies the **OptionItem Component**",
   },

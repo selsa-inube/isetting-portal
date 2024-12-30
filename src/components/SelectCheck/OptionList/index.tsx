@@ -1,13 +1,13 @@
 import { StyledOptionList } from "./styles";
-interface OptionListProps {
+interface IOptionList {
   children: React.ReactNode;
   onClick?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-const OptionList = (props: OptionListProps) => {
+const OptionList = (props: IOptionList) => {
   const { children, onClick } = props;
 
   return <StyledOptionList $onClick={onClick}>{children}</StyledOptionList>;
 };
-export type { OptionListProps };
+export type { IOptionList };
 export { OptionList };
