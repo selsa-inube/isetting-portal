@@ -8,14 +8,13 @@ import { nav, userMenu } from "@config/nav";
 import { Title } from "@components/data/Title";
 import { AppCard } from "@components/feedback/AppCard";
 import { BusinessUnitChange } from "@design/inputs/BusinessUnitChange";
-
+import { renderLogo } from "@hooks/renderLogo/logoUtils";
 import {
   StyledCollapse,
   StyledCollapseIcon,
   StyledContainer,
   StyledContainerCards,
   StyledContainerSection,
-  StyledContentImg,
   StyledFooter,
   StyledHeaderContainer,
   StyledLogo,
@@ -23,21 +22,12 @@ import {
 } from "./styles";
 import { ICardData } from "./types";
 
-interface HomeProps {
+interface IHome {
   data?: ICardData[];
 }
 
-const renderLogo = (imgUrl: string) => {
-  return (
-    <StyledContentImg to="/">
-      <StyledLogo src={imgUrl} />
-    </StyledContentImg>
-  );
-};
-
-function HomeUI(props: HomeProps) {
+function HomeUI(props: IHome) {
   const { data } = props;
-
   const { appData } = useContext(AppContext);
 
   const {

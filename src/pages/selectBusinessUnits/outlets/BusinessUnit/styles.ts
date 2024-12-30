@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { basic } from "@design/tokens";
 
-interface StyledBusinessUnitsListProps {
+interface IStyledBusinessUnitsList {
   $scroll?: boolean;
   $smallScreen?: boolean;
 }
@@ -23,7 +23,7 @@ const StyledBusinessUnits = styled.div<IStyledContainer>`
   }
 `;
 
-const StyledBusinessUnitsList = styled.div<StyledBusinessUnitsListProps>`
+const StyledBusinessUnitsList = styled.div<IStyledBusinessUnitsList>`
   & > div {
     list-style: none;
     max-height: 330px;

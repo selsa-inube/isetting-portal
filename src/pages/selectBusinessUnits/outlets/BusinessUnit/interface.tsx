@@ -1,4 +1,3 @@
-import React from "react";
 import { MdSearch } from "react-icons/md";
 import { Text } from "@inubekit/text";
 import { Stack } from "@inubekit/stack";
@@ -6,12 +5,11 @@ import { Input } from "@inubekit/input";
 import { basic } from "@design/tokens";
 import { RadioBusinessUnit } from "@components/feedback/RadioBusinessUnit";
 import { Button } from "@inubekit/button";
-
+import { NoResultsMessage } from "@hooks/noResultsMessage/useNoResultsMessage";
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
 import {
   StyledBusinessUnits,
   StyledBusinessUnitsList,
-  StyledNoResults,
   StyledBusinessUnitsItem,
 } from "./styles";
 import { IBusinessUnitstate } from "./types";
@@ -29,19 +27,6 @@ interface IBusinessUnitsUI {
     search: string
   ) => IBusinessUnitsPortalStaff[];
   handleSubmit: () => void;
-}
-
-function NoResultsMessage({ search }: { search: string }) {
-  return (
-    <StyledNoResults>
-      <Text size="medium">
-        No se encontraron resultados para &quot;{search}&quot;.
-      </Text>
-      <Text size="medium">
-        Por favor, intenta modificando los parámetros de búsqueda.
-      </Text>
-    </StyledNoResults>
-  );
 }
 
 function BusinessUnitsUI({
