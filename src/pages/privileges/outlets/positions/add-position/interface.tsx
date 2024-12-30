@@ -1,124 +1,122 @@
-import { Breadcrumbs } from "@inubekit/breadcrumbs";
-import { Stack } from "@inubekit/stack";
+import { FormikProps } from "formik";
 import { useMediaQuery } from "@inubekit/hooks";
-import { Button } from "@inubekit/button";
-
-import { isMobile580 } from "@config/environment";
+import { Stack } from "@inubekit/stack";
+import { Breadcrumbs } from "@inubekit/breadcrumbs";
+import { Assisted, IAssistedStep } from "@inubekit/assisted";
 import { PageTitle } from "@components/PageTitle";
+import { InitializerForm } from "@components/forms/InitializerForm";
+import { Button } from "@inubekit/button";
 import { basic } from "@design/tokens";
-
-import {
-  createPositionConfig,
-  stepsAddPosition,
-} from "./config/addPosition.config";
-import { IFormAddPosition, IFormAddPositionRef, IStep } from "./types";
-
+import { IGeneralInformationEntry } from "../components/GeneralInformationForm/types";
 import { GeneralInformationForm } from "../components/GeneralInformationForm";
+import { createPositionConfig } from "./config/addPosition.config";
 
-import { IMessageState } from "../../types/forms.types";
-
-const renderStepContent = (
-  currentStep: number,
-  formReferences: IFormAddPositionRef,
-  dataAddPositionLinixForm: IFormAddPosition,
-  setIsCurrentFormValid: React.Dispatch<React.SetStateAction<boolean>>
-) => {
-  return (
-    <>
-      {currentStep === stepsAddPosition.generalInformation.id && (
-        <GeneralInformationForm
-          initialValues={dataAddPositionLinixForm.generalInformation.values}
-          ref={formReferences.generalInformation}
-          onFormValid={setIsCurrentFormValid}
-        />
-      )}
-    </>
-  );
-};
-interface AddPositionUIProps {
+interface IAddPositionUI {
   currentStep: number;
-  steps: IStep[];
-  showModal: boolean;
+  generalInformationRef: React.RefObject<FormikProps<IGeneralInformationEntry>>;
+  initialGeneralInformationValues: IGeneralInformationEntry;
   isCurrentFormValid: boolean;
-  dataAddPositionLinixForm: IFormAddPosition;
-  formReferences: IFormAddPositionRef;
-  loading: boolean;
-  message: IMessageState;
+  steps: IAssistedStep[];
+  onNextStep: () => void;
+  onPreviousStep: () => void;
   setIsCurrentFormValid: React.Dispatch<React.SetStateAction<boolean>>;
-  handleNextStep: () => void;
   handlePreviousStep: () => void;
-  setCurrentStep: React.Dispatch<React.SetStateAction<number>>;
-  handleToggleModal: () => void;
-  handleCloseSectionMessage: () => void;
+  handleNextStep: () => void;
 }
 
-export function AddPositionUI(props: AddPositionUIProps) {
+function AddStaffRolesUI(props: IAddPositionUI) {
   const {
     currentStep,
-    steps,
-    formReferences,
-    dataAddPositionLinixForm,
+    generalInformationRef,
+    initialGeneralInformationValues,
     isCurrentFormValid,
-    setIsCurrentFormValid,
-    handleNextStep,
+    steps,
+    onNextStep,
     handlePreviousStep,
+    handleNextStep,
+    onPreviousStep,
+    setIsCurrentFormValid,
   } = props;
 
-  const smallScreen = useMediaQuery(isMobile580);
+  const smallScreen = useMediaQuery("(max-width: 990px)");
   const disabled = !isCurrentFormValid;
-
   return (
     <Stack
       direction="column"
+      width="-webkit-fill-available"
       padding={
         smallScreen
-          ? `{${basic.spacing.s16}}`
-          : `${basic.spacing.s32} ${basic.spacing.s64}`
+          ? `${basic.spacing.s200}`
+          : `${basic.spacing.s300} ${basic.spacing.s800}`
       }
     >
-      <Stack gap={basic.spacing.s48} direction="column">
-        <Stack gap={basic.spacing.s32} direction="column">
+      <Stack gap={basic.spacing.s300} direction="column">
+        <Stack gap={basic.spacing.s300} direction="column">
           <Breadcrumbs crumbs={createPositionConfig[0].crumbs} />
-          <Stack
-            justifyContent="space-between"
-            alignItems="center"
-            gap={basic.spacing.s50}
-          >
-            <PageTitle
-              title={createPositionConfig[0].title}
-              description={createPositionConfig[0].description}
-              navigatePage="/privileges/positions"
-            />
-          </Stack>
+          <PageTitle
+            title={createPositionConfig[0].title}
+            description={createPositionConfig[0].description}
+            navigatePage="/privileges/positions"
+          />
         </Stack>
-        <>
-          {renderStepContent(
-            currentStep,
-            formReferences,
-            dataAddPositionLinixForm,
-            setIsCurrentFormValid
-          )}
-        </>
-        <Stack gap={basic.spacing.s16} justifyContent="flex-end">
-          <Button
-            onClick={handlePreviousStep}
-            type="button"
-            disabled={currentStep === steps[0].id}
-            spacing="compact"
-            variant="none"
-            appearance="gray"
-          >
-            Atrás
-          </Button>
-          <Button
-            onClick={handleNextStep}
-            spacing="compact"
-            disabled={disabled}
-          >
-            {currentStep === steps.length ? "Confirmar" : "Siguiente"}
-          </Button>
+        <Stack gap={basic.spacing.s300} direction="column">
+          <Assisted
+            step={steps[currentStep - 1]}
+            totalSteps={steps.length}
+            onBackClick={onPreviousStep}
+            onNextClick={onNextStep}
+            onSubmitClick={() => {
+              console.log("");
+            }}
+            disableNext={!isCurrentFormValid}
+            controls={{
+              goBackText: "Anterior",
+              goNextText: "Siguiente",
+              submitText: "Finalizar",
+            }}
+            size={smallScreen ? "small" : "large"}
+          />
+          <Stack direction="column">
+            {currentStep === 1 && (
+              <GeneralInformationForm
+                ref={generalInformationRef}
+                initialValues={initialGeneralInformationValues}
+                onFormValid={setIsCurrentFormValid}
+                handleNextStep={onNextStep}
+              />
+            )}
+            {currentStep === 2 && (
+              <InitializerForm
+                dataOptionsForms={[]}
+                handleSubmit={() => {}}
+                dataOptionsValueSelect={[]}
+              />
+            )}
+          </Stack>
+          <Stack gap="16px" justifyContent="flex-end">
+            <Button
+              onClick={handlePreviousStep}
+              type="button"
+              disabled={currentStep === steps[0].id}
+              spacing="compact"
+              variant="none"
+              appearance="gray"
+            >
+              Atrás
+            </Button>
+
+            <Button
+              onClick={handleNextStep}
+              spacing="compact"
+              disabled={disabled}
+            >
+              {currentStep === steps.length ? "Enviar" : "Siguiente"}
+            </Button>
+          </Stack>
         </Stack>
       </Stack>
     </Stack>
   );
 }
+
+export { AddStaffRolesUI };

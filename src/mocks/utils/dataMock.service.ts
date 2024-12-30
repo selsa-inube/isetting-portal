@@ -1,6 +1,5 @@
 import localforage from "localforage";
-
-import { IGeneralInformationEntry } from "@pages/privileges/outlets/positions/components/GeneralInformationForm";
+import { IGeneralInformationEntry } from "@pages/privileges/outlets/positions/components/GeneralInformationForm/types";
 
 function buildData<T>(data: T[]) {
   const dataMock = data.map((optionData) => {

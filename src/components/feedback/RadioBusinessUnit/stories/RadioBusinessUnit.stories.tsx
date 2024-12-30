@@ -1,8 +1,7 @@
-import { Meta, StoryFn } from "@storybook/react";
 import { BrowserRouter } from "react-router-dom";
-
-import { RadioBusinessUnit, RadioBusinessUnitProps } from "../index";
 import { businessUnitDataMock } from "@mocks/login/businessUnit.mock";
+import { Meta, StoryFn } from "@storybook/react";
+import { RadioBusinessUnit, RadioBusinessUnitProps } from "../index";
 
 const meta: Meta<typeof RadioBusinessUnit> = {
   title: "feedback/RadioBusinessUnit",
@@ -15,10 +14,14 @@ const meta: Meta<typeof RadioBusinessUnit> = {
     ),
   ],
 };
-const Default = (args: RadioBusinessUnitProps) => (
+
+export default meta;
+
+const Template: StoryFn<RadioBusinessUnitProps> = (args) => (
   <RadioBusinessUnit {...args} />
 );
 
+export const Default = Template.bind({});
 Default.args = {
   id: businessUnitDataMock[1].publicCode,
   name: "BusinessUnit",
@@ -26,7 +29,3 @@ Default.args = {
   label: businessUnitDataMock[1].abbreviatedName,
   logo: businessUnitDataMock[1].urlLogo,
 };
-
-export default meta;
-
-export { Default };

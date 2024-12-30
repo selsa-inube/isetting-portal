@@ -8,6 +8,7 @@ import {
   fetchTimeoutServices,
   maxRetriesServices,
 } from "@config/environment";
+import { IRoleForStaff } from "@ptypes/rolesForStaff";
 
 const axiosInstance: AxiosInstance = axios.create({
   baseURL: enviroment.IVITE_ISAAS_QUERY_PROCESS_SERVICE,
@@ -85,4 +86,17 @@ const getStaffPortalByBusinessManager = async (
   );
 };
 
-export { getBusinessManagers, getStaffPortalByBusinessManager };
+const getRolesForStaff = async (): Promise<IRoleForStaff> => {
+  const config: AxiosRequestConfig = {
+    headers: {
+      "X-Action": "SearchAllRolesForStaff",
+    },
+  };
+  return fetchWithRetries<IRoleForStaff>(`/roles-for-staff`, config);
+};
+
+export {
+  getBusinessManagers,
+  getStaffPortalByBusinessManager,
+  getRolesForStaff,
+};
