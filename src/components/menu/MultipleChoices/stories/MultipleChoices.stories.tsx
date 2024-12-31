@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 
 import { parameters, props } from "./props";
-import { MultipleChoices, IMultipleChoicesProps } from "..";
+import { MultipleChoices, IIMultipleChoices } from "..";
 
 const options = [
   { id: "1", label: "Option 1", checked: false },
@@ -19,7 +19,7 @@ const meta: Meta<typeof MultipleChoices> = {
 
 type Story = StoryObj<typeof MultipleChoices>;
 
-export const Default: Story = (args: IMultipleChoicesProps) => (
+const Default: Story = (args: IIMultipleChoices) => (
   <MultipleChoices {...args} />
 );
 Default.args = {
@@ -32,4 +32,5 @@ Default.args = {
   placeholderSelect: "Selecciona una categoria",
 };
 
-export default meta;
+export { meta, Default };
+export default options;

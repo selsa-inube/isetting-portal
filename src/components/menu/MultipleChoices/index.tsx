@@ -8,7 +8,7 @@ import { SelectCheck } from "@components/SelectCheck";
 import { IOptionItemChecked } from "@components/SelectCheck/OptionItem";
 import { StyledContainer, StyledSelection } from "./styles";
 
-interface IMultipleChoicesProps {
+interface IIMultipleChoices {
   id: string;
   labelSelect: string;
   labelSelected: string;
@@ -20,7 +20,7 @@ interface IMultipleChoicesProps {
   onBlur?: () => void;
 }
 
-const MultipleChoices = (props: IMultipleChoicesProps) => {
+const MultipleChoices = (props: IIMultipleChoices) => {
   const {
     id,
     labelSelect,
@@ -110,4 +110,4 @@ const MultipleChoices = (props: IMultipleChoicesProps) => {
 
 export { MultipleChoices };
 
-export type { IMultipleChoicesProps };
+export type { IIMultipleChoices };

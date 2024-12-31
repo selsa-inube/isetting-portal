@@ -3,7 +3,7 @@ import { useBusinessManagersId } from "@hooks/useBusinessManageresId";
 import { AppContext } from "@context/AppContext";
 import { PositionsUI } from "./interface";
 
-export function Positions() {
+function Positions() {
   const [searchPosition, setSearchPosition] = useState<string>("");
   const [loading] = useState<boolean>(false);
 
@@ -24,3 +24,5 @@ export function Positions() {
     />
   );
 }
+
+export { Positions };

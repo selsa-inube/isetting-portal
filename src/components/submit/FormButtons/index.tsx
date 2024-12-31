@@ -4,7 +4,7 @@ import { Stack } from "@inubekit/stack";
 import { inube } from "@inubekit/foundations";
 import { basic } from "@design/tokens";
 
-interface IFormButtonsProps {
+interface IFormButtons {
   handleReset: () => void;
   handleSubmit: () => void;
   cancelButtonText?: string;
@@ -15,7 +15,7 @@ interface IFormButtonsProps {
   submitButtonText?: string;
 }
 
-function FormButtons(props: IFormButtonsProps) {
+function FormButtons(props: IFormButtons) {
   const {
     handleSubmit,
     handleReset,
@@ -66,4 +66,4 @@ function FormButtons(props: IFormButtonsProps) {
 }
 
 export { FormButtons };
-export type { IFormButtonsProps };
+export type { IFormButtons };

@@ -3,13 +3,13 @@ import { Text } from "@inubekit/text";
 import { basic } from "@design/tokens";
 import { StyledLink } from "./styles";
 
-interface MenuLinkprops {
+interface IMenuLink {
   label: string;
   icon?: React.ReactNode;
   path: string;
 }
 
-function MenuLink(props: MenuLinkprops) {
+function MenuLink(props: IMenuLink) {
   const { label, icon, path } = props;
 
   return (
@@ -23,4 +23,4 @@ function MenuLink(props: MenuLinkprops) {
 }
 
 export { MenuLink };
-export type { MenuLinkprops };
+export type { IMenuLink };

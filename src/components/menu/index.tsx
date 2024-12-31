@@ -7,7 +7,7 @@ import { IOption } from "./types";
 import { MenuLink } from "./MenuLink";
 import { MenuOption } from "./MenuOption";
 
-interface MenuProps {
+interface IMenu {
   options: IOption[];
   handleClose: () => void;
 }
@@ -38,7 +38,7 @@ const renderMenuItems = (options: IOption[]) => {
   });
 };
 
-function Menu(props: MenuProps) {
+function Menu(props: IMenu) {
   const { options, handleClose } = props;
 
   const mobileMenuRef = useRef<HTMLDivElement>(null);
@@ -73,4 +73,4 @@ function Menu(props: MenuProps) {
 }
 
 export { Menu };
-export type { MenuProps };
+export type { IMenu };

@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { basic } from "@design/tokens";
 
-export const StyledContainer = styled.div`
+const StyledContainer = styled.div`
   padding: ${basic.spacing.s0};
 `;
 
-export const StyledSelection = styled.div`
+const StyledSelection = styled.div`
   display: none;
   flex-direction: row;
   gap: ${basic.spacing.s8};
@@ -15,3 +15,5 @@ export const StyledSelection = styled.div`
   border: 1px solid #e0e0e0;
   border-radius: ${basic.spacing.s10};
 `;
+
+export { StyledContainer, StyledSelection };

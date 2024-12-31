@@ -10,7 +10,7 @@ function buildData<T>(data: T[]) {
   return dataMock;
 }
 
-export async function intializedData<T>(option: string, data: T[]) {
+async function intializedData<T>(option: string, data: T[]) {
   try {
     const dataMock = buildData(data);
     await localforage.setItem(option, dataMock);
@@ -19,7 +19,7 @@ export async function intializedData<T>(option: string, data: T[]) {
   }
 }
 
-export async function getAll(option: string) {
+async function getAll(option: string) {
   await fakeNetwork();
   try {
     const optionsData = await localforage.getItem(option);
@@ -45,7 +45,7 @@ interface functionById {
     | { [key: string]: string };
 }
 
-export async function getById(props: functionById) {
+async function getById(props: functionById) {
   const { key, nameDB, identifier } = props;
   try {
     const optionsData = await getAll(nameDB);
@@ -61,7 +61,7 @@ export async function getById(props: functionById) {
   }
 }
 
-export async function deleteItemData(props: functionById) {
+async function deleteItemData(props: functionById) {
   const { key, nameDB, identifier } = props;
   try {
     const data = await getAll(nameDB);
@@ -77,7 +77,7 @@ export async function deleteItemData(props: functionById) {
   }
 }
 
-export async function updateItemData(props: functionById) {
+async function updateItemData(props: functionById) {
   const { key, nameDB, identifier, editData, property } = props;
 
   try {
@@ -104,5 +104,5 @@ async function fakeNetwork() {
     setTimeout(res, Math.random() * 1000);
   });
 }
-
+export { intializedData, getById, deleteItemData, updateItemData, fakeNetwork };
 export type { functionById };

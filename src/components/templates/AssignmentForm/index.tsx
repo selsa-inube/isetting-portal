@@ -1,12 +1,9 @@
-import { useEffect, useState } from "react";
-
 import { IOptionInitialiceEntryApp } from "@pages/privileges/outlets/positions/add-position/types";
-import { IOptionItemChecked } from "@components/SelectCheck/OptionItem";
-import { IOption } from "@components/menu/types";
+import { useAssignmentFormLogic } from "@hooks/useAssignmentFormLogic";
 import { AssignmentFormUI } from "./interface";
-import { IEntry, Option } from "./types";
+import { IEntry } from "./types";
 
-interface AssignmentFormProps {
+interface IAssignmentForm {
   handleChange: (entries: IEntry[]) => void;
   entries: IEntry[];
   title: string;
@@ -16,7 +13,7 @@ interface AssignmentFormProps {
   valueSelect: IOptionInitialiceEntryApp[];
 }
 
-function AssignmentForm(props: AssignmentFormProps) {
+function AssignmentForm(props: IAssignmentForm) {
   const {
     handleChange,
     entries,
@@ -26,147 +23,40 @@ function AssignmentForm(props: AssignmentFormProps) {
     changeData = [],
     valueSelect,
   } = props;
-  const [filter, setFilter] = useState("");
-  const [showMenu, setShowMenu] = useState(false);
-  const [isAssignAll, setIsAssignAll] = useState(false);
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
-  const [filteredRows, setFilteredRows] = useState<IEntry[]>(entries);
-  const [filterValue, setFilterValue] = useState("");
 
-  const menuOptions: IOption[] = [
-    {
-      id: "allocate-all",
-      label: "Asignar todos",
-      handleClick: () => handleToggleAllEntries(true),
-    },
-    {
-      id: "deallocate-all",
-      label: "Desasignar todos",
-      handleClick: () => handleToggleAllEntries(false),
-    },
-  ];
+  const {
+    filteredRows,
+    filterValue,
+    handleFilterChange,
+    handleToggleAllEntries,
+    handleToggleEntry,
+    handleSelectChange,
+    menuOptions,
+    isAssignAll,
+    setShowMenu,
+    showMenu,
+  } = useAssignmentFormLogic(entries, changeData, setChangedData, handleChange);
 
-  const handleToggleAllEntries = (allocate: boolean) => {
-    const newFilteredEntries = filteredRows.map((entry) => ({
-      ...entry,
-      isActive: allocate,
-    }));
-
-    const newEntries = entries.map((entry) => {
-      const filteredEntry = newFilteredEntries.find((e) => e.id === entry.id);
-      return filteredEntry ? filteredEntry : entry;
-    });
-
-    setIsAssignAll(allocate);
-    handleChange(newEntries);
-    setFilteredRows(newFilteredEntries);
-  };
-
-  const handleToggleEntry = (id: string) => {
-    const newEntries = entries.map((entry) => {
-      if (entry.id === id) {
-        const updatedEntry = {
-          ...entry,
-          isActive: !entry.isActive,
-        };
-
-        if (updatedEntry.isActive !== entry.isActive) {
-          const updatedChangedData = [
-            ...changeData.filter((e) => e.id !== entry.id),
-            updatedEntry,
-          ];
-          setChangedData(updatedChangedData);
-        }
-
-        return updatedEntry;
-      }
-
-      return entry;
-    });
-
-    handleChange(newEntries);
-  };
-
-  const handleFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFilter(e.target.value);
-  };
-
-  const handleToggleMenuInvitation = () => {
-    setShowMenu((prevShowMenu) => !prevShowMenu);
-  };
-
-  const handleCloseMenuInvitation = () => {
-    setShowMenu(false);
-  };
-
-  const options: Option[] = valueSelect.map((entry) => ({
+  const options = valueSelect.map((entry) => ({
     id: entry.k_uso,
     label: entry.n_uso,
-    checked: selectedOptions.includes(entry.k_uso),
+    checked: filteredRows.some((row) => row.k_uso === entry.k_uso),
   }));
-
-  const handleSelectChange = (options: IOptionItemChecked[]) => {
-    const selectedIds = options
-      .filter((option) => option.checked)
-      .map((option) => option.id);
-    setSelectedOptions(selectedIds);
-  };
-
-  useEffect(() => {
-    if (selectedOptions.length === 0 && filterValue.length === 0) {
-      setFilteredRows(entries);
-      return;
-    }
-    let newfilter = filteredRows;
-
-    if (selectedOptions.length > 0) {
-      newfilter = entries.filter(
-        (entry) => entry.k_uso && selectedOptions.includes(entry.k_uso)
-      );
-    }
-
-    if (filterValue.length > 0) {
-      newfilter = newfilter.filter(
-        (entry) =>
-          entry.value.toLowerCase().includes(filterValue.toLowerCase()) ||
-          (entry.n_uso ?? "").toLowerCase().includes(filterValue.toLowerCase())
-      );
-    }
-    setFilteredRows(newfilter);
-  }, [selectedOptions, filterValue]);
-
-  const handleFilterInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFilterValue(e.target.value);
-  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
 
-  const onHandleSelectCheckChange = (id: string) => {
-    setFilteredRows((prevRows) =>
-      prevRows.map((entry) =>
-        entry.id === id
-          ? {
-              ...entry,
-              isActive: !entry.isActive,
-            }
-          : entry
-      )
-    );
-    handleToggleEntry(id);
-  };
-
   return (
     <AssignmentFormUI
       handleToggleAllEntries={handleToggleAllEntries}
-      filter={filter}
-      handleFilter={handleFilter}
+      filter={filterValue}
+      handleFilter={handleFilterChange}
       entries={entries}
       title={title}
       showMenu={showMenu}
-      handleToggleMenuInvitation={handleToggleMenuInvitation}
-      handleCloseMenuInvitation={handleCloseMenuInvitation}
+      handleToggleMenuInvitation={() => setShowMenu((prev) => !prev)}
+      handleCloseMenuInvitation={() => setShowMenu(false)}
       menuOptions={menuOptions}
       isAssignAll={isAssignAll}
       readOnly={readOnly}
@@ -175,11 +65,11 @@ function AssignmentForm(props: AssignmentFormProps) {
       handleSelectChange={handleSelectChange}
       options={options}
       filterValue={filterValue}
-      onHandleSelectCheckChange={onHandleSelectCheckChange}
-      handleFilterInput={handleFilterInput}
+      onHandleSelectCheckChange={handleToggleEntry}
+      handleFilterInput={handleFilterChange}
     />
   );
 }
 
 export { AssignmentForm };
-export type { AssignmentFormProps };
+export type { IAssignmentForm };

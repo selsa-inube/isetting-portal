@@ -1,4 +1,3 @@
-import React from "react";
 import { MdSearch } from "react-icons/md";
 import { Button } from "@inubekit/button";
 import { Stack } from "@inubekit/stack";
@@ -24,7 +23,7 @@ import { IOptionItemChecked } from "@components/SelectCheck/OptionItem";
 import { StyledForm, StyledToggleContainer } from "./styles";
 import { IEntry, Option, titlesOptions } from "./types";
 
-interface AssignmentFormUIProps {
+interface IAssignmentFormUI {
   entries: IEntry[];
   filter: string;
   filteredRows: IEntry[];
@@ -45,7 +44,7 @@ interface AssignmentFormUIProps {
   readOnly?: boolean;
 }
 
-function AssignmentFormUI(props: AssignmentFormUIProps) {
+function AssignmentFormUI(props: IAssignmentFormUI) {
   const {
     title,
     handleToggleAllEntries,

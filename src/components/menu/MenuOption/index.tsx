@@ -3,13 +3,13 @@ import { Text } from "@inubekit/text";
 import { basic } from "@design/tokens";
 import { StyledOption } from "./styles";
 
-interface MenuOptionProps {
+interface IMenuOption {
   label: string;
   icon?: React.ReactNode;
   handleClick: () => void;
 }
 
-function MenuOption(props: MenuOptionProps) {
+function MenuOption(props: IMenuOption) {
   const { label, icon, handleClick } = props;
 
   return (
@@ -23,4 +23,4 @@ function MenuOption(props: MenuOptionProps) {
 }
 
 export { MenuOption };
-export type { MenuOptionProps };
+export type { IMenuOption };
