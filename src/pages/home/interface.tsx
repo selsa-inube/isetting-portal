@@ -1,12 +1,11 @@
-import { MdOutlineChevronRight, MdOutlineDoorFront } from "react-icons/md";
 import { Header } from "@inubekit/header";
 import { Icon } from "@inubekit/icon";
-
+import { MdOutlineChevronRight, MdOutlineDoorFront } from "react-icons/md";
 import { AppCard } from "@components/feedback/AppCard";
 import { nav, userMenu } from "@config/nav";
 import { Title } from "@components/data/Title";
 import { BusinessUnitChange } from "@design/inputs/BusinessUnitChange";
-import { useHomeLogic } from "@hooks/useHomeLogic";
+import { useHomeLogic } from "@hooks/useBusinessUnitState";
 import {
   StyledCollapse,
   StyledCollapseIcon,
@@ -19,6 +18,7 @@ import {
   StyledLogo,
   StyledTitle,
 } from "./styles";
+
 import { ICardData } from "./types";
 
 interface IHome {
@@ -31,11 +31,8 @@ const renderLogo = (imgUrl: string) => (
   </StyledContentImg>
 );
 
-function HomeUI(props: IHome) {
-  const { data } = props;
-
+function HomeUI({ data }: IHome) {
   const {
-    appData,
     collapse,
     setCollapse,
     selectedClient,
@@ -43,9 +40,10 @@ function HomeUI(props: IHome) {
     businessUnitChangeRef,
     isTablet,
     username,
-    handleLogoClick,
     businessUnitsToTheStaff,
-  } = useHomeLogic(data);
+    appData,
+    handleLogoClick,
+  } = useHomeLogic();
 
   return (
     <StyledContainer>

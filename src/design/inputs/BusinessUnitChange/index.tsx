@@ -59,3 +59,4 @@ const BusinessUnitChange = (props: IBusinessUnitChange) => {
 };
 
 export { BusinessUnitChange };
+export type { IBusinessUnitChange };

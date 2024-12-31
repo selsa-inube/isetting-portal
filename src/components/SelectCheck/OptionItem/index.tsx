@@ -30,5 +30,5 @@ const OptionItemChecked = (props: IOptionItemChecked) => {
   );
 };
 
-export type { IOptionItemChecked };
 export { OptionItemChecked };
+export type { IOptionItemChecked };
