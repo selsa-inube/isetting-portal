@@ -1,5 +1,5 @@
 import { Text } from "@inubekit/text";
-import { basic } from "@design/tokens"
+import { basic } from "@design/tokens";
 
 interface MenuHeadingProps {
   title: string;
@@ -20,5 +20,5 @@ function MenuHeading(props: MenuHeadingProps) {
   );
 }
 
-export type { MenuHeadingProps };
 export { MenuHeading };
+export type { MenuHeadingProps };
