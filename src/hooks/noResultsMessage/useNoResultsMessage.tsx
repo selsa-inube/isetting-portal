@@ -1,11 +1,11 @@
 import { Text } from "@inubekit/text";
 import { StyledNoResults } from "@components/businessUnit/styles";
 
-interface NoResultsMessageProps {
+interface INoResultsMessage {
   search: string;
 }
 
-function NoResultsMessage({ search }: NoResultsMessageProps) {
+function NoResultsMessage({ search }: INoResultsMessage) {
   return (
     <StyledNoResults>
       <Text size="medium">
