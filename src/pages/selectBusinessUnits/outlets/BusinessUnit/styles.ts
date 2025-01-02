@@ -1,18 +1,20 @@
-import { basic } from "@design/tokens";
 import styled from "styled-components";
+import { basic } from "@design/tokens";
 
-interface StyledBusinessUnitsListProps {
+interface IStyledBusinessUnitsList {
   $scroll?: boolean;
+  $smallScreen?: boolean;
 }
 
-const StyledBusinessUnits = styled.div`
+interface IStyledContainer {
+  $smallScreen?: boolean;
+}
+
+const StyledBusinessUnits = styled.div<IStyledContainer>`
   & form {
     & > div {
       margin: ${basic.spacing.s500} auto ${basic.spacing.s0};
-      width: 500px;
-      @media screen and (max-width: 532px) {
-        width: auto;
-      }
+      width: ${(props) => (props.$smallScreen ? "auto" : "500px")};
     }
   }
 
@@ -21,20 +23,13 @@ const StyledBusinessUnits = styled.div`
   }
 `;
 
-const StyledBusinessUnitsList = styled.div<StyledBusinessUnitsListProps>`
+const StyledBusinessUnitsList = styled.div<IStyledBusinessUnitsList>`
   & > div {
     list-style: none;
     max-height: 330px;
-    width: 500px;
+    width: ${(props) => (props.$smallScreen ? "200px" : "500px")};
     overflow-y: auto;
-
-    @media screen and (max-height: 1000px) {
-      min-height: 200px;
-    }
-
-    @media screen and (max-width: 532px) {
-      width: 250px;
-    }
+    min-height: ${(props) => (props.$smallScreen ? "auto" : "200px")};
   }
 `;
 

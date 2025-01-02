@@ -1,19 +1,18 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { AppContext } from "@context/AppContext";
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
 import { useMediaQuery } from "@inubekit/hooks";
-import { ICardData } from "@pages/home/types";
 
-const useHomeLogic = (data?: ICardData[]) => {
+const useHomeLogic = () => {
   const { appData, businessUnitsToTheStaff, setBusinessUnitSigla } =
     useContext(AppContext);
+
   const [collapse, setCollapse] = useState(false);
   const [selectedClient, setSelectedClient] = useState<string>("");
-
   const collapseMenuRef = useRef<HTMLDivElement>(null);
   const businessUnitChangeRef = useRef<HTMLDivElement>(null);
   const isTablet = useMediaQuery("(max-width: 944px)");
-  const username = appData.user.userName.split(" ")[0];
+  const smallScreen = useMediaQuery("(max-width: 532px)");
 
   useEffect(() => {
     if (appData.businessUnit.publicCode) {
@@ -28,9 +27,9 @@ const useHomeLogic = (data?: ICardData[]) => {
     setCollapse(false);
   };
 
+  const username = appData.user.userName.split(" ")[0];
+
   return {
-    appData,
-    data,
     collapse,
     setCollapse,
     selectedClient,
@@ -38,9 +37,10 @@ const useHomeLogic = (data?: ICardData[]) => {
     collapseMenuRef,
     businessUnitChangeRef,
     isTablet,
+    smallScreen,
     username,
-    handleLogoClick,
     businessUnitsToTheStaff,
+    handleLogoClick,
   };
 };
 

@@ -4,12 +4,12 @@ import { Icon } from "@inubekit/icon";
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
 import { basic } from "@design/tokens";
 import { ComponentAppearance } from "@ptypes/aparences.types";
+import { Divider } from "@inubekit/divider";
 import {
   StyledContainer,
   StyledUl,
   StyledLi,
   StyledImg,
-  StyledHr,
   StyledContainerOption,
 } from "./styles";
 
@@ -49,7 +49,7 @@ const BusinessUnitChange = (props: IBusinessUnitChange) => {
                   </Stack>
                 )}
               </StyledLi>
-              {index !== businessUnits.length - 1 && <StyledHr />}
+              {index !== businessUnits.length - 1 && <Divider />}
             </StyledContainerOption>
           ))}
         </StyledUl>

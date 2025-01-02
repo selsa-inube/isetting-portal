@@ -5,15 +5,20 @@ import { basic } from "@design/tokens";
 
 interface StyledAppCardProps {
   $isMobile: boolean;
+  $smallScreen?: boolean;
 }
 const StyledAppCard = styled(Link)<StyledAppCardProps>`
   box-sizing: border-box;
-  padding: ${basic.spacing.s300};
+  padding: ${(props) =>
+    props.$smallScreen ? basic.spacing.s200 : basic.spacing.s300};
   height: 170px;
-  width: 250px;
+  width: ${(props) => (props.$smallScreen ? "100%" : "250px")};
+  min-height: ${(props) => (props.$smallScreen ? "auto" : "100px")};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: ${({ $smallScreen }) =>
+    $smallScreen ? basic.spacing.s100 : basic.spacing.s0};
   border-radius: ${basic.spacing.s050};
   text-decoration: none;
   color: ${({ theme }) =>
@@ -33,16 +38,9 @@ const StyledAppCard = styled(Link)<StyledAppCardProps>`
       theme?.color?.surface?.gray?.regular || inube.palette.neutral.N30};
     box-shadow: none;
   }
-
-  @media (max-width: 400px) {
-    padding: ${basic.spacing.s200};
-    width: 100%;
-    min-height: 100px;
-    gap: ${basic.spacing.s100};
-
-    div {
-      gap: ${basic.spacing.s050};
-    }
+  div {
+    gap: ${({ $smallScreen }) =>
+      $smallScreen ? basic.spacing.s050 : basic.spacing.s0};
   }
 `;
 

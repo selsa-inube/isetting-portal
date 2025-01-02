@@ -11,9 +11,10 @@ import { BusinessUnits } from "@pages/selectBusinessUnits/outlets/BusinessUnit";
 import { LoadingApp } from "@pages/login/outlets/LoadingApp";
 import { ErrorNotBusinessUnit } from "@pages/selectBusinessUnits/errors/ErrorNotBusinessUnit";
 
-export interface IBusinessUnits {
+interface IBusinessUnits {
   businessUnits: IBusinessUnit[];
 }
+
 function SelectBusinessUnitsRoutes() {
   const { businessUnitsToTheStaff } = useContext(AppContext);
   const businessUnits = businessUnitsToTheStaff;
@@ -43,3 +44,5 @@ function SelectBusinessUnitsRoutes() {
 }
 
 export { SelectBusinessUnitsRoutes };
+
+export type { IBusinessUnits };

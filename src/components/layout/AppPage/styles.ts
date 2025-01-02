@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { inube} from "@inubekit/foundations"
+import { inube } from "@inubekit/foundations";
 import { basic } from "@design/tokens";
 
 const StyledAppPage = styled.div`
   display: inherit;
   box-sizing: border-box;
+`;
+const StyledUserMenuTrigger = styled.div`
+  cursor: pointer;
 `;
 
 const StyledHeaderContainer = styled.div`
@@ -60,4 +63,5 @@ export {
   StyledMain,
   StyledContainerNav,
   StyledMenuContainer,
+  StyledUserMenuTrigger,
 };

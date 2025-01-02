@@ -17,6 +17,7 @@ import {
   StyledMain,
   StyledContainerNav,
   StyledHeaderContainer,
+  StyledUserMenuTrigger,
 } from "./styles";
 
 import { userMenu } from "./config/apps.config";
@@ -39,32 +40,30 @@ function AppPage() {
   const handleClickOutside = (event: MouseEvent) => {
     if (
       userMenuRef.current &&
-      !userMenuRef.current.contains(event.target as Node) &&
-      event.target !== userMenuRef.current
+      !userMenuRef.current.contains(event.target as Node)
     ) {
       setShowUserMenu(false);
     }
   };
 
   useEffect(() => {
-    const selectUser = document.querySelector("header div div:nth-child(2)");
-    const handleToggleuserMenu = () => {
-      setShowUserMenu(!showUserMenu);
-    };
-
     document.addEventListener("mousedown", handleClickOutside);
-    selectUser?.addEventListener("mouseup", handleToggleuserMenu);
-
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [showUserMenu]);
+  }, []);
+
+  const handleToggleUserMenu = () => {
+    setShowUserMenu(!showUserMenu);
+  };
 
   const handleToggleLogoutModal = () => {
     setShowLogoutModal(!showLogoutModal);
     setShowUserMenu(false);
   };
+
   const { appData } = useContext(AppContext);
+
   return (
     <StyledAppPage>
       <Grid templateRows="auto 1fr" height="100vh" justifyContent="unset">
@@ -78,6 +77,9 @@ function AppPage() {
             }}
             menu={userMenu}
           />
+          <StyledUserMenuTrigger
+            onClick={handleToggleUserMenu}
+          ></StyledUserMenuTrigger>
         </StyledHeaderContainer>
 
         {showLogoutModal && (
