@@ -24,22 +24,22 @@ import { basic } from "@design/tokens";
 import { isMobile580 } from "@config/environment";
 import { LoadingApp } from "@pages/login/outlets/LoadingApp";
 import { IBusinessUnitsPortalStaffId } from "@ptypes/staffBusinessManagersId";
+import { useActions } from "@hooks/useActions";
 import { privilegeOptionsConfig } from "../../config/privileges.config";
 import { titlesOptions, actions } from "./config/dataPositions";
-import { IActions, IAction } from "./types";
 import { usePagination } from "./components/GeneralInformationForm/utils";
 import { StyledButtonWrapper } from "./styles";
 
 const pagerecord = 10;
 
-interface IPositionsProps {
+interface IPositions {
   handleSearchPositions: (e: React.ChangeEvent<HTMLInputElement>) => void;
   searchPosition: string;
   data: IBusinessUnitsPortalStaffId[];
   loading: boolean;
 }
 
-export function PositionsUI(props: IPositionsProps) {
+function PositionsUI(props: IPositions) {
   const { handleSearchPositions, searchPosition, loading, data } = props;
   const smallScreen = useMediaQuery(isMobile580);
   const location = useLocation();
@@ -47,23 +47,7 @@ export function PositionsUI(props: IPositionsProps) {
     (item) => item.url === location.pathname
   );
 
-  function ShowAction(actionContent: IAction[], entry: IActions) {
-    return (
-      <>
-        {actionContent.map((action) => (
-          <Td type="icon" key={`${entry.id}-${action.id}`}>
-            {action.content(entry)}
-          </Td>
-        ))}
-      </>
-    );
-  }
-
-  function showActionTitle(actionTitle: IAction[]) {
-    return actionTitle.map((action) => (
-      <Th key={`action-${action.id}`}>{action.actionName}</Th>
-    ));
-  }
+  const { ShowAction, showActionTitle } = useActions();
 
   const {
     filteredData,
@@ -191,3 +175,5 @@ export function PositionsUI(props: IPositionsProps) {
     </Stack>
   );
 }
+
+export { PositionsUI };

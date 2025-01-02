@@ -16,20 +16,23 @@ const useAuthRedirect = (
   const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
-    if (hasRedirected) return;
-
-    if (portalPublicCode.abbreviatedName) {
-      if (businessManagersData && !isLoading && !isAuthenticated) {
-        loginWithRedirect();
-        initializeDataDB();
-      } else if (isAuthenticated) {
-        setHasRedirected(true);
-      } else {
-        setHasError(true);
-      }
-    } else {
+    if (hasRedirected || !portalPublicCode.abbreviatedName) {
       setHasError(true);
+      return;
     }
+
+    if (businessManagersData && !isLoading && !isAuthenticated) {
+      loginWithRedirect();
+      initializeDataDB();
+      return;
+    }
+
+    if (isAuthenticated) {
+      setHasRedirected(true);
+      return;
+    }
+
+    setHasError(true);
   }, [
     portalPublicCode,
     businessManagersData,
