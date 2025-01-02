@@ -1,41 +1,58 @@
 import React from "react";
 import { FormikProps } from "formik";
-import { IGeneralInformationEntry } from "../components/GeneralInformationForm";
 
 import { IAssignmentFormEntry } from "../../types/forms.types";
+import { IGeneralInformationEntry } from "../components/GeneralInformationForm/types";
 
-export const titleButtonTextAssited = {
+const titleButtonTextAssited = {
   before: "Atrás",
   after: "Siguiente",
   finish: "Enviar",
 };
-export interface IPosition {
+
+interface IOptionInitialiceEntryApp {
+  k_uso: string;
+  n_uso: string;
+}
+interface IPosition {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
   public_code: string;
   abbreviated_name: string;
   n_roles?: string[];
 }
-export interface IStep {
+interface IStep {
   id: number;
   label: string;
   description: string;
 }
 
-export interface IOptionInitialiceEntry {
+interface IOptionInitialiceEntry {
   id: string;
   value: string;
   isActive: boolean;
 }
 
-export interface IFormAddPosition {
+interface IFormAddPosition {
   generalInformation: { isValid: boolean; values: IGeneralInformationEntry };
 }
 
-export interface IFormAddPositionRef {
+interface IFormAddPositionRef {
   generalInformation: React.RefObject<FormikProps<IGeneralInformationEntry>>;
 }
 
-export type IHandleUpdateDataSwitchstep =
+type IHandleUpdateDataSwitchstep =
   | IGeneralInformationEntry
   | IAssignmentFormEntry[];
+
+export { titleButtonTextAssited };
+
+export type {
+  IHandleUpdateDataSwitchstep,
+  IFormAddPosition,
+  IFormAddPositionRef,
+  IOptionInitialiceEntry,
+  IOptionInitialiceEntryApp,
+  IPosition,
+  IStep,
+};

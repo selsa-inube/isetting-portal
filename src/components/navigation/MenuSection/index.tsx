@@ -36,7 +36,11 @@ function MenuSection(props: MenuSectionProps) {
           {section.title && <MenuHeading title={section.title} />}
           <Stack
             direction="column"
-            gap={spacing === "compact" ? `{${basic.spacing.s4}}` : `{${basic.spacing.s0}}`}
+            gap={
+              spacing === "compact"
+                ? `{${basic.spacing.s4}}`
+                : `{${basic.spacing.s0}}`
+            }
             margin={`${basic.spacing.s6} ${basic.spacing.s0}`}
           >
             {section.links.map((link, linkIndex) => (
@@ -59,5 +63,5 @@ function MenuSection(props: MenuSectionProps) {
   );
 }
 
-export type { MenuSectionProps };
 export { MenuSection };
+export type { MenuSectionProps };

@@ -13,13 +13,13 @@ import {
   StyledContainerOption,
 } from "./styles";
 
-interface BusinessUnitChangeProps {
+interface IBusinessUnitChange {
   businessUnits: IBusinessUnitsPortalStaff[];
   selectedClient: string;
   onLogoClick: (businessUnit: IBusinessUnitsPortalStaff) => void;
 }
 
-const BusinessUnitChange = (props: BusinessUnitChangeProps) => {
+const BusinessUnitChange = (props: IBusinessUnitChange) => {
   const { businessUnits, selectedClient, onLogoClick } = props;
 
   return (
@@ -59,3 +59,4 @@ const BusinessUnitChange = (props: BusinessUnitChangeProps) => {
 };
 
 export { BusinessUnitChange };
+export type { IBusinessUnitChange };

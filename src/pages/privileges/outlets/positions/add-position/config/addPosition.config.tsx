@@ -1,27 +1,32 @@
 import { MdErrorOutline, MdThumbUpOffAlt } from "react-icons/md";
 import { Icon } from "@inubekit/icon";
+import { IAssistedStep } from "@inubekit/assisted";
 
-export const stepsAddPosition = {
-  generalInformation: {
+const addStaffRolesSteps: IAssistedStep[] = [
+  {
     id: 1,
-    label: "Información general",
+    number: 1,
+    name: "Información general",
     description: "Por favor completa la información general.",
   },
-  roles: {
+
+  {
     id: 2,
-    label: "Selección de roles",
+    number: 2,
+    name: "Selección de roles",
     description: "Selecciona los roles que necesites.",
   },
-  summary: {
+
+  {
     id: 3,
-    label: "Verificación",
+    number: 3,
+    name: "Verificación",
     description:
       "Verifica las opciones activadas, si es necesario cámbialas o por el contrario si todo está correcto dale enviar.",
-    isVerification: true,
   },
-};
+];
 
-export const createPositionConfig = [
+const createPositionConfig = [
   {
     id: 1,
     title: "Consulta de cargos vigentes",
@@ -57,14 +62,14 @@ export const createPositionConfig = [
   },
 ];
 
-export const finishAssistedPositionModalConfig = {
+const finishAssistedPositionModalConfig = {
   title: "Finalizar registro",
   description: "¿Está seguro de que desea finalizar el proceso de creación?",
   actionText: "Finalizar",
   appearance: "success",
 };
 
-export const finishAssistedPositionMessagesConfig = {
+const finishAssistedPositionMessagesConfig = {
   success: {
     id: 1,
     icon: <Icon appearance="dark" icon={<MdThumbUpOffAlt />} size="18px" />,
@@ -83,9 +88,17 @@ export const finishAssistedPositionMessagesConfig = {
   },
 };
 
-export const finishAssistedModalConfig = {
+const finishAssistedModalConfig = {
   title: "Finalizar registro",
   description: "¿Está seguro de que desea finalizar el proceso de creación?",
   actionText: "Finalizar",
   appearance: "success",
+};
+
+export {
+  addStaffRolesSteps,
+  createPositionConfig,
+  finishAssistedPositionModalConfig,
+  finishAssistedPositionMessagesConfig,
+  finishAssistedModalConfig,
 };

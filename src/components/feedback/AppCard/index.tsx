@@ -1,13 +1,12 @@
 import { Stack } from "@inubekit/stack";
 import { Text } from "@inubekit/text";
 import { Icon } from "@inubekit/icon";
+import { useMediaQuery } from "@inubekit/hooks";
 import { basic } from "@design/tokens";
 import { SkeletonIcon, SkeletonLine } from "@inubekit/skeleton";
-import { isMobile580 } from "@config/environment";
-import { useMediaQuery } from "@inubekit/hooks";
 import { StyledAppCard } from "./styles";
 
-interface AppCardProps {
+interface IAppCard {
   description?: string;
   icon?: React.ReactNode;
   label?: string;
@@ -15,11 +14,11 @@ interface AppCardProps {
   isLoading?: boolean;
 }
 
-function AppCard({ label, description, icon, url, isLoading }: AppCardProps) {
-  const smallScreen = useMediaQuery(isMobile580);
+function AppCard({ label, description, icon, url, isLoading }: IAppCard) {
+  const screenMobile = useMediaQuery("(max-width: 400px)");
   if (isLoading) {
     return (
-      <StyledAppCard to={url ?? ""} $smallScreen={smallScreen}>
+      <StyledAppCard to={url ?? ""} $isMobile={screenMobile}>
         <Stack direction="column" gap={basic.spacing.s200}>
           <Stack width="70%">
             <SkeletonLine animated />
@@ -34,9 +33,8 @@ function AppCard({ label, description, icon, url, isLoading }: AppCardProps) {
       </StyledAppCard>
     );
   }
-
   return (
-    <StyledAppCard to={url ?? ""} $smallScreen={smallScreen}>
+    <StyledAppCard to={url ?? ""} $isMobile={screenMobile}>
       <Stack direction="column" gap={basic.spacing.s200}>
         <Text type="title" size="medium" weight="bold">
           {label}
@@ -53,4 +51,4 @@ function AppCard({ label, description, icon, url, isLoading }: AppCardProps) {
 }
 
 export { AppCard };
-export type { AppCardProps };
+export type { IAppCard };

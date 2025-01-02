@@ -5,23 +5,23 @@ import { DetailsModal } from "../components/DetailsModal";
 import { IPosition } from "../add-position/types";
 import { IActions, IAction } from "../types";
 
-export const titlesOptions = [
+const titlesOptions = [
   {
-    id: "abbreviated_name",
+    id: "abbreviatedName",
     titleName: "Cargos",
     action: false,
     priority: 1,
   },
 ];
 
-export const PositionsBreakPointsConfig = [
+const positionsBreakPointsConfig = [
   { breakpoint: "(min-width: 1091px)", totalColumns: 4 },
   { breakpoint: "(max-width: 1010px)", totalColumns: 1 },
   { breakpoint: "(max-width: 848px)", totalColumns: 2 },
   { breakpoint: "(max-width: 430px)", totalColumns: 1 },
 ];
 
-export const labelsOptions = [
+const labelsOptions = [
   {
     id: "public_code",
     labelName: "Código",
@@ -39,7 +39,7 @@ export const labelsOptions = [
   },
 ];
 
-export const actions: IAction[] = [
+const actions: IAction[] = [
   {
     id: "details",
     actionName: "Detalle",
@@ -60,3 +60,5 @@ export const actions: IAction[] = [
     ),
   },
 ];
+
+export { actions, labelsOptions, titlesOptions, positionsBreakPointsConfig };
