@@ -13,7 +13,7 @@ interface AppMenuCardProps {
   domain: string;
 }
 
-function AppMenuCard(props: AppMenuCardProps) {
+const AppMenuCard = (props: AppMenuCardProps) => {
   const { icon, label, description, url } = props;
   return (
     <Stack direction="column">
@@ -39,7 +39,7 @@ function AppMenuCard(props: AppMenuCardProps) {
       </StyledAppMenuCard>
     </Stack>
   );
-}
+};
 
 export { AppMenuCard };
 export type { AppMenuCardProps };

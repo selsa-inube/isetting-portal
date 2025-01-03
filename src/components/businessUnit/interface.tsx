@@ -1,4 +1,3 @@
-import React from "react";
 import { MdSearch } from "react-icons/md";
 import { Text } from "@inubekit/text";
 
@@ -31,7 +30,7 @@ interface IBusinessUnitsUI {
   handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 }
 
-function NoResultsMessage({ search }: { search: string }) {
+const NoResultsMessage = ({ search }: { search: string }) => {
   return (
     <StyledNoResults>
       <Text size="medium">
@@ -42,9 +41,9 @@ function NoResultsMessage({ search }: { search: string }) {
       </Text>
     </StyledNoResults>
   );
-}
+};
 
-function BusinessUnitsUI({
+const BusinessUnitsUI = ({
   businessUnits,
   search,
   businessUnit,
@@ -52,7 +51,7 @@ function BusinessUnitsUI({
   filterBusinessUnits,
   handleBussinessUnitChange,
   handleSubmit,
-}: IBusinessUnitsUI) {
+}: IBusinessUnitsUI) => {
   return (
     <StyledBusinessUnits>
       <Stack
@@ -121,6 +120,6 @@ function BusinessUnitsUI({
       </form>
     </StyledBusinessUnits>
   );
-}
+};
 
 export { BusinessUnitsUI };

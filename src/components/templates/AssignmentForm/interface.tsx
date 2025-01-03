@@ -44,7 +44,7 @@ interface IAssignmentFormUI {
   readOnly?: boolean;
 }
 
-function AssignmentFormUI(props: IAssignmentFormUI) {
+const AssignmentFormUI = (props: IAssignmentFormUI) => {
   const {
     title,
     handleToggleAllEntries,
@@ -163,6 +163,6 @@ function AssignmentFormUI(props: IAssignmentFormUI) {
       </Fieldset>
     </StyledForm>
   );
-}
+};
 
 export { AssignmentFormUI };

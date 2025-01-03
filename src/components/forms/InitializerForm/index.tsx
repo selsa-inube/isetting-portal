@@ -25,7 +25,7 @@ interface IInitializerForm {
   dataOptionsValueSelect: IOptionInitialiceEntryApp[];
 }
 
-export function InitializerForm(props: IInitializerForm) {
+const InitializerForm = (props: IInitializerForm) => {
   const {
     dataOptionsForms: initialDataOptionsForms,
     handleSubmit,
@@ -39,6 +39,7 @@ export function InitializerForm(props: IInitializerForm) {
     readOnly = false,
     dataOptionsValueSelect,
   } = props;
+
   const [formDataOptions, setFormDataOptions] = useState(
     initialDataOptionsForms
   );
@@ -113,6 +114,7 @@ export function InitializerForm(props: IInitializerForm) {
       dataOptionsValueSelect={dataOptionsValueSelect}
     />
   );
-}
+};
 
+export { InitializerForm };
 export type { IInitializerForm };

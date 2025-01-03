@@ -10,17 +10,19 @@ interface RulesOptionsUIProps {
   appRoute: IRoute[];
 }
 
-function RulesOptionsUI(props: RulesOptionsUIProps) {
-  const { appName, appDescription, appOptions, appRoute } = props;
-  return (
-    <AppMenu
-      appName={appName}
-      appDescription={appDescription}
-      appRoute={appRoute}
-    >
-      <AppMenuGrid appOptions={appOptions} />
-    </AppMenu>
-  );
-}
+const RulesOptionsUI = ({
+  appName,
+  appDescription,
+  appOptions,
+  appRoute,
+}: RulesOptionsUIProps) => (
+  <AppMenu
+    appName={appName}
+    appDescription={appDescription}
+    appRoute={appRoute}
+  >
+    <AppMenuGrid appOptions={appOptions} />
+  </AppMenu>
+);
 
 export { RulesOptionsUI };

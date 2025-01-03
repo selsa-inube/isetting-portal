@@ -13,8 +13,7 @@ interface AppProviderProps {
   children: React.ReactNode;
 }
 
-function AppContextProvider(props: AppProviderProps) {
-  const { children } = props;
+const AppContextProvider = ({ children }: AppProviderProps) => {
   const { user } = useAuth0();
 
   const portalCode = decrypt(localStorage.getItem("portalCode") ?? "");
@@ -118,7 +117,7 @@ function AppContextProvider(props: AppProviderProps) {
   return (
     <AppContext.Provider value={appContext}>{children}</AppContext.Provider>
   );
-}
+};
 
 export { AppContext, AppContextProvider };
 export type { AppProviderProps };

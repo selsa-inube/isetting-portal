@@ -5,20 +5,16 @@ interface MenuHeadingProps {
   title: string;
 }
 
-function MenuHeading(props: MenuHeadingProps) {
-  const { title } = props;
-
-  return (
-    <Text
-      type="title"
-      size="small"
-      appearance="gray"
-      padding={`${basic.spacing.s16} ${basic.spacing.s16} ${basic.spacing.s8} ${basic.spacing.s16}`}
-    >
-      {title}
-    </Text>
-  );
-}
+const MenuHeading = ({ title }: MenuHeadingProps) => (
+  <Text
+    type="title"
+    size="small"
+    appearance="gray"
+    padding={`${basic.spacing.s16} ${basic.spacing.s16} ${basic.spacing.s8} ${basic.spacing.s16}`}
+  >
+    {title}
+  </Text>
+);
 
 export { MenuHeading };
 export type { MenuHeadingProps };

@@ -13,9 +13,7 @@ interface PositionsProviderProps {
   children: React.ReactNode;
 }
 
-function PositionsProvider(props: PositionsProviderProps) {
-  const { children } = props;
-
+const PositionsProvider = ({ children }: PositionsProviderProps) => {
   const [positions, setPositions] = useState<IPosition[]>([]);
   const [roles, setRoles] = useState<IOptionInitialiceEntry[]>([]);
 
@@ -34,7 +32,7 @@ function PositionsProvider(props: PositionsProviderProps) {
       {children}
     </PositionsContext.Provider>
   );
-}
+};
 
 export { PositionsContext, PositionsProvider };
 export type { PositionsProviderProps };

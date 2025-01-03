@@ -2,7 +2,7 @@ import { LoadingAppUI } from "./interface";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-function LoadingApp() {
+const LoadingApp = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,6 +14,6 @@ function LoadingApp() {
   }, [navigate]);
 
   return <LoadingAppUI />;
-}
+};
 
 export { LoadingApp };

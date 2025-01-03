@@ -9,7 +9,7 @@ interface AppMenuGridProps {
   appOptions: AppMenuCardProps[];
 }
 
-function AppMenuGrid(props: AppMenuGridProps) {
+const AppMenuGrid = (props: AppMenuGridProps) => {
   const { appOptions } = props;
 
   const screenMovil = useMediaQuery(isMobile580);
@@ -35,7 +35,7 @@ function AppMenuGrid(props: AppMenuGridProps) {
       ))}
     </Grid>
   );
-}
+};
 
 export { AppMenuGrid };
 export type { AppMenuGridProps };

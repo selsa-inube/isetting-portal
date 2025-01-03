@@ -22,7 +22,7 @@ interface ErrorPageProps {
   onClick?: () => void;
 }
 
-function ErrorPage(props: ErrorPageProps) {
+const ErrorPage = (props: ErrorPageProps) => {
   const {
     logo = selsaLogo,
     logoAlt = "Sistemas Enlinea",
@@ -88,7 +88,7 @@ function ErrorPage(props: ErrorPageProps) {
       </Grid>
     </Stack>
   );
-}
+};
 
 export { ErrorPage };
 export type { ErrorPageProps };

@@ -8,7 +8,7 @@ interface BusinessUnitsProps {
   businessUnits: IBusinessUnitsPortalStaff[];
 }
 
-function BusinessUnits(props: BusinessUnitsProps) {
+const BusinessUnits = (props: BusinessUnitsProps) => {
   const { businessUnits } = props;
   const [search, setSearch] = useState("");
   const [businessUnitLocal, setBusinessUnitLocal] =
@@ -35,10 +35,10 @@ function BusinessUnits(props: BusinessUnitsProps) {
     navigate("/login/loading-app");
   };
 
-  function filterBusinessUnits(
+  const filterBusinessUnits = (
     businessUnits: IBusinessUnitsPortalStaff[],
     search: string
-  ) {
+  ) => {
     const searchTerm = search?.toUpperCase();
 
     return businessUnits.filter((unit) => {
@@ -51,7 +51,7 @@ function BusinessUnits(props: BusinessUnitsProps) {
         businessUnitSigla.includes(searchTerm)
       );
     });
-  }
+  };
 
   return (
     <BusinessUnitsUI
@@ -64,6 +64,6 @@ function BusinessUnits(props: BusinessUnitsProps) {
       handleSubmit={handleSubmit}
     />
   );
-}
+};
 
 export { BusinessUnits };

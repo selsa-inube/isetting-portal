@@ -7,7 +7,7 @@ interface BusinessUnitsProps {
   businessUnits: IBusinessUnitsPortalStaff[];
 }
 
-function BusinessUnits({ businessUnits }: BusinessUnitsProps) {
+const BusinessUnits = ({ businessUnits }: BusinessUnitsProps) => {
   const navigate = useNavigate();
   const {
     search,
@@ -29,6 +29,6 @@ function BusinessUnits({ businessUnits }: BusinessUnitsProps) {
       handleSubmit={() => handleSubmit(navigate)}
     />
   );
-}
+};
 
 export { BusinessUnits };

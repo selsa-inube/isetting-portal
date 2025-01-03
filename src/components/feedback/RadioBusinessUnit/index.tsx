@@ -14,11 +14,12 @@ interface RadioBusinessUnitProps {
   handleChange: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-function RadioBusinessUnit(props: RadioBusinessUnitProps) {
+const RadioBusinessUnit = (props: RadioBusinessUnitProps) => {
   const { name, id, value, label, logo, handleChange } = props;
   const smallScreen = useMediaQuery(isMobile580);
   const mediaQueries = ["(max-width: 532px)", "(max-width: 460px)"];
   const matches = useMediaQueries(mediaQueries);
+
   return (
     <StyledRadioBusinessUnit>
       <Grid
@@ -52,7 +53,7 @@ function RadioBusinessUnit(props: RadioBusinessUnitProps) {
       </Grid>
     </StyledRadioBusinessUnit>
   );
-}
+};
 
 export { RadioBusinessUnit };
 export type { RadioBusinessUnitProps };

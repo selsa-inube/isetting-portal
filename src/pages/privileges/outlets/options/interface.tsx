@@ -10,18 +10,19 @@ interface PrivilegesOptionsUIProps {
   appRoute: IRoute[];
 }
 
-function PrivilegesOptionsUI(props: PrivilegesOptionsUIProps) {
-  const { appName, appDescription, appOptions, appRoute } = props;
-
-  return (
-    <AppMenu
-      appName={appName}
-      appDescription={appDescription}
-      appRoute={appRoute}
-    >
-      <AppMenuGrid appOptions={appOptions} />
-    </AppMenu>
-  );
-}
+const PrivilegesOptionsUI = ({
+  appName,
+  appDescription,
+  appOptions,
+  appRoute,
+}: PrivilegesOptionsUIProps) => (
+  <AppMenu
+    appName={appName}
+    appDescription={appDescription}
+    appRoute={appRoute}
+  >
+    <AppMenuGrid appOptions={appOptions} />
+  </AppMenu>
+);
 
 export { PrivilegesOptionsUI };
