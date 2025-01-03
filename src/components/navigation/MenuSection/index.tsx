@@ -6,7 +6,7 @@ import { ISection } from "./types";
 import { MenuItemSpacingType } from "../MenuItem/types";
 import { MenuItem } from "../MenuItem";
 
-interface IMenuSectionProps {
+interface IMenuSection {
   sections: ISection[];
   spacing?: MenuItemSpacingType;
   divider?: boolean;
@@ -16,7 +16,7 @@ const MenuSection = ({
   sections,
   spacing = "wide",
   divider = false,
-}: IMenuSectionProps) => {
+}: IMenuSection) => {
   return (
     <>
       {sections.map((section, index) => (
@@ -63,4 +63,4 @@ const MenuSection = ({
 };
 
 export { MenuSection };
-export type { IMenuSectionProps };
+export type { IMenuSection };

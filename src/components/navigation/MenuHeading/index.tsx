@@ -1,11 +1,11 @@
 import { Text } from "@inubekit/text";
 import { basic } from "@design/tokens";
 
-interface IMenuHeadingProps {
+interface IMenuHeading {
   title: string;
 }
 
-const MenuHeading = ({ title }: IMenuHeadingProps) => (
+const MenuHeading = ({ title }: IMenuHeading) => (
   <Text
     type="title"
     size="small"
@@ -17,4 +17,4 @@ const MenuHeading = ({ title }: IMenuHeadingProps) => (
 );
 
 export { MenuHeading };
-export type { IMenuHeadingProps };
+export type { IMenuHeading };

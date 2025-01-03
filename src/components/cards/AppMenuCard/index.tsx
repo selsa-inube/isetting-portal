@@ -4,7 +4,7 @@ import { Icon } from "@inubekit/icon";
 import { basic } from "@design/tokens";
 import { StyledAppMenuCard } from "./styles";
 
-interface AppMenuCardProps {
+interface IAppMenuCard {
   id: number;
   icon: React.ReactNode;
   label: string;
@@ -13,7 +13,7 @@ interface AppMenuCardProps {
   domain: string;
 }
 
-const AppMenuCard = (props: AppMenuCardProps) => {
+const AppMenuCard = (props: IAppMenuCard) => {
   const { icon, label, description, url } = props;
   return (
     <Stack direction="column">
@@ -42,4 +42,4 @@ const AppMenuCard = (props: AppMenuCardProps) => {
 };
 
 export { AppMenuCard };
-export type { AppMenuCardProps };
+export type { IAppMenuCard };

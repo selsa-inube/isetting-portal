@@ -5,14 +5,14 @@ import { Icon } from "@inubekit/icon";
 
 import { InteractiveModal } from "@components/feedback/InteractiveModal";
 import { IPosition } from "../../add-position/types";
-interface Field {
+interface IField {
   id: string;
   labelName: string;
 }
 
 interface IDetailsModalProps {
   data?: IPosition;
-  labelsOptions: Field[];
+  labelsOptions: IField[];
 }
 
 const DetailsModal = (props: IDetailsModalProps) => {

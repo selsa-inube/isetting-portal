@@ -1,6 +1,6 @@
 import { ArgTypes } from "@storybook/react";
 
-import { RulesViewCardProps } from "..";
+import { IRulesViewCard } from "..";
 
 const parameters = {
   docs: {
@@ -13,7 +13,7 @@ const parameters = {
   },
 };
 
-const props: Partial<ArgTypes<RulesViewCardProps>> = {
+const props: Partial<ArgTypes<IRulesViewCard>> = {
   children: {
     description: "The criteria for the decision",
     table: {

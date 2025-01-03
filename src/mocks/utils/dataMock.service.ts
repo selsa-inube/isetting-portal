@@ -34,7 +34,7 @@ const getAll = async (option: string) => {
   }
 };
 
-interface functionById {
+interface IIfunctionById {
   key: string;
   nameDB: string;
   identifier: number | string;
@@ -45,7 +45,7 @@ interface functionById {
     | { [key: string]: string };
 }
 
-const getById = async (props: functionById) => {
+const getById = async (props: IIfunctionById) => {
   const { key, nameDB, identifier } = props;
   try {
     const optionsData = await getAll(nameDB);
@@ -61,7 +61,7 @@ const getById = async (props: functionById) => {
   }
 };
 
-const deleteItemData = async (props: functionById) => {
+const deleteItemData = async (props: IIfunctionById) => {
   const { key, nameDB, identifier } = props;
   try {
     const data = await getAll(nameDB);
@@ -77,7 +77,7 @@ const deleteItemData = async (props: functionById) => {
   }
 };
 
-const updateItemData = async (props: functionById) => {
+const updateItemData = async (props: IIfunctionById) => {
   const { key, nameDB, identifier, editData, property } = props;
 
   try {
@@ -107,4 +107,4 @@ const fakeNetwork = async (): Promise<void> => {
 };
 
 export { fakeNetwork, updateItemData, deleteItemData, getById, intializedData };
-export type { functionById };
+export type { IIfunctionById };

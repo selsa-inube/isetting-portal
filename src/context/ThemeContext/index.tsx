@@ -3,11 +3,11 @@ import { ThemeProvider } from "styled-components";
 import { tokensWithReference } from "@design/tokens/tokensWithReference";
 import { ThemeContext, ThemeName } from "./themeContext";
 
-interface ThemeProviderWrapperProps {
+interface IThemeProviderWrapper {
   children: ReactNode;
 }
 
-const ThemeProviderWrapper = ({ children }: ThemeProviderWrapperProps) => {
+const ThemeProviderWrapper = ({ children }: IThemeProviderWrapper) => {
   const savedTheme =
     (localStorage.getItem("themeName") as ThemeName) || "sistemasenlinea";
   const [themeName, setThemeName] = useState<ThemeName>(savedTheme);

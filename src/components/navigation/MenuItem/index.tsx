@@ -6,7 +6,7 @@ import { basic } from "@design/tokens";
 import { StyledMenuItemLink } from "./styles";
 import { MenuItemSpacingType } from "./types";
 
-interface IMenuItemProps {
+interface IMenuItem {
   title: string;
   description?: string;
   spacing?: MenuItemSpacingType;
@@ -26,7 +26,7 @@ const MenuItem = ({
   isDisabled = false,
   path = "#",
   onClick,
-}: IMenuItemProps) => {
+}: IMenuItem) => {
   return (
     <StyledMenuItemLink
       spacing={spacing}
@@ -72,4 +72,4 @@ const MenuItem = ({
 };
 
 export { MenuItem };
-export type { IMenuItemProps };
+export type { IMenuItem };

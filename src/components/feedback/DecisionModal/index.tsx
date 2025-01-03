@@ -13,7 +13,7 @@ import { isMobile580 } from "@config/environment";
 
 import { StyledModal } from "./styles";
 
-interface DecisionModalProps {
+interface IDecisionModal {
   title: string;
   portalId: string;
   description: string;
@@ -23,7 +23,7 @@ interface DecisionModalProps {
   handleClick: () => void;
 }
 
-const DecisionModal = (props: DecisionModalProps) => {
+const DecisionModal = (props: IDecisionModal) => {
   const {
     title,
     portalId,
@@ -109,4 +109,4 @@ const DecisionModal = (props: DecisionModalProps) => {
 };
 
 export { DecisionModal };
-export type { DecisionModalProps };
+export type { IDecisionModal };

@@ -1,7 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import { businessUnitDataMock } from "@mocks/login/businessUnit.mock";
 import { Meta, StoryFn } from "@storybook/react";
-import { RadioBusinessUnit, RadioBusinessUnitProps } from "../index";
+import { RadioBusinessUnit, IRBusinessUnit } from "../index";
 
 const meta: Meta<typeof RadioBusinessUnit> = {
   title: "feedback/RadioBusinessUnit",
@@ -15,7 +15,7 @@ const meta: Meta<typeof RadioBusinessUnit> = {
   ],
 };
 
-const Template: StoryFn<RadioBusinessUnitProps> = (args) => (
+const Template: StoryFn<IRBusinessUnit> = (args) => (
   <RadioBusinessUnit {...args} />
 );
 

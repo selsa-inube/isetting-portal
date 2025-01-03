@@ -12,12 +12,12 @@ import { basic } from "@design/tokens";
 
 import { StyledBackdropBlanket, StyledModal } from "./styles";
 
-interface ILogoutModalProps {
+interface ILogoutModal {
   handleShowBlanket: () => void;
   logoutPath: string;
 }
 
-const LogoutModal = (props: ILogoutModalProps) => {
+const LogoutModal = (props: ILogoutModal) => {
   const { logoutPath, handleShowBlanket } = props;
   const smallScreen = useMediaQuery(isMobile743);
 
@@ -77,4 +77,4 @@ const LogoutModal = (props: ILogoutModalProps) => {
 };
 
 export { LogoutModal };
-export type { ILogoutModalProps };
+export type { ILogoutModal };

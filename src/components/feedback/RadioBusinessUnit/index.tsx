@@ -5,7 +5,7 @@ import { basic } from "@design/tokens";
 import { isMobile580 } from "@config/environment";
 import { StyledRadioBusinessUnit, StyledRadio, StyledImage } from "./styles";
 
-interface RadioBusinessUnitProps {
+interface IRBusinessUnit {
   id: string;
   label: string;
   logo: string;
@@ -14,7 +14,7 @@ interface RadioBusinessUnitProps {
   handleChange: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-const RadioBusinessUnit = (props: RadioBusinessUnitProps) => {
+const RadioBusinessUnit = (props: IRBusinessUnit) => {
   const { name, id, value, label, logo, handleChange } = props;
   const smallScreen = useMediaQuery(isMobile580);
   const mediaQueries = ["(max-width: 532px)", "(max-width: 460px)"];
@@ -56,4 +56,4 @@ const RadioBusinessUnit = (props: RadioBusinessUnitProps) => {
 };
 
 export { RadioBusinessUnit };
-export type { RadioBusinessUnitProps };
+export type { IRBusinessUnit };

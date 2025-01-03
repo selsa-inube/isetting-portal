@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { basic } from "@design/tokens";
 
-interface StyledBusinessUnitsListProps {
+interface IStyledBusinessUnitsList {
   $scroll?: boolean;
   $smallScreen: boolean;
 }
 
-const StyledBusinessUnits = styled.div<StyledBusinessUnitsListProps>`
+const StyledBusinessUnits = styled.div<IStyledBusinessUnitsList>`
   & form {
     & > div {
       margin: auto;
@@ -19,7 +19,7 @@ const StyledBusinessUnits = styled.div<StyledBusinessUnitsListProps>`
   }
 `;
 
-const StyledBusinessUnitsList = styled.div<StyledBusinessUnitsListProps>`
+const StyledBusinessUnitsList = styled.div<IStyledBusinessUnitsList>`
   & > div {
     list-style: none;
     min-height: ${({ $smallScreen }) => ($smallScreen ? "300px" : "200px")};

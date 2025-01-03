@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { BusinessUnitsUI } from "./interface";
 import { IBusinessUnitsPortalStaff, IBusinessUnitstate } from "./types";
 
-interface BusinessUnitsProps {
+interface IBusinessUnits {
   businessUnits: IBusinessUnitsPortalStaff[];
 }
 
-const BusinessUnits = (props: BusinessUnitsProps) => {
+const BusinessUnits = (props: IBusinessUnits) => {
   const { businessUnits } = props;
   const [search, setSearch] = useState("");
   const [businessUnitLocal, setBusinessUnitLocal] =

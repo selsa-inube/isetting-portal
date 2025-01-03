@@ -11,7 +11,7 @@ import errorImage from "@assets/images/timeout.png";
 
 import { StyledCompanyLogo, StyledErrorImage } from "./styles";
 
-interface ErrorPageProps {
+interface IErrorPage {
   logo?: string;
   logoAlt?: string;
   heading?: string;
@@ -22,7 +22,7 @@ interface ErrorPageProps {
   onClick?: () => void;
 }
 
-const ErrorPage = (props: ErrorPageProps) => {
+const ErrorPage = (props: IErrorPage) => {
   const {
     logo = selsaLogo,
     logoAlt = "Sistemas Enlinea",
@@ -91,4 +91,4 @@ const ErrorPage = (props: ErrorPageProps) => {
 };
 
 export { ErrorPage };
-export type { ErrorPageProps };
+export type { IErrorPage };

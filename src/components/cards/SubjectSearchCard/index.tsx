@@ -10,13 +10,13 @@ import { basic } from "@design/tokens";
 import { isMobile970 } from "@config/environment";
 
 import { StyledSubjectSearchCard, StyledSubjectSearchCardText } from "./styles";
-interface SubjectSearchCardProps {
+interface ISubjectSearchCard {
   subjectSearchData: { [key: string]: string | number };
   closeIcon?: boolean;
   closeSearchCard?: () => void;
 }
 
-const SubjectSearchCard = (props: SubjectSearchCardProps) => {
+const SubjectSearchCard = (props: ISubjectSearchCard) => {
   const { subjectSearchData, closeIcon } = props;
   const [isActive, setIsActive] = useState(false);
   const smallScreen = useMediaQuery(isMobile970);
@@ -53,4 +53,4 @@ const SubjectSearchCard = (props: SubjectSearchCardProps) => {
 };
 
 export { SubjectSearchCard };
-export type { SubjectSearchCardProps };
+export type { ISubjectSearchCard };

@@ -9,11 +9,11 @@ import { IAppContext, IAppData } from "./types";
 
 const AppContext = createContext<IAppContext>({} as IAppContext);
 
-interface AppProviderProps {
+interface IAppProvider {
   children: React.ReactNode;
 }
 
-const AppContextProvider = ({ children }: AppProviderProps) => {
+const AppContextProvider = ({ children }: IAppProvider) => {
   const { user } = useAuth0();
 
   const portalCode = decrypt(localStorage.getItem("portalCode") ?? "");
@@ -120,4 +120,4 @@ const AppContextProvider = ({ children }: AppProviderProps) => {
 };
 
 export { AppContext, AppContextProvider };
-export type { AppProviderProps };
+export type { IAppProvider };

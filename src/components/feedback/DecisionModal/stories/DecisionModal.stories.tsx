@@ -1,16 +1,14 @@
 import { StoryFn, Meta } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 
-import { DecisionModal, DecisionModalProps } from "..";
+import { DecisionModal, IDecisionModal } from "..";
 
 const story: Meta<typeof DecisionModal> = {
   component: DecisionModal,
   title: "components/feedback/DecisionModal",
 };
 
-const Template: StoryFn<DecisionModalProps> = (args) => (
-  <DecisionModal {...args} />
-);
+const Template: StoryFn<IDecisionModal> = (args) => <DecisionModal {...args} />;
 
 const Default = Template.bind({});
 Default.args = {

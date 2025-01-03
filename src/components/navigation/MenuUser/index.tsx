@@ -3,7 +3,7 @@ import { Stack } from "@inubekit/stack";
 import { Avatar } from "@inubekit/avatar";
 import { basic } from "@design/tokens";
 
-interface IMenuUserProps {
+interface IMenuUser {
   userName: string;
   businessUnit?: string;
   avatar?: boolean;
@@ -13,7 +13,7 @@ const MenuUser = ({
   userName,
   businessUnit = "Linix",
   avatar = true,
-}: IMenuUserProps) => (
+}: IMenuUser) => (
   <Stack
     gap={basic.spacing.s12}
     padding={`${basic.spacing.s12} ${basic.spacing.s16}`}
@@ -35,4 +35,4 @@ const MenuUser = ({
 );
 
 export { MenuUser };
-export type { IMenuUserProps };
+export type { IMenuUser };

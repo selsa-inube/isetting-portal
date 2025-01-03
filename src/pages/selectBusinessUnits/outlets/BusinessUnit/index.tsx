@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { BusinessUnitsUI } from "./interface";
 import { useBusinessUnit } from "@hooks/useBusinessUnits";
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
+import { BusinessUnitsUI } from "./interface";
 
 interface IBusinessUnits {
   businessUnits: IBusinessUnitsPortalStaff[];

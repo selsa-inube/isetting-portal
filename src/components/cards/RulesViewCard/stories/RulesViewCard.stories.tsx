@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 
 import { parameters, props } from "./props";
-import { RulesViewCard, RulesViewCardProps } from "..";
+import { RulesViewCard, IRulesViewCard } from "..";
 
 const meta: Meta<typeof RulesViewCard> = {
   title: "components/cards/RulesViewCard",
@@ -12,9 +12,7 @@ const meta: Meta<typeof RulesViewCard> = {
 
 type Story = StoryObj<typeof RulesViewCard>;
 
-const Default: Story = (args: RulesViewCardProps) => (
-  <RulesViewCard {...args} />
-);
+const Default: Story = (args: IRulesViewCard) => <RulesViewCard {...args} />;
 Default.args = {
   children: (
     <div>
@@ -28,9 +26,7 @@ Default.args = {
 
 const criteriaArray = Array(7).fill("Decision");
 
-const Container: Story = (args: RulesViewCardProps) => (
-  <RulesViewCard {...args} />
-);
+const Container: Story = (args: IRulesViewCard) => <RulesViewCard {...args} />;
 Container.args = {
   children: (
     <>
