@@ -3,7 +3,7 @@ import { IRoute } from "@components/layout/AppMenu/types";
 import { AppMenuGrid } from "@components/layout/AppMenuGrid";
 import { AppMenuCardProps } from "@components/cards/AppMenuCard";
 
-interface RulesOptionsUIProps {
+interface IRulesOptions {
   appName: string;
   appDescription: string;
   appOptions: AppMenuCardProps[];
@@ -15,7 +15,7 @@ const RulesOptionsUI = ({
   appDescription,
   appOptions,
   appRoute,
-}: RulesOptionsUIProps) => (
+}: IRulesOptions) => (
   <AppMenu
     appName={appName}
     appDescription={appDescription}

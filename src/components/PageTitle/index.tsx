@@ -8,19 +8,14 @@ import { useMediaQuery } from "@inubekit/hooks";
 import { isMobile580 } from "@config/environment";
 import { basic } from "@design/tokens";
 
-interface PageTitleProps {
+interface IPageTitle {
   title: string;
   icon?: React.ReactNode;
   description: string;
   navigatePage?: string;
 }
 
-const PageTitle = ({
-  title,
-  icon,
-  description,
-  navigatePage,
-}: PageTitleProps) => {
+const PageTitle = ({ title, icon, description, navigatePage }: IPageTitle) => {
   const smallScreen = useMediaQuery(isMobile580);
   const navigate = useNavigate();
 
@@ -61,4 +56,4 @@ const PageTitle = ({
 };
 
 export { PageTitle };
-export type { PageTitleProps };
+export type { IPageTitle };

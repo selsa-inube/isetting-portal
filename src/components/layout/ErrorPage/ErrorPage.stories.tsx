@@ -5,14 +5,12 @@ import errorImage from "@assets/images/timeout.png";
 
 import { ErrorPage, ErrorPageProps } from "./index";
 
-
 const meta: Meta<typeof ErrorPage> = {
   title: "layout/Error",
   component: ErrorPage,
-
 };
 
-export const Default = (args: ErrorPageProps) => <ErrorPage {...args} />;
+const Default = (args: ErrorPageProps) => <ErrorPage {...args} />;
 
 Default.args = {
   logo: selsaLogo,
@@ -23,5 +21,5 @@ Default.args = {
   image: errorImage,
   imageAlt: "Ha surgido un error. Revisa la descripción",
 };
-
+export { Default };
 export default meta;

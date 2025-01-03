@@ -1,8 +1,8 @@
-import { MenuItemProps } from "../MenuItem";
+import { IMenuItemProps } from "../MenuItem";
 
 interface ISection {
   title?: string;
-  links: MenuItemProps[];
+  links: IMenuItemProps[];
 }
 
 export type { ISection };

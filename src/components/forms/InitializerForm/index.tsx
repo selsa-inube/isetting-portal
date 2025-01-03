@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { updateItemData } from "@mocks/utils/dataMock.service";
-
-import { InitializerFormUI } from "./interface";
-
 import {
   IAssignmentFormEntry,
   IMessageState,
 } from "@pages/privileges/outlets/types/forms.types";
 import { IOptionInitialiceEntryApp } from "@pages/privileges/outlets/positions/add-position/types";
+import { InitializerFormUI } from "./interface";
 
 const LOADING_TIMEOUT = 1500;
 

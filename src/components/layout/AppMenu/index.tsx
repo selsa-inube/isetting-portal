@@ -7,14 +7,14 @@ import { basic } from "@design/tokens";
 import { StyledAppMenu } from "./styles";
 import { IRoute } from "./types";
 
-interface AppMenuProps {
+interface IAppMenuProps {
   appName: string;
   appDescription: string;
   appRoute: IRoute[];
   children: React.ReactNode;
 }
 
-const AppMenu = (props: AppMenuProps) => {
+const AppMenu = (props: IAppMenuProps) => {
   const { appName, appDescription, appRoute, children } = props;
 
   return (
@@ -35,4 +35,4 @@ const AppMenu = (props: AppMenuProps) => {
 };
 
 export { AppMenu };
-export type { AppMenuProps };
+export type { IAppMenuProps };

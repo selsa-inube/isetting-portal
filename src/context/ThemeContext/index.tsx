@@ -7,9 +7,7 @@ interface ThemeProviderWrapperProps {
   children: ReactNode;
 }
 
-export const ThemeProviderWrapper = ({
-  children,
-}: ThemeProviderWrapperProps) => {
+const ThemeProviderWrapper = ({ children }: ThemeProviderWrapperProps) => {
   const savedTheme =
     (localStorage.getItem("themeName") as ThemeName) || "sistemasenlinea";
   const [themeName, setThemeName] = useState<ThemeName>(savedTheme);
@@ -28,3 +26,5 @@ export const ThemeProviderWrapper = ({
     </ThemeContext.Provider>
   );
 };
+
+export { ThemeProviderWrapper };

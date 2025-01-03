@@ -2,8 +2,8 @@ import { Grid } from "@inubekit/grid";
 import { useMediaQueries, useMediaQuery } from "@inubekit/hooks";
 import { Text } from "@inubekit/text";
 import { basic } from "@design/tokens";
-import { StyledRadioBusinessUnit, StyledRadio, StyledImage } from "./styles";
 import { isMobile580 } from "@config/environment";
+import { StyledRadioBusinessUnit, StyledRadio, StyledImage } from "./styles";
 
 interface RadioBusinessUnitProps {
   id: string;

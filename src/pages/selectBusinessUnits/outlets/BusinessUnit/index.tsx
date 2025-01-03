@@ -3,11 +3,11 @@ import { BusinessUnitsUI } from "./interface";
 import { useBusinessUnit } from "@hooks/useBusinessUnits";
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
 
-interface BusinessUnitsProps {
+interface IBusinessUnits {
   businessUnits: IBusinessUnitsPortalStaff[];
 }
 
-const BusinessUnits = ({ businessUnits }: BusinessUnitsProps) => {
+const BusinessUnits = ({ businessUnits }: IBusinessUnits) => {
   const navigate = useNavigate();
   const {
     search,

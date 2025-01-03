@@ -5,7 +5,7 @@ interface IStyledContainerAssisted {
   $cursorDisabled: boolean;
 }
 
-export const StyledContainerAssisted = styled.div<IStyledContainerAssisted>`
+const StyledContainerAssisted = styled.div<IStyledContainerAssisted>`
   & div > div:nth-child(3) button {
     cursor: ${({ $cursorDisabled }) =>
       $cursorDisabled ? "not-allowed" : "pointer"};
@@ -16,3 +16,5 @@ export const StyledContainerAssisted = styled.div<IStyledContainerAssisted>`
       $cursorDisabled ? inube.palette.neutral.N70 : inube.palette.blue.B400};
   }
 `;
+
+export { StyledContainerAssisted };

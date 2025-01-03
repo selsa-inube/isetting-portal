@@ -1,8 +1,8 @@
 import { Stack } from "@inubekit/stack";
 import { Text } from "@inubekit/text";
 import { Icon } from "@inubekit/icon";
-import { StyledAppMenuCard } from "./styles";
 import { basic } from "@design/tokens";
+import { StyledAppMenuCard } from "./styles";
 
 interface AppMenuCardProps {
   id: number;

@@ -3,13 +3,13 @@ import { Grid } from "@inubekit/grid";
 import { Stack } from "@inubekit/stack";
 import { Text } from "@inubekit/text";
 import { Button } from "@inubekit/button";
-import { useMediaQueries } from "@inubekit/hooks";
-
+import { useMediaQueries, useMediaQuery } from "@inubekit/hooks";
+import { basic } from "@design/tokens";
+import { isMobile970 } from "@config/environment";
 import selsaLogo from "@assets/images/selsa.png";
 import errorImage from "@assets/images/timeout.png";
 
 import { StyledCompanyLogo, StyledErrorImage } from "./styles";
-import { basic } from "@design/tokens";
 
 interface ErrorPageProps {
   logo?: string;
@@ -36,7 +36,7 @@ const ErrorPage = (props: ErrorPageProps) => {
 
   const mediaQueries = ["(min-width: 771px)", "(max-width: 770px)"];
   const matches = useMediaQueries(mediaQueries);
-
+  const smallScreen = useMediaQuery(isMobile970);
   return (
     <Stack
       padding={
@@ -51,7 +51,7 @@ const ErrorPage = (props: ErrorPageProps) => {
       }
       direction="column"
     >
-      <StyledCompanyLogo src={logo} alt={logoAlt} />
+      <StyledCompanyLogo src={logo} alt={logoAlt} $smallScreen={smallScreen} />
       <Grid
         templateRows={matches["(max-width: 770px)"] ? "repeat(2, 1fr)" : "1fr"}
         templateColumns={

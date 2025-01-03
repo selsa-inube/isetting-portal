@@ -15,7 +15,7 @@ interface IDetailsModalProps {
   labelsOptions: Field[];
 }
 
-export const DetailsModal = (props: IDetailsModalProps) => {
+const DetailsModal = (props: IDetailsModalProps) => {
   const { data, labelsOptions } = props;
 
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -47,3 +47,5 @@ export const DetailsModal = (props: IDetailsModalProps) => {
     </>
   );
 };
+
+export { DetailsModal };

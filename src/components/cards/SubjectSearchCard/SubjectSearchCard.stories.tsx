@@ -28,9 +28,9 @@ const Template: StoryFn<SubjectSearchCardProps> = (args) => (
   <SubjectSearchCard {...args} />
 );
 
-export const Default = Template.bind({});
+const Default = Template.bind({});
 Default.args = {
   subjectSearchData: data,
 };
-
 export default story;
+export { Default };

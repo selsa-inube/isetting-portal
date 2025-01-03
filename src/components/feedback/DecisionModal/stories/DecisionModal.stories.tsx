@@ -12,7 +12,7 @@ const Template: StoryFn<DecisionModalProps> = (args) => (
   <DecisionModal {...args} />
 );
 
-export const Default = Template.bind({});
+const Default = Template.bind({});
 Default.args = {
   portalId: "portal",
   title: "Text title",
@@ -21,5 +21,5 @@ Default.args = {
   closeModal: action("DecisionModal closed"),
   handleClick: action("DecisionModal action"),
 };
-
+export { Default };
 export default story;
