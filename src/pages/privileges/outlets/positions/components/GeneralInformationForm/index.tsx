@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 import { FormikProps } from "formik";
 import { useGeneralInfoCreditLineForm } from "@hooks/positionsData/useGeneralInfoRoles";
 import { GeneralInformationFormUI } from "./interface";
-import { IGeneralInformationEntry } from "./types";
+import { IGeneralInformationEntry } from "../../add-position/types";
 
 interface IGeneralInformationForm {
   initialValues: IGeneralInformationEntry;

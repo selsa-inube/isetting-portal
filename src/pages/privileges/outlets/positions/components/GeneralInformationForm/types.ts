@@ -1,6 +1,9 @@
-interface IGeneralInformationEntry {
-  nameCreditLine: string;
-  descriptionCreditLine: string;
-}
+import { IGeneralInformationEntry } from "../../add-position/types";
 
-export type { IGeneralInformationEntry };
+const generalInformation: IGeneralInformationEntry = {
+  namePosition: "",
+  descriptionPosition: "",
+};
+export const initalValuesPositions = {
+  generalInformation,
+};

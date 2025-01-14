@@ -13,8 +13,7 @@ interface IRoleForStaff {
   publicCode: string;
   abbreviatedName: string;
   descriptionUse: string;
-  application: IAplication[];
+  application: IAplication;
   useCasesByStaffRoles: IUseCasesByStaffRoles[];
 }
-
 export type { IRoleForStaff };

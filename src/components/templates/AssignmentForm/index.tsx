@@ -27,6 +27,7 @@ const AssignmentForm = (props: IAssignmentForm) => {
   const {
     filteredRows,
     filterValue,
+    handleFilterInput,
     handleFilterChange,
     handleToggleAllEntries,
     handleToggleEntry,
@@ -38,9 +39,9 @@ const AssignmentForm = (props: IAssignmentForm) => {
   } = useAssignmentFormLogic(entries, changeData, setChangedData, handleChange);
 
   const options = valueSelect.map((entry) => ({
-    id: entry.k_uso,
-    label: entry.n_uso,
-    checked: filteredRows.some((row) => row.k_uso === entry.k_uso),
+    id: entry.id,
+    label: entry.value,
+    checked: filteredRows.some((row) => row.applicationStaff === entry.value),
   }));
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -52,6 +53,7 @@ const AssignmentForm = (props: IAssignmentForm) => {
       handleToggleAllEntries={handleToggleAllEntries}
       filter={filterValue}
       handleFilter={handleFilterChange}
+      handleFilterInput={handleFilterInput}
       entries={entries}
       title={title}
       showMenu={showMenu}
@@ -66,7 +68,6 @@ const AssignmentForm = (props: IAssignmentForm) => {
       options={options}
       filterValue={filterValue}
       onHandleSelectCheckChange={handleToggleEntry}
-      handleFilterInput={handleFilterChange}
     />
   );
 };

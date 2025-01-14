@@ -7,9 +7,9 @@ import { PageTitle } from "@components/PageTitle";
 import { InitializerForm } from "@components/forms/InitializerForm";
 import { Button } from "@inubekit/button";
 import { basic } from "@design/tokens";
-import { IGeneralInformationEntry } from "../components/GeneralInformationForm/types";
 import { GeneralInformationForm } from "../components/GeneralInformationForm";
 import { createPositionConfig } from "./config/addPosition.config";
+import { IFormAddPosition, IGeneralInformationEntry } from "./types";
 
 interface IAddPositionUI {
   currentStep: number;
@@ -22,22 +22,35 @@ interface IAddPositionUI {
   setIsCurrentFormValid: React.Dispatch<React.SetStateAction<boolean>>;
   handlePreviousStep: () => void;
   handleNextStep: () => void;
+  formValues: IFormAddPosition;
 }
 
-const AddStaffRolesUI = ({
-  currentStep,
-  generalInformationRef,
-  initialGeneralInformationValues,
-  isCurrentFormValid,
-  steps,
-  onNextStep,
-  handlePreviousStep,
-  handleNextStep,
-  onPreviousStep,
-  setIsCurrentFormValid,
-}: IAddPositionUI) => {
+function AddStaffRolesUI(props: IAddPositionUI) {
+  const {
+    currentStep,
+    formValues,
+    generalInformationRef,
+    initialGeneralInformationValues,
+    isCurrentFormValid,
+    steps,
+    onNextStep,
+    handlePreviousStep,
+    handleNextStep,
+    onPreviousStep,
+    setIsCurrentFormValid,
+  } = props;
+
   const smallScreen = useMediaQuery("(max-width: 990px)");
   const disabled = !isCurrentFormValid;
+  const roles = formValues.rolesStaff.values.map((role) => {
+    const applicationStaff = formValues.applicationStaff.values.find(
+      (app) => app.id != role.id
+    );
+    return {
+      ...role,
+      applicationStaff: applicationStaff?.value,
+    };
+  });
 
   return (
     <Stack
@@ -86,7 +99,7 @@ const AddStaffRolesUI = ({
             )}
             {currentStep === 2 && (
               <InitializerForm
-                dataOptionsForms={[]}
+                dataOptionsForms={roles}
                 handleSubmit={() => {}}
                 dataOptionsValueSelect={[]}
               />
@@ -116,6 +129,6 @@ const AddStaffRolesUI = ({
       </Stack>
     </Stack>
   );
-};
+}
 
 export { AddStaffRolesUI };

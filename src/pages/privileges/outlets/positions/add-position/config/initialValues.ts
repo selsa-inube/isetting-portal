@@ -1,12 +1,10 @@
-import { IGeneralInformationEntry } from "../../components/GeneralInformationForm/types";
+import { IGeneralInformationEntry } from "../types";
 
 const generalInformation: IGeneralInformationEntry = {
-  nameCreditLine: "",
-  descriptionCreditLine: "",
+  namePosition: "",
+  descriptionPosition: "",
 };
 
-const initalValuesPositions = {
+export const initalValuesPositions = {
   generalInformation,
 };
-
-export { initalValuesPositions };

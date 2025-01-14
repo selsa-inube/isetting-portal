@@ -4,10 +4,12 @@ interface IAssignmentFormEntry {
   id: string;
   value: string;
   isActive: boolean;
+  rolesStaff?: string;
+  applicationStaff?: string;
 }
 
 interface IFormsInvitation {
-  generalInformation: {entries?: [] };
+  generalInformation: { entries?: [] };
   branches: { entries: IAssignmentFormEntry[] };
   projects: { entries: IAssignmentFormEntry[] };
   events: { entries: IAssignmentFormEntry[] };

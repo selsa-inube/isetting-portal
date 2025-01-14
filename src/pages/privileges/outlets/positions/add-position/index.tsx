@@ -17,7 +17,7 @@ const AddPosition = () => {
     <AddStaffRolesUI
       currentStep={currentStep}
       generalInformationRef={generalInformationRef}
-      initialGeneralInformationValues={formValues}
+      initialGeneralInformationValues={formValues.generalInformation.values}
       isCurrentFormValid={isCurrentFormValid}
       onNextStep={handleNextStep}
       onPreviousStep={handlePreviousStep}
@@ -25,6 +25,7 @@ const AddPosition = () => {
       steps={addStaffRolesSteps}
       handlePreviousStep={handlePreviousStep}
       handleNextStep={handleNextStep}
+      formValues={formValues}
     />
   );
 };

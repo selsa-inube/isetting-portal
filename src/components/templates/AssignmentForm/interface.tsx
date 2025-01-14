@@ -60,7 +60,6 @@ const AssignmentFormUI = (props: IAssignmentFormUI) => {
   } = props;
 
   const dataValidations = entries.length === 0;
-
   return (
     <StyledForm onSubmit={handleSubmit}>
       <Fieldset legend={title} size="small" type="title">
@@ -153,7 +152,7 @@ const AssignmentFormUI = (props: IAssignmentFormUI) => {
                       </StyledToggleContainer>
                     </Td>
                     <Td align="left"> {entry.value}</Td>
-                    <Td align="left"> {entry.n_uso}</Td>
+                    <Td align="left"> {entry.applicationStaff}</Td>
                   </Tr>
                 ))
               )}

@@ -1,9 +1,10 @@
 interface IEntry {
   id: string;
   value: string;
+  abbreviatedName?: string;
   isActive: boolean;
-  k_uso?: string;
-  n_uso?: string;
+  rolesStaff?: string;
+  applicationStaff?: string;
 }
 
 interface IOptions {
@@ -22,10 +23,10 @@ const titlesOptions = [
     type: "toggle",
   },
   {
-    id: "rol",
+    id: "abbreviatedName",
     titleName: "Rol",
     priority: 1,
-    value: "id",
+    value: "abbreviatedName",
   },
   {
     id: "value",

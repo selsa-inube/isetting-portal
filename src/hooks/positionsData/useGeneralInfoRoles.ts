@@ -1,10 +1,9 @@
 import { useEffect, useImperativeHandle } from "react";
 import { FormikProps, useFormik } from "formik";
 import { object } from "yup";
-
 import { validationMessages } from "@validations/validationMessages";
-import { IGeneralInformationEntry } from "@pages/privileges/outlets/positions/components/GeneralInformationForm/types";
 import { validationRules } from "@validations/validationRules";
+import { IGeneralInformationEntry } from "@pages/privileges/outlets/positions/add-position/types";
 
 const useGeneralInfoCreditLineForm = (
   initialValues: IGeneralInformationEntry,
@@ -14,10 +13,10 @@ const useGeneralInfoCreditLineForm = (
 ) => {
   const createValidationSchema = () =>
     object().shape({
-      nameCreditLine: validationRules.string.required(
+      namePosition: validationRules.string.required(
         validationMessages.required
       ),
-      descriptionCreditLine: validationRules.string.required(
+      descriptionPosition: validationRules.string.required(
         validationMessages.required
       ),
     });

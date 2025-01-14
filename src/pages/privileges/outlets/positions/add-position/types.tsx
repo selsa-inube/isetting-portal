@@ -2,7 +2,6 @@ import React from "react";
 import { FormikProps } from "formik";
 
 import { IAssignmentFormEntry } from "../../types/forms.types";
-import { IGeneralInformationEntry } from "../components/GeneralInformationForm/types";
 
 const titleButtonTextAssited = {
   before: "Atrás",
@@ -11,8 +10,11 @@ const titleButtonTextAssited = {
 };
 
 interface IOptionInitialiceEntryApp {
-  k_uso: string;
-  n_uso: string;
+  id: string;
+  value: string;
+  isActive: boolean;
+  rolesStaff?: string;
+  applicationStaff?: string;
 }
 interface IPosition {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -31,10 +33,41 @@ interface IOptionInitialiceEntry {
   id: string;
   value: string;
   isActive: boolean;
+  rolesStaff?: string;
+  applicationStaff?: string;
+}
+interface IGeneralInformationEntry {
+  namePosition: string;
+  descriptionPosition: string;
+}
+
+interface IOptionRolesInitialiceEntry {
+  id?: string;
+  value?: string;
+  isActive?: boolean;
+  roleId?: string;
+  abbreviatedName?: string;
+}
+interface DataToAssignmentFormEntryProps {
+  dataOptions: Record<string, unknown>[];
+  idLabel: string;
+  valueLabel: string;
+  isActiveLabel: string;
+}
+
+function dataToAssignmentFormEntry(props: DataToAssignmentFormEntryProps) {
+  const { dataOptions, idLabel, valueLabel, isActiveLabel } = props;
+  return dataOptions.map((dataOption) => ({
+    value: String(dataOption[valueLabel]),
+    isActive: Boolean(dataOption[isActiveLabel] === "Y"),
+    id: String(dataOption[idLabel]),
+  }));
 }
 
 interface IFormAddPosition {
   generalInformation: { isValid: boolean; values: IGeneralInformationEntry };
+  rolesStaff: { isValid: boolean; values: IOptionInitialiceEntry[] };
+  applicationStaff: { isValid: boolean; values: IOptionInitialiceEntryApp[] };
 }
 
 interface IFormAddPositionRef {
@@ -45,7 +78,7 @@ type IHandleUpdateDataSwitchstep =
   | IGeneralInformationEntry
   | IAssignmentFormEntry[];
 
-export { titleButtonTextAssited };
+export { titleButtonTextAssited, dataToAssignmentFormEntry };
 
 export type {
   IHandleUpdateDataSwitchstep,
@@ -55,4 +88,7 @@ export type {
   IOptionInitialiceEntryApp,
   IPosition,
   IStep,
+  IOptionRolesInitialiceEntry,
+  DataToAssignmentFormEntryProps,
+  IGeneralInformationEntry,
 };

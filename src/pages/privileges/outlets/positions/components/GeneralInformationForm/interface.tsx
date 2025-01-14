@@ -9,7 +9,7 @@ import { basic } from "@design/tokens";
 import { getFieldState } from "@utils/forms";
 
 import { StyledContainer, StyledContainerFields } from "./styles";
-import { IGeneralInformationEntry } from "./types";
+import { IGeneralInformationEntry } from "../../add-position/types";
 
 interface IGeneralInformationFormUI {
   formik: FormikProps<IGeneralInformationEntry>;
@@ -17,10 +17,9 @@ interface IGeneralInformationFormUI {
   loading?: boolean;
 }
 
-const GeneralInformationFormUI = ({
-  formik,
-  loading,
-}: IGeneralInformationFormUI) => {
+function GeneralInformationFormUI(props: IGeneralInformationFormUI) {
+  const { formik, loading } = props;
+
   const isMobile = useMediaQuery("(max-width: 990px)");
 
   return (
@@ -35,17 +34,17 @@ const GeneralInformationFormUI = ({
               >
                 <Stack width={isMobile ? "100%" : "350px"}>
                   <Input
-                    name="nameCreditLine"
-                    id="nameCreditLine"
+                    name="namePosition"
+                    id="namePosition"
                     label="Descripción Funcional"
                     placeholder="Nombre del cargo"
                     type="text"
                     size="compact"
-                    value={formik.values.nameCreditLine}
+                    value={formik.values.namePosition}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    status={getFieldState(formik, "nameCreditLine")}
-                    message={formik.errors.nameCreditLine}
+                    status={getFieldState(formik, "namePosition")}
+                    message={formik.errors.namePosition}
                     fullwidth
                   />
                 </Stack>
@@ -54,13 +53,13 @@ const GeneralInformationFormUI = ({
               <Textarea
                 label="Descripción Funcional"
                 placeholder="Agregue una breve descripción"
-                name="descriptionCreditLine"
-                id="descriptionCreditLine"
-                value={formik.values.descriptionCreditLine}
+                name="descriptionPosition"
+                id="descriptionPosition"
+                value={formik.values.descriptionPosition}
                 maxLength={1000}
                 disabled={loading}
-                status={getFieldState(formik, "descriptionCreditLine")}
-                message={formik.errors.descriptionCreditLine}
+                status={getFieldState(formik, "descriptionPosition")}
+                message={formik.errors.descriptionPosition}
                 fullwidth
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
@@ -71,6 +70,6 @@ const GeneralInformationFormUI = ({
       </form>
     </StyledContainer>
   );
-};
+}
 
 export { GeneralInformationFormUI };
