@@ -1,13 +1,13 @@
 import {
-  IoptionsByStaffPortalBusinessManager,
+  IOptionsByStaffPortalBusinessManager,
   IStaffPortalByBusinessManager,
 } from "@ptypes/staffPortal.types";
 
 const mapStaffPortalByBusinessManagerApiToEntity = (
   resend: Record<
     string,
-    string | IoptionsByStaffPortalBusinessManager[] | undefined
-  >,
+    string | IOptionsByStaffPortalBusinessManager[] | undefined
+  >
 ): IStaffPortalByBusinessManager => {
   const buildResend: IStaffPortalByBusinessManager = {
     abbreviatedName: String(resend.abbreviatedName),
@@ -24,8 +24,8 @@ const mapStaffPortalByBusinessManagerApiToEntity = (
 const mapStaffPortalByBusinessManagerApiToEntities = (
   resend: Record<
     string,
-    string | IoptionsByStaffPortalBusinessManager[] | undefined
-  >[],
+    string | IOptionsByStaffPortalBusinessManager[] | undefined
+  >[]
 ): IStaffPortalByBusinessManager[] => {
   return resend.map(mapStaffPortalByBusinessManagerApiToEntity);
 };

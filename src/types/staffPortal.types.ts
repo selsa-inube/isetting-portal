@@ -1,4 +1,4 @@
-interface IoptionsByStaffPortalBusinessManager {
+interface IOptionsByStaffPortalBusinessManager {
   optionStaffId: string;
   staffPortalCatalogId: string;
   staffPortalId: string;
@@ -12,8 +12,8 @@ interface IStaffPortalByBusinessManager {
   staffPortalCatalogId: string;
   staffPortalId: string;
   url: string;
-  optionsByStaffPortalBusinessManager?: IoptionsByStaffPortalBusinessManager[];
-  [key: string]: string | IoptionsByStaffPortalBusinessManager[] | undefined;
+  optionsByStaffPortalBusinessManager?: IOptionsByStaffPortalBusinessManager[];
+  [key: string]: string | IOptionsByStaffPortalBusinessManager[] | undefined;
 }
 
 interface IBusinessManagers {
@@ -31,5 +31,5 @@ interface IBusinessManagers {
 export type {
   IStaffPortalByBusinessManager,
   IBusinessManagers,
-  IoptionsByStaffPortalBusinessManager,
+  IOptionsByStaffPortalBusinessManager,
 };
