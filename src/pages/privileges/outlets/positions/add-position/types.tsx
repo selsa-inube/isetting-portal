@@ -14,13 +14,24 @@ interface IOptionInitialiceEntryApp {
   k_uso: string;
   n_uso: string;
 }
+
+interface IBusinessManagerStaffMissionByRole {
+  missionId: string;
+  roleId: string;
+}
 interface IPosition {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
-  public_code: string;
-  abbreviated_name: string;
-  n_roles?: string[];
+  publicCode: string;
+  abbreviatedName: string;
+  businessManagerStaffMissionByRole?: IBusinessManagerStaffMissionByRole[];
 }
+
+interface IDeleteForMessage {
+  id: string;
+  successfulDiscard: boolean;
+}
+
 interface IStep {
   id: number;
   label: string;
@@ -55,4 +66,5 @@ export type {
   IOptionInitialiceEntryApp,
   IPosition,
   IStep,
+  IDeleteForMessage,
 };
