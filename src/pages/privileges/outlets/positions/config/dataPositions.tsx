@@ -23,17 +23,17 @@ const positionsBreakPointsConfig = [
 
 const labelsOptions = [
   {
-    id: "public_code",
+    id: "publicCode",
     labelName: "Código",
     type: "text",
   },
   {
-    id: "abbreviated_name",
+    id: "abbreviatedName",
     labelName: "Descripción Funcional",
     type: "text",
   },
   {
-    id: "n_roles",
+    id: "missionId",
     labelName: "Roles",
     type: "table",
   },
