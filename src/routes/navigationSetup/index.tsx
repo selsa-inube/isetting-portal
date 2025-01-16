@@ -8,9 +8,9 @@ import { RulesRoutes } from "@routes/rules";
 import { SelectBusinessUnitsRoutes } from "@routes/selectBusinessunits";
 import { ErrorPage } from "@design/layout/ErrorPage";
 
-import { LogOut } from "@pages/app/useApp/logOut";
-import { FirstPage } from "@pages/app/useApp/firstPage";
 import { AppPage } from "@design/layout/corePageStructure";
+import { FirstPage } from "@pages/login/landing";
+import { LogOut } from "@pages/login/logOut";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

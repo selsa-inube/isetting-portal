@@ -22,7 +22,7 @@ import {
 
 import { basic } from "@design/tokens";
 import { isMobile580 } from "@config/environment";
-import { LoadingApp } from "@pages/login/outlets/LoadingApp";
+import { LoadingApp } from "@pages/login/loading";
 import { IBusinessUnitsPortalStaffId } from "@ptypes/staffBusinessManagersId";
 import { useActions } from "@hooks/useActions";
 import { privilegeOptionsConfig } from "../../config/privileges.config";
