@@ -1,7 +1,7 @@
 import { useCallback, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { AppContext } from "@context/AppContext";
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
+import { AppContext } from "@context/authAndDataProvider";
 
 const useCheckCredentials = (businessUnits: IBusinessUnitsPortalStaff[]) => {
   const navigate = useNavigate();

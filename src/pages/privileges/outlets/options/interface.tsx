@@ -1,7 +1,7 @@
-import { IAppMenuCard } from "@design/cards/AppMenuCard";
-import { AppMenu } from "@design/layout/AppMenu";
-import { IRoute } from "@design/layout/AppMenu/types";
-import { AppMenuGrid } from "@design/layout/AppMenuGrid";
+import { IAppMenuCard } from "@design/cards/actionItemBlock";
+import { AppMenu } from "@design/layout/contentFramework";
+import { IRoute } from "@design/layout/contentFramework/types";
+import { AppMenuGrid } from "@design/layout/optionGrid";
 
 interface IPrivilegesOptionsUI {
   appName: string;

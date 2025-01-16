@@ -4,7 +4,7 @@ import { useBusinessManagers } from "@hooks/useBusinessManagers";
 import { usePortalData } from "@hooks/usePortalData";
 import { decrypt } from "@utils/encrypt";
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
-import { IAppData } from "@context/AppContext/types";
+import { IAppData } from "@context/authAndDataProvider/types";
 
 const useAppContextLogic = () => {
   const { user } = useAuth0();

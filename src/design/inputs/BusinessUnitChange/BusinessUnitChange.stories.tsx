@@ -1,7 +1,7 @@
 import { Meta } from "@storybook/react";
 import { Stack } from "@inubekit/stack";
 import { businessUnitDataMock } from "@mocks/businessUnits/businessUnits.mock";
-import { AppContext } from "@context/AppContext";
+import { AppContext } from "@context/authAndDataProvider";
 import { BusinessUnitChange } from ".";
 
 const meta: Meta<typeof BusinessUnitChange> = {

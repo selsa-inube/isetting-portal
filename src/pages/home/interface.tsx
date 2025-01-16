@@ -1,12 +1,13 @@
 import { useContext } from "react";
-import { AppContext } from "@context/AppContext";
+
 import { MdOutlineChevronRight, MdOutlineDoorFront } from "react-icons/md";
 import { Header } from "@inubekit/header";
 import { Icon } from "@inubekit/icon";
+import { AppContext } from "@context/authAndDataProvider";
 import { useHomeLogic } from "@hooks/useHomeLogic";
 import { nav, userMenu } from "@config/nav";
 import { Title } from "@design/label/Title";
-import { AppCard } from "@design/feedback/AppCard";
+import { AppCard } from "@design/cards/interactiveBox";
 import { BusinessUnitChange } from "@design/inputs/BusinessUnitChange";
 import { renderLogo } from "@hooks/renderLogo/logoUtils";
 import {

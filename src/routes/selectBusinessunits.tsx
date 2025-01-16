@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import { useContext } from "react";
-import { AppContext } from "@context/AppContext";
 import { IBusinessUnit } from "@pages/selectBusinessUnits/outlets/BusinessUnit/types";
 import { SelectBusinessUnits } from "@pages/selectBusinessUnits";
 import { CheckingCredentials } from "@pages/selectBusinessUnits/outlets/CheckingCredentials";
@@ -8,6 +7,7 @@ import { BusinessUnits } from "@pages/selectBusinessUnits/outlets/BusinessUnit";
 import { LoadingApp } from "@pages/login/outlets/LoadingApp";
 import { ErrorPage } from "@design/layout/ErrorPage";
 import { ErrorNotBusinessUnit } from "@pages/errors/ErrorNotBusinessUnit";
+import { AppContext } from "@context/authAndDataProvider";
 
 interface IBusinessUnits {
   businessUnits: IBusinessUnit[];

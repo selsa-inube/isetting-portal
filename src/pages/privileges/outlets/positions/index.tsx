@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useBusinessManagersId } from "@hooks/useBusinessManageresId";
-import { AppContext } from "@context/AppContext";
+import { AppContext } from "@context/authAndDataProvider";
 import { PositionsUI } from "./interface";
 
 const Positions = () => {

@@ -8,7 +8,7 @@ import { isMobile849 } from "@config/environment";
 import { LogoutModal } from "@design/feedback/LogoutModal";
 import { nav, logoutConfig } from "@config/nav";
 import linparLogo from "@assets/images/linpar.png";
-import { AppContext } from "@context/AppContext";
+import { AppContext } from "@context/authAndDataProvider";
 import {
   StyledAppPage,
   StyledContainer,

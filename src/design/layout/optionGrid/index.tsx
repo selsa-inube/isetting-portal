@@ -2,7 +2,7 @@ import { Grid } from "@inubekit/grid";
 import { useMediaQuery } from "@inubekit/hooks";
 import { isMobile580 } from "@config/environment";
 import { basic } from "@design/tokens";
-import { AppMenuCard, IAppMenuCard } from "@design/cards/AppMenuCard";
+import { AppMenuCard, IAppMenuCard } from "@design/cards/actionItemBlock";
 
 interface IAppMenuGrid {
   appOptions: IAppMenuCard[];

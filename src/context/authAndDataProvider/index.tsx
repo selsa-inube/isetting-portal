@@ -1,5 +1,5 @@
-import React, { createContext } from "react";
-import { useAppContextLogic } from "@hooks/useAppLogic/useAppContextLogic";
+import { createContext } from "react";
+import { useAppContextLogic } from "@hooks/useValidatingLoginInformation";
 import { IAppContext } from "./types";
 
 const AppContext = createContext<IAppContext>({} as IAppContext);

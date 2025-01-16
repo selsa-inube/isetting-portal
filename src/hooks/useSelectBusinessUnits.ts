@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useContext } from "react";
-import { AppContext } from "@context/AppContext";
 import { validateBusinessUnities } from "@pages/selectBusinessUnits/utils";
+import { AppContext } from "@context/authAndDataProvider";
 
 const useSelectBusinessUnits = () => {
   const navigate = useNavigate();

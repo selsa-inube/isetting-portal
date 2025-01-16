@@ -1,7 +1,8 @@
 import { useContext } from "react";
-import { AppContext } from "@context/AppContext";
+
 import { Home } from "@pages/home";
 import { SelectBusinessUnits } from "@pages/selectBusinessUnits";
+import { AppContext } from "@context/authAndDataProvider";
 
 const FirstPage = () => {
   const { businessUnitSigla } = useContext(AppContext);

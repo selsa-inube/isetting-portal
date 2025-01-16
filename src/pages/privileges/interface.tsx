@@ -1,4 +1,4 @@
-import { AppPage } from "@design/layout/AppPage";
+import { AppPage } from "@design/layout/corePageStructure";
 
 const PrivilegesUI = () => {
   return <AppPage />;

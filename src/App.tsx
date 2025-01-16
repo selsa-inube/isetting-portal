@@ -1,8 +1,9 @@
 import { RouterProvider } from "react-router-dom";
-import { AppContextProvider } from "@context/AppContext";
-import { useAppLogic } from "@hooks/useAppLogic/useAppInitializationLogic";
+
+import { useAppLogic } from "@hooks/useAppDataHandler.ts";
 import { ErrorPage } from "@design/layout/ErrorPage";
-import { router } from "@routes/app";
+import { AppContextProvider } from "@context/authAndDataProvider";
+import { router } from "@routes/navigationSetup";
 import { GlobalStyles } from "./styles/global";
 import { ThemeProviderWrapper } from "./context/ThemeContext";
 

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState, useRef } from "react";
-import { AppContext } from "@context/AppContext";
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
 import { useMediaQuery } from "@inubekit/hooks";
+import { AppContext } from "@context/authAndDataProvider";
 
 const useHomeLogic = () => {
   const { appData, businessUnitsToTheStaff, setBusinessUnitSigla } =
