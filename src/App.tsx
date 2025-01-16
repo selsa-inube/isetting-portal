@@ -3,9 +3,9 @@ import { RouterProvider } from "react-router-dom";
 import { ErrorPage } from "@design/layout/ErrorPage";
 import { AuthAndDataProvider } from "@context/authAndDataProvider";
 import { router } from "@routes/navigationSetup";
+import { useDataHandler } from "@hooks/useDataHandler";
 import { GlobalStyles } from "./styles/global";
 import { ThemeProviderWrapper } from "./context/ThemeContext";
-import { useDataHandler } from "@hooks/useDataHandler";
 
 const App = () => {
   const { isLoading, hasError, isAuthenticated } = useDataHandler();
