@@ -8,8 +8,8 @@ import { PrivilegesRoutes } from "@routes/privileges";
 import { RulesRoutes } from "@routes/rules";
 import { ErrorPage } from "@components/layout/ErrorPage";
 import { SelectBusinessUnitsRoutes } from "@routes/selectBusinessunits";
-import { LogOut } from "@pages/app/useApp/logOut";
-import { FirstPage } from "@pages/app/useApp/firstPage";
+import { FirstPage } from "@pages/login/landing";
+import { LogOut } from "@pages/login/logOut";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
