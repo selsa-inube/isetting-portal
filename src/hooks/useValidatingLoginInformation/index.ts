@@ -6,7 +6,7 @@ import { decrypt } from "@utils/encrypt";
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
 import { IAppData } from "@context/authAndDataProvider/types";
 
-const useAppContextLogic = () => {
+const useValidatingLoginInformation = () => {
   const { user } = useAuth0();
 
   const portalCode = decrypt(localStorage.getItem("portalCode") ?? "");
@@ -96,7 +96,7 @@ const useAppContextLogic = () => {
     );
   }, [businessUnitsToTheStaff]);
 
-  const appContext = useMemo(
+  const AuthAndData = useMemo(
     () => ({
       appData,
       businessUnitSigla,
@@ -108,7 +108,7 @@ const useAppContextLogic = () => {
     [appData, businessUnitSigla, businessUnitsToTheStaff]
   );
 
-  return appContext;
+  return AuthAndData;
 };
 
-export { useAppContextLogic };
+export { useValidatingLoginInformation };

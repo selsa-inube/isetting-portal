@@ -2,11 +2,11 @@ import { BrowserRouter } from "react-router-dom";
 import { MdContacts } from "react-icons/md";
 import { StoryFn, Meta } from "@storybook/react";
 
-import { AppCard, IAppCard } from "..";
+import { InteractiveBox, IInteractiveBox } from "..";
 
-const meta: Meta<typeof AppCard> = {
-  component: AppCard,
-  title: "feedback/AppCard",
+const meta: Meta<typeof InteractiveBox> = {
+  component: InteractiveBox,
+  title: "feedback/InteractiveBox",
   decorators: [
     (Story: StoryFn) => (
       <BrowserRouter>
@@ -16,7 +16,9 @@ const meta: Meta<typeof AppCard> = {
   ],
 };
 
-const Template: StoryFn<IAppCard> = (args) => <AppCard {...args} />;
+const Template: StoryFn<IInteractiveBox> = (args) => (
+  <InteractiveBox {...args} />
+);
 
 const Default = Template.bind({});
 Default.args = {

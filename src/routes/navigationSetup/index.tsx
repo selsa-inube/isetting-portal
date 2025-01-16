@@ -8,8 +8,8 @@ import { RulesRoutes } from "@routes/rules";
 import { SelectBusinessUnitsRoutes } from "@routes/selectBusinessunits";
 import { ErrorPage } from "@design/layout/ErrorPage";
 
-import { AppPage } from "@design/layout/corePageStructure";
-import { FirstPage } from "@pages/login/landing";
+import { CorePageStructure } from "@design/layout/corePageStructure";
+import { Landing } from "@pages/login/landing";
 import { LogOut } from "@pages/login/logOut";
 
 const router = createBrowserRouter(
@@ -19,8 +19,8 @@ const router = createBrowserRouter(
         path="selectBusinessUnit/*"
         element={<SelectBusinessUnitsRoutes />}
       />
-      <Route path="/" element={<FirstPage />} errorElement={<ErrorPage />} />
-      <Route path="/" element={<AppPage />}>
+      <Route path="/" element={<Landing />} errorElement={<ErrorPage />} />
+      <Route path="/" element={<CorePageStructure />}>
         <Route path="privileges/*" element={<PrivilegesRoutes />} />
         <Route path="rules/*" element={<RulesRoutes />} />
       </Route>

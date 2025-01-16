@@ -4,9 +4,9 @@ import { Icon } from "@inubekit/icon";
 import { useMediaQuery } from "@inubekit/hooks";
 import { basic } from "@design/tokens";
 import { SkeletonIcon, SkeletonLine } from "@inubekit/skeleton";
-import { StyledAppCard } from "./styles";
+import { StyledInteractiveBox } from "./styles";
 
-interface IAppCard {
+interface IInteractiveBox {
   description?: string;
   icon?: React.ReactNode;
   label?: string;
@@ -14,11 +14,17 @@ interface IAppCard {
   isLoading?: boolean;
 }
 
-const AppCard = ({ label, description, icon, url, isLoading }: IAppCard) => {
+const InteractiveBox = ({
+  label,
+  description,
+  icon,
+  url,
+  isLoading,
+}: IInteractiveBox) => {
   const screenMobile = useMediaQuery("(max-width: 400px)");
   if (isLoading) {
     return (
-      <StyledAppCard to={url ?? ""} $isMobile={screenMobile}>
+      <StyledInteractiveBox to={url ?? ""} $isMobile={screenMobile}>
         <Stack direction="column" gap={basic.spacing.s200}>
           <Stack width="70%">
             <SkeletonLine animated />
@@ -30,11 +36,11 @@ const AppCard = ({ label, description, icon, url, isLoading }: IAppCard) => {
         <Stack justifyContent="flex-end">
           <SkeletonIcon animated />
         </Stack>
-      </StyledAppCard>
+      </StyledInteractiveBox>
     );
   }
   return (
-    <StyledAppCard to={url ?? ""} $isMobile={screenMobile}>
+    <StyledInteractiveBox to={url ?? ""} $isMobile={screenMobile}>
       <Stack direction="column" gap={basic.spacing.s200}>
         <Text type="title" size="medium" weight="bold">
           {label}
@@ -46,9 +52,9 @@ const AppCard = ({ label, description, icon, url, isLoading }: IAppCard) => {
       <Stack justifyContent="flex-end">
         <Icon icon={icon} appearance="dark" size="24px" cursorHover />
       </Stack>
-    </StyledAppCard>
+    </StyledInteractiveBox>
   );
 };
 
-export { AppCard };
-export type { IAppCard };
+export { InteractiveBox };
+export type { IInteractiveBox };

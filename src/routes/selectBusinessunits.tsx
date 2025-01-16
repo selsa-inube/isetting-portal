@@ -5,16 +5,17 @@ import { SelectBusinessUnits } from "@pages/selectBusinessUnits";
 import { BusinessUnits } from "@pages/selectBusinessUnits/outlets/BusinessUnit";
 import { ErrorPage } from "@design/layout/ErrorPage";
 import { ErrorNotBusinessUnit } from "@pages/errors/ErrorNotBusinessUnit";
-import { AppContext } from "@context/authAndDataProvider";
+
 import { CheckingCredentials } from "@pages/login/CheckingCredentials";
 import { LoadingApp } from "@pages/login/loading";
+import { AuthAndData } from "@context/authAndDataProvider";
 
 interface IBusinessUnits {
   businessUnits: IBusinessUnit[];
 }
 
 const SelectBusinessUnitsRoutes = () => {
-  const { businessUnitsToTheStaff } = useContext(AppContext);
+  const { businessUnitsToTheStaff } = useContext(AuthAndData);
   const businessUnits = businessUnitsToTheStaff;
 
   return (

@@ -2,21 +2,21 @@ import { Stack } from "@inubekit/stack";
 import { Breadcrumbs } from "@inubekit/breadcrumbs";
 import { basic } from "@design/tokens";
 import { PageTitle } from "@design/label/PageTitle";
-import { StyledAppMenu } from "./styles";
+import { StyledContentFramework } from "./styles";
 import { IRoute } from "./types";
 
-interface IAppMenu {
+interface IContentFramework {
   appName: string;
   appDescription: string;
   appRoute: IRoute[];
   children: React.ReactNode;
 }
 
-const AppMenu = (props: IAppMenu) => {
+const ContentFramework = (props: IContentFramework) => {
   const { appName, appDescription, appRoute, children } = props;
 
   return (
-    <StyledAppMenu>
+    <StyledContentFramework>
       <Breadcrumbs crumbs={appRoute} />
       <Stack
         margin={`${basic.spacing.s24} ${basic.spacing.s0} ${basic.spacing.s48} ${basic.spacing.s0}`}
@@ -28,9 +28,9 @@ const AppMenu = (props: IAppMenu) => {
         />
       </Stack>
       {children}
-    </StyledAppMenu>
+    </StyledContentFramework>
   );
 };
 
-export { AppMenu };
-export type { IAppMenu };
+export { ContentFramework };
+export type { IContentFramework };

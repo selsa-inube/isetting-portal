@@ -1,11 +1,11 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "@inubekit/hooks";
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
-import { AppContext } from "@context/authAndDataProvider";
+import { AuthAndData } from "@context/authAndDataProvider";
 
 const useHomeLogic = () => {
   const { appData, businessUnitsToTheStaff, setBusinessUnitSigla } =
-    useContext(AppContext);
+    useContext(AuthAndData);
 
   const [collapse, setCollapse] = useState(false);
   const [selectedClient, setSelectedClient] = useState<string>("");

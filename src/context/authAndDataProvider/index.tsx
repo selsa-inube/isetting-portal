@@ -1,20 +1,23 @@
 import { createContext } from "react";
-import { useAppContextLogic } from "@hooks/useValidatingLoginInformation";
-import { IAppContext } from "./types";
 
-const AppContext = createContext<IAppContext>({} as IAppContext);
+import { IAuthDataContainer } from "./types";
+import { useValidatingLoginInformation } from "@hooks/useValidatingLoginInformation";
 
-interface IAppProvider {
+const AuthAndData = createContext<IAuthDataContainer>({} as IAuthDataContainer);
+
+interface IAuthAndDataProvider {
   children: React.ReactNode;
 }
 
-const AppContextProvider = ({ children }: IAppProvider) => {
-  const appContext = useAppContextLogic();
+const AuthAndDataProvider = ({ children }: IAuthAndDataProvider) => {
+  const AuthDataContainer = useValidatingLoginInformation();
 
   return (
-    <AppContext.Provider value={appContext}>{children}</AppContext.Provider>
+    <AuthAndData.Provider value={AuthDataContainer}>
+      {children}
+    </AuthAndData.Provider>
   );
 };
 
-export { AppContext, AppContextProvider };
-export type { IAppProvider };
+export { AuthAndData, AuthAndDataProvider };
+export type { IAuthAndDataProvider };

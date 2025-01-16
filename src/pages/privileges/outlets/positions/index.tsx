@@ -1,13 +1,13 @@
 import { useContext, useState } from "react";
 import { useBusinessManagersId } from "@hooks/useBusinessManageresId";
-import { AppContext } from "@context/authAndDataProvider";
+import { AuthAndData } from "@context/authAndDataProvider";
 import { PositionsUI } from "./interface";
 
 const Positions = () => {
   const [searchPosition, setSearchPosition] = useState<string>("");
   const [loading] = useState<boolean>(false);
 
-  const { appData } = useContext(AppContext);
+  const { appData } = useContext(AuthAndData);
   const { businessManagersData } = useBusinessManagersId(
     appData.businessManager.publicCode
   );

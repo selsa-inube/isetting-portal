@@ -5,7 +5,7 @@ import { inube } from "@inubekit/foundations";
 import { basic } from "@design/tokens";
 import { isMobile580 } from "@config/environment";
 
-const StyledAppMenuCard = styled(Link)`
+const StyledActionItemBlock = styled(Link)`
   box-sizing: border-box;
   padding: ${basic.spacing.s16};
   width: 191px;
@@ -39,4 +39,4 @@ const StyledAppMenuCard = styled(Link)`
   }
 `;
 
-export { StyledAppMenuCard };
+export { StyledActionItemBlock };

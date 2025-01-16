@@ -2,7 +2,7 @@ import { usePortalData } from "@hooks/usePortalData";
 import { useBusinessManagers } from "@hooks/useBusinessManagers";
 import { useAuthRedirect } from "@hooks/useAuthRedirect";
 
-const useAppLogic = () => {
+const useAppDataHandler = () => {
   const url = new URL(window.location.href);
   const params = new URLSearchParams(url.search);
   const portalCode = params.get("portal");
@@ -28,4 +28,4 @@ const useAppLogic = () => {
   };
 };
 
-export { useAppLogic };
+export { useAppDataHandler };

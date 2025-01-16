@@ -2,11 +2,11 @@ import { useContext } from "react";
 
 import { Home } from "@pages/home";
 import { SelectBusinessUnits } from "@pages/selectBusinessUnits";
-import { AppContext } from "@context/authAndDataProvider";
+import { AuthAndData } from "@context/authAndDataProvider";
 
-const FirstPage = () => {
-  const { businessUnitSigla } = useContext(AppContext);
+const Landing = () => {
+  const { businessUnitSigla } = useContext(AuthAndData);
   return businessUnitSigla.length === 0 ? <SelectBusinessUnits /> : <Home />;
 };
 
-export { FirstPage };
+export { Landing };

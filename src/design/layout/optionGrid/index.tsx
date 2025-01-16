@@ -2,13 +2,16 @@ import { Grid } from "@inubekit/grid";
 import { useMediaQuery } from "@inubekit/hooks";
 import { isMobile580 } from "@config/environment";
 import { basic } from "@design/tokens";
-import { AppMenuCard, IAppMenuCard } from "@design/cards/actionItemBlock";
+import {
+  ActionItemBlock,
+  IActionItemBlock,
+} from "@design/cards/actionItemBlock";
 
-interface IAppMenuGrid {
-  appOptions: IAppMenuCard[];
+interface IContentFrameworkGrid {
+  appOptions: IActionItemBlock[];
 }
 
-const AppMenuGrid = (props: IAppMenuGrid) => {
+const ContentFrameworkGrid = (props: IContentFrameworkGrid) => {
   const { appOptions } = props;
 
   const screenMovil = useMediaQuery(isMobile580);
@@ -22,7 +25,7 @@ const AppMenuGrid = (props: IAppMenuGrid) => {
       gap={basic.spacing.s24}
     >
       {appOptions.map((item) => (
-        <AppMenuCard
+        <ActionItemBlock
           id={item.id}
           key={item.id}
           icon={item.icon}
@@ -36,5 +39,5 @@ const AppMenuGrid = (props: IAppMenuGrid) => {
   );
 };
 
-export { AppMenuGrid };
-export type { IAppMenuGrid };
+export { ContentFrameworkGrid };
+export type { IContentFrameworkGrid };

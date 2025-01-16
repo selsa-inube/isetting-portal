@@ -1,14 +1,14 @@
 import { RouterProvider } from "react-router-dom";
 
-import { useAppLogic } from "@hooks/useAppDataHandler.ts";
+import { useAppDataHandler } from "@hooks/useAppDataHandler.ts";
 import { ErrorPage } from "@design/layout/ErrorPage";
-import { AppContextProvider } from "@context/authAndDataProvider";
+import { AuthAndDataProvider } from "@context/authAndDataProvider";
 import { router } from "@routes/navigationSetup";
 import { GlobalStyles } from "./styles/global";
 import { ThemeProviderWrapper } from "./context/ThemeContext";
 
 const App = () => {
-  const { isLoading, hasError, isAuthenticated } = useAppLogic();
+  const { isLoading, hasError, isAuthenticated } = useAppDataHandler();
 
   if (isLoading) {
     return null;
@@ -26,9 +26,9 @@ const App = () => {
     <>
       <GlobalStyles />
       <ThemeProviderWrapper>
-        <AppContextProvider>
+        <AuthAndDataProvider>
           <RouterProvider router={router} />
-        </AppContextProvider>
+        </AuthAndDataProvider>
       </ThemeProviderWrapper>
     </>
   );

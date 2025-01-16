@@ -1,12 +1,12 @@
-import { IAppMenuCard } from "@design/cards/actionItemBlock";
-import { AppMenu } from "@design/layout/contentFramework";
+import { IActionItemBlock } from "@design/cards/actionItemBlock";
+import { ContentFramework } from "@design/layout/contentFramework";
 import { IRoute } from "@design/layout/contentFramework/types";
-import { AppMenuGrid } from "@design/layout/optionGrid";
+import { ContentFrameworkGrid } from "@design/layout/optionGrid";
 
 interface IRulesOptions {
   appName: string;
   appDescription: string;
-  appOptions: IAppMenuCard[];
+  appOptions: IActionItemBlock[];
   appRoute: IRoute[];
 }
 
@@ -16,13 +16,13 @@ const RulesOptionsUI = ({
   appOptions,
   appRoute,
 }: IRulesOptions) => (
-  <AppMenu
+  <ContentFramework
     appName={appName}
     appDescription={appDescription}
     appRoute={appRoute}
   >
-    <AppMenuGrid appOptions={appOptions} />
-  </AppMenu>
+    <ContentFrameworkGrid appOptions={appOptions} />
+  </ContentFramework>
 );
 
 export { RulesOptionsUI };

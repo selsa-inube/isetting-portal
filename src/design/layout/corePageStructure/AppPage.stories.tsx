@@ -1,11 +1,11 @@
 import { BrowserRouter } from "react-router-dom";
 import { Meta, StoryFn } from "@storybook/react";
 
-import { AppPage } from ".";
+import { CorePageStructure } from ".";
 
-const meta: Meta<typeof AppPage> = {
+const meta: Meta<typeof CorePageStructure> = {
   title: "layout/appPage",
-  component: AppPage,
+  component: CorePageStructure,
   decorators: [
     (Story: StoryFn) => (
       <BrowserRouter>
@@ -15,6 +15,6 @@ const meta: Meta<typeof AppPage> = {
   ],
 };
 
-const Default = () => <AppPage />;
+const Default = () => <CorePageStructure />;
 export { Default };
 export default meta;

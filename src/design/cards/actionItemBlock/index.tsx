@@ -2,9 +2,9 @@ import { Stack } from "@inubekit/stack";
 import { Text } from "@inubekit/text";
 import { Icon } from "@inubekit/icon";
 import { basic } from "@design/tokens";
-import { StyledAppMenuCard } from "./styles";
+import { StyledActionItemBlock } from "./styles";
 
-interface IAppMenuCard {
+interface IActionItemBlock {
   id: number;
   icon: React.ReactNode;
   label: string;
@@ -13,11 +13,11 @@ interface IAppMenuCard {
   domain: string;
 }
 
-const AppMenuCard = (props: IAppMenuCard) => {
+const ActionItemBlock = (props: IActionItemBlock) => {
   const { icon, label, description, url } = props;
   return (
     <Stack direction="column">
-      <StyledAppMenuCard to={url}>
+      <StyledActionItemBlock to={url}>
         <Stack gap={basic.spacing.s4} alignItems="center" direction="column">
           <Icon
             appearance="dark"
@@ -36,10 +36,10 @@ const AppMenuCard = (props: IAppMenuCard) => {
             </Text>
           </Stack>
         </Stack>
-      </StyledAppMenuCard>
+      </StyledActionItemBlock>
     </Stack>
   );
 };
 
-export { AppMenuCard };
-export type { IAppMenuCard };
+export { ActionItemBlock };
+export type { IActionItemBlock };
