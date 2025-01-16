@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-
-import { IOptionItemChecked } from "@components/SelectCheck/OptionItem";
-import { IEntry } from "@components/templates/AssignmentForm/types";
+import { IOptionItemChecked } from "@design/select/OptionItem";
+import { IEntry } from "@design/templates/AssignmentForm/types";
 
 const useAssignmentFormLogic = (
   entries: IEntry[],

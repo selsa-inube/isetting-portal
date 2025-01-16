@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
-
 import { Icon } from "@inubekit/icon";
-
-import { InteractiveModal } from "@components/feedback/InteractiveModal";
+import { InteractiveModal } from "@design/feedback/InteractiveModal";
 import { IPosition } from "../../add-position/types";
+
 interface IField {
   id: string;
   labelName: string;

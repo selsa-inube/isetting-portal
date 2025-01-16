@@ -5,8 +5,8 @@ import { Header } from "@inubekit/header";
 import { Icon } from "@inubekit/icon";
 import { useHomeLogic } from "@hooks/useHomeLogic";
 import { nav, userMenu } from "@config/nav";
-import { Title } from "@components/data/Title";
-import { AppCard } from "@components/feedback/AppCard";
+import { Title } from "@design/label/Title";
+import { AppCard } from "@design/feedback/AppCard";
 import { BusinessUnitChange } from "@design/inputs/BusinessUnitChange";
 import { renderLogo } from "@hooks/renderLogo/logoUtils";
 import {

@@ -1,8 +1,7 @@
 import { Route, Routes } from "react-router-dom";
-
-import { ErrorPage } from "@components/layout/ErrorPage";
 import { RulesOptions } from "@pages/rules/outlets/options";
 import { Rules } from "@pages/rules";
+import { ErrorPage } from "@design/layout/ErrorPage";
 
 const RulesRoutes = () => {
   return (

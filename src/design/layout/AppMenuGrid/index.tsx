@@ -1,0 +1,40 @@
+import { Grid } from "@inubekit/grid";
+import { useMediaQuery } from "@inubekit/hooks";
+import { isMobile580 } from "@config/environment";
+import { basic } from "@design/tokens";
+import { AppMenuCard, IAppMenuCard } from "@design/cards/AppMenuCard";
+
+interface IAppMenuGrid {
+  appOptions: IAppMenuCard[];
+}
+
+const AppMenuGrid = (props: IAppMenuGrid) => {
+  const { appOptions } = props;
+
+  const screenMovil = useMediaQuery(isMobile580);
+
+  return (
+    <Grid
+      templateColumns={
+        screenMovil ? "1fr" : "repeat(auto-fill,minmax(auto, 205px))"
+      }
+      autoRows="auto"
+      gap={basic.spacing.s24}
+    >
+      {appOptions.map((item) => (
+        <AppMenuCard
+          id={item.id}
+          key={item.id}
+          icon={item.icon}
+          label={item.label}
+          description={item.description}
+          url={item.url}
+          domain={item.domain}
+        />
+      ))}
+    </Grid>
+  );
+};
+
+export { AppMenuGrid };
+export type { IAppMenuGrid };

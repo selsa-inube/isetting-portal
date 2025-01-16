@@ -3,13 +3,14 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import { AppPage } from "@components/layout/AppPage";
 import { PrivilegesRoutes } from "@routes/privileges";
 import { RulesRoutes } from "@routes/rules";
-import { ErrorPage } from "@components/layout/ErrorPage";
 import { SelectBusinessUnitsRoutes } from "@routes/selectBusinessunits";
-import { LogOut } from "@components/useApp/logOut";
-import { FirstPage } from "@components/useApp/firstPage";
+
+import { ErrorPage } from "@design/layout/ErrorPage";
+import { AppPage } from "@design/layout/AppPage";
+import { LogOut } from "@pages/app/useApp/logOut";
+import { FirstPage } from "@pages/app/useApp/firstPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
