@@ -1,8 +1,8 @@
-import { useSelectBusinessUnits } from "@hooks/useSelectBusinessUnits";
+import { UseSelectBusinessUnits } from "@hooks/useSelectBusinessUnits";
 import { SelectBusinessUnitsUI } from "./interface";
 
 const SelectBusinessUnits = () => {
-  useSelectBusinessUnits();
+  UseSelectBusinessUnits();
 
   return <SelectBusinessUnitsUI />;
 };
