@@ -5,10 +5,9 @@ import { SelectBusinessUnits } from "@pages/selectBusinessUnits";
 import { BusinessUnits } from "@pages/selectBusinessUnits/outlets/BusinessUnit";
 import { ErrorPage } from "@design/layout/ErrorPage";
 import { ErrorNotBusinessUnit } from "@pages/errors/ErrorNotBusinessUnit";
-
-import { CheckingCredentials } from "@pages/login/CheckingCredentials";
 import { LoadingApp } from "@pages/login/loading";
 import { AuthAndData } from "@context/authAndDataProvider";
+import { CheckingCredentials } from "@pages/login/checkingCredentials";
 
 interface IBusinessUnits {
   businessUnits: IBusinessUnit[];
