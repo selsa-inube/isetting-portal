@@ -1,10 +1,9 @@
 import { Stack } from "@inubekit/stack";
 import { Text } from "@inubekit/text";
 import { Spinner } from "@inubekit/spinner";
-
 import { basic } from "@design/tokens";
 
-const LoadingAppUI = () => {
+const LoadingUI = () => {
   return (
     <Stack gap={basic.spacing.s16} direction="column">
       <Stack direction="column">
@@ -22,4 +21,4 @@ const LoadingAppUI = () => {
   );
 };
 
-export { LoadingAppUI };
+export { LoadingUI };
