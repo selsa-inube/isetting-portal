@@ -25,11 +25,12 @@ import { isMobile580 } from "@config/environment";
 import { PageTitle } from "@design/label/PageTitle";
 import { Loading } from "@pages/login/loading";
 import { IBusinessUnitsPortalStaffId } from "@ptypes/staffBusinessManagersId";
-import { useActions } from "@hooks/useActions";
+
 import { privilegeOptionsConfig } from "../../config/privileges.config";
 import { titlesOptions, actions } from "./config/dataPositions";
 import { usePagination } from "./components/GeneralInformationForm/utils";
 import { StyledButtonWrapper } from "./styles";
+import { ActionRenderer } from "@design/table/actionRenderer";
 
 const pagerecord = 10;
 
@@ -48,7 +49,7 @@ const PositionsUI = (props: IPositions) => {
     (item) => item.url === location.pathname
   );
 
-  const { ShowAction, showActionTitle } = useActions();
+  const { ShowAction, ShowActionTitle } = ActionRenderer();
 
   const {
     filteredData,
@@ -132,7 +133,7 @@ const PositionsUI = (props: IPositions) => {
                       {title.titleName}
                     </Th>
                   ))}
-                  {showActionTitle(actions)}
+                  {ShowActionTitle(actions)}
                 </Tr>
               </Thead>
               <Tbody>

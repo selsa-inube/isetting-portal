@@ -4,14 +4,13 @@ import { Grid } from "@inubekit/grid";
 import { Stack } from "@inubekit/stack";
 import { Text } from "@inubekit/text";
 import { useMediaQueries } from "@inubekit/hooks";
-
+import { AuthAndData } from "@context/authAndDataProvider";
 import { basic } from "@design/tokens";
 import {
   StyledWelcomeContainer,
   StyledOutletContainer,
   StyledImage,
 } from "./styles";
-import { AuthAndData } from "@context/authAndDataProvider";
 
 const SelectBusinessUnitsUI = () => {
   const {
