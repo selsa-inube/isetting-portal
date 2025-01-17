@@ -12,7 +12,7 @@ import { CorePageStructure } from "@design/layout/corePageStructure";
 import { Landing } from "@pages/login/landing";
 import { LogOut } from "@pages/login/logOut";
 
-const router = createBrowserRouter(
+const mainNavigationConfig = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route
@@ -29,4 +29,4 @@ const router = createBrowserRouter(
   )
 );
 
-export { router };
+export { mainNavigationConfig };

@@ -2,7 +2,7 @@ import { RouterProvider } from "react-router-dom";
 
 import { ErrorPage } from "@design/layout/ErrorPage";
 import { AuthAndDataProvider } from "@context/authAndDataProvider";
-import { router } from "@routes/mainNavigationConfig";
+import { mainNavigationConfig } from "@routes/mainNavigationConfig";
 import { useDataHandler } from "@hooks/useDataHandler";
 import { GlobalStyles } from "./styles/global";
 import { ThemeProviderWrapper } from "./context/ThemeContext";
@@ -27,7 +27,7 @@ const App = () => {
       <GlobalStyles />
       <ThemeProviderWrapper>
         <AuthAndDataProvider>
-          <RouterProvider router={router} />
+          <RouterProvider router={mainNavigationConfig} />
         </AuthAndDataProvider>
       </ThemeProviderWrapper>
     </>
