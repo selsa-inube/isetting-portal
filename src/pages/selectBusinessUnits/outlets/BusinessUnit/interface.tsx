@@ -3,7 +3,7 @@ import { Text } from "@inubekit/text";
 import { Stack } from "@inubekit/stack";
 import { Input } from "@inubekit/input";
 import { basic } from "@design/tokens";
-import { RadioBusinessUnit } from "@components/feedback/RadioBusinessUnit";
+import { RadioBusinessUnit } from "@design/feedback/RadioBusinessUnit";
 import { Button } from "@inubekit/button";
 import { NoResultsMessage } from "@hooks/noResultsMessage/useNoResultsMessage";
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";

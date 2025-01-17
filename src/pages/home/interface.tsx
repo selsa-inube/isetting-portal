@@ -1,14 +1,16 @@
 import { useContext } from "react";
-import { AppContext } from "@context/AppContext";
+
 import { MdOutlineChevronRight, MdOutlineDoorFront } from "react-icons/md";
 import { Header } from "@inubekit/header";
 import { Icon } from "@inubekit/icon";
+
 import { useHomeLogic } from "@hooks/useHomeLogic";
 import { nav, userMenu } from "@config/nav";
-import { Title } from "@components/data/Title";
-import { AppCard } from "@components/feedback/AppCard";
+import { Title } from "@design/label/Title";
+import { InteractiveBox } from "@design/cards/interactiveBox";
 import { BusinessUnitChange } from "@design/inputs/BusinessUnitChange";
 import { renderLogo } from "@hooks/renderLogo/logoUtils";
+import { AuthAndData } from "@context/authAndDataProvider";
 import {
   StyledCollapse,
   StyledCollapseIcon,
@@ -28,7 +30,7 @@ interface IHome {
 
 const HomeUI = (props: IHome) => {
   const { data } = props;
-  const { appData } = useContext(AppContext);
+  const { appData } = useContext(AuthAndData);
 
   const {
     collapse,
@@ -95,7 +97,7 @@ const HomeUI = (props: IHome) => {
           </StyledTitle>
           <StyledContainerCards $smallScreen={smallScreen}>
             {data?.map((card) => (
-              <AppCard
+              <InteractiveBox
                 key={card.id}
                 label={card.label}
                 description={card.description}

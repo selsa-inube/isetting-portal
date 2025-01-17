@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useContext } from "react";
-import { AppContext } from "@context/AppContext";
 import { validateBusinessUnities } from "@pages/selectBusinessUnits/utils";
+import { AuthAndData } from "@context/authAndDataProvider";
 
 const useSelectBusinessUnits = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { appData, setBusinessUnitsToTheStaff } = useContext(AppContext);
+  const { appData, setBusinessUnitsToTheStaff } = useContext(AuthAndData);
 
   useEffect(() => {
     if (appData.portal.publicCode) {

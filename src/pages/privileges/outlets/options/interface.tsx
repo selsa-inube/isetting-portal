@@ -1,12 +1,12 @@
-import { AppMenu } from "@components/layout/AppMenu";
-import { IRoute } from "@components/layout/AppMenu/types";
-import { AppMenuGrid } from "@components/layout/AppMenuGrid";
-import { IAppMenuCard } from "@components/cards/AppMenuCard";
+import { IActionItemBlock } from "@design/cards/actionItemBlock";
+import { ContentFramework } from "@design/layout/contentFramework";
+import { IRoute } from "@design/layout/contentFramework/types";
+import { ContentFrameworkGrid } from "@design/layout/optionGrid";
 
 interface IPrivilegesOptionsUI {
   appName: string;
   appDescription: string;
-  appOptions: IAppMenuCard[];
+  appOptions: IActionItemBlock[];
   appRoute: IRoute[];
 }
 
@@ -16,13 +16,13 @@ const PrivilegesOptionsUI = ({
   appOptions,
   appRoute,
 }: IPrivilegesOptionsUI) => (
-  <AppMenu
+  <ContentFramework
     appName={appName}
     appDescription={appDescription}
     appRoute={appRoute}
   >
-    <AppMenuGrid appOptions={appOptions} />
-  </AppMenu>
+    <ContentFrameworkGrid appOptions={appOptions} />
+  </ContentFramework>
 );
 
 export { PrivilegesOptionsUI };

@@ -1,11 +1,11 @@
 import { useState, useContext } from "react";
 import { NavigateFunction } from "react-router-dom";
-import { AppContext } from "@context/AppContext";
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
-import { IBusinessUnitstate } from "@components/businessUnit/types";
+import { IBusinessUnitstate } from "@design/select/SelectbusinessUnit/types";
+import { AuthAndData } from "@context/authAndDataProvider";
 
 const useBusinessUnit = (businessUnits: IBusinessUnitsPortalStaff[]) => {
-  const { setBusinessUnitSigla } = useContext(AppContext);
+  const { setBusinessUnitSigla } = useContext(AuthAndData);
   const [search, setSearch] = useState("");
   const [selectedBusinessUnit, setSelectedBusinessUnit] = useState<
     IBusinessUnitsPortalStaff | undefined

@@ -19,7 +19,7 @@ import {
   Tfoot,
   Pagination,
 } from "@inubekit/table";
-import { PageTitle } from "@components/PageTitle";
+
 import { basic } from "@design/tokens";
 import { isMobile580 } from "@config/environment";
 import { LoadingApp } from "@pages/login/loading";
@@ -29,6 +29,7 @@ import { privilegeOptionsConfig } from "../../config/privileges.config";
 import { titlesOptions, actions } from "./config/dataPositions";
 import { usePagination } from "./components/GeneralInformationForm/utils";
 import { StyledButtonWrapper } from "./styles";
+import { PageTitle } from "@design/label/PageTitle";
 
 const pagerecord = 10;
 

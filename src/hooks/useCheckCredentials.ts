@@ -1,11 +1,11 @@
 import { useCallback, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { AppContext } from "@context/AppContext";
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
+import { AuthAndData } from "@context/authAndDataProvider";
 
 const useCheckCredentials = (businessUnits: IBusinessUnitsPortalStaff[]) => {
   const navigate = useNavigate();
-  const { appData, setBusinessUnitSigla } = useContext(AppContext);
+  const { appData, setBusinessUnitSigla } = useContext(AuthAndData);
 
   const selectedBusinessUnit = useCallback(() => {
     const selected = businessUnits[0];

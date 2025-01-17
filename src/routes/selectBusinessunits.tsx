@@ -1,20 +1,21 @@
 import { Route, Routes } from "react-router-dom";
 import { useContext } from "react";
-import { ErrorPage } from "@components/layout/ErrorPage";
-import { AppContext } from "@context/AppContext";
 import { IBusinessUnit } from "@pages/selectBusinessUnits/outlets/BusinessUnit/types";
 import { SelectBusinessUnits } from "@pages/selectBusinessUnits";
 import { BusinessUnits } from "@pages/selectBusinessUnits/outlets/BusinessUnit";
-import { ErrorNotBusinessUnit } from "@pages/selectBusinessUnits/errors/ErrorNotBusinessUnit";
+import { ErrorPage } from "@design/layout/ErrorPage";
+import { ErrorNotBusinessUnit } from "@pages/errors/ErrorNotBusinessUnit";
+
 import { CheckingCredentials } from "@pages/login/CheckingCredentials";
 import { LoadingApp } from "@pages/login/loading";
+import { AuthAndData } from "@context/authAndDataProvider";
 
 interface IBusinessUnits {
   businessUnits: IBusinessUnit[];
 }
 
 const SelectBusinessUnitsRoutes = () => {
-  const { businessUnitsToTheStaff } = useContext(AppContext);
+  const { businessUnitsToTheStaff } = useContext(AuthAndData);
   const businessUnits = businessUnitsToTheStaff;
 
   return (

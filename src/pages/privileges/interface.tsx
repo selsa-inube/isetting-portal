@@ -1,7 +1,7 @@
-import { AppPage } from "@components/layout/AppPage";
+import { CorePageStructure } from "@design/layout/corePageStructure";
 
 const PrivilegesUI = () => {
-  return <AppPage />;
+  return <CorePageStructure />;
 };
 
 export { PrivilegesUI };
