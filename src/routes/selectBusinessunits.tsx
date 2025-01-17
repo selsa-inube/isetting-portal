@@ -4,11 +4,10 @@ import { IBusinessUnit } from "@pages/selectBusinessUnits/outlets/BusinessUnit/t
 import { SelectBusinessUnits } from "@pages/selectBusinessUnits";
 import { BusinessUnits } from "@pages/selectBusinessUnits/outlets/BusinessUnit";
 import { ErrorPage } from "@design/layout/ErrorPage";
-import { ErrorNotBusinessUnit } from "@pages/errors/ErrorNotBusinessUnit";
-
-import { CheckingCredentials } from "@pages/login/CheckingCredentials";
-import { LoadingApp } from "@pages/login/loading";
+import { ErrorNotBusinessUnit } from "@pages/errors/errorNotBusinessUnit";
 import { AuthAndData } from "@context/authAndDataProvider";
+import { CheckingCredentials } from "@pages/login/checkingCredentials";
+import { Loading } from "@pages/login/loading";
 
 interface IBusinessUnits {
   businessUnits: IBusinessUnit[];
@@ -29,7 +28,7 @@ const SelectBusinessUnitsRoutes = () => {
           path="/businessUnits"
           element={<BusinessUnits businessUnits={businessUnits} />}
         />
-        <Route path="loading-app" element={<LoadingApp />} />
+        <Route path="loading-app" element={<Loading />} />
       </Route>
       <Route path="error/not-available" element={<ErrorPage />} />
       <Route

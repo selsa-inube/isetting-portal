@@ -1,19 +1,10 @@
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import { LoadingAppUI } from "./interface";
+import { useTimeoutNavigation } from "@hooks/useTimeoutNavigation";
+import { LoadingUI } from "./interface";
 
-const LoadingApp = () => {
-  const navigate = useNavigate();
+const Loading = () => {
+  useTimeoutNavigation();
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      navigate("/");
-    }, 7000);
-
-    return () => clearTimeout(timer);
-  }, [navigate]);
-
-  return <LoadingAppUI />;
+  return <LoadingUI />;
 };
 
-export { LoadingApp };
+export { Loading };

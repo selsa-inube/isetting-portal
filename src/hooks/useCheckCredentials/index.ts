@@ -1,4 +1,4 @@
-import { useCallback, useContext } from "react";
+import { useCallback, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
 import { AuthAndData } from "@context/authAndDataProvider";
@@ -33,6 +33,11 @@ const useCheckCredentials = (businessUnits: IBusinessUnitsPortalStaff[]) => {
       navigate("/selectBusinessUnit/error/not-available");
     }
   }, [appData, businessUnits, selectedBusinessUnit, navigate]);
+
+  useEffect(() => {
+    const timer = setTimeout(checkCredentials, 2000);
+    return () => clearTimeout(timer);
+  }, [checkCredentials]);
 
   return checkCredentials;
 };

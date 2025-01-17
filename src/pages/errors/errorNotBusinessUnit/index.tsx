@@ -1,16 +1,9 @@
-import { useAuth0 } from "@auth0/auth0-react";
 import clientNotFound from "@assets/images/Expired.png";
-import { enviroment } from "@config/environment";
-import { useClearLocalStorageOnMount } from "@hooks/useClearLocalStorageOnMount";
 import { ErrorPage } from "@design/layout/ErrorPage";
+import { useLogoutAndClearLocalStorage } from "@hooks/useLogoutAndClearLocalStorage";
 
 const ErrorNotBusinessUnit = () => {
-  const { logout } = useAuth0();
-  useClearLocalStorageOnMount();
-
-  const handleLogout = () => {
-    logout({ logoutParams: { returnTo: enviroment.REDIRECT_URI } });
-  };
+  const { handleLogout } = useLogoutAndClearLocalStorage();
 
   return (
     <ErrorPage

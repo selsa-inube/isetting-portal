@@ -22,14 +22,14 @@ import {
 
 import { basic } from "@design/tokens";
 import { isMobile580 } from "@config/environment";
-import { LoadingApp } from "@pages/login/loading";
+import { PageTitle } from "@design/label/PageTitle";
+import { Loading } from "@pages/login/loading";
 import { IBusinessUnitsPortalStaffId } from "@ptypes/staffBusinessManagersId";
 import { useActions } from "@hooks/useActions";
 import { privilegeOptionsConfig } from "../../config/privileges.config";
 import { titlesOptions, actions } from "./config/dataPositions";
 import { usePagination } from "./components/GeneralInformationForm/utils";
 import { StyledButtonWrapper } from "./styles";
-import { PageTitle } from "@design/label/PageTitle";
 
 const pagerecord = 10;
 
@@ -115,7 +115,7 @@ const PositionsUI = (props: IPositions) => {
             </StyledButtonWrapper>
           </Stack>
           {loading && data.length <= 0 ? (
-            <LoadingApp />
+            <Loading />
           ) : (
             <Table>
               <Colgroup>
