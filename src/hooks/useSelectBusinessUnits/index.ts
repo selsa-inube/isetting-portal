@@ -1,8 +1,8 @@
 import { useEffect, useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useMediaQueries } from "@inubekit/hooks";
-import { ValidateBusinessUnities } from "@pages/selectBusinessUnits/utils";
 import { AuthAndData } from "@context/authAndDataProvider";
+import { ValidateBusinessUnities } from "src/services/staffPortal/getValidateBusinessUnities";
 
 const UseSelectBusinessUnits = () => {
   const navigate = useNavigate();

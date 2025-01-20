@@ -1,12 +1,13 @@
 import { useMediaQuery } from "@inubekit/hooks";
 import { useLocation } from "react-router-dom";
 import { isMobile580 } from "@config/environment";
-import { usePagination } from "@pages/privileges/outlets/positions/components/GeneralInformationForm/utils";
+
 import {
   PaginationConfig,
   PrivilegeOptionsConfig,
 } from "@pages/privileges/config/privileges.config";
 import { IBusinessUnitsPortalStaffId } from "@ptypes/staffBusinessManagersId";
+import { UseManageSearchAndPageControl } from "@hooks/useManageSearchAndPageControl";
 
 const UsePaginationAndFilters = (
   SearchPosition: string,
@@ -28,7 +29,11 @@ const UsePaginationAndFilters = (
     firstEntryInPage: FirstEntryInPage,
     lastEntryInPage: LastEntryInPage,
     paginatedData: PaginatedData,
-  } = usePagination(SearchPosition, Data, PaginationConfig.PageRecord);
+  } = UseManageSearchAndPageControl(
+    SearchPosition,
+    Data,
+    PaginationConfig.PageRecord
+  );
 
   return {
     SmallScreen,

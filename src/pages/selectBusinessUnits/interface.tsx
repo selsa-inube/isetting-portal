@@ -3,16 +3,18 @@ import { Grid } from "@inubekit/grid";
 import { Stack } from "@inubekit/stack";
 import { Text } from "@inubekit/text";
 import { basic } from "@design/tokens";
-import { UseSelectBusinessUnits } from "@hooks/useSelectBusinessUnits";
 import {
   StyledWelcomeContainer,
   StyledOutletContainer,
   StyledImage,
 } from "./styles";
+import { ISelectBusinessUnitsUI } from "./types";
 
-const SelectBusinessUnitsUI = () => {
-  const { screenTablet, imageWidth, appData } = UseSelectBusinessUnits();
-
+const SelectBusinessUnitsUI = ({
+  screenTablet,
+  imageWidth,
+  appData,
+}: ISelectBusinessUnitsUI) => {
   return (
     <Grid
       templateColumns={screenTablet ? "1fr" : "repeat(2, 1fr)"}

@@ -17,70 +17,59 @@ import {
   Tfoot,
   Pagination,
 } from "@inubekit/table";
-import { UsePaginationAndFilters } from "@hooks/usePositions/usePaginationAndFilters";
 import { basic } from "@design/tokens";
 import { PageTitle } from "@design/label/PageTitle";
 import { Loading } from "@pages/login/loading";
-import { IBusinessUnitsPortalStaffId } from "@ptypes/staffBusinessManagersId";
-import { ActionRenderer } from "@design/table/actionRenderer";
-
 import { titlesOptions, actions } from "./config/dataPositions";
 import { StyledButtonWrapper } from "./styles";
+import { IPositions } from "./types";
 
-interface IPositions {
-  handleSearchPositions: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  searchPosition: string;
-  data: IBusinessUnitsPortalStaffId[];
-  loading: boolean;
-}
-
-const PositionsUI = ({
-  handleSearchPositions,
-  searchPosition,
-  loading,
-  data,
-}: IPositions) => {
-  const { ShowAction, ShowActionTitle } = ActionRenderer();
-
+const PositionsUI = (props: IPositions) => {
   const {
-    SmallScreen,
-    Label,
-    FilteredData,
-    HandleStartPage,
-    HandlePrevPage,
-    HandleNextPage,
-    HandleEndPage,
-    FirstEntryInPage,
-    LastEntryInPage,
-    PaginatedData,
-  } = UsePaginationAndFilters(searchPosition, data);
+    handleSearchPositions,
+    searchPosition,
+    loading,
+    data,
+    smallScreen,
+    label,
+    ShowAction,
+    ShowActionTitle,
+    filteredData,
+    handleStartPage,
+    handlePrevPage,
+    handleNextPage,
+    handleEndPage,
+    firstEntryInPage,
+    lastEntryInPage,
+    paginatedData,
+  } = props;
 
   return (
     <Stack
       direction="column"
       width="-webkit-fill-available"
       padding={
-        SmallScreen
+        smallScreen
           ? `{${basic.spacing.s24}}`
           : `${basic.spacing.s32} ${basic.spacing.s64}`
       }
     >
       <Stack gap={basic.spacing.s48} direction="column">
         <Stack gap={basic.spacing.s24} direction="column">
-          {Label && (
+          {label && (
             <>
-              <Breadcrumbs crumbs={Label.crumbs} />
+              <Breadcrumbs crumbs={label.crumbs} />
               <PageTitle
-                title={Label.label}
-                description={Label.description}
+                title={label.label}
+                description={label.description}
                 navigatePage="/privileges/options"
               />
             </>
           )}
         </Stack>
         <Stack>
-          <Text type="title" size={SmallScreen ? "medium" : "large"}>
-            Consulta de Cargos vigentes ({FilteredData.length})
+          <Text type="title" size={smallScreen ? "medium" : "large"}>
+            Consulta de Cargos vigentes ({filteredData.length})
           </Text>
         </Stack>
         <Stack gap={basic.spacing.s32} direction="column">
@@ -130,7 +119,7 @@ const PositionsUI = ({
                 </Tr>
               </Thead>
               <Tbody>
-                {PaginatedData.map((entry, rowIndex) => (
+                {paginatedData.map((entry, rowIndex) => (
                   <Tr key={rowIndex} border="bottom">
                     {titlesOptions.map((title) => (
                       <Td
@@ -152,13 +141,13 @@ const PositionsUI = ({
                     align="right"
                   >
                     <Pagination
-                      firstEntryInPage={FirstEntryInPage}
-                      lastEntryInPage={LastEntryInPage}
-                      totalRecords={FilteredData.length}
-                      handleStartPage={HandleStartPage}
-                      handlePrevPage={HandlePrevPage}
-                      handleNextPage={HandleNextPage}
-                      handleEndPage={HandleEndPage}
+                      firstEntryInPage={firstEntryInPage}
+                      lastEntryInPage={lastEntryInPage}
+                      totalRecords={filteredData.length}
+                      handleStartPage={handleStartPage}
+                      handlePrevPage={handlePrevPage}
+                      handleNextPage={handleNextPage}
+                      handleEndPage={handleEndPage}
                     />
                   </Td>
                 </Tr>

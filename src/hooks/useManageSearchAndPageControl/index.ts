@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { IBusinessUnitsPortalStaffId } from "@ptypes/staffBusinessManagersId";
-const usePagination = (
+
+const UseManageSearchAndPageControl = (
   searchPosition: string,
   data: IBusinessUnitsPortalStaffId[],
   pagerecord: number
@@ -49,4 +50,4 @@ const usePagination = (
   };
 };
 
-export { usePagination };
+export { UseManageSearchAndPageControl };

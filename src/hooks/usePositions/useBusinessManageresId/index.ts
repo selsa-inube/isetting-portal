@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { businessUnitsPortalStaffId } from "src/services/staffPortal/getBusinessManagersId";
 
 const UseBusinessManagersId = (portalPublicCode: string) => {
-  const [BusinessManagersData, SetBusinessManagersData] = useState<
+  const [businessManagersData, SetbusinessManagersData] = useState<
     IBusinessUnitsPortalStaffId[]
   >([]);
   const [HasError, SetHasError] = useState(false);
@@ -16,7 +16,7 @@ const UseBusinessManagersId = (portalPublicCode: string) => {
       }
       try {
         const NewData = await businessUnitsPortalStaffId(portalPublicCode);
-        SetBusinessManagersData(NewData);
+        SetbusinessManagersData(NewData);
       } catch (Error) {
         console.info(Error);
         SetHasError(true);
@@ -26,7 +26,7 @@ const UseBusinessManagersId = (portalPublicCode: string) => {
     FetchBusinessManagers();
   }, [portalPublicCode]);
 
-  return { BusinessManagersData, HasError };
+  return { businessManagersData, HasError };
 };
 
 export { UseBusinessManagersId };
