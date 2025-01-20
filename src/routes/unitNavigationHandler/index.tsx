@@ -13,7 +13,7 @@ interface IBusinessUnits {
   businessUnits: IBusinessUnit[];
 }
 
-const SelectBusinessUnitsRoutes = () => {
+const UnitNavigationHandler = () => {
   const { businessUnitsToTheStaff } = useContext(AuthAndData);
   const businessUnits = businessUnitsToTheStaff;
 
@@ -41,6 +41,6 @@ const SelectBusinessUnitsRoutes = () => {
   );
 };
 
-export { SelectBusinessUnitsRoutes };
+export { UnitNavigationHandler };
 
 export type { IBusinessUnits };

@@ -1,7 +1,5 @@
-import { useLocation } from "react-router-dom";
 import { MdSearch, MdPersonAddAlt } from "react-icons/md";
 
-import { useMediaQuery } from "@inubekit/hooks";
 import { Text } from "@inubekit/text";
 import { Textfield } from "@inubekit/textfield";
 import { Stack } from "@inubekit/stack";
@@ -19,38 +17,23 @@ import {
   Tfoot,
   Pagination,
 } from "@inubekit/table";
-
 import { basic } from "@design/tokens";
-import { isMobile580 } from "@config/environment";
 import { PageTitle } from "@design/label/PageTitle";
 import { Loading } from "@pages/login/loading";
-import { IBusinessUnitsPortalStaffId } from "@ptypes/staffBusinessManagersId";
-import { useActions } from "@hooks/useActions";
-import { privilegeOptionsConfig } from "../../config/privileges.config";
 import { titlesOptions, actions } from "./config/dataPositions";
-import { usePagination } from "./components/GeneralInformationForm/utils";
 import { StyledButtonWrapper } from "./styles";
-
-const pagerecord = 10;
-
-interface IPositions {
-  handleSearchPositions: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  searchPosition: string;
-  data: IBusinessUnitsPortalStaffId[];
-  loading: boolean;
-}
+import { IPositions } from "./types";
 
 const PositionsUI = (props: IPositions) => {
-  const { handleSearchPositions, searchPosition, loading, data } = props;
-  const smallScreen = useMediaQuery(isMobile580);
-  const location = useLocation();
-  const label = privilegeOptionsConfig.find(
-    (item) => item.url === location.pathname
-  );
-
-  const { ShowAction, showActionTitle } = useActions();
-
   const {
+    handleSearchPositions,
+    searchPosition,
+    loading,
+    data,
+    smallScreen,
+    label,
+    ShowAction,
+    ShowActionTitle,
     filteredData,
     handleStartPage,
     handlePrevPage,
@@ -59,7 +42,7 @@ const PositionsUI = (props: IPositions) => {
     firstEntryInPage,
     lastEntryInPage,
     paginatedData,
-  } = usePagination(searchPosition, data, pagerecord);
+  } = props;
 
   return (
     <Stack
@@ -132,7 +115,7 @@ const PositionsUI = (props: IPositions) => {
                       {title.titleName}
                     </Th>
                   ))}
-                  {showActionTitle(actions)}
+                  {ShowActionTitle(actions)}
                 </Tr>
               </Thead>
               <Tbody>

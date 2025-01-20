@@ -1,7 +1,7 @@
 import { Td, Th } from "@inubekit/table";
 import { IAction, IActions } from "@pages/privileges/outlets/positions/types";
 
-const useActions = () => {
+const ActionRenderer = () => {
   const ShowAction = (actionContent: IAction[], entry: IActions) => {
     return (
       <>
@@ -14,13 +14,13 @@ const useActions = () => {
     );
   };
 
-  const showActionTitle = (actionTitle: IAction[]) => {
+  const ShowActionTitle = (actionTitle: IAction[]) => {
     return actionTitle.map((action) => (
       <Th key={`action-${action.id}`}>{action.actionName}</Th>
     ));
   };
 
-  return { ShowAction, showActionTitle };
+  return { ShowAction, ShowActionTitle };
 };
 
-export { useActions };
+export { ActionRenderer };
