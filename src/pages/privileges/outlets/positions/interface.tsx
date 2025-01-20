@@ -1,7 +1,5 @@
-import { useLocation } from "react-router-dom";
 import { MdSearch, MdPersonAddAlt } from "react-icons/md";
 
-import { useMediaQuery } from "@inubekit/hooks";
 import { Text } from "@inubekit/text";
 import { Textfield } from "@inubekit/textfield";
 import { Stack } from "@inubekit/stack";
@@ -19,20 +17,15 @@ import {
   Tfoot,
   Pagination,
 } from "@inubekit/table";
-
+import { UsePaginationAndFilters } from "@hooks/usePositions/usePaginationAndFilters";
 import { basic } from "@design/tokens";
-import { isMobile580 } from "@config/environment";
 import { PageTitle } from "@design/label/PageTitle";
 import { Loading } from "@pages/login/loading";
 import { IBusinessUnitsPortalStaffId } from "@ptypes/staffBusinessManagersId";
-
-import { privilegeOptionsConfig } from "../../config/privileges.config";
-import { titlesOptions, actions } from "./config/dataPositions";
-import { usePagination } from "./components/GeneralInformationForm/utils";
-import { StyledButtonWrapper } from "./styles";
 import { ActionRenderer } from "@design/table/actionRenderer";
 
-const pagerecord = 10;
+import { titlesOptions, actions } from "./config/dataPositions";
+import { StyledButtonWrapper } from "./styles";
 
 interface IPositions {
   handleSearchPositions: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -41,53 +34,53 @@ interface IPositions {
   loading: boolean;
 }
 
-const PositionsUI = (props: IPositions) => {
-  const { handleSearchPositions, searchPosition, loading, data } = props;
-  const smallScreen = useMediaQuery(isMobile580);
-  const location = useLocation();
-  const label = privilegeOptionsConfig.find(
-    (item) => item.url === location.pathname
-  );
-
+const PositionsUI = ({
+  handleSearchPositions,
+  searchPosition,
+  loading,
+  data,
+}: IPositions) => {
   const { ShowAction, ShowActionTitle } = ActionRenderer();
 
   const {
-    filteredData,
-    handleStartPage,
-    handlePrevPage,
-    handleNextPage,
-    handleEndPage,
-    firstEntryInPage,
-    lastEntryInPage,
-    paginatedData,
-  } = usePagination(searchPosition, data, pagerecord);
+    SmallScreen,
+    Label,
+    FilteredData,
+    HandleStartPage,
+    HandlePrevPage,
+    HandleNextPage,
+    HandleEndPage,
+    FirstEntryInPage,
+    LastEntryInPage,
+    PaginatedData,
+  } = UsePaginationAndFilters(searchPosition, data);
 
   return (
     <Stack
       direction="column"
       width="-webkit-fill-available"
       padding={
-        smallScreen
+        SmallScreen
           ? `{${basic.spacing.s24}}`
           : `${basic.spacing.s32} ${basic.spacing.s64}`
       }
     >
       <Stack gap={basic.spacing.s48} direction="column">
         <Stack gap={basic.spacing.s24} direction="column">
-          {label && (
+          {Label && (
             <>
-              <Breadcrumbs crumbs={label.crumbs} />
+              <Breadcrumbs crumbs={Label.crumbs} />
               <PageTitle
-                title={label.label}
-                description={label.description}
+                title={Label.label}
+                description={Label.description}
                 navigatePage="/privileges/options"
               />
             </>
           )}
         </Stack>
         <Stack>
-          <Text type="title" size={smallScreen ? "medium" : "large"}>
-            Consulta de Cargos vigentes ({filteredData.length})
+          <Text type="title" size={SmallScreen ? "medium" : "large"}>
+            Consulta de Cargos vigentes ({FilteredData.length})
           </Text>
         </Stack>
         <Stack gap={basic.spacing.s32} direction="column">
@@ -137,7 +130,7 @@ const PositionsUI = (props: IPositions) => {
                 </Tr>
               </Thead>
               <Tbody>
-                {paginatedData.map((entry, rowIndex) => (
+                {PaginatedData.map((entry, rowIndex) => (
                   <Tr key={rowIndex} border="bottom">
                     {titlesOptions.map((title) => (
                       <Td
@@ -159,13 +152,13 @@ const PositionsUI = (props: IPositions) => {
                     align="right"
                   >
                     <Pagination
-                      firstEntryInPage={firstEntryInPage}
-                      lastEntryInPage={lastEntryInPage}
-                      totalRecords={filteredData.length}
-                      handleStartPage={handleStartPage}
-                      handlePrevPage={handlePrevPage}
-                      handleNextPage={handleNextPage}
-                      handleEndPage={handleEndPage}
+                      firstEntryInPage={FirstEntryInPage}
+                      lastEntryInPage={LastEntryInPage}
+                      totalRecords={FilteredData.length}
+                      handleStartPage={HandleStartPage}
+                      handlePrevPage={HandlePrevPage}
+                      handleNextPage={HandleNextPage}
+                      handleEndPage={HandleEndPage}
                     />
                   </Td>
                 </Tr>

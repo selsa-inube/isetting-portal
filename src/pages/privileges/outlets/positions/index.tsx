@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useBusinessManagersId } from "@hooks/useBusinessManageresId";
+import { UseBusinessManagersId } from "@hooks/usePositions/useBusinessManageresId";
 import { AuthAndData } from "@context/authAndDataProvider";
 import { PositionsUI } from "./interface";
 
@@ -8,7 +8,7 @@ const Positions = () => {
   const [loading] = useState<boolean>(false);
 
   const { appData } = useContext(AuthAndData);
-  const { businessManagersData } = useBusinessManagersId(
+  const { BusinessManagersData } = UseBusinessManagersId(
     appData.businessManager.publicCode
   );
 
@@ -21,7 +21,7 @@ const Positions = () => {
       handleSearchPositions={handleSearchPositions}
       searchPosition={searchPosition}
       loading={loading}
-      data={businessManagersData}
+      data={BusinessManagersData}
     />
   );
 };

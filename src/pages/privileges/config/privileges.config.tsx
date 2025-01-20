@@ -1,12 +1,12 @@
-import { MdOutlineBusinessCenter  } from "react-icons/md";
+import { MdOutlineBusinessCenter } from "react-icons/md";
 
-
-const privilegeOptionsConfig = [
+const PrivilegeOptionsConfig = [
   {
     id: 1,
     icon: <MdOutlineBusinessCenter />,
     label: "Cargos",
-    description: "Gestionar todo lo relacionado con los permisos para los usuarios de la Plataforma INUBE",
+    description:
+      "Gestionar todo lo relacionado con los permisos para los usuarios de la Plataforma INUBE",
     url: "/privileges/positions",
     domain: "privileges",
     crumbs: [
@@ -32,4 +32,8 @@ const privilegeOptionsConfig = [
   },
 ];
 
-export { privilegeOptionsConfig };
+const PaginationConfig = {
+  PageRecord: 10,
+};
+
+export { PrivilegeOptionsConfig, PaginationConfig };
