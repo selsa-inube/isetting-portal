@@ -8,8 +8,9 @@ import { RulesRoutes } from "@routes/rules";
 import { ErrorPage } from "@design/layout/ErrorPage";
 import { CorePageStructure } from "@design/layout/corePageStructure";
 import { Landing } from "@pages/login/landing";
-import { LogOut } from "@pages/login/logOut";
+
 import { UnitNavigationHandler } from "@routes/unitNavigationHandler";
+import { Logout } from "@pages/login/logout";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,7 +21,7 @@ const router = createBrowserRouter(
         <Route path="privileges/*" element={<PrivilegesRoutes />} />
         <Route path="rules/*" element={<RulesRoutes />} />
       </Route>
-      <Route path="logout" element={<LogOut />} />
+      <Route path="logout" element={<Logout />} />
     </>
   )
 );
