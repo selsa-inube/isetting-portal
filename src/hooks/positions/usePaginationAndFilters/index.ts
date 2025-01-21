@@ -7,12 +7,9 @@ import {
   PrivilegeOptionsConfig,
 } from "@pages/privileges/config/privileges.config";
 import { IBusinessUnitsPortalStaffId } from "@ptypes/staffBusinessManagersId";
-import { UseManageSearchAndPageControl } from "@hooks/useManageSearchAndPageControl";
+import { UseManageSearchAndPageControl } from "../useManageSearchAndPageControl";
 
-const UsePaginationAndFilters = (
-  SearchPosition: string,
-  Data: IBusinessUnitsPortalStaffId[]
-) => {
+const UsePaginationAndFilters = (Data: IBusinessUnitsPortalStaffId[]) => {
   const SmallScreen = useMediaQuery(isMobile580);
   const Location = useLocation();
 
@@ -29,11 +26,7 @@ const UsePaginationAndFilters = (
     firstEntryInPage: FirstEntryInPage,
     lastEntryInPage: LastEntryInPage,
     paginatedData: PaginatedData,
-  } = UseManageSearchAndPageControl(
-    SearchPosition,
-    Data,
-    PaginationConfig.PageRecord
-  );
+  } = UseManageSearchAndPageControl(Data, PaginationConfig.PageRecord);
 
   return {
     SmallScreen,

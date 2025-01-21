@@ -1,31 +1,13 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
-import { useLocation } from "react-router-dom";
-import { useMediaQuery } from "@inubekit/hooks";
-
+import { UseManageSearchAndPageControl } from "@hooks/positions/useManageSearchAndPageControl";
 import { AuthAndData } from "@context/authAndDataProvider";
-import { isMobile580 } from "@config/environment";
-import { ActionRenderer } from "@design/table/actionRenderer";
-import { UseBusinessManagersId } from "@hooks/usePositions/useBusinessManageresId";
-import {
-  PaginationConfig,
-  PrivilegeOptionsConfig,
-} from "@pages/privileges/config/privileges.config";
-import { UseManageSearchAndPageControl } from "@hooks/useManageSearchAndPageControl";
+import { UseBusinessManagersId } from "@hooks/positions/useBusinessManageresId";
+import { PaginationConfig } from "@pages/privileges/config/privileges.config";
 import { PositionsUI } from "./interface";
 
 const Positions = () => {
-  const [searchPosition, setSearchPosition] = useState<string>("");
-  const [loading] = useState<boolean>(false);
-
-  const smallScreen = useMediaQuery(isMobile580);
-  const location = useLocation();
-  const label = PrivilegeOptionsConfig.find(
-    (item) => item.url === location.pathname
-  );
-
-  const { ShowAction, ShowActionTitle } = ActionRenderer();
-
+  const loading = false;
   const { appData } = useContext(AuthAndData);
   const { businessManagersData } = UseBusinessManagersId(
     appData.businessManager.publicCode
@@ -40,15 +22,16 @@ const Positions = () => {
     firstEntryInPage,
     lastEntryInPage,
     paginatedData,
-  } = UseManageSearchAndPageControl(
+    smallScreen,
+    label,
+    ShowAction,
+    ShowActionTitle,
     searchPosition,
+    handleSearchPositions,
+  } = UseManageSearchAndPageControl(
     businessManagersData,
     PaginationConfig.PageRecord
   );
-
-  const handleSearchPositions = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchPosition(e.target.value);
-  };
 
   return (
     <PositionsUI

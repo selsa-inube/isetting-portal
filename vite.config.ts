@@ -3,7 +3,6 @@ import path from "path";
 import { defineConfig } from "vite";
 import vitesconfigPaths from "vite-tsconfig-paths";
 
-
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), vitesconfigPaths()],
@@ -15,6 +14,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@design": path.resolve(__dirname, "./src/design"),
+      "@services": path.resolve(__dirname, "./src/services"),
       "@components": path.resolve(__dirname, "./src/components"),
       "@context": path.resolve(__dirname, "./src/context"),
       "@config": path.resolve(__dirname, "./src/config"),

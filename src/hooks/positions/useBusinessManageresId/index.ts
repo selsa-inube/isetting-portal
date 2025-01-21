@@ -1,6 +1,6 @@
-import { IBusinessUnitsPortalStaffId } from "@ptypes/staffBusinessManagersId";
 import { useState, useEffect } from "react";
-import { businessUnitsPortalStaffId } from "src/services/staffPortal/getBusinessManagersId";
+import { businessUnitsPortalStaffId } from "@services/staffPortal/getBusinessManagersId";
+import { IBusinessUnitsPortalStaffId } from "@ptypes/staffBusinessManagersId";
 
 const UseBusinessManagersId = (portalPublicCode: string) => {
   const [businessManagersData, SetbusinessManagersData] = useState<
