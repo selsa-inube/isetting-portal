@@ -4,7 +4,6 @@ import { MdOutlineChevronRight, MdOutlineDoorFront } from "react-icons/md";
 import { Header } from "@inubekit/header";
 import { Icon } from "@inubekit/icon";
 
-import { useHomeLogic } from "@hooks/useHomeLogic";
 import { nav, userMenu } from "@config/nav";
 import { Title } from "@design/label/Title";
 import { InteractiveBox } from "@design/cards/interactiveBox";
@@ -22,17 +21,11 @@ import {
   StyledLogo,
   StyledTitle,
 } from "./styles";
-import { ICardData } from "./types";
-
-interface IHome {
-  data?: ICardData[];
-}
+import { IHome } from "./types";
 
 const HomeUI = (props: IHome) => {
-  const { data } = props;
-  const { appData } = useContext(AuthAndData);
-
   const {
+    data,
     collapse,
     setCollapse,
     selectedClient,
@@ -43,7 +36,9 @@ const HomeUI = (props: IHome) => {
     isTablet,
     smallScreen,
     username,
-  } = useHomeLogic();
+  } = props;
+
+  const { appData } = useContext(AuthAndData);
 
   return (
     <>

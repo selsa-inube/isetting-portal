@@ -1,4 +1,5 @@
 import { INavNavigation } from "@inubekit/nav";
+import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
 
 interface ICardData {
   id: string;
@@ -25,4 +26,18 @@ interface INav {
   breakpoint: string;
 }
 
-export type { INav, ISection, ICardData };
+interface IHome {
+  data?: ICardData[];
+  collapse: boolean;
+  setCollapse: (value: boolean) => void;
+  selectedClient: string;
+  businessUnitsToTheStaff: IBusinessUnitsPortalStaff[];
+  handleLogoClick: (businessUnit: IBusinessUnitsPortalStaff) => void;
+  collapseMenuRef: React.RefObject<HTMLDivElement>;
+  businessUnitChangeRef: React.RefObject<HTMLDivElement>;
+  isTablet: boolean;
+  smallScreen: boolean;
+  username: string;
+}
+
+export type { INav, ISection, ICardData, IHome };
