@@ -1,10 +1,18 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useContext } from "react";
 import { IBusinessUnitsPortalStaffId } from "@ptypes/staffBusinessManagersId";
-const usePagination = (
-  searchPosition: string,
+import { useMediaQuery } from "@inubekit/hooks";
+import { isMobile580 } from "@config/environment";
+import { useLocation } from "react-router-dom";
+import { AuthAndData } from "@context/authAndDataProvider";
+import { ActionRenderer } from "@design/table/actionRenderer";
+import { PrivilegeOptionsConfig } from "@pages/privileges/config/privileges.config";
+import { UseBusinessManagersId } from "@hooks/positions/useBusinessManageresId";
+
+const UseManageSearchAndPageControl = (
   data: IBusinessUnitsPortalStaffId[],
   pagerecord: number
 ) => {
+  const [searchPosition, setSearchPosition] = useState<string>("");
   const pageLength = pagerecord;
   const [currentPage, setCurrentPage] = useState(0);
   const totalRecords = Array.isArray(data) ? data.length : 0;
@@ -35,6 +43,22 @@ const usePagination = (
     return filteredData.slice(firstEntryInPage, lastEntryInPage);
   }, [filteredData, firstEntryInPage, lastEntryInPage]);
 
+  const smallScreen = useMediaQuery(isMobile580);
+  const location = useLocation();
+  const label = PrivilegeOptionsConfig.find(
+    (item) => item.url === location.pathname
+  );
+
+  const { ShowAction, ShowActionTitle } = ActionRenderer();
+  const { appData } = useContext(AuthAndData);
+  const { businessManagersData } = UseBusinessManagersId(
+    appData.businessManager.publicCode
+  );
+
+  const handleSearchPositions = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchPosition(e.target.value);
+  };
+
   return {
     currentPage,
     filteredData,
@@ -46,7 +70,14 @@ const usePagination = (
     firstEntryInPage,
     lastEntryInPage,
     paginatedData,
+    searchPosition,
+    smallScreen,
+    label,
+    ShowAction,
+    ShowActionTitle,
+    businessManagersData,
+    handleSearchPositions,
   };
 };
 
-export { usePagination };
+export { UseManageSearchAndPageControl };

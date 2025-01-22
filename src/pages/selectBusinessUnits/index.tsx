@@ -1,10 +1,16 @@
-import { useSelectBusinessUnits } from "@hooks/useSelectBusinessUnits";
+import { UseSelectBusinessUnits } from "@hooks/useSelectBusinessUnits";
 import { SelectBusinessUnitsUI } from "./interface";
 
 const SelectBusinessUnits = () => {
-  useSelectBusinessUnits();
+  const { screenTablet, imageWidth, appData } = UseSelectBusinessUnits();
 
-  return <SelectBusinessUnitsUI />;
+  return (
+    <SelectBusinessUnitsUI
+      screenTablet={screenTablet}
+      imageWidth={imageWidth}
+      appData={appData}
+    />
+  );
 };
 
 export { SelectBusinessUnits };
