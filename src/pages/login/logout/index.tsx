@@ -1,13 +1,14 @@
 import { useEffect } from "react";
-import { useLogout } from "@hooks/useLogout";
+
 import { Home } from "@pages/home";
+import { UseLogout } from "@hooks/useLogout";
 
 const Logout = () => {
-  const { handleLogout } = useLogout();
+  const { HandleLogout } = UseLogout();
 
   useEffect(() => {
-    handleLogout();
-  }, [handleLogout]);
+    HandleLogout();
+  }, [HandleLogout]);
 
   return <Home />;
 };
