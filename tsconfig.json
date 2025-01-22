@@ -20,6 +20,7 @@
     "paths": {
       "@design/*": ["./src/design/*"],
       "@components/*": ["./src/components/*"],
+      "@services/*": ["./src/services/*"],
       "@routes/*": ["./src/routes/*"],
       "@utils/*": ["./src/utils/*"],
       "@validations/*": ["./src/validations/*"],

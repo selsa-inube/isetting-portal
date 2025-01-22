@@ -1,6 +1,6 @@
 import { MdOutlineBusinessCenter } from "react-icons/md";
 
-const privilegeOptionsConfig = [
+const PrivilegeOptionsConfig = [
   {
     id: 1,
     icon: <MdOutlineBusinessCenter />,
@@ -32,8 +32,8 @@ const privilegeOptionsConfig = [
   },
 ];
 
-const paginationConfig = {
-  pageRecord: 10,
+const PaginationConfig = {
+  PageRecord: 10,
 };
 
-export { privilegeOptionsConfig, paginationConfig };
+export { PrivilegeOptionsConfig, PaginationConfig };

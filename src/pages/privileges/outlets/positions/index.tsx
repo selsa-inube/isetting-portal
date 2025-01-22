@@ -1,33 +1,15 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
-import { useLocation } from "react-router-dom";
-import { useMediaQuery } from "@inubekit/hooks";
-import { useBusinessManagersId } from "@hooks/useBusinessManageresId";
+import { UseManageSearchAndPageControl } from "@hooks/positions/useManageSearchAndPageControl";
 import { AuthAndData } from "@context/authAndDataProvider";
-import { isMobile580 } from "@config/environment";
-import { ActionRenderer } from "@design/table/actionRenderer";
-import { usePagination } from "@hooks/usePagination";
-import {
-  paginationConfig,
-  privilegeOptionsConfig,
-} from "../../config/privileges.config";
-
+import { UseBusinessManagersId } from "@hooks/positions/useBusinessManageresId";
+import { PaginationConfig } from "@pages/privileges/config/privileges.config";
 import { PositionsUI } from "./interface";
 
 const Positions = () => {
-  const [searchPosition, setSearchPosition] = useState<string>("");
-  const [loading] = useState<boolean>(false);
-
-  const smallScreen = useMediaQuery(isMobile580);
-  const location = useLocation();
-  const label = privilegeOptionsConfig.find(
-    (item) => item.url === location.pathname
-  );
-
-  const { ShowAction, ShowActionTitle } = ActionRenderer();
-
+  const loading = false;
   const { appData } = useContext(AuthAndData);
-  const { businessManagersData } = useBusinessManagersId(
+  const { businessManagersData } = UseBusinessManagersId(
     appData.businessManager.publicCode
   );
 
@@ -40,15 +22,16 @@ const Positions = () => {
     firstEntryInPage,
     lastEntryInPage,
     paginatedData,
-  } = usePagination(
+    smallScreen,
+    label,
+    ShowAction,
+    ShowActionTitle,
     searchPosition,
+    handleSearchPositions,
+  } = UseManageSearchAndPageControl(
     businessManagersData,
-    paginationConfig.pageRecord
+    PaginationConfig.PageRecord
   );
-
-  const handleSearchPositions = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchPosition(e.target.value);
-  };
 
   return (
     <PositionsUI

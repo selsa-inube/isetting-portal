@@ -1,5 +1,6 @@
 import { ActionRenderer } from "@design/table/actionRenderer";
-import { privilegeOptionsConfig } from "@pages/privileges/config/privileges.config";
+import { PrivilegeOptionsConfig } from "@pages/privileges/config/privileges.config";
+
 import { IBusinessUnitsPortalStaffId } from "@ptypes/staffBusinessManagersId";
 
 interface IActions {
@@ -19,7 +20,7 @@ interface IPositions {
   data: IBusinessUnitsPortalStaffId[];
   loading: boolean;
   smallScreen: boolean;
-  label: (typeof privilegeOptionsConfig)[number] | undefined;
+  label: (typeof PrivilegeOptionsConfig)[number] | undefined;
   ShowAction: ReturnType<typeof ActionRenderer>["ShowAction"];
   ShowActionTitle: ReturnType<typeof ActionRenderer>["ShowActionTitle"];
   filteredData: IBusinessUnitsPortalStaffId[];
