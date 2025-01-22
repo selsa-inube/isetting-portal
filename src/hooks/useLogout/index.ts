@@ -13,8 +13,6 @@ const UseLogout = () => {
 
     HandleLogout();
   }, [logout]);
-
-  return {};
 };
 
 export { UseLogout };
