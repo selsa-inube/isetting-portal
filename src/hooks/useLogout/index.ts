@@ -1,15 +1,20 @@
+import { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const UseLogout = () => {
   const { logout } = useAuth0();
 
-  const HandleLogout = () => {
-    const redirect_uri = window.location.origin;
-    localStorage.clear();
-    logout({ logoutParams: { returnTo: redirect_uri } });
-  };
+  useEffect(() => {
+    const HandleLogout = () => {
+      const redirect_uri = window.location.origin;
+      localStorage.clear();
+      logout({ logoutParams: { returnTo: redirect_uri } });
+    };
 
-  return { HandleLogout };
+    HandleLogout();
+  }, [logout]);
+
+  return {};
 };
 
 export { UseLogout };
