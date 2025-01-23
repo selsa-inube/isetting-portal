@@ -1,12 +1,12 @@
 import { useEffect, useImperativeHandle } from "react";
 import { FormikProps, useFormik } from "formik";
 import { object } from "yup";
-
+import { useMediaQuery } from "@inubekit/hooks";
 import { validationMessages } from "@validations/validationMessages";
-import { IGeneralInformationEntry } from "@pages/privileges/outlets/positions/components/GeneralInformationForm/types";
 import { validationRules } from "@validations/validationRules";
+import { IGeneralInformationEntry } from "@pages/privileges/outlets/positions/add-position/types";
 
-const useGeneralInfoCreditLineForm = (
+const UseGeneralInfoCreditLineForm = (
   initialValues: IGeneralInformationEntry,
   ref: React.ForwardedRef<FormikProps<IGeneralInformationEntry>>,
   onSubmit: ((values: IGeneralInformationEntry) => void) | undefined,
@@ -14,10 +14,10 @@ const useGeneralInfoCreditLineForm = (
 ) => {
   const createValidationSchema = () =>
     object().shape({
-      nameCreditLine: validationRules.string.required(
+      namePosition: validationRules.string.required(
         validationMessages.required
       ),
-      descriptionCreditLine: validationRules.string.required(
+      descriptionPosition: validationRules.string.required(
         validationMessages.required
       ),
     });
@@ -42,9 +42,12 @@ const useGeneralInfoCreditLineForm = (
     }
   }, [formik.values, onFormValid]);
 
+  const isMobile = useMediaQuery("(max-width: 990px)");
+
   return {
     formik,
+    isMobile,
   };
 };
 
-export { useGeneralInfoCreditLineForm };
+export { UseGeneralInfoCreditLineForm };

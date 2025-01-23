@@ -86,13 +86,13 @@ const getStaffPortalByBusinessManager = async (
   );
 };
 
-const getRolesForStaff = async (): Promise<IRoleForStaff> => {
+const getRolesForStaff = async (): Promise<IRoleForStaff[]> => {
   const config: AxiosRequestConfig = {
     headers: {
       "X-Action": "SearchAllRolesForStaff",
     },
   };
-  return fetchWithRetries<IRoleForStaff>(`/roles-for-staff`, config);
+  return fetchWithRetries<IRoleForStaff[]>(`/roles-for-staff`, config);
 };
 
 export {

@@ -1,36 +1,15 @@
 import { FormButtons } from "@design/layout/FormButtons";
 import { AssignmentForm } from "@design/templates/AssignmentForm";
-import { IOptionInitialiceEntryApp } from "@pages/privileges/outlets/positions/add-position/types";
-import {
-  IAssignmentFormEntry,
-  IMessageState,
-} from "@pages/privileges/outlets/types/forms.types";
+import { IInitializerFormUI } from "./types";
 
-interface InitializerFormUIProps {
-  dataOptionsForms: IAssignmentFormEntry[];
-  dataOptionsValueSelect: IOptionInitialiceEntryApp[];
-  isLoading: boolean;
-  handleSubmitForm: () => void;
-  handleReset: () => void;
-  handleChangeInitializerForm: (
-    dataOptionsForms: IAssignmentFormEntry[]
-  ) => void;
-  withSubmitButtons?: boolean;
-  message: IMessageState;
-  onCloseSectionMessage: () => void;
-  hasChanges: (valueCompare: IAssignmentFormEntry[]) => boolean;
-  readOnly?: boolean;
-  setChangedData?: (changeData: IAssignmentFormEntry[]) => void;
-  changeData?: IAssignmentFormEntry[];
-}
-
-const InitializerFormUI = (props: InitializerFormUIProps) => {
+const InitializerFormUI = (props: IInitializerFormUI) => {
   const {
     dataOptionsForms,
     isLoading,
     handleSubmitForm,
     handleReset,
     handleChangeInitializerForm,
+    setSelectedToggle,
     withSubmitButtons,
     hasChanges,
     readOnly,
@@ -55,6 +34,7 @@ const InitializerFormUI = (props: InitializerFormUIProps) => {
             setChangedData={setChangedData}
             changeData={changeData}
             valueSelect={dataOptionsValueSelect}
+            setSelectedToggle={setSelectedToggle}
           />
         </FormButtons>
       </>
@@ -68,6 +48,7 @@ const InitializerFormUI = (props: InitializerFormUIProps) => {
       title="Selecciona los roles:"
       readOnly={readOnly}
       valueSelect={dataOptionsValueSelect}
+      setSelectedToggle={setSelectedToggle}
     />
   );
 };
