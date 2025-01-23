@@ -1,5 +1,5 @@
-import { getRolesForStaff } from "@api/isaasQuery";
 import { IRoleForStaff } from "@ptypes/rolesForStaff";
+import { getRolesForStaff } from "@api/getRolesForStaff";
 import { mapRolesStaffApiToEntities } from "./mappers";
 
 const getRolesStaff = async (): Promise<IRoleForStaff[]> => {

@@ -23,6 +23,7 @@ const AddStaffRolesUI = ({
   smallScreen,
   roles,
   disabled,
+  formValues,
 }: IAddPositionUI) => {
   return (
     <Stack
@@ -72,7 +73,7 @@ const AddStaffRolesUI = ({
             {currentStep === 2 && (
               <InitializerForm
                 dataOptionsForms={roles}
-                dataOptionsValueSelect={[]}
+                dataOptionsValueSelect={formValues.applicationStaff.values}
                 setSelectedToggle={setSelectedToggle}
               />
             )}

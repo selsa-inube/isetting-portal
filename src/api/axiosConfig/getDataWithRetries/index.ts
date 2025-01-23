@@ -1,14 +1,9 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import {
-  IBusinessManagers,
-  IStaffPortalByBusinessManager,
-} from "@ptypes/staffPortal.types";
-import {
   enviroment,
   fetchTimeoutServices,
   maxRetriesServices,
 } from "@config/environment";
-import { IRoleForStaff } from "@ptypes/rolesForStaff";
 
 const axiosInstance: AxiosInstance = axios.create({
   baseURL: enviroment.IVITE_ISAAS_QUERY_PROCESS_SERVICE,
@@ -55,48 +50,4 @@ const fetchWithRetries = async <T>(
   throw new Error("Error al obtener los datos del operador.");
 };
 
-const getBusinessManagers = async (
-  businessManagerId: string
-): Promise<IBusinessManagers> => {
-  const config: AxiosRequestConfig = {
-    headers: {
-      "X-Action": "SearchByIdBusinessManager",
-    },
-  };
-  return fetchWithRetries<IBusinessManagers>(
-    `/business-managers/${businessManagerId}`,
-    config
-  );
-};
-
-const getStaffPortalByBusinessManager = async (
-  portalCode: string
-): Promise<IStaffPortalByBusinessManager[]> => {
-  const queryParams = new URLSearchParams({
-    staffPortalId: portalCode,
-  });
-  const config: AxiosRequestConfig = {
-    headers: {
-      "X-Action": "SearchAllStaffPortalsByBusinessManager",
-    },
-  };
-  return fetchWithRetries<IStaffPortalByBusinessManager[]>(
-    `/staff-portals-by-business-manager?${queryParams.toString()}`,
-    config
-  );
-};
-
-const getRolesForStaff = async (): Promise<IRoleForStaff[]> => {
-  const config: AxiosRequestConfig = {
-    headers: {
-      "X-Action": "SearchAllRolesForStaff",
-    },
-  };
-  return fetchWithRetries<IRoleForStaff[]>(`/roles-for-staff`, config);
-};
-
-export {
-  getBusinessManagers,
-  getStaffPortalByBusinessManager,
-  getRolesForStaff,
-};
+export { fetchWithRetries };

@@ -1,11 +1,9 @@
-import { useState } from "react";
-
 import { Tag } from "@inubekit/tag";
 import { Text } from "@inubekit/text";
-
 import { basic } from "@design/tokens";
-import { IOptionItemChecked } from "@design/select/OptionItem";
 import { SelectCheck } from "@design/select";
+import { IOptionItemChecked } from "@design/select/OptionItem";
+import { UseMultipleChoices } from "@hooks/useMultipleChoices";
 import { StyledContainer, StyledSelection } from "./styles";
 
 interface IIMultipleChoices {
@@ -33,34 +31,13 @@ const MultipleChoices = (props: IIMultipleChoices) => {
     onBlur,
   } = props;
 
-  const [optionsSelect, setOptionsSelect] = useState(options);
-
-  const onHandleSelectCheck = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { checked, id } = event.target;
-    const newOptions = optionsSelect.map((option) => {
-      if (option.id === id) {
-        return { ...option, checked };
-      }
-      return option;
-    });
-    setOptionsSelect(newOptions);
-    onHandleSelectCheckChange(newOptions);
-  };
-
-  const onRemoveTag = (id: string) => {
-    const newOptions = optionsSelect.map((option) => {
-      if (option.id === id) {
-        return { ...option, checked: false };
-      }
-      return option;
-    });
-    setOptionsSelect(newOptions);
-  };
+  const { uniqueOptions, onHandleSelectCheck, onRemoveTag } =
+    UseMultipleChoices(options, onHandleSelectCheckChange);
 
   return (
     <StyledContainer>
-      {optionsSelect.length > 0 &&
-        optionsSelect.some((option) => option.checked) && (
+      {uniqueOptions.length > 0 &&
+        uniqueOptions.some((option) => option.checked) && (
           <>
             <Text
               margin={`${basic.spacing.s0} ${basic.spacing.s0} ${basic.spacing.s4} ${basic.spacing.s0}`}
@@ -72,7 +49,7 @@ const MultipleChoices = (props: IIMultipleChoices) => {
               {labelSelected}
             </Text>
             <StyledSelection>
-              {optionsSelect
+              {uniqueOptions
                 .filter((option) => option.checked)
                 .map((option) => (
                   <Tag
@@ -81,9 +58,7 @@ const MultipleChoices = (props: IIMultipleChoices) => {
                     label={option.label}
                     weight="strong"
                     removable
-                    onClose={() => {
-                      onRemoveTag(option.id);
-                    }}
+                    onClose={() => onRemoveTag(option.id)}
                   />
                 ))}
             </StyledSelection>
@@ -95,7 +70,7 @@ const MultipleChoices = (props: IIMultipleChoices) => {
         label={labelSelect}
         name={id}
         onChangeCheck={onHandleSelectCheck}
-        options={optionsSelect}
+        options={uniqueOptions}
         placeholder={placeholderSelect}
         required={required}
         value=""
@@ -109,5 +84,4 @@ const MultipleChoices = (props: IIMultipleChoices) => {
 };
 
 export { MultipleChoices };
-
 export type { IIMultipleChoices };

@@ -1,6 +1,6 @@
+import { useEffect, useState } from "react";
 import { IOptionItemChecked } from "@design/select/OptionItem";
 import { IEntry } from "@design/templates/AssignmentForm/types";
-import { useEffect, useState } from "react";
 
 const UseAssignmentForm = (
   entries: IEntry[],
@@ -94,15 +94,13 @@ const UseAssignmentForm = (
   const handleSelectChange = (options: IOptionItemChecked[]) => {
     const selectedIds = options
       .filter((option) => option.checked)
-      .map((option) => option.id);
-
+      .map((option) => option.label);
     setSelectedOptions(selectedIds);
   };
 
   useEffect(() => {
     if (selectedOptions.length === 0 && filterValue.length === 0) {
       setFilteredRows(entries);
-      setDataValidations(entries.length === 0);
 
       return;
     }
@@ -126,8 +124,7 @@ const UseAssignmentForm = (
       );
     }
     setFilteredRows(newFilter);
-    setDataValidations(newFilter.length === 0);
-  }, [selectedOptions, filterValue, entries]);
+  }, [selectedOptions, filterValue]);
 
   const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFilter(e.target.value);
@@ -137,6 +134,7 @@ const UseAssignmentForm = (
     filteredRows,
     filterValue,
     filter,
+    setDataValidations,
     setFilter,
     handleFilterInput,
     handleFilterChange,
