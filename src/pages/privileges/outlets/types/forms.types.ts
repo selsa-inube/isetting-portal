@@ -7,7 +7,7 @@ interface IAssignmentFormEntry {
 }
 
 interface IFormsInvitation {
-  generalInformation: {entries?: [] };
+  generalInformation: { entries?: [] };
   branches: { entries: IAssignmentFormEntry[] };
   projects: { entries: IAssignmentFormEntry[] };
   events: { entries: IAssignmentFormEntry[] };

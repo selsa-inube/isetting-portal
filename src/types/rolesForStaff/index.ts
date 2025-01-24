@@ -10,11 +10,11 @@ interface IUseCasesByStaffRoles {
 
 interface IRoleForStaff {
   roleId: string;
-  publicCode: string;
   abbreviatedName: string;
-  descriptionUse: string;
-  application: IAplication[];
-  useCasesByStaffRoles: IUseCasesByStaffRoles[];
+  isActive?: boolean;
+  publicCode?: string;
+  descriptionUse?: string;
+  application?: IAplication;
+  useCasesByStaffRoles?: IUseCasesByStaffRoles[];
 }
-
 export type { IRoleForStaff };

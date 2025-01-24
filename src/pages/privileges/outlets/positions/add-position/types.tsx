@@ -1,8 +1,8 @@
 import React from "react";
 import { FormikProps } from "formik";
-
+import { IAssistedStep } from "@inubekit/assisted";
+import { IEntry } from "@design/templates/AssignmentForm/types";
 import { IAssignmentFormEntry } from "../../types/forms.types";
-import { IGeneralInformationEntry } from "../components/GeneralInformationForm/types";
 
 const titleButtonTextAssited = {
   before: "Atrás",
@@ -11,27 +11,19 @@ const titleButtonTextAssited = {
 };
 
 interface IOptionInitialiceEntryApp {
-  k_uso: string;
-  n_uso: string;
-}
-
-interface IBusinessManagerStaffMissionByRole {
-  missionId: string;
-  roleId: string;
+  id: string;
+  value: string;
+  isActive: boolean;
+  rolesStaff?: string;
+  applicationStaff?: string;
 }
 interface IPosition {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
-  publicCode: string;
-  abbreviatedName: string;
-  businessManagerStaffMissionByRole?: IBusinessManagerStaffMissionByRole[];
+  public_code: string;
+  abbreviated_name: string;
+  n_roles?: string[];
 }
-
-interface IDeleteForMessage {
-  id: string;
-  successfulDiscard: boolean;
-}
-
 interface IStep {
   id: number;
   label: string;
@@ -42,10 +34,59 @@ interface IOptionInitialiceEntry {
   id: string;
   value: string;
   isActive: boolean;
+  rolesStaff?: string;
+  applicationStaff?: string;
 }
+interface IGeneralInformationEntry {
+  namePosition: string;
+  descriptionPosition: string;
+}
+
+interface IOptionRolesInitialiceEntry {
+  id?: string;
+  value?: string;
+  isActive?: boolean;
+  roleId?: string;
+  abbreviatedName?: string;
+}
+interface DataToAssignmentFormEntryProps {
+  dataOptions: Record<string, unknown>[];
+  idLabel: string;
+  valueLabel: string;
+  isActiveLabel: string;
+}
+interface IAddPositionUI {
+  currentStep: number;
+  generalInformationRef: React.RefObject<FormikProps<IGeneralInformationEntry>>;
+  initialGeneralInformationValues: IGeneralInformationEntry;
+  isCurrentFormValid: boolean;
+  steps: IAssistedStep[];
+  onNextStep: () => void;
+  onPreviousStep: () => void;
+  setIsCurrentFormValid: React.Dispatch<React.SetStateAction<boolean>>;
+  selectedToggle: IEntry[];
+  setSelectedToggle: React.Dispatch<React.SetStateAction<IEntry[] | undefined>>;
+  handlePreviousStep: () => void;
+  handleNextStep: () => void;
+  formValues: IFormAddPosition;
+  smallScreen: boolean;
+  disabled: boolean;
+  roles: IOptionInitialiceEntryApp[];
+}
+
+const dataToAssignmentFormEntry = (props: DataToAssignmentFormEntryProps) => {
+  const { dataOptions, idLabel, valueLabel, isActiveLabel } = props;
+  return dataOptions.map((dataOption) => ({
+    value: String(dataOption[valueLabel]),
+    isActive: Boolean(dataOption[isActiveLabel] === "Y"),
+    id: String(dataOption[idLabel]),
+  }));
+};
 
 interface IFormAddPosition {
   generalInformation: { isValid: boolean; values: IGeneralInformationEntry };
+  rolesStaff: { isValid: boolean; values: IOptionInitialiceEntry[] };
+  applicationStaff: { isValid: boolean; values: IOptionInitialiceEntryApp[] };
 }
 
 interface IFormAddPositionRef {
@@ -56,7 +97,7 @@ type IHandleUpdateDataSwitchstep =
   | IGeneralInformationEntry
   | IAssignmentFormEntry[];
 
-export { titleButtonTextAssited };
+export { titleButtonTextAssited, dataToAssignmentFormEntry };
 
 export type {
   IHandleUpdateDataSwitchstep,
@@ -66,5 +107,8 @@ export type {
   IOptionInitialiceEntryApp,
   IPosition,
   IStep,
-  IDeleteForMessage,
+  IOptionRolesInitialiceEntry,
+  DataToAssignmentFormEntryProps,
+  IGeneralInformationEntry,
+  IAddPositionUI,
 };

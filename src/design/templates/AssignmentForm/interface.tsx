@@ -2,7 +2,6 @@ import { MdSearch } from "react-icons/md";
 import { Button } from "@inubekit/button";
 import { Stack } from "@inubekit/stack";
 import { Textfield } from "@inubekit/textfield";
-
 import {
   Col,
   Colgroup,
@@ -15,34 +14,11 @@ import {
 } from "@inubekit/table";
 import { Toggle } from "@inubekit/toggle";
 import { Text } from "@inubekit/text";
-import { basic } from "@design/tokens";
-import { MultipleChoices } from "@design/navigation/MultipleChoices";
-import { IOption } from "@design/navigation/types";
 import { Fieldset } from "@inubekit/fieldset";
-import { IOptionItemChecked } from "@design/select/OptionItem";
+import { MultipleChoices } from "@design/navigation/MultipleChoices";
+import { basic } from "@design/tokens";
 import { StyledForm, StyledToggleContainer } from "./styles";
-import { IEntry, IOptions, titlesOptions } from "./types";
-
-interface IAssignmentFormUI {
-  entries: IEntry[];
-  filter: string;
-  filteredRows: IEntry[];
-  filterValue: string;
-  isAssignAll: boolean;
-  menuOptions: IOption[];
-  options: IOptions[];
-  showMenu: boolean;
-  title: string;
-  handleCloseMenuInvitation: () => void;
-  handleFilter: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleSelectChange: (options: IOptionItemChecked[]) => void;
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  handleToggleAllEntries: (allocate: boolean) => void;
-  handleToggleMenuInvitation: () => void;
-  onHandleSelectCheckChange: (id: string) => void;
-  handleFilterInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  readOnly?: boolean;
-}
+import { IAssignmentFormUI, titlesOptions } from "./types";
 
 const AssignmentFormUI = (props: IAssignmentFormUI) => {
   const {
@@ -57,9 +33,8 @@ const AssignmentFormUI = (props: IAssignmentFormUI) => {
     filterValue,
     isAssignAll,
     filteredRows,
+    dataValidations,
   } = props;
-
-  const dataValidations = entries.length === 0;
 
   return (
     <StyledForm onSubmit={handleSubmit}>
@@ -143,7 +118,7 @@ const AssignmentFormUI = (props: IAssignmentFormUI) => {
                         <Toggle
                           checked={entry.isActive}
                           disabled={false}
-                          id={`isActive-${entry.id}`}
+                          id={`${entry.id}`}
                           name="isActive"
                           margin={basic.spacing.s0}
                           onChange={() => onHandleSelectCheckChange(entry.id)}
@@ -153,7 +128,7 @@ const AssignmentFormUI = (props: IAssignmentFormUI) => {
                       </StyledToggleContainer>
                     </Td>
                     <Td align="left"> {entry.value}</Td>
-                    <Td align="left"> {entry.n_uso}</Td>
+                    <Td align="left"> {entry.applicationStaff}</Td>
                   </Tr>
                 ))
               )}

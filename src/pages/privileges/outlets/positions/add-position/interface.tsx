@@ -1,44 +1,30 @@
-import { FormikProps } from "formik";
-import { useMediaQuery } from "@inubekit/hooks";
 import { Stack } from "@inubekit/stack";
 import { Breadcrumbs } from "@inubekit/breadcrumbs";
-import { Assisted, IAssistedStep } from "@inubekit/assisted";
+import { Assisted } from "@inubekit/assisted";
 import { PageTitle } from "@design/label/PageTitle";
 import { InitializerForm } from "@design/forms/InitializerForm";
 import { Button } from "@inubekit/button";
 import { basic } from "@design/tokens";
-import { IGeneralInformationEntry } from "../components/GeneralInformationForm/types";
 import { GeneralInformationForm } from "../components/GeneralInformationForm";
 import { createPositionConfig } from "./config/addPosition.config";
-
-interface IAddPositionUI {
-  currentStep: number;
-  generalInformationRef: React.RefObject<FormikProps<IGeneralInformationEntry>>;
-  initialGeneralInformationValues: IGeneralInformationEntry;
-  isCurrentFormValid: boolean;
-  steps: IAssistedStep[];
-  onNextStep: () => void;
-  onPreviousStep: () => void;
-  setIsCurrentFormValid: React.Dispatch<React.SetStateAction<boolean>>;
-  handlePreviousStep: () => void;
-  handleNextStep: () => void;
-}
+import { IAddPositionUI } from "./types";
 
 const AddStaffRolesUI = ({
   currentStep,
   generalInformationRef,
   initialGeneralInformationValues,
-  isCurrentFormValid,
   steps,
+  setSelectedToggle,
   onNextStep,
   handlePreviousStep,
   handleNextStep,
   onPreviousStep,
   setIsCurrentFormValid,
+  smallScreen,
+  roles,
+  disabled,
+  formValues,
 }: IAddPositionUI) => {
-  const smallScreen = useMediaQuery("(max-width: 990px)");
-  const disabled = !isCurrentFormValid;
-
   return (
     <Stack
       direction="column"
@@ -67,7 +53,7 @@ const AddStaffRolesUI = ({
             onSubmitClick={() => {
               console.log("");
             }}
-            disableNext={!isCurrentFormValid}
+            disableNext={disabled}
             controls={{
               goBackText: "Anterior",
               goNextText: "Siguiente",
@@ -86,9 +72,9 @@ const AddStaffRolesUI = ({
             )}
             {currentStep === 2 && (
               <InitializerForm
-                dataOptionsForms={[]}
-                handleSubmit={() => {}}
-                dataOptionsValueSelect={[]}
+                dataOptionsForms={roles}
+                dataOptionsValueSelect={formValues.applicationStaff.values}
+                setSelectedToggle={setSelectedToggle}
               />
             )}
           </Stack>

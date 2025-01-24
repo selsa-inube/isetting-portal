@@ -1,9 +1,14 @@
+import { IOption } from "@design/navigation/types";
+import { IOptionItemChecked } from "@design/select/OptionItem";
+import { IOptionInitialiceEntryApp } from "@pages/privileges/outlets/positions/add-position/types";
+
 interface IEntry {
   id: string;
   value: string;
+  abbreviatedName?: string;
   isActive: boolean;
-  k_uso?: string;
-  n_uso?: string;
+  rolesStaff?: string;
+  applicationStaff?: string;
 }
 
 interface IOptions {
@@ -11,6 +16,39 @@ interface IOptions {
   label: string;
   checked?: boolean;
   onchange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+interface IAssignmentForm {
+  handleChange: (entries: IEntry[]) => void;
+  entries: IEntry[];
+  title: string;
+  setSelectedToggle: React.Dispatch<React.SetStateAction<IEntry[] | undefined>>;
+  readOnly?: boolean;
+  setChangedData?: (changeData: IEntry[]) => void;
+  changeData?: IEntry[];
+  valueSelect: IOptionInitialiceEntryApp[];
+}
+
+interface IAssignmentFormUI {
+  entries: IEntry[];
+  filter: string;
+  filteredRows: IEntry[];
+  filterValue: string;
+  isAssignAll: boolean;
+  menuOptions: IOption[];
+  options: IOptions[];
+  showMenu: boolean;
+  dataValidations: boolean;
+  title: string;
+  handleCloseMenuInvitation: () => void;
+  handleFilter: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSelectChange: (options: IOptionItemChecked[]) => void;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  handleToggleAllEntries: (allocate: boolean) => void;
+  handleToggleMenuInvitation: () => void;
+  onHandleSelectCheckChange: (id: string) => void;
+  handleFilterInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  readOnly?: boolean;
 }
 
 const titlesOptions = [
@@ -22,10 +60,10 @@ const titlesOptions = [
     type: "toggle",
   },
   {
-    id: "rol",
+    id: "abbreviatedName",
     titleName: "Rol",
     priority: 1,
-    value: "id",
+    value: "abbreviatedName",
   },
   {
     id: "value",
@@ -35,4 +73,4 @@ const titlesOptions = [
   },
 ];
 export { titlesOptions };
-export type { IEntry, IOptions };
+export type { IEntry, IOptions, IAssignmentFormUI, IAssignmentForm };

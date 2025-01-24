@@ -1,17 +1,6 @@
-import { IOptionInitialiceEntryApp } from "@pages/privileges/outlets/positions/add-position/types";
-import { useAssignmentFormLogic } from "@hooks/useAssignmentFormLogic";
+import { UseAssignmentForm } from "@hooks/useAssignmentForm";
 import { AssignmentFormUI } from "./interface";
-import { IEntry } from "./types";
-
-interface IAssignmentForm {
-  handleChange: (entries: IEntry[]) => void;
-  entries: IEntry[];
-  title: string;
-  readOnly?: boolean;
-  setChangedData?: (changeData: IEntry[]) => void;
-  changeData?: IEntry[];
-  valueSelect: IOptionInitialiceEntryApp[];
-}
+import { IAssignmentForm } from "./types";
 
 const AssignmentForm = (props: IAssignmentForm) => {
   const {
@@ -19,6 +8,7 @@ const AssignmentForm = (props: IAssignmentForm) => {
     entries,
     title,
     readOnly,
+    setSelectedToggle,
     setChangedData = () => {},
     changeData = [],
     valueSelect,
@@ -27,31 +17,33 @@ const AssignmentForm = (props: IAssignmentForm) => {
   const {
     filteredRows,
     filterValue,
+    handleFilterInput,
     handleFilterChange,
     handleToggleAllEntries,
-    handleToggleEntry,
+    onHandleSelectCheckChange,
     handleSelectChange,
     menuOptions,
     isAssignAll,
     setShowMenu,
     showMenu,
-  } = useAssignmentFormLogic(entries, changeData, setChangedData, handleChange);
-
-  const options = valueSelect.map((entry) => ({
-    id: entry.k_uso,
-    label: entry.n_uso,
-    checked: filteredRows.some((row) => row.k_uso === entry.k_uso),
-  }));
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-  };
+    dataValidations,
+    options,
+    handleSubmit,
+  } = UseAssignmentForm(
+    entries,
+    changeData,
+    setChangedData,
+    handleChange,
+    setSelectedToggle,
+    valueSelect
+  );
 
   return (
     <AssignmentFormUI
       handleToggleAllEntries={handleToggleAllEntries}
       filter={filterValue}
       handleFilter={handleFilterChange}
+      handleFilterInput={handleFilterInput}
       entries={entries}
       title={title}
       showMenu={showMenu}
@@ -65,8 +57,8 @@ const AssignmentForm = (props: IAssignmentForm) => {
       handleSelectChange={handleSelectChange}
       options={options}
       filterValue={filterValue}
-      onHandleSelectCheckChange={handleToggleEntry}
-      handleFilterInput={handleFilterChange}
+      onHandleSelectCheckChange={onHandleSelectCheckChange}
+      dataValidations={dataValidations}
     />
   );
 };
