@@ -63,8 +63,10 @@ interface IAddPositionUI {
   steps: IAssistedStep[];
   onNextStep: () => void;
   onPreviousStep: () => void;
+  onToggleModal: () => void;
   setIsCurrentFormValid: React.Dispatch<React.SetStateAction<boolean>>;
   selectedToggle: IEntry[];
+  setCurrentStep: (step: number) => void;
   setSelectedToggle: React.Dispatch<React.SetStateAction<IEntry[] | undefined>>;
   handlePreviousStep: () => void;
   handleNextStep: () => void;
@@ -72,6 +74,8 @@ interface IAddPositionUI {
   smallScreen: boolean;
   disabled: boolean;
   roles: IOptionInitialiceEntryApp[];
+  onFinishForm: () => void;
+  showModal: boolean;
 }
 
 const dataToAssignmentFormEntry = (props: DataToAssignmentFormEntryProps) => {
