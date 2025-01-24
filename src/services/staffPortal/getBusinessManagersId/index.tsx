@@ -1,4 +1,4 @@
-import { getBusinessManagersId } from "@api/getBusinessManagersId";
+import { getBusinessManagersId } from "@api/iportalStaff/getBusinessManagersId";
 import { IBusinessUnitsPortalStaffId } from "@ptypes/staffBusinessManagersId";
 import { mapBusinessUnitsPortalStaffToEntities } from "./mappers";
 

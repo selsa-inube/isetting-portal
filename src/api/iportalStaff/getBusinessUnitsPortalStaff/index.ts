@@ -1,6 +1,6 @@
 import { AxiosRequestConfig } from "axios";
-import { fetchWithRetries } from "@api/axiosConfig/getPortalStaffQuery";
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
+import { fetchWithRetries } from "@api/iportalStaff/axiosConfig/getPortalStaffQuery";
 
 const getBusinessUnitsPortalStaff = async (
   portalPublicCode: string,

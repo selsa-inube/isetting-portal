@@ -27,24 +27,16 @@ const AssignmentForm = (props: IAssignmentForm) => {
     setShowMenu,
     showMenu,
     dataValidations,
+    options,
+    handleSubmit,
   } = UseAssignmentForm(
     entries,
     changeData,
     setChangedData,
     handleChange,
-    setSelectedToggle
+    setSelectedToggle,
+    valueSelect
   );
-
-  const options = valueSelect.map((entry) => ({
-    id: entry.id,
-    label: entry.value,
-    checked: filteredRows.some((row) => row.applicationStaff === entry.value),
-  }));
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    handleChange(entries);
-  };
 
   return (
     <AssignmentFormUI

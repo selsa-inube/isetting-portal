@@ -1,5 +1,5 @@
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
-import { getBusinessUnitsPortalStaff } from "@api/getBusinessUnitsPortalStaff";
+import { getBusinessUnitsPortalStaff } from "@api/iportalStaff/getBusinessUnitsPortalStaff";
 import { mapBusinessUnitsPortalStaffToEntities } from "./mappers";
 
 const businessUnitsPortalStaff = async (

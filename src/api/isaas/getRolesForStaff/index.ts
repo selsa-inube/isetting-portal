@@ -1,6 +1,6 @@
 import { AxiosRequestConfig } from "axios";
 import { IRoleForStaff } from "@ptypes/rolesForStaff";
-import { fetchWithRetries } from "@api/axiosConfig/getDataWithRetries";
+import { fetchWithRetries } from "@api/isaas/axiosConfig/getDataWithRetries";
 
 const getRolesForStaff = async (): Promise<IRoleForStaff[]> => {
   const config: AxiosRequestConfig = {

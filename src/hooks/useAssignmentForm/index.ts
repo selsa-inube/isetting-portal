@@ -7,7 +7,8 @@ const UseAssignmentForm = (
   changeData: IEntry[],
   setChangedData: (changeData: IEntry[]) => void,
   handleChange: (entries: IEntry[]) => void,
-  setSelectedToggle: React.Dispatch<React.SetStateAction<IEntry[] | undefined>>
+  setSelectedToggle: React.Dispatch<React.SetStateAction<IEntry[] | undefined>>,
+  valueSelect: { id: string; value: string }[]
 ) => {
   const [filter, setFilter] = useState("");
   const [showMenu, setShowMenu] = useState(false);
@@ -98,12 +99,23 @@ const UseAssignmentForm = (
     setSelectedOptions(selectedIds);
   };
 
+  const options = valueSelect.map((entry) => ({
+    id: entry.id,
+    label: entry.value,
+    checked: filteredRows.some((row) => row.applicationStaff === entry.value),
+  }));
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    handleChange(entries);
+  };
+
   useEffect(() => {
     if (selectedOptions.length === 0 && filterValue.length === 0) {
       setFilteredRows(entries);
-
       return;
     }
+
     let newFilter = filteredRows;
 
     if (selectedOptions.length > 0) {
@@ -123,11 +135,22 @@ const UseAssignmentForm = (
             .includes(filterValue.toLowerCase())
       );
     }
+
     setFilteredRows(newFilter);
-  }, [selectedOptions, filterValue]);
+  }, [selectedOptions, filterValue, entries]);
 
   const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFilter(e.target.value);
+
+    const filterText = e.target.value.toLowerCase();
+
+    const newFilteredRows = entries.filter(
+      (entry) =>
+        entry.value.toLowerCase().includes(filterText) ||
+        (entry.applicationStaff ?? "").toLowerCase().includes(filterText)
+    );
+
+    setFilteredRows(newFilteredRows);
   };
 
   return {
@@ -146,6 +169,8 @@ const UseAssignmentForm = (
     setShowMenu,
     showMenu,
     dataValidations,
+    options,
+    handleSubmit,
   };
 };
 
