@@ -113,9 +113,12 @@ const AddStaffRolesUI = ({
             >
               Atrás
             </Button>
-
             <Button
-              onClick={handleNextStep}
+              onClick={() =>
+                currentStep === steps.length
+                  ? onToggleModal()
+                  : handleNextStep()
+              }
               spacing="compact"
               disabled={disabled}
             >

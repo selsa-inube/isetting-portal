@@ -1,6 +1,9 @@
 import { useMediaQuery } from "@inubekit/hooks";
 import { IFormAddPosition } from "../types";
-import { renderPersonalInfoVerification } from "./utils";
+import {
+  renderPersonalInfoVerification,
+  renderStepTwoVerification,
+} from "./utils";
 
 interface IVerificationBoxes {
   updatedData: IFormAddPosition;
@@ -17,6 +20,8 @@ const VerificationBoxes = ({ updatedData, stepKey }: IVerificationBoxes) => {
           updatedData.generalInformation.values,
           isMobile
         )}
+      {stepKey === 2 &&
+        renderStepTwoVerification(updatedData.rolesStaff.values, isMobile)}
     </>
   );
 };

@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { FormikProps } from "formik";
 
@@ -31,6 +32,7 @@ const UseAddStaffRoles = (rolesData: IRoleForStaff[] | undefined) => {
     },
   });
 
+  const navigate = useNavigate();
   const smallScreen = useMediaQuery("(max-width: 990px)");
 
   const [isCurrentFormValid, setIsCurrentFormValid] = useState(false);
@@ -108,7 +110,9 @@ const UseAddStaffRoles = (rolesData: IRoleForStaff[] | undefined) => {
   const handleSubmitClick = () => {
     handleToggleModal();
     setShowRequestProcessModal(!showRequestProcessModal);
+    navigate("/privileges/positions");
   };
+
   return {
     currentStep,
     formValues,
