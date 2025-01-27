@@ -1,7 +1,7 @@
 import { IAssistedStep } from "@inubekit/assisted";
 
-const addDestinationStepsConfig = (nameDescription: string) => {
-  const addDestinationSteps: IAssistedStep[] = [
+const AddDestinationStepsConfig = (NameDescription: string) => {
+  const AddDestinationSteps: IAssistedStep[] = [
     {
       id: 1,
       number: 1,
@@ -12,7 +12,7 @@ const addDestinationStepsConfig = (nameDescription: string) => {
       id: 2,
       number: 2,
       name: "Selección de roles",
-      description: `Agregar decisión para ${nameDescription}.`,
+      description: `Agregar decisión para ${NameDescription}.`,
     },
     {
       id: 3,
@@ -21,7 +21,7 @@ const addDestinationStepsConfig = (nameDescription: string) => {
       description: "Confirma la información diligenciada en pasos anteriores.",
     },
   ];
-  return addDestinationSteps;
+  return AddDestinationSteps;
 };
 
-export { addDestinationStepsConfig };
+export { AddDestinationStepsConfig };

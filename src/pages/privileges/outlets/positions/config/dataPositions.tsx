@@ -1,9 +1,8 @@
 import { MdModeEdit, MdOutlineDelete } from "react-icons/md";
 import { Icon } from "@inubekit/icon";
-
-import { DetailsModal } from "../components/DetailsModal";
 import { IPosition } from "../add-position/types";
 import { IActions, IAction } from "../types";
+import { DetailsModal } from "../forms/detailsModal";
 
 const titlesOptions = [
   {

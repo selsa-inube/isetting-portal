@@ -1,7 +1,7 @@
-const finishModal = {
+const FinishModal = {
   title: "Finalizar",
   description: "¿Realmente deseas finalizar esta solicitud?",
   actionText: "Confirmar",
 };
 
-export { finishModal };
+export { FinishModal };

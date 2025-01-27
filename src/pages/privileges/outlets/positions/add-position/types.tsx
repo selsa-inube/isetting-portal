@@ -49,7 +49,7 @@ interface IOptionRolesInitialiceEntry {
   roleId?: string;
   abbreviatedName?: string;
 }
-interface DataToAssignmentFormEntryProps {
+interface IDataToAssignmentFormEntryProps {
   dataOptions: Record<string, unknown>[];
   idLabel: string;
   valueLabel: string;
@@ -78,7 +78,7 @@ interface IAddPositionUI {
   showModal: boolean;
 }
 
-const dataToAssignmentFormEntry = (props: DataToAssignmentFormEntryProps) => {
+const dataToAssignmentFormEntry = (props: IDataToAssignmentFormEntryProps) => {
   const { dataOptions, idLabel, valueLabel, isActiveLabel } = props;
   return dataOptions.map((dataOption) => ({
     value: String(dataOption[valueLabel]),
@@ -112,7 +112,7 @@ export type {
   IPosition,
   IStep,
   IOptionRolesInitialiceEntry,
-  DataToAssignmentFormEntryProps,
+  IDataToAssignmentFormEntryProps,
   IGeneralInformationEntry,
   IAddPositionUI,
 };

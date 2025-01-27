@@ -5,12 +5,12 @@ import { PageTitle } from "@design/label/PageTitle";
 import { InitializerForm } from "@design/forms/InitializerForm";
 import { Button } from "@inubekit/button";
 import { basic } from "@design/tokens";
-import { DecisionModal } from "@design/modals/DecisionModal";
-import { finishModal } from "@config/positions/verificationForm";
-import { GeneralInformationForm } from "../components/GeneralInformationForm";
+import { DecisionModal } from "@design/modals/decisionModal";
+import { FinishModal } from "@config/positions/verificationForm";
 import { createPositionConfig } from "./config/addPosition.config";
 import { IAddPositionUI } from "./types";
-import { VerificationForm } from "../components/verificationForm";
+import { GeneralInformationForm } from "../forms/generalInformationForm";
+import { VerificationForm } from "../forms/verificationForm";
 
 const AddStaffRolesUI = ({
   currentStep,
@@ -99,21 +99,6 @@ const AddStaffRolesUI = ({
                 showModal={false}
                 showRequestProcessModal={false}
                 handleStepChange={(stepId) => setCurrentStep(stepId)}
-                onFinishForm={function (): void {
-                  throw new Error("Function not implemented.");
-                }}
-                onPreviousStep={function (): void {
-                  throw new Error("Function not implemented.");
-                }}
-                onToggleModal={function (): void {
-                  throw new Error("Function not implemented.");
-                }} // requestSteps={requestSteps}
-                // onPreviousStep={onPreviousStep}
-                // handleStepChange={(stepId) => setCurrentStep(stepId)}
-                // showModal={showModal}
-                // showRequestProcessModal={showRequestProcessModal}
-                // onToggleModal={onToggleModal}
-                // onFinishForm={onFinishForm}
               />
             )}
           </Stack>
@@ -141,9 +126,9 @@ const AddStaffRolesUI = ({
         {showModal && (
           <DecisionModal
             portalId="portal"
-            title={finishModal.title}
-            description={finishModal.description}
-            actionText={finishModal.actionText}
+            title={FinishModal.title}
+            description={FinishModal.description}
+            actionText={FinishModal.actionText}
             onCloseModal={onToggleModal}
             onClick={onFinishForm}
           />
