@@ -6,11 +6,11 @@ import { InitializerForm } from "@design/forms/InitializerForm";
 import { Button } from "@inubekit/button";
 import { basic } from "@design/tokens";
 import { DecisionModal } from "@design/modals/decisionModal";
+import { VerificationForm } from "@design/forms/verificationForm";
 import { FinishModal } from "@config/positions/verificationForm";
 import { createPositionConfig } from "./config/addPosition.config";
 import { IAddPositionUI } from "./types";
 import { GeneralInformationForm } from "../forms/generalInformationForm";
-import { VerificationForm } from "../forms/verificationForm";
 
 const AddStaffRolesUI = ({
   currentStep,
