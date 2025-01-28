@@ -1,4 +1,4 @@
-import { UseAssignmentForm } from "@hooks/useAssignmentForm";
+import { UseAssignmentForm } from "@hooks/design/useAssignmentForm";
 import { AssignmentFormUI } from "./interface";
 import { IAssignmentForm } from "./types";
 

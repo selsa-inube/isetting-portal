@@ -3,7 +3,7 @@ import { useMediaQuery } from "@inubekit/hooks";
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
 import { AuthAndData } from "@context/authAndDataProvider";
 
-const useHomeLogic = () => {
+const UseBusinessUnitState = () => {
   const { appData, businessUnitsToTheStaff, setBusinessUnitSigla } =
     useContext(AuthAndData);
 
@@ -41,4 +41,4 @@ const useHomeLogic = () => {
   };
 };
 
-export { useHomeLogic };
+export { UseBusinessUnitState };

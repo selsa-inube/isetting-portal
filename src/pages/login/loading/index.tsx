@@ -1,4 +1,4 @@
-import { useTimeoutNavigation } from "@hooks/useTimeoutNavigation";
+import { useTimeoutNavigation } from "@hooks/pages/useTimeoutNavigation";
 import { LoadingUI } from "./interface";
 
 const Loading = () => {

@@ -1,7 +1,7 @@
 import { useTheme } from "styled-components";
 import { inube } from "@inubekit/foundations";
 
-const useBorderColor = (
+const UseBorderColor = (
   disabled: boolean,
   $readonly: boolean | undefined,
   $status: string | undefined,
@@ -24,4 +24,4 @@ const useBorderColor = (
   return theme?.palette?.neutral?.N40 || inube.palette.neutral.N40;
 };
 
-export { useBorderColor };
+export { UseBorderColor };

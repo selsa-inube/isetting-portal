@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
-
 import { IStaffPortalByBusinessManager } from "@ptypes/staffPortal.types";
-import { staffPortalByBusinessManager } from "src/services/staffPortal/getStaffPortalByBusinessManager";
+import { staffPortalByBusinessManager } from "@services/staffPortal/getStaffPortalByBusinessManager";
 import { encrypt } from "@utils/encrypt";
 
-const usePortalData = (portalCode: string | null) => {
+const UsePortalData = (portalCode: string | null) => {
   const [portalData, setPortalData] = useState<IStaffPortalByBusinessManager>(
     {} as IStaffPortalByBusinessManager
   );
@@ -37,4 +36,4 @@ const usePortalData = (portalCode: string | null) => {
   return { portalData, hasError };
 };
 
-export { usePortalData };
+export { UsePortalData };

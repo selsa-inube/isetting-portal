@@ -1,21 +1,21 @@
-import { usePortalData } from "@hooks/usePortalData";
-import { useBusinessManagers } from "@hooks/useBusinessManagers";
-import { useAuthRedirect } from "@hooks/useAuthRedirect";
+import { UseBusinessManagers } from "../useBusinessManagers";
+import { UseAuthRedirect } from "../useAuthRedirect";
+import { UsePortalData } from "../usePortalData";
 
-const useDataHandler = () => {
+const UsePortalManager = () => {
   const url = new URL(window.location.href);
   const params = new URLSearchParams(url.search);
   const portalCode = params.get("portal");
 
-  const { portalData, hasError: portalError } = usePortalData(portalCode);
+  const { portalData, hasError: portalError } = UsePortalData(portalCode);
   const { businessManagersData, hasError: businessError } =
-    useBusinessManagers(portalData);
+    UseBusinessManagers(portalData);
 
   const {
     hasError: authError,
     isLoading,
     isAuthenticated,
-  } = useAuthRedirect(portalData, businessManagersData, portalCode);
+  } = UseAuthRedirect(portalData, businessManagersData, portalCode);
 
   const hasError = portalError || businessError || authError;
 
@@ -28,4 +28,4 @@ const useDataHandler = () => {
   };
 };
 
-export { useDataHandler };
+export { UsePortalManager };

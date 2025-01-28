@@ -4,7 +4,7 @@ import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
 import { IBusinessUnitstate } from "@design/select/SelectbusinessUnit/types";
 import { AuthAndData } from "@context/authAndDataProvider";
 
-const useBusinessUnit = (businessUnits: IBusinessUnitsPortalStaff[]) => {
+const UseBusinessUnit = (businessUnits: IBusinessUnitsPortalStaff[]) => {
   const { setBusinessUnitSigla } = useContext(AuthAndData);
   const [search, setSearch] = useState("");
   const [selectedBusinessUnit, setSelectedBusinessUnit] = useState<
@@ -67,4 +67,4 @@ const useBusinessUnit = (businessUnits: IBusinessUnitsPortalStaff[]) => {
   };
 };
 
-export { useBusinessUnit };
+export { UseBusinessUnit };

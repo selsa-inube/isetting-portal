@@ -2,7 +2,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect } from "react";
 import { enviroment } from "@config/environment";
 
-const useLogoutAndClearLocalStorage = () => {
+const UseLogoutAndClearLocalStorage = () => {
   const { logout } = useAuth0();
 
   useEffect(() => {
@@ -16,4 +16,4 @@ const useLogoutAndClearLocalStorage = () => {
   return { handleLogout };
 };
 
-export { useLogoutAndClearLocalStorage };
+export { UseLogoutAndClearLocalStorage };

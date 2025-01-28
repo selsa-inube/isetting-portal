@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
 import { AuthAndData } from "@context/authAndDataProvider";
 
-const useCheckCredentials = (businessUnits: IBusinessUnitsPortalStaff[]) => {
+const UseCheckCredentials = (businessUnits: IBusinessUnitsPortalStaff[]) => {
   const navigate = useNavigate();
   const { appData, setBusinessUnitSigla } = useContext(AuthAndData);
 
@@ -42,4 +42,4 @@ const useCheckCredentials = (businessUnits: IBusinessUnitsPortalStaff[]) => {
   return checkCredentials;
 };
 
-export { useCheckCredentials };
+export { UseCheckCredentials };

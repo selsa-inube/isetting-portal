@@ -1,5 +1,5 @@
+import { UseLogout } from "@hooks/pages/useLogout";
 import { Home } from "@pages/home";
-import { UseLogout } from "@hooks/useLogout";
 
 const Logout = () => {
   UseLogout();

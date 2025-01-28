@@ -6,7 +6,7 @@ import {
 } from "@ptypes/staffPortal.types";
 import { initializeDataDB } from "@mocks/utils/inicializeDataDB";
 
-const useAuthRedirect = (
+const UseAuthRedirect = (
   portalPublicCode: IStaffPortalByBusinessManager,
   businessManagersData: IBusinessManagers,
   portalCode: string | null
@@ -46,4 +46,4 @@ const useAuthRedirect = (
   return { hasRedirected, hasError, isLoading, isAuthenticated };
 };
 
-export { useAuthRedirect };
+export { UseAuthRedirect };
