@@ -1,10 +1,7 @@
 import { useState } from "react";
 import { updateItemData } from "@mocks/utils/dataMock.service";
-import {
-  IAssignmentFormEntry,
-  IMessageState,
-} from "@pages/privileges/outlets/types/forms.types";
 import { IIUseInitializerForm } from "@design/forms/InitializerForm/types";
+import { IAssignmentFormEntry, IMessageState } from "@ptypes/positions/forms";
 
 const LoadingTimeout = 1500;
 

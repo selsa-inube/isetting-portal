@@ -9,7 +9,7 @@ import { INav } from "@pages/home/types";
 const appsConfig = [
   {
     id: 1,
-    label: "Privilegios",
+    label: "Cargos",
     description: "Gestionar los Cargos y sus privilegios",
     icon: <MdVpnKey />,
     crumbs: [
@@ -20,13 +20,13 @@ const appsConfig = [
         isActive: false,
       },
       {
-        path: "/privileges",
-        label: "Privilegios",
-        id: "/privileges",
+        path: "/positions",
+        label: "Cargos",
+        id: "/positions",
         isActive: true,
       },
     ],
-    url: "/privileges",
+    url: "/positions",
   },
 ];
 
@@ -37,11 +37,11 @@ const nav: INav = {
       administrate: {
         name: "",
         links: {
-          privileges: {
-            id: "privileges",
-            label: "Privilegios",
+          positions: {
+            id: "positions",
+            label: "Cargos",
             icon: <MdOutlineStart />,
-            path: "/privileges",
+            path: "/positions",
           },
           rules: {
             id: "rules",

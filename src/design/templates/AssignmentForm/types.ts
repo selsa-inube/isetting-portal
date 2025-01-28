@@ -1,6 +1,6 @@
 import { IOption } from "@design/navigation/types";
 import { IOptionItemChecked } from "@design/select/OptionItem";
-import { IOptionInitialiceEntryApp } from "@pages/privileges/outlets/positions/add-position/types";
+import { IOptionInitialiceEntryApp } from "@pages/positions/outlets/addPosition/types";
 
 interface IEntry {
   id: string;

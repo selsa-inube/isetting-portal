@@ -3,11 +3,11 @@ import { ICardData } from "@pages/home/types";
 
 const appCards: ICardData[] = [
   {
-    id: "privileges",
-    label: "Privilegios",
-    description: "Privilegios.",
+    id: "Positions",
+    label: "Cargos",
+    description: "Cargos.",
     icon: <MdOutlineStart />,
-    url: "/privileges",
+    url: "/positions",
   },
   {
     id: "rules",

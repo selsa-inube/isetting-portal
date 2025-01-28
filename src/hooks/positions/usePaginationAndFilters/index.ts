@@ -1,11 +1,10 @@
 import { useMediaQuery } from "@inubekit/hooks";
 import { useLocation } from "react-router-dom";
 import { isMobile580 } from "@config/environment";
-
 import {
   PaginationConfig,
   PrivilegeOptionsConfig,
-} from "@pages/privileges/config/privileges.config";
+} from "@config/positions/tabs";
 import { IBusinessUnitsPortalStaffId } from "@ptypes/staffBusinessManagersId";
 import { UseManageSearchAndPageControl } from "../useManageSearchAndPageControl";
 

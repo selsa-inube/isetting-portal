@@ -1,16 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { FormikProps } from "formik";
-
-import { addStaffRolesSteps } from "@pages/privileges/outlets/positions/add-position/config/addPosition.config";
+import { IRoleForStaff } from "@ptypes/rolesForStaff";
+import { IEntry } from "@design/templates/AssignmentForm/types";
+import { useMediaQuery } from "@inubekit/hooks";
 import {
   IFormAddPosition,
   IGeneralInformationEntry,
-} from "@pages/privileges/outlets/positions/add-position/types";
-import { IRoleForStaff } from "@ptypes/rolesForStaff";
-import { IEntry } from "@design/templates/AssignmentForm/types";
-import { initalValuesPositions } from "@pages/privileges/outlets/positions/add-position/config/initialValues";
-import { useMediaQuery } from "@inubekit/hooks";
+} from "@pages/positions/outlets/addPosition/types";
+import { addStaffRolesSteps } from "@config/positions/addPositions/assisted";
+import { initalValuesPositions } from "@ptypes/positions/initialValues";
 
 const UseAddStaffRoles = (rolesData: IRoleForStaff[] | undefined) => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -110,7 +109,7 @@ const UseAddStaffRoles = (rolesData: IRoleForStaff[] | undefined) => {
   const handleSubmitClick = () => {
     handleToggleModal();
     setShowRequestProcessModal(!showRequestProcessModal);
-    navigate("/privileges/positions");
+    navigate("/positions/positions");
   };
 
   return {

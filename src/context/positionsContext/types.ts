@@ -1,4 +1,4 @@
-import { IPosition } from "@pages/privileges/outlets/positions/add-position/types";
+import { IPosition } from "@pages/positions/outlets/addPosition/types";
 
 interface IPositionsContext {
   positions: IPosition[];

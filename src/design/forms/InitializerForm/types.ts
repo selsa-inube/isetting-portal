@@ -1,9 +1,6 @@
 import { IEntry } from "@design/templates/AssignmentForm/types";
-import { IOptionInitialiceEntryApp } from "@pages/privileges/outlets/positions/add-position/types";
-import {
-  IAssignmentFormEntry,
-  IMessageState,
-} from "@pages/privileges/outlets/types/forms.types";
+import { IOptionInitialiceEntryApp } from "@pages/positions/outlets/addPosition/types";
+import { IAssignmentFormEntry, IMessageState } from "@ptypes/positions/forms";
 
 interface IInitializerFormUI {
   dataOptionsForms: IAssignmentFormEntry[];

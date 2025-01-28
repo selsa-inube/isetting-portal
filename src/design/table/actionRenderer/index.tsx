@@ -1,5 +1,5 @@
 import { Td, Th } from "@inubekit/table";
-import { IAction, IActions } from "@pages/privileges/outlets/positions/types";
+import { IAction, IActions } from "@pages/positions/types";
 
 const ActionRenderer = () => {
   const ShowAction = (actionContent: IAction[], entry: IActions) => {

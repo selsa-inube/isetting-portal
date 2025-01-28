@@ -5,8 +5,8 @@ import { isMobile580 } from "@config/environment";
 import { useLocation } from "react-router-dom";
 import { AuthAndData } from "@context/authAndDataProvider";
 import { ActionRenderer } from "@design/table/actionRenderer";
-import { PrivilegeOptionsConfig } from "@pages/privileges/config/privileges.config";
 import { UseBusinessManagersId } from "@hooks/positions/useBusinessManageresId";
+import { PrivilegeOptionsConfig } from "@config/positions/tabs";
 
 const UseManageSearchAndPageControl = (
   data: IBusinessUnitsPortalStaffId[],
