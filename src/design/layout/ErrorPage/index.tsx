@@ -5,7 +5,7 @@ import { Text } from "@inubekit/text";
 import { Button } from "@inubekit/button";
 import { useMediaQueries, useMediaQuery } from "@inubekit/hooks";
 import { basic } from "@design/tokens";
-import { isMobile970 } from "@config/environment";
+import { enviroment } from "@config/environment";
 import selsaLogo from "@assets/images/selsa.png";
 import errorImage from "@assets/images/timeout.png";
 
@@ -36,7 +36,7 @@ const ErrorPage = (props: IErrorPage) => {
 
   const mediaQueries = ["(min-width: 771px)", "(max-width: 770px)"];
   const matches = useMediaQueries(mediaQueries);
-  const smallScreen = useMediaQuery(isMobile970);
+  const smallScreen = useMediaQuery(enviroment.IS_MOBILE_970);
   return (
     <Stack
       padding={

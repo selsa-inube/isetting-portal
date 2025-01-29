@@ -1,13 +1,9 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
-import {
-  enviroment,
-  fetchTimeoutServices,
-  maxRetriesServices,
-} from "@config/environment";
+import { enviroment } from "@config/environment";
 
 const axiosInstance: AxiosInstance = axios.create({
   baseURL: enviroment.IVITE_IPORTAL_STAFF_QUERY_PROCESS_SERVICE,
-  timeout: fetchTimeoutServices,
+  timeout: enviroment.FETCH_TIMEOUT_SERVICES,
   headers: {
     "Content-type": "application/json; charset=UTF-8",
   },
@@ -27,7 +23,7 @@ const fetchWithRetries = async <T>(
   url: string,
   config: AxiosRequestConfig
 ): Promise<T> => {
-  const maxRetries = maxRetriesServices;
+  const maxRetries = enviroment.MAX_RETRIES_SERVICES;
 
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {

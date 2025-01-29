@@ -5,7 +5,7 @@ import { Stack } from "@inubekit/stack";
 import { Textfield } from "@inubekit/textfield";
 import { Button } from "@inubekit/button";
 import { useMediaQuery } from "@inubekit/hooks";
-import { isMobile970 } from "@config/environment";
+
 import { basic } from "@design/tokens";
 
 import {
@@ -15,6 +15,7 @@ import {
   StyledBusinessUnitsItem,
 } from "./styles";
 import { IBusinessUnitsPortalStaff, IBusinessUnitstate } from "./types";
+import { enviroment } from "@config/environment";
 
 interface IBusinessUnitsUI {
   businessUnits: IBusinessUnitsPortalStaff[];
@@ -53,7 +54,7 @@ const BusinessUnitsUI = ({
   handleBussinessUnitChange,
   handleSubmit,
 }: IBusinessUnitsUI) => {
-  const smallScreen = useMediaQuery(isMobile970);
+  const smallScreen = useMediaQuery(enviroment.IS_MOBILE_970);
   return (
     <StyledBusinessUnits $smallScreen={smallScreen}>
       <Stack

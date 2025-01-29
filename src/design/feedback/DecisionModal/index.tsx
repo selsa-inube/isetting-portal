@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import { MdClear } from "react-icons/md";
-
+import { enviroment } from "@config/environment";
 import { Stack } from "@inubekit/stack";
 import { Text } from "@inubekit/text";
 import { Blanket } from "@inubekit/blanket";
@@ -9,7 +9,6 @@ import { Icon } from "@inubekit/icon";
 import { useMediaQuery } from "@inubekit/hooks";
 import { Button } from "@inubekit/button";
 import { basic } from "@design/tokens";
-import { isMobile580 } from "@config/environment";
 
 import { StyledModal } from "./styles";
 
@@ -35,7 +34,7 @@ const DecisionModal = (props: IDecisionModal) => {
   } = props;
   const [isLoading, setIsLoading] = useState(false);
 
-  const smallScreen = useMediaQuery(isMobile580);
+  const smallScreen = useMediaQuery(enviroment.IS_MOBILE_580);
 
   const handleIsLoading = () => {
     setIsLoading(loading);
