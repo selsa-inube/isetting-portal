@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { FormikProps } from "formik";
 
@@ -13,6 +14,8 @@ import { useMediaQuery } from "@inubekit/hooks";
 
 const UseAddStaffRoles = (rolesData: IRoleForStaff[] | undefined) => {
   const [currentStep, setCurrentStep] = useState(1);
+  const [showRequestProcessModal, setShowRequestProcessModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [selectedToggle, setSelectedToggle] = useState<IEntry[]>();
   const [formValues, setFormValues] = useState<IFormAddPosition>({
     generalInformation: {
@@ -29,6 +32,7 @@ const UseAddStaffRoles = (rolesData: IRoleForStaff[] | undefined) => {
     },
   });
 
+  const navigate = useNavigate();
   const smallScreen = useMediaQuery("(max-width: 990px)");
 
   const [isCurrentFormValid, setIsCurrentFormValid] = useState(false);
@@ -99,6 +103,16 @@ const UseAddStaffRoles = (rolesData: IRoleForStaff[] | undefined) => {
     }
   };
 
+  const handleToggleModal = () => {
+    setShowModal(!showModal);
+  };
+
+  const handleSubmitClick = () => {
+    handleToggleModal();
+    setShowRequestProcessModal(!showRequestProcessModal);
+    navigate("/privileges/positions");
+  };
+
   return {
     currentStep,
     formValues,
@@ -106,9 +120,13 @@ const UseAddStaffRoles = (rolesData: IRoleForStaff[] | undefined) => {
     isCurrentFormValid,
     selectedToggle,
     handleNextStep,
+    handleSubmitClick,
+    showModal,
+    handleToggleModal,
     handlePreviousStep,
     setIsCurrentFormValid,
     setSelectedToggle,
+    setCurrentStep,
     smallScreen,
     roles,
     disabled,
