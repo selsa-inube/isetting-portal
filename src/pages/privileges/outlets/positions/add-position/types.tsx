@@ -49,7 +49,7 @@ interface IOptionRolesInitialiceEntry {
   roleId?: string;
   abbreviatedName?: string;
 }
-interface DataToAssignmentFormEntryProps {
+interface IDataToAssignmentFormEntryProps {
   dataOptions: Record<string, unknown>[];
   idLabel: string;
   valueLabel: string;
@@ -63,8 +63,10 @@ interface IAddPositionUI {
   steps: IAssistedStep[];
   onNextStep: () => void;
   onPreviousStep: () => void;
+  onToggleModal: () => void;
   setIsCurrentFormValid: React.Dispatch<React.SetStateAction<boolean>>;
   selectedToggle: IEntry[];
+  setCurrentStep: (step: number) => void;
   setSelectedToggle: React.Dispatch<React.SetStateAction<IEntry[] | undefined>>;
   handlePreviousStep: () => void;
   handleNextStep: () => void;
@@ -72,9 +74,11 @@ interface IAddPositionUI {
   smallScreen: boolean;
   disabled: boolean;
   roles: IOptionInitialiceEntryApp[];
+  onFinishForm: () => void;
+  showModal: boolean;
 }
 
-const dataToAssignmentFormEntry = (props: DataToAssignmentFormEntryProps) => {
+const dataToAssignmentFormEntry = (props: IDataToAssignmentFormEntryProps) => {
   const { dataOptions, idLabel, valueLabel, isActiveLabel } = props;
   return dataOptions.map((dataOption) => ({
     value: String(dataOption[valueLabel]),
@@ -108,7 +112,7 @@ export type {
   IPosition,
   IStep,
   IOptionRolesInitialiceEntry,
-  DataToAssignmentFormEntryProps,
+  IDataToAssignmentFormEntryProps,
   IGeneralInformationEntry,
   IAddPositionUI,
 };

@@ -4,10 +4,10 @@ import { IBusinessUnit } from "@pages/selectBusinessUnits/outlets/BusinessUnit/t
 import { SelectBusinessUnits } from "@pages/selectBusinessUnits";
 import { BusinessUnits } from "@pages/selectBusinessUnits/outlets/BusinessUnit";
 import { ErrorPage } from "@design/layout/ErrorPage";
-import { ErrorNotBusinessUnit } from "@pages/errors/errorNotBusinessUnit";
 import { AuthAndData } from "@context/authAndDataProvider";
 import { CheckingCredentials } from "@pages/login/checkingCredentials";
 import { Loading } from "@pages/login/loading";
+import { NotBusinessUnit } from "@pages/errors/notBusinessUnit";
 
 interface IBusinessUnits {
   businessUnits: IBusinessUnit[];
@@ -33,7 +33,7 @@ const UnitNavigationHandler = () => {
       <Route path="error/not-available" element={<ErrorPage />} />
       <Route
         path="error/not-related-businessUnits"
-        element={<ErrorNotBusinessUnit />}
+        element={<NotBusinessUnit />}
       />
       <Route path="*" element={<ErrorPage />} />
       <Route path="/*" element={<ErrorPage />} />

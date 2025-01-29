@@ -5,9 +5,12 @@ import { PageTitle } from "@design/label/PageTitle";
 import { InitializerForm } from "@design/forms/InitializerForm";
 import { Button } from "@inubekit/button";
 import { basic } from "@design/tokens";
-import { GeneralInformationForm } from "../components/GeneralInformationForm";
+import { DecisionModal } from "@design/modals/decisionModal";
+import { VerificationForm } from "@design/forms/verificationForm";
+import { FinishModal } from "@config/positions/verificationForm";
 import { createPositionConfig } from "./config/addPosition.config";
 import { IAddPositionUI } from "./types";
+import { GeneralInformationForm } from "../forms/generalInformationForm";
 
 const AddStaffRolesUI = ({
   currentStep,
@@ -18,10 +21,14 @@ const AddStaffRolesUI = ({
   onNextStep,
   handlePreviousStep,
   handleNextStep,
+  onToggleModal,
   onPreviousStep,
   setIsCurrentFormValid,
+  setCurrentStep,
   smallScreen,
   roles,
+  onFinishForm,
+  showModal,
   disabled,
   formValues,
 }: IAddPositionUI) => {
@@ -50,9 +57,7 @@ const AddStaffRolesUI = ({
             totalSteps={steps.length}
             onBackClick={onPreviousStep}
             onNextClick={onNextStep}
-            onSubmitClick={() => {
-              console.log("");
-            }}
+            onSubmitClick={onToggleModal}
             disableNext={disabled}
             controls={{
               goBackText: "Anterior",
@@ -77,6 +82,25 @@ const AddStaffRolesUI = ({
                 setSelectedToggle={setSelectedToggle}
               />
             )}
+
+            {currentStep === 3 && (
+              <VerificationForm
+                updatedData={{
+                  generalInformation: {
+                    isValid: true,
+                    values: initialGeneralInformationValues,
+                  },
+                  rolesStaff: {
+                    isValid: true,
+                    values: formValues.rolesStaff.values,
+                  },
+                }}
+                requestSteps={[]}
+                showModal={false}
+                showRequestProcessModal={false}
+                handleStepChange={(stepId) => setCurrentStep(stepId)}
+              />
+            )}
           </Stack>
           <Stack gap="16px" justifyContent="flex-end">
             <Button
@@ -89,9 +113,12 @@ const AddStaffRolesUI = ({
             >
               Atrás
             </Button>
-
             <Button
-              onClick={handleNextStep}
+              onClick={() =>
+                currentStep === steps.length
+                  ? onToggleModal()
+                  : handleNextStep()
+              }
               spacing="compact"
               disabled={disabled}
             >
@@ -99,6 +126,16 @@ const AddStaffRolesUI = ({
             </Button>
           </Stack>
         </Stack>
+        {showModal && (
+          <DecisionModal
+            portalId="portal"
+            title={FinishModal.title}
+            description={FinishModal.description}
+            actionText={FinishModal.actionText}
+            onCloseModal={onToggleModal}
+            onClick={onFinishForm}
+          />
+        )}
       </Stack>
     </Stack>
   );

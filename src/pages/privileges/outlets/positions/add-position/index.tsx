@@ -14,8 +14,12 @@ const AddPosition = () => {
     selectedToggle,
     handleNextStep,
     handlePreviousStep,
+    handleToggleModal,
     setIsCurrentFormValid,
+    handleSubmitClick,
+    showModal,
     setSelectedToggle,
+    setCurrentStep,
     smallScreen,
     roles,
     disabled,
@@ -23,7 +27,10 @@ const AddPosition = () => {
 
   return (
     <AddStaffRolesUI
+      onFinishForm={handleSubmitClick}
+      showModal={showModal}
       currentStep={currentStep}
+      setCurrentStep={setCurrentStep}
       generalInformationRef={generalInformationRef}
       initialGeneralInformationValues={formValues.generalInformation.values}
       isCurrentFormValid={isCurrentFormValid}
@@ -39,6 +46,7 @@ const AddPosition = () => {
       smallScreen={smallScreen}
       roles={roles}
       disabled={disabled}
+      onToggleModal={handleToggleModal}
     />
   );
 };

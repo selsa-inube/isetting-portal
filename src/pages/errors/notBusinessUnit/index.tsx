@@ -2,7 +2,7 @@ import clientNotFound from "@assets/images/Expired.png";
 import { ErrorPage } from "@design/layout/ErrorPage";
 import { useLogoutAndClearLocalStorage } from "@hooks/useLogoutAndClearLocalStorage";
 
-const ErrorNotBusinessUnit = () => {
+const NotBusinessUnit = () => {
   const { handleLogout } = useLogoutAndClearLocalStorage();
 
   return (
@@ -16,4 +16,4 @@ const ErrorNotBusinessUnit = () => {
   );
 };
 
-export { ErrorNotBusinessUnit };
+export { NotBusinessUnit };
