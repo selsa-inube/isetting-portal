@@ -1,6 +1,7 @@
 import { UseFetchRolesStaff } from "@hooks/positions/useFetchRolesStaff";
 import { IEntry } from "@design/templates/AssignmentForm/types";
 import { UseAddStaffRoles } from "@hooks/positions/useAddStaffRoles";
+import { requestStepsMock } from "@mocks/positions/requestProcess";
 import { addStaffRolesSteps } from "./config/addPosition.config";
 import { AddStaffRolesUI } from "./interface";
 
@@ -15,19 +16,27 @@ const AddPosition = () => {
     handleNextStep,
     handlePreviousStep,
     handleToggleModal,
+    handleToggleModalApplication,
     setIsCurrentFormValid,
     handleSubmitClick,
+    handleSubmitClickApplication,
+    showModalApplicationStatus,
     showModal,
     setSelectedToggle,
+    showRequestProcessModal,
     setCurrentStep,
     smallScreen,
     roles,
     disabled,
-  } = UseAddStaffRoles(rolesStaff);
+  } = UseAddStaffRoles(rolesStaff, requestStepsMock);
 
   return (
     <AddStaffRolesUI
+      showModalApplicationStatus={showModalApplicationStatus}
+      requestSteps={requestStepsMock}
+      showRequestProcessModal={showRequestProcessModal}
       onFinishForm={handleSubmitClick}
+      onFinishFormApplicationStatus={handleSubmitClickApplication}
       showModal={showModal}
       currentStep={currentStep}
       setCurrentStep={setCurrentStep}
@@ -47,6 +56,7 @@ const AddPosition = () => {
       roles={roles}
       disabled={disabled}
       onToggleModal={handleToggleModal}
+      onToggleApplicationStatus={handleToggleModalApplication}
     />
   );
 };

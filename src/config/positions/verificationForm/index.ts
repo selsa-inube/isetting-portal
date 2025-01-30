@@ -4,4 +4,11 @@ const FinishModal = {
   actionText: "Confirmar",
 };
 
-export { FinishModal };
+const ApplicationStatus = {
+  title: "Estado de soliciud",
+  description:
+    "Hemos recibido  tu solicitud el tramite  se procesara con el numero de solicitud xxxxxxxxx",
+  actionText: "Enterado",
+};
+
+export { FinishModal, ApplicationStatus };
