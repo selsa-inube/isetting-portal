@@ -1,12 +1,12 @@
 import { useState, useMemo, useContext } from "react";
 import { IBusinessUnitsPortalStaffId } from "@ptypes/staffBusinessManagersId";
 import { useMediaQuery } from "@inubekit/hooks";
-import { isMobile580 } from "@config/environment";
 import { useLocation } from "react-router-dom";
 import { AuthAndData } from "@context/authAndDataProvider";
 import { ActionRenderer } from "@design/table/actionRenderer";
 import { PrivilegeOptionsConfig } from "@pages/privileges/config/privileges.config";
 import { UseBusinessManagersId } from "@hooks/positions/useBusinessManageresId";
+import { enviroment } from "@config/environment";
 
 const UseManageSearchAndPageControl = (
   data: IBusinessUnitsPortalStaffId[],
@@ -43,7 +43,7 @@ const UseManageSearchAndPageControl = (
     return filteredData.slice(firstEntryInPage, lastEntryInPage);
   }, [filteredData, firstEntryInPage, lastEntryInPage]);
 
-  const smallScreen = useMediaQuery(isMobile580);
+  const smallScreen = useMediaQuery(enviroment.IS_MOBILE_580);
   const location = useLocation();
   const label = PrivilegeOptionsConfig.find(
     (item) => item.url === location.pathname

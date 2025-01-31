@@ -5,8 +5,9 @@ import { Icon } from "@inubekit/icon";
 import { Stack } from "@inubekit/stack";
 import { ITextSize, Text } from "@inubekit/text";
 import { basic } from "@design/tokens";
-import { mediaQueryMobile } from "@config/environment";
+
 import { StyledContainerText } from "./styles";
+import { enviroment } from "@config/environment";
 
 interface ITitle {
   title: string;
@@ -25,7 +26,7 @@ const Title = (props: ITitle) => {
     navigatePage,
   } = props;
 
-  const smallScreen = useMediaQuery(mediaQueryMobile);
+  const smallScreen = useMediaQuery(enviroment.MEDIA_QUERY_MOBILE);
 
   const navigate = useNavigate();
 

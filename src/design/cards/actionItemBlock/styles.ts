@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { inube } from "@inubekit/foundations";
 import { basic } from "@design/tokens";
-import { isMobile580 } from "@config/environment";
+import { enviroment } from "@config/environment";
 
 const StyledActionItemBlock = styled(Link)`
   box-sizing: border-box;
@@ -24,7 +24,7 @@ const StyledActionItemBlock = styled(Link)`
     }
   }
 
-  @media (${isMobile580}) {
+  @media (${enviroment.IS_MOBILE_580}) {
     display: flex;
     width: 100%;
     height: 72px;

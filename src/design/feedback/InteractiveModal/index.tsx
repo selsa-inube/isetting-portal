@@ -9,13 +9,11 @@ import { Table, Thead, Tr, Td, Th, Tbody } from "@inubekit/table";
 import { Blanket } from "@inubekit/blanket";
 import { useMediaQuery } from "@inubekit/hooks";
 import { Icon } from "@inubekit/icon";
-
 import { basic } from "@design/tokens";
-import { isMobile580 } from "@config/environment";
+import { enviroment } from "@config/environment";
 import { IPosition } from "@pages/privileges/outlets/positions/add-position/types";
 import { SubjectSearchCard } from "@design/cards/SubjectSearchCard";
 import { StyledModal, StyledDivider } from "./styles";
-
 import { InteractiveModalProps } from "./types";
 
 const InteractiveModal = ({
@@ -34,7 +32,7 @@ const InteractiveModal = ({
   title,
   type = "fields",
 }: InteractiveModalProps) => {
-  const smallScreen = useMediaQuery(isMobile580);
+  const smallScreen = useMediaQuery(enviroment.IS_MOBILE_580);
   const hasLabels = labels.length > 0;
   const hasActions = actions.length > 0;
   const node = document.getElementById(portalId);

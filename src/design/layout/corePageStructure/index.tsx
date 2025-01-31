@@ -4,7 +4,7 @@ import { Header } from "@inubekit/header";
 import { Nav } from "@inubekit/nav";
 import { Grid } from "@inubekit/grid";
 import { useMediaQuery } from "@inubekit/hooks";
-import { isMobile849 } from "@config/environment";
+import { enviroment } from "@config/environment";
 import { LogoutModal } from "@design/feedback/LogoutModal";
 import { nav, logoutConfig } from "@config/nav";
 import linparLogo from "@assets/images/linpar.png";
@@ -35,7 +35,7 @@ const CorePageStructure = () => {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const userMenuRef = useRef<HTMLDivElement>(null);
 
-  const smallScreen = useMediaQuery(isMobile849);
+  const smallScreen = useMediaQuery(enviroment.IS_MOBILE_849);
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
