@@ -17,6 +17,7 @@ const DecisionModal = (props: IDecisionModal) => {
     onClick,
     onCloseModal,
     setFieldEntered,
+    showCancelButton = true,
   } = props;
 
   const { formik, isMobile, isMobileTextarea, getFieldState, comparisonData } =
@@ -50,6 +51,7 @@ const DecisionModal = (props: IDecisionModal) => {
       isMobile={isMobile}
       isMobileTextarea={isMobileTextarea}
       getFieldState={getFieldState}
+      showCancelButton={showCancelButton}
     />
   );
 };

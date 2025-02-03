@@ -161,6 +161,7 @@ const AddStaffRolesUI = ({
             actionText={ApplicationStatus.actionText}
             onCloseModal={onToggleApplicationStatus}
             onClick={onFinishFormApplicationStatus}
+            showCancelButton={false}
           />
         )}
       </Stack>
