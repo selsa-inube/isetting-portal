@@ -5,8 +5,9 @@ import { Stack } from "@inubekit/stack";
 import { Text } from "@inubekit/text";
 import { Icon } from "@inubekit/icon";
 import { useMediaQuery } from "@inubekit/hooks";
-import { isMobile580 } from "@config/environment";
+
 import { basic } from "@design/tokens";
+import { enviroment } from "@config/environment";
 
 interface IPageTitle {
   title: string;
@@ -16,7 +17,7 @@ interface IPageTitle {
 }
 
 const PageTitle = ({ title, icon, description, navigatePage }: IPageTitle) => {
-  const smallScreen = useMediaQuery(isMobile580);
+  const smallScreen = useMediaQuery(enviroment.IS_MOBILE_580);
   const navigate = useNavigate();
 
   return (

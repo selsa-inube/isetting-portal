@@ -1,10 +1,6 @@
 const IS_PRODUCTION = import.meta.env.PROD;
 const AUTH_REDIRECT_URI = import.meta.env.VITE_AUTH0_REDIRECT_URI;
-const maxRetriesServices = 5;
-const fetchTimeoutServices = 3000;
-const mediaQueryMobile = "(max-width: 770px)";
-const secretKeyPortalId =
-  "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef";
+
 const enviroment = {
   CLIENT_ID: import.meta.env.VITE_AUTH0_CLIENT_ID,
   CLIENT_SECRET: import.meta.env.VITE_AUTH0_CLIENT_SECRET,
@@ -24,21 +20,15 @@ const enviroment = {
   ICLIENT_API_URL_QUERY_USERS_PROCESS: import.meta.env
     .VITE_IPRIVILEGES_LINIX_API_URL_QUERY_DATA_SERVICE,
   AUTH0_DOMAIN: import.meta.env.VITE_AUTH0_DOMAIN,
+  MAX_RETRIES_SERVICES: Number(import.meta.env.VITE_MAX_RETRIES_SERVICES),
+  FETCH_TIMEOUT_SERVICES: Number(import.meta.env.VITE_FETCH_TIMEOUT_SERVICES),
+  MEDIA_QUERY_MOBILE: import.meta.env.VITE_MEDIA_QUERY_MOBILE,
+  SECRET_KEY_PORTAL_ID: import.meta.env.VITE_SECRET_KEY_PORTAL_ID,
+  SECRET_KEY_PORTAL_NAME: import.meta.env.VITE_SECRET_KEY_PORTAL_NAME,
+  IS_MOBILE_580: import.meta.env.VITE_IS_MOBILE_580,
+  IS_MOBILE_743: import.meta.env.VITE_IS_MOBILE_743,
+  IS_MOBILE_849: import.meta.env.VITE_IS_MOBILE_849,
+  IS_MOBILE_970: import.meta.env.VITE_IS_MOBILE_970,
 };
 
-const isMobile580 = "(max-width: 580px)";
-const isMobile743 = "(max-width: 743px)";
-const isMobile849 = "(max-width: 849px)";
-const isMobile970 = "(max-width: 970px)";
-
-export {
-  enviroment,
-  isMobile580,
-  isMobile743,
-  isMobile849,
-  isMobile970,
-  maxRetriesServices,
-  fetchTimeoutServices,
-  secretKeyPortalId,
-  mediaQueryMobile,
-};
+export { enviroment };

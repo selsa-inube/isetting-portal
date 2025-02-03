@@ -1,15 +1,15 @@
 import { useMediaQuery } from "@inubekit/hooks";
 import { useLocation } from "react-router-dom";
-import { isMobile580 } from "@config/environment";
 import {
   PaginationConfig,
   PrivilegeOptionsConfig,
 } from "@config/positions/tabs";
 import { IBusinessUnitsPortalStaffId } from "@ptypes/staffBusinessManagersId";
+import { enviroment } from "@config/environment";
 import { UseManageSearchAndPageControl } from "../useManageSearchAndPageControl";
 
 const UsePaginationAndFilters = (Data: IBusinessUnitsPortalStaffId[]) => {
-  const SmallScreen = useMediaQuery(isMobile580);
+  const SmallScreen = useMediaQuery(enviroment.IS_MOBILE_580);
   const Location = useLocation();
 
   const Label = PrivilegeOptionsConfig.find(
