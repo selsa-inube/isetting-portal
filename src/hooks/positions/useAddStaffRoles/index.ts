@@ -11,10 +11,16 @@ import { IRoleForStaff } from "@ptypes/rolesForStaff";
 import { IEntry } from "@design/templates/AssignmentForm/types";
 import { initalValuesPositions } from "@pages/privileges/outlets/positions/add-position/config/initialValues";
 import { useMediaQuery } from "@inubekit/hooks";
+import { IRequestSteps } from "@design/feedback/requestProcess/types";
 
-const UseAddStaffRoles = (rolesData: IRoleForStaff[] | undefined) => {
+const UseAddStaffRoles = (
+  rolesData: IRoleForStaff[] | undefined,
+  requestSteps: IRequestSteps[]
+) => {
   const [currentStep, setCurrentStep] = useState(1);
   const [showRequestProcessModal, setShowRequestProcessModal] = useState(false);
+  const [showModalApplicationStatus, setShowModalApplicationStatus] =
+    useState(false);
   const [showModal, setShowModal] = useState(false);
   const [selectedToggle, setSelectedToggle] = useState<IEntry[]>();
   const [formValues, setFormValues] = useState<IFormAddPosition>({
@@ -107,11 +113,32 @@ const UseAddStaffRoles = (rolesData: IRoleForStaff[] | undefined) => {
     setShowModal(!showModal);
   };
 
+  const handleToggleModalApplication = () => {
+    setShowModalApplicationStatus(!showModalApplicationStatus);
+  };
+
   const handleSubmitClick = () => {
     handleToggleModal();
     setShowRequestProcessModal(!showRequestProcessModal);
+  };
+
+  const handleSubmitClickApplication = () => {
+    handleToggleModal();
+    setShowModalApplicationStatus(!showRequestProcessModal);
     navigate("/privileges/positions");
   };
+
+  useEffect(() => {
+    const requestLastStep = requestSteps[requestSteps.length - 1];
+    if (showRequestProcessModal && requestLastStep.status === "completed") {
+      const timer = setTimeout(() => {
+        setShowRequestProcessModal(false);
+        setShowModalApplicationStatus(!showModalApplicationStatus);
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [showRequestProcessModal, requestSteps, navigate]);
 
   return {
     currentStep,
@@ -120,13 +147,17 @@ const UseAddStaffRoles = (rolesData: IRoleForStaff[] | undefined) => {
     isCurrentFormValid,
     selectedToggle,
     handleNextStep,
+    showModalApplicationStatus,
     handleSubmitClick,
     showModal,
     handleToggleModal,
+    handleToggleModalApplication,
     handlePreviousStep,
     setIsCurrentFormValid,
     setSelectedToggle,
+    handleSubmitClickApplication,
     setCurrentStep,
+    showRequestProcessModal,
     smallScreen,
     roles,
     disabled,

@@ -16,6 +16,7 @@ interface IDecisionModal {
   icon?: React.JSX.Element;
   isLoading?: boolean;
   justificationOfDecision?: boolean;
+  showCancelButton?: boolean;
   withIcon?: boolean;
 }
 
