@@ -62,7 +62,7 @@ const UseAddStaffRoles = (
     if (rolesData && rolesData.length > 0) {
       const transformedRolesData = rolesData.map((role) => ({
         id: role.roleId,
-        value: role.abbreviatedName,
+        value: role.roleName,
         isActive: role.isActive ?? false,
       }));
 
