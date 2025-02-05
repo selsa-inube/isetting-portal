@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useBusinessUnit } from "@hooks/useBusinessUnits";
+import { UseBusinessUnit } from "@hooks/selectBusinessUnits/useBusinessUnits";
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
 import { BusinessUnitsUI } from "./interface";
 
@@ -16,7 +16,7 @@ const BusinessUnits = ({ businessUnits }: IBusinessUnits) => {
     handleChange,
     handleSubmit,
     filterBusinessUnits,
-  } = useBusinessUnit(businessUnits);
+  } = UseBusinessUnit(businessUnits);
 
   return (
     <BusinessUnitsUI

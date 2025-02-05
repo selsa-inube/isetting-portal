@@ -1,4 +1,4 @@
-import { UseDecisionModal } from "@hooks/useDecisionModal";
+import { UseDecisionModal } from "@hooks/design/useDecisionModal";
 import { ComponentAppearance } from "@ptypes/aparences.types";
 import { DecisionModalUI } from "./interface";
 import { IDecisionModal } from "./types";

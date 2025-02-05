@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { inube } from "@inubekit/foundations";
 import { basic } from "@design/tokens";
-import { useBorderColor } from "@hooks/useInputStyles";
-import { useInputColor } from "@hooks/useSelectCheck";
+import { UseBorderColor } from "@hooks/design/useInputStyles";
+import { UseInputColor } from "@hooks/design/useSelectCheck";
 import { ISelectCheck } from ".";
 
 interface IStyledInputContainer {
@@ -58,7 +58,7 @@ const StyledInputContainer = styled.div<IStyledInputContainer>`
     $readonly && (theme?.palette?.neutral?.N0 || inube.palette.neutral.N0)};
 
   border-color: ${({ disabled, $readonly, $status, $focused }) =>
-    useBorderColor(disabled!, $readonly, $status, $focused)};
+    UseBorderColor(disabled!, $readonly, $status, $focused)};
 
   opacity: ${({ disabled }) => (disabled ? "0.5" : "none")};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
@@ -79,7 +79,7 @@ const StyledInput = styled.input<IStyledInput>`
   letter-spacing: ${({ theme }) =>
     theme?.typography?.body?.large?.font ||
     inube.typography.body.large.tracking};
-  color: ${({ disabled }) => useInputColor(disabled)};
+  color: ${({ disabled }) => UseInputColor(disabled)};
   background-color: ${({ theme }) =>
     theme?.palette?.neutral?.N0 || inube.palette.neutral.N0};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};

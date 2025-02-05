@@ -8,7 +8,7 @@ import { nav, userMenu } from "@config/nav";
 import { Title } from "@design/label/Title";
 import { InteractiveBox } from "@design/cards/interactiveBox";
 import { BusinessUnitChange } from "@design/inputs/BusinessUnitChange";
-import { renderLogo } from "@hooks/renderLogo/logoUtils";
+import { renderLogo } from "@design/layout/renderLogo/logoUtils";
 import { AuthAndData } from "@context/authAndDataProvider";
 import {
   StyledCollapse,

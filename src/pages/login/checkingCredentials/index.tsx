@@ -1,5 +1,5 @@
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
-import { useCheckCredentials } from "@hooks/useCheckCredentials";
+import { UseCheckCredentials } from "@hooks/authentication/useCheckCredentials";
 import { CheckingCredentialsUI } from "./interface";
 
 const CheckingCredentials = ({
@@ -7,7 +7,7 @@ const CheckingCredentials = ({
 }: {
   businessUnits: IBusinessUnitsPortalStaff[];
 }) => {
-  useCheckCredentials(businessUnits);
+  UseCheckCredentials(businessUnits);
 
   return <CheckingCredentialsUI />;
 };

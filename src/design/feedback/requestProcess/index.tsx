@@ -4,8 +4,8 @@ import { Stack } from "@inubekit/stack";
 import { Text } from "@inubekit/text";
 import { basic } from "@design/tokens";
 import { ComponentAppearance } from "@ptypes/aparences.types";
-import { UseCountVerifiedRequests } from "@hooks/requestProcess/useCountVerifiedRequests";
-import { UseVerifiedErrorRequest } from "@hooks/requestProcess/useVerifiedErrorRequest";
+import { UseCountVerifiedRequests } from "@hooks/design/useRequestProcess/useCountVerifiedRequests";
+import { UseVerifiedErrorRequest } from "@hooks/design/useRequestProcess/useVerifiedErrorRequest";
 import { StyledBar, StyledContainerBar } from "./styles";
 import { IRequestSteps } from "./types";
 

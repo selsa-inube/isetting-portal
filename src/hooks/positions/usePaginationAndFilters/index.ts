@@ -1,10 +1,9 @@
 import { useMediaQuery } from "@inubekit/hooks";
 import { useLocation } from "react-router-dom";
-
 import {
   PaginationConfig,
   PrivilegeOptionsConfig,
-} from "@pages/privileges/config/privileges.config";
+} from "@config/positions/tabs";
 import { IBusinessUnitsPortalStaffId } from "@ptypes/staffBusinessManagersId";
 import { enviroment } from "@config/environment";
 import { UseManageSearchAndPageControl } from "../useManageSearchAndPageControl";

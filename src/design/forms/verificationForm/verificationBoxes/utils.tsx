@@ -5,7 +5,7 @@ import { basic } from "@design/tokens";
 import {
   IGeneralInformationEntry,
   IOptionInitialiceEntry,
-} from "@pages/privileges/outlets/positions/add-position/types";
+} from "@pages/positions/outlets/addPosition/types";
 
 const renderPersonalInfoVerification = (
   values: IGeneralInformationEntry,

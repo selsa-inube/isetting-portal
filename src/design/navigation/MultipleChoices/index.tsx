@@ -3,7 +3,7 @@ import { Text } from "@inubekit/text";
 import { basic } from "@design/tokens";
 import { SelectCheck } from "@design/select";
 import { IOptionItemChecked } from "@design/select/OptionItem";
-import { UseMultipleChoices } from "@hooks/useMultipleChoices";
+import { UseMultipleChoices } from "@hooks/design/useMultipleChoices";
 import { StyledContainer, StyledSelection } from "./styles";
 
 interface IIMultipleChoices {

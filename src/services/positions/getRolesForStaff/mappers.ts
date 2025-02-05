@@ -3,7 +3,7 @@ import { IRoleForStaff } from "@ptypes/rolesForStaff";
 const mapRolesStaffApiToEntity = (rolesData: IRoleForStaff): IRoleForStaff => {
   const rolesMapped: IRoleForStaff = {
     roleId: String(rolesData.roleId),
-    abbreviatedName: String(rolesData.abbreviatedName),
+    roleName: String(rolesData.roleName),
     isActive: false,
     application: Object(rolesData.application),
   };

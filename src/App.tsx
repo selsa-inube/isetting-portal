@@ -3,12 +3,12 @@ import { RouterProvider } from "react-router-dom";
 import { ErrorPage } from "@design/layout/ErrorPage";
 import { AuthAndDataProvider } from "@context/authAndDataProvider";
 import { router } from "@routes/mainNavigationConfig";
-import { useDataHandler } from "@hooks/useDataHandler";
+import { UsePortalManager } from "@hooks/staffPortal/usePortalManage";
 import { GlobalStyles } from "./styles/global";
 import { ThemeProviderWrapper } from "./context/ThemeContext";
 
 const App = () => {
-  const { isLoading, hasError, isAuthenticated } = useDataHandler();
+  const { isLoading, hasError, isAuthenticated } = UsePortalManager();
 
   if (isLoading) {
     return null;

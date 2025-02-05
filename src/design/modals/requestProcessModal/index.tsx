@@ -6,7 +6,7 @@ import { basic } from "@design/tokens";
 import { IRequestSteps } from "@design/feedback/requestProcess/types";
 import { RequestProcess } from "@design/feedback/requestProcess";
 import { ComponentAppearance } from "@ptypes/aparences.types";
-import { UseRequestProcessModal } from "@hooks/useRequestProcessModal";
+import { UseRequestProcessModal } from "@hooks/design/useRequestProcessModal";
 import { StyledModal } from "./styles";
 
 interface IRequestProcessModal {

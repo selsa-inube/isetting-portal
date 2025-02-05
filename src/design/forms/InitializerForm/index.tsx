@@ -1,4 +1,4 @@
-import { UseInitializerForm } from "@hooks/useInitializerForm";
+import { UseInitializerForm } from "@hooks/design/useInitializerForm";
 import { InitializerFormUI } from "./interface";
 import { IIUseInitializerForm } from "./types";
 

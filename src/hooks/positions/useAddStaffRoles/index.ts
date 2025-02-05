@@ -1,17 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { FormikProps } from "formik";
-
-import { addStaffRolesSteps } from "@pages/privileges/outlets/positions/add-position/config/addPosition.config";
+import { IRoleForStaff } from "@ptypes/rolesForStaff";
+import { IEntry } from "@design/templates/AssignmentForm/types";
+import { useMediaQuery } from "@inubekit/hooks";
 import {
   IFormAddPosition,
   IGeneralInformationEntry,
-} from "@pages/privileges/outlets/positions/add-position/types";
-import { IRoleForStaff } from "@ptypes/rolesForStaff";
-import { IEntry } from "@design/templates/AssignmentForm/types";
-import { initalValuesPositions } from "@pages/privileges/outlets/positions/add-position/config/initialValues";
-import { useMediaQuery } from "@inubekit/hooks";
+} from "@pages/positions/outlets/addPosition/types";
+import { addStaffRolesSteps } from "@config/positions/addPositions/assisted";
+
 import { IRequestSteps } from "@design/feedback/requestProcess/types";
+import { initalValuesPositions } from "@ptypes/positions/initialValues";
 
 const UseAddStaffRoles = (
   rolesData: IRoleForStaff[] | undefined,
@@ -62,7 +62,7 @@ const UseAddStaffRoles = (
     if (rolesData && rolesData.length > 0) {
       const transformedRolesData = rolesData.map((role) => ({
         id: role.roleId,
-        value: role.abbreviatedName,
+        value: role.roleName,
         isActive: role.isActive ?? false,
       }));
 
@@ -125,7 +125,7 @@ const UseAddStaffRoles = (
   const handleSubmitClickApplication = () => {
     handleToggleModal();
     setShowModalApplicationStatus(!showRequestProcessModal);
-    navigate("/privileges/positions");
+    navigate("/positions/positions");
   };
 
   useEffect(() => {

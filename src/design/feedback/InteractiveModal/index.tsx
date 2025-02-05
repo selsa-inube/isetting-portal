@@ -11,7 +11,7 @@ import { useMediaQuery } from "@inubekit/hooks";
 import { Icon } from "@inubekit/icon";
 import { basic } from "@design/tokens";
 import { enviroment } from "@config/environment";
-import { IPosition } from "@pages/privileges/outlets/positions/add-position/types";
+import { IPosition } from "@pages/positions/outlets/addPosition/types";
 import { SubjectSearchCard } from "@design/cards/SubjectSearchCard";
 import { StyledModal, StyledDivider } from "./styles";
 import { InteractiveModalProps } from "./types";

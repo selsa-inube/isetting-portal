@@ -1,9 +1,9 @@
 import clientNotFound from "@assets/images/Expired.png";
 import { ErrorPage } from "@design/layout/ErrorPage";
-import { useLogoutAndClearLocalStorage } from "@hooks/useLogoutAndClearLocalStorage";
+import { UseLogoutAndClearLocalStorage } from "@hooks/authentication/useLogoutAndClearLocalStorage";
 
 const NotBusinessUnit = () => {
-  const { handleLogout } = useLogoutAndClearLocalStorage();
+  const { handleLogout } = UseLogoutAndClearLocalStorage();
 
   return (
     <ErrorPage
