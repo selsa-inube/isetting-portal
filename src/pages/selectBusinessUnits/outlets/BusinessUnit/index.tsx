@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { UseBusinessUnit } from "@hooks/dataHandlers/useBusinessUnits";
+import { UseBusinessUnit } from "@hooks/selectBusinessUnits/useBusinessUnits";
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
 import { BusinessUnitsUI } from "./interface";
 

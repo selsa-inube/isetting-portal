@@ -3,8 +3,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
 import { IAppData } from "@context/authAndDataProvider/types";
 import { decrypt } from "@utils/decrypt";
-import { UsePortalData } from "@hooks/dataHandlers/usePortalData";
-import { UseBusinessManagers } from "@hooks/dataHandlers/useBusinessManagers";
+import { UsePortalData } from "@hooks/staffPortal/usePortalData";
+import { UseBusinessManagers } from "@hooks/staffPortal/useBusinessManagers";
 
 const useValidatingLoginInformation = () => {
   const { user } = useAuth0();

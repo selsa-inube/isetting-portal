@@ -1,5 +1,5 @@
+import { UseAuthRedirect } from "@hooks/authentication/useAuthRedirect";
 import { UseBusinessManagers } from "../useBusinessManagers";
-import { UseAuthRedirect } from "../useAuthRedirect";
 import { UsePortalData } from "../usePortalData";
 
 const UsePortalManager = () => {

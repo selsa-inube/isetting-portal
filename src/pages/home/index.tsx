@@ -1,5 +1,5 @@
 import { appCards } from "@config/appCards";
-import { UseUtilities } from "@hooks/pages/useUtilities";
+import { UseHome } from "@hooks/useHome";
 import { HomeUI } from "./interface";
 
 const Home = () => {
@@ -14,7 +14,7 @@ const Home = () => {
     IsTablet,
     SmallScreen,
     Username,
-  } = UseUtilities();
+  } = UseHome();
 
   return (
     <HomeUI
