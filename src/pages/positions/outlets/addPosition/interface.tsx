@@ -6,10 +6,14 @@ import { InitializerForm } from "@design/forms/InitializerForm";
 import { Button } from "@inubekit/button";
 import { basic } from "@design/tokens";
 import { DecisionModal } from "@design/modals/decisionModal";
-import { FinishModal } from "@config/positions/verificationForm";
 import { GeneralInformationForm } from "@pages/positions/forms/generalInformationForm";
 import { VerificationForm } from "@design/forms/verificationForm";
 import { createPositionConfig } from "@config/positions/addPositions/assisted";
+import { RequestProcessModal } from "@design/modals/requestProcessModal";
+import {
+  ApplicationStatus,
+  FinishModal,
+} from "@config/positions/verificationForm";
 import { IAddPositionUI } from "./types";
 
 const AddStaffRolesUI = ({
@@ -22,13 +26,18 @@ const AddStaffRolesUI = ({
   handlePreviousStep,
   handleNextStep,
   onToggleModal,
+  onToggleApplicationStatus,
   onPreviousStep,
   setIsCurrentFormValid,
   setCurrentStep,
   smallScreen,
   roles,
   onFinishForm,
+  onFinishFormApplicationStatus,
   showModal,
+  showModalApplicationStatus,
+  requestSteps,
+  showRequestProcessModal,
   disabled,
   formValues,
 }: IAddPositionUI) => {
@@ -134,6 +143,25 @@ const AddStaffRolesUI = ({
             actionText={FinishModal.actionText}
             onCloseModal={onToggleModal}
             onClick={onFinishForm}
+          />
+        )}
+        {showRequestProcessModal && (
+          <RequestProcessModal
+            title="Procesando solicitud"
+            description="Hemos recibido tu solicitud y se encuentra en proceso.Por favor, espera mientras la gestionamos."
+            portalId="portal"
+            requestSteps={requestSteps}
+          />
+        )}
+        {showModalApplicationStatus && (
+          <DecisionModal
+            portalId="portal"
+            title={ApplicationStatus.title}
+            description={ApplicationStatus.description}
+            actionText={ApplicationStatus.actionText}
+            onCloseModal={onToggleApplicationStatus}
+            onClick={onFinishFormApplicationStatus}
+            showCancelButton={false}
           />
         )}
       </Stack>

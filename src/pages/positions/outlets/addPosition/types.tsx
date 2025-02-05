@@ -3,6 +3,7 @@ import { FormikProps } from "formik";
 import { IAssistedStep } from "@inubekit/assisted";
 import { IEntry } from "@design/templates/AssignmentForm/types";
 import { IAssignmentFormEntry } from "@ptypes/positions/forms";
+import { IRequestSteps } from "@design/feedback/requestProcess/types";
 
 const titleButtonTextAssited = {
   before: "Atrás",
@@ -64,6 +65,7 @@ interface IAddPositionUI {
   onNextStep: () => void;
   onPreviousStep: () => void;
   onToggleModal: () => void;
+  onToggleApplicationStatus: () => void;
   setIsCurrentFormValid: React.Dispatch<React.SetStateAction<boolean>>;
   selectedToggle: IEntry[];
   setCurrentStep: (step: number) => void;
@@ -75,7 +77,11 @@ interface IAddPositionUI {
   disabled: boolean;
   roles: IOptionInitialiceEntryApp[];
   onFinishForm: () => void;
+  onFinishFormApplicationStatus: () => void;
   showModal: boolean;
+  showModalApplicationStatus: boolean;
+  showRequestProcessModal: boolean;
+  requestSteps: IRequestSteps[];
 }
 
 const dataToAssignmentFormEntry = (props: IDataToAssignmentFormEntryProps) => {

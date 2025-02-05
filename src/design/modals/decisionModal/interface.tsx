@@ -30,6 +30,7 @@ interface IDecisionModalUI {
     formik: FormikValues,
     fieldName: string
   ) => "invalid" | "pending" | undefined;
+  showCancelButton?: boolean;
 }
 
 const DecisionModalUI = (props: IDecisionModalUI) => {
@@ -50,6 +51,7 @@ const DecisionModalUI = (props: IDecisionModalUI) => {
     isMobile,
     isMobileTextarea,
     getFieldState,
+    showCancelButton = true,
   } = props;
 
   const node = document.getElementById(portalId);
@@ -109,14 +111,16 @@ const DecisionModalUI = (props: IDecisionModalUI) => {
         )}
 
         <Stack gap="s250" justifyContent="flex-end">
-          <Button
-            spacing="wide"
-            appearance="gray"
-            variant="filled"
-            onClick={onCloseModal}
-          >
-            Cancelar
-          </Button>
+          {showCancelButton && (
+            <Button
+              spacing="wide"
+              appearance="gray"
+              variant="filled"
+              onClick={onCloseModal}
+            >
+              Cancelar
+            </Button>
+          )}
           <Button
             spacing="wide"
             appearance={appearance}
