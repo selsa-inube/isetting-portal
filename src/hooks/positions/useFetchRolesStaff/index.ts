@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { IRoleForStaff } from "@ptypes/rolesForStaff";
-import { getRolesStaff } from "@services/positions/getRolesForStaff";
+import { getRolesForStaff } from "@services/positions/getRolesForStaff";
 
 const UseFetchRolesStaff = () => {
   const [rolesStaff, setRolesStaff] = useState<IRoleForStaff[]>();
@@ -9,7 +9,7 @@ const UseFetchRolesStaff = () => {
   useEffect(() => {
     const fetchRolesStaff = async () => {
       try {
-        const data = await getRolesStaff();
+        const data = await getRolesForStaff();
         setRolesStaff(data);
       } catch (error) {
         console.info(error);

@@ -4,7 +4,7 @@ import {
   IBusinessManagers,
   IStaffPortalByBusinessManager,
 } from "@ptypes/staffPortal.types";
-import { businessManagers } from "src/services/staffPortal/getBusinessManager";
+import { getBusinessManagers } from "@services/staffPortal/getBusinessManager";
 
 const UseBusinessManagers = (
   portalPublicCode: IStaffPortalByBusinessManager
@@ -20,7 +20,7 @@ const UseBusinessManagers = (
         return;
       }
       try {
-        const newData = await businessManagers(
+        const newData = await getBusinessManagers(
           portalPublicCode.businessManagerId
         );
         setBusinessManagersData(newData);

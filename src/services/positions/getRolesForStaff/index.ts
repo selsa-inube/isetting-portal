@@ -1,10 +1,21 @@
+import { AxiosRequestConfig } from "axios";
 import { IRoleForStaff } from "@ptypes/rolesForStaff";
-import { getRolesForStaff } from "@api/isaas/getRolesForStaff";
+import { getWithRetries } from "@services/core/getWithRetries";
+import { axiosInstance } from "@api/isaas";
 import { mapRolesStaffApiToEntities } from "./mappers";
 
-const getRolesStaff = async (): Promise<IRoleForStaff[]> => {
-  const data: IRoleForStaff[] = await getRolesForStaff();
+const getRolesForStaff = async (): Promise<IRoleForStaff[]> => {
+  const config: AxiosRequestConfig = {
+    headers: {
+      "X-Action": "SearchAllRolesForStaff",
+    },
+  };
+  const data: IRoleForStaff[] = await getWithRetries<IRoleForStaff[]>(
+    axiosInstance,
+    `/roles-for-staff`,
+    config
+  );
   return mapRolesStaffApiToEntities(data);
 };
 
-export { getRolesStaff };
+export { getRolesForStaff };
