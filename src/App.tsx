@@ -6,6 +6,7 @@ import { router } from "@routes/mainNavigationConfig";
 import { UsePortalManager } from "@hooks/staffPortal/usePortalManage";
 import { GlobalStyles } from "./styles/global";
 import { ThemeProviderWrapper } from "./context/ThemeContext";
+import { FlagProvider } from "@inubekit/flag";
 
 const App = () => {
   const { isLoading, hasError, isAuthenticated } = UsePortalManager();
@@ -26,9 +27,11 @@ const App = () => {
     <>
       <GlobalStyles />
       <ThemeProviderWrapper>
-        <AuthAndDataProvider>
-          <RouterProvider router={router} />
-        </AuthAndDataProvider>
+        <FlagProvider>
+          <AuthAndDataProvider>
+            <RouterProvider router={router} />
+          </AuthAndDataProvider>
+        </FlagProvider>
       </ThemeProviderWrapper>
     </>
   );

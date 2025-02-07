@@ -4,6 +4,11 @@ import { UseAddStaffRoles } from "@hooks/positions/useAddStaffRoles";
 import { addStaffRolesSteps } from "@config/positions/addPositions/assisted";
 import { requestStepsMock } from "@mocks/positions/requestProcess";
 import { AddStaffRolesUI } from "./interface";
+import { ISaveDataResponse } from "@ptypes/saveData/ISaveDataResponse";
+import { useSaveMoneyDestination } from "@hooks/positions/useSaveMoneyDestination";
+import { ISaveDataRequest } from "@ptypes/saveData/ISaveDataRequest";
+import { useContext } from "react";
+import { AuthAndData } from "@context/authAndDataProvider";
 
 const AddPosition = () => {
   const { rolesStaff } = UseFetchRolesStaff();
@@ -25,13 +30,28 @@ const AddPosition = () => {
     setSelectedToggle,
     showRequestProcessModal,
     setCurrentStep,
+    saveData,
     smallScreen,
     roles,
     disabled,
+    setShowRequestProcessModal,
   } = UseAddStaffRoles(rolesStaff, requestStepsMock);
+  const { appData } = useContext(AuthAndData);
+  const {
+    saveMoneyDestination,
 
+    loading,
+    handleCloseRequestStatus,
+  } = useSaveMoneyDestination(
+    appData.businessUnit.publicCode,
+    appData.user.userAccount,
+    showRequestProcessModal,
+    saveData as ISaveDataRequest,
+    setShowRequestProcessModal
+  );
   return (
     <AddStaffRolesUI
+      saveMoneyDestination={saveMoneyDestination as ISaveDataResponse}
       showModalApplicationStatus={showModalApplicationStatus}
       requestSteps={requestStepsMock}
       showRequestProcessModal={showRequestProcessModal}
@@ -57,6 +77,8 @@ const AddPosition = () => {
       disabled={disabled}
       onToggleModal={handleToggleModal}
       onToggleApplicationStatus={handleToggleModalApplication}
+      loading={loading}
+      onCloseRequestStatus={handleCloseRequestStatus}
     />
   );
 };

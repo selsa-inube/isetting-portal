@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { FormikProps } from "formik";
 import { IRoleForStaff } from "@ptypes/rolesForStaff";
 import { IEntry } from "@design/templates/AssignmentForm/types";
@@ -12,12 +12,16 @@ import { addStaffRolesSteps } from "@config/positions/addPositions/assisted";
 
 import { IRequestSteps } from "@design/feedback/requestProcess/types";
 import { initalValuesPositions } from "@ptypes/positions/initialValues";
+import { ISaveDataRequest } from "@ptypes/saveData/ISaveDataRequest";
+import { AuthAndData } from "@context/authAndDataProvider";
 
 const UseAddStaffRoles = (
   rolesData: IRoleForStaff[] | undefined,
   requestSteps: IRequestSteps[]
 ) => {
+  const { appData } = useContext(AuthAndData);
   const [currentStep, setCurrentStep] = useState(1);
+  const [saveData, setSaveData] = useState<ISaveDataRequest>();
   const [showRequestProcessModal, setShowRequestProcessModal] = useState(false);
   const [showModalApplicationStatus, setShowModalApplicationStatus] =
     useState(false);
@@ -120,6 +124,21 @@ const UseAddStaffRoles = (
   const handleSubmitClick = () => {
     handleToggleModal();
     setShowRequestProcessModal(!showRequestProcessModal);
+    setSaveData({
+      applicationName: "ifac",
+      businessManagerCode: appData.businessManager.publicCode,
+      businessUnitCode: appData.businessUnit.publicCode,
+      description: "solicitud de creación de un destino de dinero",
+      entityName: "MoneyDestination",
+      requestDate: "",
+      useCaseName: "AddMoneyDestination",
+      configurationRequestData: {
+        abbreviatedName: "",
+        descriptionUse: "",
+        iconReference: "",
+        rules: "",
+      },
+    });
   };
 
   const handleSubmitClickApplication = () => {
@@ -158,9 +177,11 @@ const UseAddStaffRoles = (
     handleSubmitClickApplication,
     setCurrentStep,
     showRequestProcessModal,
+    saveData,
     smallScreen,
     roles,
     disabled,
+    setShowRequestProcessModal,
   };
 };
 

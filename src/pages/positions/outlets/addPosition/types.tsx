@@ -4,6 +4,7 @@ import { IAssistedStep } from "@inubekit/assisted";
 import { IEntry } from "@design/templates/AssignmentForm/types";
 import { IAssignmentFormEntry } from "@ptypes/positions/forms";
 import { IRequestSteps } from "@design/feedback/requestProcess/types";
+import { ISaveDataResponse } from "@ptypes/saveData/ISaveDataResponse";
 
 const titleButtonTextAssited = {
   before: "Atrás",
@@ -80,7 +81,10 @@ interface IAddPositionUI {
   onFinishFormApplicationStatus: () => void;
   showModal: boolean;
   showModalApplicationStatus: boolean;
+  saveMoneyDestination: ISaveDataResponse;
   showRequestProcessModal: boolean;
+  loading: boolean;
+  onCloseRequestStatus: () => void;
   requestSteps: IRequestSteps[];
 }
 

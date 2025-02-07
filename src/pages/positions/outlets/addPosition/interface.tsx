@@ -10,11 +10,11 @@ import { GeneralInformationForm } from "@pages/positions/forms/generalInformatio
 import { VerificationForm } from "@design/forms/verificationForm";
 import { createPositionConfig } from "@config/positions/addPositions/assisted";
 import { RequestProcessModal } from "@design/modals/requestProcessModal";
-import {
-  ApplicationStatus,
-  FinishModal,
-} from "@config/positions/verificationForm";
+import { FinishModal } from "@config/positions/verificationForm";
 import { IAddPositionUI } from "./types";
+import { requestProcessMessage } from "@config/positionsTabs/requestProcessMessage";
+import { requestStatusMessage } from "@config/positionsTabs/generics/requestStatusMessage";
+import { ComponentAppearance } from "@ptypes/aparences.types";
 
 const AddStaffRolesUI = ({
   currentStep,
@@ -26,18 +26,20 @@ const AddStaffRolesUI = ({
   handlePreviousStep,
   handleNextStep,
   onToggleModal,
-  onToggleApplicationStatus,
   onPreviousStep,
   setIsCurrentFormValid,
   setCurrentStep,
   smallScreen,
   roles,
   onFinishForm,
-  onFinishFormApplicationStatus,
+
   showModal,
-  showModalApplicationStatus,
+
+  saveMoneyDestination,
   requestSteps,
   showRequestProcessModal,
+  loading,
+  onCloseRequestStatus,
   disabled,
   formValues,
 }: IAddPositionUI) => {
@@ -147,13 +149,17 @@ const AddStaffRolesUI = ({
         )}
         {showRequestProcessModal && (
           <RequestProcessModal
-            title="Procesando solicitud"
-            description="Hemos recibido tu solicitud y se encuentra en proceso.Por favor, espera mientras la gestionamos."
             portalId="portal"
-            requestSteps={requestSteps}
+            saveData={saveMoneyDestination}
+            descriptionRequestProcess={requestProcessMessage}
+            descriptionRequestStatus={requestStatusMessage}
+            loading={loading}
+            requestProcessSteps={requestSteps}
+            appearance={ComponentAppearance.SUCCESS}
+            onCloseRequestStatus={onCloseRequestStatus}
           />
         )}
-        {showModalApplicationStatus && (
+        {/* {showModalApplicationStatus && (
           <DecisionModal
             portalId="portal"
             title={ApplicationStatus.title}
@@ -163,7 +169,7 @@ const AddStaffRolesUI = ({
             onClick={onFinishFormApplicationStatus}
             showCancelButton={false}
           />
-        )}
+        )} */}
       </Stack>
     </Stack>
   );

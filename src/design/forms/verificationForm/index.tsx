@@ -4,7 +4,7 @@ import { Button } from "@inubekit/button";
 import { Stack } from "@inubekit/stack";
 import { basic } from "@design/tokens";
 import { Accordion } from "@design/data/acordion";
-import { RequestProcessModal } from "@design/modals/requestProcessModal";
+
 import { IRequestSteps } from "@design/feedback/requestProcess/types";
 import { AddDestinationStepsConfig } from "@config/positions/assisted";
 import { ComponentAppearance } from "@ptypes/aparences.types";
@@ -23,8 +23,6 @@ interface IVerificationForm {
 }
 
 const VerificationForm = ({
-  requestSteps,
-  showRequestProcessModal,
   updatedData,
   handleStepChange,
 }: IVerificationForm) => {
@@ -59,14 +57,14 @@ const VerificationForm = ({
           </Accordion>
         ))}
 
-      {showRequestProcessModal && (
+      {/* {showRequestProcessModal && (
         <RequestProcessModal
-          title="Procesando solicitud"
+         
           description="Hemos recibido tu solicitud y se encuentra en proceso.Por favor, espera mientras la gestionamos."
           portalId="portal"
           requestSteps={requestSteps}
         />
-      )}
+      )} */}
     </Stack>
   );
 };
