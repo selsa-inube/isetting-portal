@@ -29,6 +29,7 @@ const useSaveMoneyDestination = (
   const { addFlag } = useFlag();
   const [requestSteps, setRequestSteps] =
     useState<IRequestSteps[]>(requestStepsInitial);
+  const [error, setError] = useState(false);
 
   const navigate = useNavigate();
   const navigatePage = "/positions/positions";
@@ -64,6 +65,7 @@ const useSaveMoneyDestination = (
       setStatusRequest(data.requestStatus);
     } catch (error) {
       console.info(error);
+      setError(true);
       addFlag({
         title: flowAutomaticMessages.errorQueryingData.title,
         description: flowAutomaticMessages.errorQueryingData.description,
@@ -161,7 +163,7 @@ const useSaveMoneyDestination = (
     setSaveMoneyDestination({
       settingRequestId: "c574d0ff-d0ff-4e2c-80f9-923c010ab227",
       requestNumber: "ddd",
-      requestStatus: "PendingApproval",
+      requestStatus: "ProcessingRequest",
     });
     // fetchSaveMoneyDestinationData();
   }, [sendData]);
@@ -174,7 +176,7 @@ const useSaveMoneyDestination = (
 
       const timer = setInterval(() => {
         const checkRequestStatus = async () => {
-          if (isStatusCloseModal() || isStatusRequestFinished()) {
+          if (isStatusCloseModal() || isStatusRequestFinished() || error) {
             changeRequestSteps();
             clearInterval(timer);
             setTimeout(() => {

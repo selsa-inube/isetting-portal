@@ -2,7 +2,6 @@ import { UseFetchRolesStaff } from "@hooks/positions/useFetchRolesStaff";
 import { IEntry } from "@design/templates/AssignmentForm/types";
 import { UseAddStaffRoles } from "@hooks/positions/useAddStaffRoles";
 import { addStaffRolesSteps } from "@config/positions/addPositions/assisted";
-import { requestStepsMock } from "@mocks/positions/requestProcess";
 import { AddStaffRolesUI } from "./interface";
 import { ISaveDataResponse } from "@ptypes/saveData/ISaveDataResponse";
 import { useSaveMoneyDestination } from "@hooks/positions/useSaveMoneyDestination";
@@ -35,11 +34,13 @@ const AddPosition = () => {
     roles,
     disabled,
     setShowRequestProcessModal,
-  } = UseAddStaffRoles(rolesStaff, requestStepsMock);
+  } = UseAddStaffRoles(rolesStaff);
+
   const { appData } = useContext(AuthAndData);
+
   const {
     saveMoneyDestination,
-
+    requestSteps,
     loading,
     handleCloseRequestStatus,
   } = useSaveMoneyDestination(
@@ -53,7 +54,7 @@ const AddPosition = () => {
     <AddStaffRolesUI
       saveMoneyDestination={saveMoneyDestination as ISaveDataResponse}
       showModalApplicationStatus={showModalApplicationStatus}
-      requestSteps={requestStepsMock}
+      requestSteps={requestSteps}
       showRequestProcessModal={showRequestProcessModal}
       onFinishForm={handleSubmitClick}
       onFinishFormApplicationStatus={handleSubmitClickApplication}
