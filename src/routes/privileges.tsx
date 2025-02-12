@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import { PositionsProvider } from "@context/positionsContext";
 import { ErrorPage } from "@design/layout/ErrorPage";
-import { PositionsOptions } from "@pages/positions/outlets/options";
+import { AddPosition } from "@pages/positions/tabs/positionsTabs/outlets/addPosition";
+import { PositionsOptions } from "@pages/positions/tabs/positionsTabs/outlets/options";
 import { Positions } from "@pages/positions";
-import { AddPosition } from "@pages/positions/outlets/addPosition";
 
 const PositionsRoutes = () => {
   return (

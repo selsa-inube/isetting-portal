@@ -1,9 +1,8 @@
 import { AxiosRequestConfig } from "axios";
 import { IRequestsInProgress } from "@ptypes/positions/requestsInProgress/IRequestsInProgress";
-import { mapRequestsInProgressToEntity } from "./mappers";
 import { getWithRetries } from "@services/core/getWithRetries";
 import { axiosInstance } from "@api/isettingProcess";
-
+import { mapRequestsInProgressToEntity } from "./mappers";
 const getRequestInProgressById = async (
   bussinesUnits: string,
   settingRequestId: string
@@ -16,8 +15,8 @@ const getRequestInProgressById = async (
   };
 
   const queryParams = new URLSearchParams({
-    applicationName: "ifac",
-    entityName: "MoneyDestination",
+    applicationName: "istaff",
+    entityName: "Mission",
   });
   const data = await getWithRetries<IRequestsInProgress>(
     axiosInstance,

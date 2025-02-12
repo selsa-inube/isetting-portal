@@ -78,6 +78,7 @@ const RequestProcessModal = (props: IRequestProcessModal) => {
           ) : (
             saveData &&
             saveData.requestStatus !== "" &&
+            saveData.requestNumber !== "" &&
             (statusFlowAutomatic.includes(saveData.requestStatus) ? (
               <RequestProcess
                 title={descriptionRequestProcess.title}

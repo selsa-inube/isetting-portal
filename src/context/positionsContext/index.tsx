@@ -2,7 +2,7 @@ import { createContext, useMemo, useState } from "react";
 import {
   IOptionInitialiceEntry,
   IPosition,
-} from "@pages/positions/outlets/addPosition/types";
+} from "@pages/positions/tabs/positionsTabs/outlets/addPosition/types";
 import { IPositionsContext } from "./types";
 
 const PositionsContext = createContext<IPositionsContext>(

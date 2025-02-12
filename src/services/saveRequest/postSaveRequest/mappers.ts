@@ -1,7 +1,7 @@
 import { ISaveDataRequest } from "@ptypes/saveData/ISaveDataRequest";
 
-const mapSaveMoneyDestinationEntityToApi = (
-  data: ISaveDataRequest,
+const mapSavePositionsEntityToApi = (
+  data: ISaveDataRequest
 ): ISaveDataRequest => {
   return {
     applicationName: data.applicationName,
@@ -15,4 +15,4 @@ const mapSaveMoneyDestinationEntityToApi = (
   };
 };
 
-export { mapSaveMoneyDestinationEntityToApi };
+export { mapSavePositionsEntityToApi };

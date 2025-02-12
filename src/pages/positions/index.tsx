@@ -1,55 +1,18 @@
-import { useContext } from "react";
-import { UseManageSearchAndPageControl } from "@hooks/positions/useManageSearchAndPageControl";
-import { AuthAndData } from "@context/authAndDataProvider";
-import { UseBusinessManagersId } from "@hooks/positions/useBusinessManageresId";
-import { PaginationConfig } from "@config/positions/tabs";
+import { useState } from "react";
+import { positionsTabsConfig } from "@config/positionsTabs/tabs";
 import { PositionsUI } from "./interface";
 
 const Positions = () => {
-  const loading = false;
-  const { appData } = useContext(AuthAndData);
-  const { businessManagersData } = UseBusinessManagersId(
-    appData.businessManager.publicCode
-  );
+  const [isSelected, setIsSelected] = useState<string>();
 
-  const {
-    filteredData,
-    handleStartPage,
-    handlePrevPage,
-    handleNextPage,
-    handleEndPage,
-    firstEntryInPage,
-    lastEntryInPage,
-    paginatedData,
-    smallScreen,
-    label,
-    ShowAction,
-    ShowActionTitle,
-    searchPosition,
-    handleSearchPositions,
-  } = UseManageSearchAndPageControl(
-    businessManagersData,
-    PaginationConfig.PageRecord
-  );
+  const handleTabChange = (tabId: string) => {
+    setIsSelected(tabId);
+  };
 
   return (
     <PositionsUI
-      handleSearchPositions={handleSearchPositions}
-      searchPosition={searchPosition}
-      loading={loading}
-      data={businessManagersData}
-      smallScreen={smallScreen}
-      label={label}
-      ShowAction={ShowAction}
-      ShowActionTitle={ShowActionTitle}
-      filteredData={filteredData}
-      handleStartPage={handleStartPage}
-      handlePrevPage={handlePrevPage}
-      handleNextPage={handleNextPage}
-      handleEndPage={handleEndPage}
-      firstEntryInPage={firstEntryInPage}
-      lastEntryInPage={lastEntryInPage}
-      paginatedData={paginatedData}
+      isSelected={isSelected ?? positionsTabsConfig.cargos.id}
+      handleTabChange={handleTabChange}
     />
   );
 };

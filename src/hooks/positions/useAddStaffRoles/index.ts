@@ -2,16 +2,17 @@ import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useRef, useState } from "react";
 import { FormikProps } from "formik";
 import { IRoleForStaff } from "@ptypes/rolesForStaff";
-import { IEntry } from "@design/templates/AssignmentForm/types";
 import { useMediaQuery } from "@inubekit/hooks";
-import {
-  IFormAddPosition,
-  IGeneralInformationEntry,
-} from "@pages/positions/outlets/addPosition/types";
 import { addStaffRolesSteps } from "@config/positions/addPositions/assisted";
 import { initalValuesPositions } from "@ptypes/positions/initialValues";
 import { ISaveDataRequest } from "@ptypes/saveData/ISaveDataRequest";
 import { AuthAndData } from "@context/authAndDataProvider";
+import { formatDate } from "@utils/date/formatDate";
+import {
+  IFormAddPosition,
+  IGeneralInformationEntry,
+} from "@pages/positions/tabs/positionsTabs/outlets/addPosition/types";
+import { IEntry } from "@design/templates/assignmentForm/types";
 
 const UseAddStaffRoles = (rolesData: IRoleForStaff[] | undefined) => {
   const { appData } = useContext(AuthAndData);
@@ -116,22 +117,28 @@ const UseAddStaffRoles = (rolesData: IRoleForStaff[] | undefined) => {
     setShowModalApplicationStatus(!showModalApplicationStatus);
   };
 
+  const rolesDataEndpoint = formValues.rolesStaff.values
+    .filter((role) => role.isActive)
+    .map((role) => ({
+      missionId: role.id,
+      abbreviatedName: role.value,
+    }));
   const handleSubmitClick = () => {
     handleToggleModal();
     setShowRequestProcessModal(!showRequestProcessModal);
     setSaveData({
-      applicationName: "ifac",
+      applicationName: "istaff",
       businessManagerCode: appData.businessManager.publicCode,
       businessUnitCode: appData.businessUnit.publicCode,
-      description: "solicitud de creación de un destino de dinero",
-      entityName: "MoneyDestination",
-      requestDate: "",
-      useCaseName: "AddMoneyDestination",
+      description: "Solicitud de agregar un cargo",
+      entityName: "Mission",
+      requestDate: formatDate(new Date()),
+      useCaseName: "AddMission",
       configurationRequestData: {
-        abbreviatedName: "",
-        descriptionUse: "",
-        iconReference: "",
-        rules: "",
+        abbreviatedName: formValues.generalInformation.values.namePosition,
+        descriptionUse:
+          formValues.generalInformation.values.descriptionPosition,
+        businessManagerStaffMissionByRole: rolesDataEndpoint,
       },
     });
   };

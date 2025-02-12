@@ -1,12 +1,9 @@
 import { AxiosRequestConfig } from "axios";
-
 import { ISaveDataRequest } from "@ptypes/saveData/ISaveDataRequest";
 import { ISaveDataResponse } from "@ptypes/saveData/ISaveDataResponse";
-
-import { mapSaveMoneyDestinationEntityToApi } from "./mappers";
 import { postWithRetries } from "@services/core/postWithRetries";
 import { axiosInstance } from "@api/isaasPersistence";
-
+import { mapSavePositionsEntityToApi } from "./mappers";
 const postSaveRequest = async (
   userAccount: string,
   data: ISaveDataRequest
@@ -21,7 +18,7 @@ const postSaveRequest = async (
   const saveData = await postWithRetries<ISaveDataResponse>(
     `/requests`,
     config,
-    mapSaveMoneyDestinationEntityToApi(data) as unknown as string[],
+    mapSavePositionsEntityToApi(data) as unknown as string[],
     axiosInstance
   );
 
