@@ -6,7 +6,7 @@ import { IPosition } from "@pages/positions/outlets/addPosition/types";
 
 const titlesOptions = [
   {
-    id: "abbreviatedName",
+    id: "missionName",
     titleName: "Cargos",
     action: false,
     priority: 1,

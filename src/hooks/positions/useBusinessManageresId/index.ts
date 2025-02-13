@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { IBusinessUnitsPortalStaffId } from "@ptypes/staffBusinessManagersId";
 import { getBusinessManagersId } from "@services/staffPortal/getBusinessManagersId";
 
-const UseBusinessManagersId = (portalPublicCode: string) => {
+const UseBusinessManagersId = (portalPublicCode?: string) => {
   const [businessManagersData, SetbusinessManagersData] = useState<
     IBusinessUnitsPortalStaffId[]
   >([]);
@@ -15,7 +15,7 @@ const UseBusinessManagersId = (portalPublicCode: string) => {
         return;
       }
       try {
-        const NewData = await getBusinessManagersId(portalPublicCode);
+        const NewData = await getBusinessManagersId();
         SetbusinessManagersData(NewData);
       } catch (Error) {
         console.info(Error);

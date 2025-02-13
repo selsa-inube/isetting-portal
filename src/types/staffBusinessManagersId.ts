@@ -4,12 +4,11 @@ interface IBusinessManagerStaffMissionByRole {
   transactionOperation: "Insert";
 }
 interface IBusinessUnitsPortalStaffId {
-  abbreviatedName: string;
-  businessManagerId: string;
-  businessManagerStaffMissionByRole: IBusinessManagerStaffMissionByRole[];
-  descriptionUse: string;
   missionId: string;
-  publicCode: string;
+  missionName: string;
+  descriptionUse: string;
+  businessManagerCode: string;
+  MissionByRole: IBusinessManagerStaffMissionByRole[];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }

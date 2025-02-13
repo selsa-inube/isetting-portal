@@ -4,20 +4,17 @@ import { getWithRetries } from "@services/core/getWithRetries";
 import { axiosInstance } from "@api/iportalStaff";
 import { mapBusinessUnitsPortalStaffToEntities } from "./mappers";
 
-const getBusinessManagersId = async (
-  publiCode: string
-): Promise<IBusinessUnitsPortalStaffId[]> => {
-  const queryParams = new URLSearchParams({
-    publiCode: publiCode,
-  });
+const getBusinessManagersId = async (): Promise<
+  IBusinessUnitsPortalStaffId[]
+> => {
   const config: AxiosRequestConfig = {
     headers: {
-      "X-Action": "SearchAllBusinessManagerIportalStaff",
+      "X-Action": "SearchAllMission",
     },
   };
   const data: IBusinessUnitsPortalStaffId[] = await getWithRetries<
     IBusinessUnitsPortalStaffId[]
-  >(axiosInstance, `/staffs?${queryParams.toString()}`, config);
+  >(axiosInstance, `/missions`, config);
   return Array.isArray(data) ? mapBusinessUnitsPortalStaffToEntities(data) : [];
 };
 
