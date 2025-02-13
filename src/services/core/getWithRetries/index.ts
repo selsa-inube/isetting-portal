@@ -1,25 +1,8 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import { enviroment } from "@config/environment";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
-const axiosInstance: AxiosInstance = axios.create({
-  baseURL: enviroment.IVITE_IPORTAL_STAFF_QUERY_PROCESS_SERVICE,
-  timeout: enviroment.FETCH_TIMEOUT_SERVICES,
-  headers: {
-    "Content-type": "application/json; charset=UTF-8",
-  },
-});
-
-axiosInstance.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (error.code === "ECONNABORTED") {
-      console.error("Request timed out");
-    }
-    return Promise.reject(new Error(error.message));
-  }
-);
-
-const fetchWithRetries = async <T>(
+const getWithRetries = async <T>(
+  axiosInstance: AxiosInstance,
   url: string,
   config: AxiosRequestConfig
 ): Promise<T> => {
@@ -46,4 +29,4 @@ const fetchWithRetries = async <T>(
   throw new Error("Error al obtener los de las unidades de negocio.");
 };
 
-export { axiosInstance, fetchWithRetries };
+export { getWithRetries };

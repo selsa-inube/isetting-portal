@@ -1,13 +1,24 @@
-import { getBusinessManagersId } from "@api/iportalStaff/getBusinessManagersId";
+import { AxiosRequestConfig } from "axios";
 import { IBusinessUnitsPortalStaffId } from "@ptypes/staffBusinessManagersId";
+import { getWithRetries } from "@services/core/getWithRetries";
+import { axiosInstance } from "@api/iportalStaff";
 import { mapBusinessUnitsPortalStaffToEntities } from "./mappers";
 
-const businessUnitsPortalStaffId = async (
-  businessManagerId: string
+const getBusinessManagersId = async (
+  publiCode: string
 ): Promise<IBusinessUnitsPortalStaffId[]> => {
-  const data: IBusinessUnitsPortalStaffId[] =
-    await getBusinessManagersId(businessManagerId);
+  const queryParams = new URLSearchParams({
+    publiCode: publiCode,
+  });
+  const config: AxiosRequestConfig = {
+    headers: {
+      "X-Action": "SearchAllBusinessManagerIportalStaff",
+    },
+  };
+  const data: IBusinessUnitsPortalStaffId[] = await getWithRetries<
+    IBusinessUnitsPortalStaffId[]
+  >(axiosInstance, `/staffs?${queryParams.toString()}`, config);
   return Array.isArray(data) ? mapBusinessUnitsPortalStaffToEntities(data) : [];
 };
 
-export { businessUnitsPortalStaffId };
+export { getBusinessManagersId };
