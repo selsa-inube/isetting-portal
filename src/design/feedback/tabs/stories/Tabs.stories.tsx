@@ -17,11 +17,11 @@ const meta: Meta<typeof Tabs> = {
 
 const Template: StoryFn<ITabs> = (args) => <TabsController {...args} />;
 
-export const Default = Template.bind({});
+const Default = Template.bind({});
 Default.args = {
   tabs: [
     {
-      id: "moneyDestination",
+      id: "positions",
       disabled: false,
       label: "Destinos de dinero",
     },
@@ -35,13 +35,13 @@ Default.args = {
   scroll: true,
 };
 
-export const Notification = Template.bind({});
+const Notification = Template.bind({});
 Notification.args = {
   tabs: [
     {
-      id: "moneyDestination",
+      id: "positions",
       disabled: false,
-      label: "Destinos de dinero",
+      label: "Cargos",
     },
     {
       id: "requestsProcedures",
@@ -54,4 +54,5 @@ Notification.args = {
   scroll: true,
 };
 
+export { Notification, Default };
 export default meta;

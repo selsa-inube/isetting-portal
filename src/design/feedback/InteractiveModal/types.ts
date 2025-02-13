@@ -1,4 +1,4 @@
-import { IPosition } from "@pages/positions/outlets/addPosition/types";
+import { IPosition } from "@pages/positions/tabs/positionsTabs/outlets/addPosition/types";
 
 type ModalTypes = "fields" | "search";
 

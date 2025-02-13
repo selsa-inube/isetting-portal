@@ -4,7 +4,7 @@ import { object } from "yup";
 import { useMediaQuery } from "@inubekit/hooks";
 import { validationMessages } from "@validations/validationMessages";
 import { validationRules } from "@validations/validationRules";
-import { IGeneralInformationEntry } from "@pages/positions/outlets/addPosition/types";
+import { IGeneralInformationEntry } from "@pages/positions/tabs/positionsTabs/outlets/addPosition/types";
 
 const UseGeneralInfoCreditLineForm = (
   initialValues: IGeneralInformationEntry,

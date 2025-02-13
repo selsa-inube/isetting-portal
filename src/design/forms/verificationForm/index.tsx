@@ -4,9 +4,8 @@ import { Button } from "@inubekit/button";
 import { Stack } from "@inubekit/stack";
 import { basic } from "@design/tokens";
 import { Accordion } from "@design/data/acordion";
-import { RequestProcessModal } from "@design/modals/requestProcessModal";
 import { IRequestSteps } from "@design/feedback/requestProcess/types";
-import { AddDestinationStepsConfig } from "@config/positions/assisted";
+import { AddPositionsStepsConfig } from "@config/positions/assisted";
 import { ComponentAppearance } from "@ptypes/aparences.types";
 import { VerificationBoxes } from "./verificationBoxes";
 import { IFormAddPosition } from "./types";
@@ -23,8 +22,6 @@ interface IVerificationForm {
 }
 
 const VerificationForm = ({
-  requestSteps,
-  showRequestProcessModal,
   updatedData,
   handleStepChange,
 }: IVerificationForm) => {
@@ -32,7 +29,7 @@ const VerificationForm = ({
 
   return (
     <Stack direction="column" gap={basic.spacing.s300}>
-      {AddDestinationStepsConfig("")
+      {AddPositionsStepsConfig("")
         .filter((step) => step.name.toLowerCase() !== "verificación")
         .map((step) => (
           <Accordion title={step.name} key={`${step.id}-box`}>
@@ -58,15 +55,6 @@ const VerificationForm = ({
             </Stack>
           </Accordion>
         ))}
-
-      {showRequestProcessModal && (
-        <RequestProcessModal
-          title="Procesando solicitud"
-          description="Hemos recibido tu solicitud y se encuentra en proceso.Por favor, espera mientras la gestionamos."
-          portalId="portal"
-          requestSteps={requestSteps}
-        />
-      )}
     </Stack>
   );
 };

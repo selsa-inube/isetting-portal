@@ -1,48 +1,23 @@
-import { MdSearch, MdPersonAddAlt } from "react-icons/md";
-
-import { Text } from "@inubekit/text";
-import { Textfield } from "@inubekit/textfield";
 import { Stack } from "@inubekit/stack";
-import { Button } from "@inubekit/button";
+import { useMediaQuery } from "@inubekit/hooks";
 import { Breadcrumbs } from "@inubekit/breadcrumbs";
-import {
-  Col,
-  Colgroup,
-  Table,
-  Tbody,
-  Thead,
-  Tr,
-  Th,
-  Td,
-  Tfoot,
-  Pagination,
-} from "@inubekit/table";
 import { basic } from "@design/tokens";
-import { PageTitle } from "@design/label/PageTitle";
-import { Loading } from "@pages/login/loading";
-import { actions, titlesOptions } from "@config/positions/table";
-import { StyledButtonWrapper } from "./styles";
-import { IPositions } from "./types";
+import { Title } from "@design/label/Title";
+import { Tabs } from "@design/feedback/tabs";
+import { crumbsPositions } from "@config/positionsTabs/navigation";
+import { positionsTabsConfig } from "@config/positionsTabs/tabs";
+import { RequestsInProgressTab } from "./tabs/requestsInProgressTab";
+import { Positions } from "./tabs/positionsTabs";
 
-const PositionsUI = (props: IPositions) => {
-  const {
-    handleSearchPositions,
-    searchPosition,
-    loading,
-    data,
-    smallScreen,
-    label,
-    ShowAction,
-    ShowActionTitle,
-    filteredData,
-    handleStartPage,
-    handlePrevPage,
-    handleNextPage,
-    handleEndPage,
-    firstEntryInPage,
-    lastEntryInPage,
-    paginatedData,
-  } = props;
+interface IPositionsUI {
+  isSelected: string;
+  handleTabChange: (id: string) => void;
+}
+
+const PositionsUI = (props: IPositionsUI) => {
+  const { isSelected, handleTabChange } = props;
+  const smallScreen = useMediaQuery("(max-width: 990px)");
+  const smallScreenTab = useMediaQuery("(max-width: 450px)");
 
   return (
     <Stack
@@ -50,109 +25,30 @@ const PositionsUI = (props: IPositions) => {
       width="-webkit-fill-available"
       padding={
         smallScreen
-          ? `{${basic.spacing.s24}}`
-          : `${basic.spacing.s32} ${basic.spacing.s64}`
+          ? `${basic.spacing.s200}`
+          : `${basic.spacing.s400} ${basic.spacing.s800}`
       }
     >
-      <Stack gap={basic.spacing.s48} direction="column">
-        <Stack gap={basic.spacing.s24} direction="column">
-          {label && (
-            <>
-              <Breadcrumbs crumbs={label.crumbs} />
-              <PageTitle
-                title={label.label}
-                description={label.description}
-                navigatePage="/positions/options"
-              />
-            </>
-          )}
+      <Stack gap={basic.spacing.s600} direction="column">
+        <Stack gap={basic.spacing.s300} direction="column">
+          <Breadcrumbs crumbs={crumbsPositions} />
+          <Title
+            title="Cargos"
+            description="Gestionar todo lo relacionado con los permisos para los usuarios de la Plataforma INUBE"
+            sizeTitle="large"
+          />
         </Stack>
-        <Stack>
-          <Text type="title" size={smallScreen ? "medium" : "large"}>
-            Consulta de Cargos vigentes ({filteredData.length})
-          </Text>
-        </Stack>
-        <Stack gap={basic.spacing.s32} direction="column">
-          <Stack justifyContent="space-between" alignItems="center">
-            <Textfield
-              name="searchPositions"
-              id="searchPositions"
-              placeholder="Búsqueda..."
-              type="search"
-              iconBefore={<MdSearch />}
-              size="compact"
-              value={searchPosition}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                handleSearchPositions(e)
-              }
-            />
-            <StyledButtonWrapper>
-              <Button
-                iconBefore={<MdPersonAddAlt />}
-                spacing="wide"
-                type="link"
-                path="/positions/positions/add-position"
-              >
-                Solicitar nuevo cargo
-              </Button>
-            </StyledButtonWrapper>
-          </Stack>
-          {loading && data.length <= 0 ? (
-            <Loading />
-          ) : (
-            <Table>
-              <Colgroup>
-                <Col width="80%" />
-              </Colgroup>
-              <Thead>
-                <Tr border="bottom">
-                  {titlesOptions.map((title, index) => (
-                    <Th
-                      key={index}
-                      action={title.action}
-                      align={title.action ? "center" : "left"}
-                    >
-                      {title.titleName}
-                    </Th>
-                  ))}
-                  {ShowActionTitle(actions)}
-                </Tr>
-              </Thead>
-              <Tbody>
-                {paginatedData.map((entry, rowIndex) => (
-                  <Tr key={rowIndex} border="bottom">
-                    {titlesOptions.map((title) => (
-                      <Td
-                        key={`e-${entry[title.id]}`}
-                        align={entry.action ? "center" : "left"}
-                      >
-                        {entry[title.id]}
-                      </Td>
-                    ))}
-                    {ShowAction(actions, entry)}
-                  </Tr>
-                ))}
-              </Tbody>
-              <Tfoot>
-                <Tr border="bottom">
-                  <Td
-                    colSpan={titlesOptions.length + actions.length}
-                    type="custom"
-                    align="right"
-                  >
-                    <Pagination
-                      firstEntryInPage={firstEntryInPage}
-                      lastEntryInPage={lastEntryInPage}
-                      totalRecords={filteredData.length}
-                      handleStartPage={handleStartPage}
-                      handlePrevPage={handlePrevPage}
-                      handleNextPage={handleNextPage}
-                      handleEndPage={handleEndPage}
-                    />
-                  </Td>
-                </Tr>
-              </Tfoot>
-            </Table>
+        <Stack gap={basic.spacing.s300} direction="column">
+          <Tabs
+            tabs={Object.values(positionsTabsConfig)}
+            selectedTab={isSelected}
+            onChange={handleTabChange}
+            scroll={smallScreenTab ? true : false}
+          />
+
+          {isSelected === positionsTabsConfig.cargos.id && <Positions />}
+          {isSelected === positionsTabsConfig.requestsInProgress.id && (
+            <RequestsInProgressTab />
           )}
         </Stack>
       </Stack>

@@ -1,23 +1,23 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { FormikProps } from "formik";
 import { IRoleForStaff } from "@ptypes/rolesForStaff";
-import { IEntry } from "@design/templates/AssignmentForm/types";
 import { useMediaQuery } from "@inubekit/hooks";
+import { addStaffRolesSteps } from "@config/positions/addPositions/assisted";
+import { initalValuesPositions } from "@ptypes/positions/initialValues";
+import { ISaveDataRequest } from "@ptypes/saveData/ISaveDataRequest";
+import { AuthAndData } from "@context/authAndDataProvider";
+import { formatDate } from "@utils/date/formatDate";
 import {
   IFormAddPosition,
   IGeneralInformationEntry,
-} from "@pages/positions/outlets/addPosition/types";
-import { addStaffRolesSteps } from "@config/positions/addPositions/assisted";
+} from "@pages/positions/tabs/positionsTabs/outlets/addPosition/types";
+import { IEntry } from "@design/templates/assignmentForm/types";
 
-import { IRequestSteps } from "@design/feedback/requestProcess/types";
-import { initalValuesPositions } from "@ptypes/positions/initialValues";
-
-const UseAddStaffRoles = (
-  rolesData: IRoleForStaff[] | undefined,
-  requestSteps: IRequestSteps[]
-) => {
+const UseAddStaffRoles = (rolesData: IRoleForStaff[] | undefined) => {
+  const { appData } = useContext(AuthAndData);
   const [currentStep, setCurrentStep] = useState(1);
+  const [saveData, setSaveData] = useState<ISaveDataRequest>();
   const [showRequestProcessModal, setShowRequestProcessModal] = useState(false);
   const [showModalApplicationStatus, setShowModalApplicationStatus] =
     useState(false);
@@ -117,9 +117,30 @@ const UseAddStaffRoles = (
     setShowModalApplicationStatus(!showModalApplicationStatus);
   };
 
+  const rolesDataEndpoint = formValues.rolesStaff.values
+    .filter((role) => role.isActive)
+    .map((role) => ({
+      missionId: role.id,
+      abbreviatedName: role.value,
+    }));
   const handleSubmitClick = () => {
     handleToggleModal();
     setShowRequestProcessModal(!showRequestProcessModal);
+    setSaveData({
+      applicationName: "istaff",
+      businessManagerCode: appData.businessManager.publicCode,
+      businessUnitCode: appData.businessUnit.publicCode,
+      description: "Solicitud de agregar un cargo",
+      entityName: "Mission",
+      requestDate: formatDate(new Date()),
+      useCaseName: "AddMission",
+      configurationRequestData: {
+        abbreviatedName: formValues.generalInformation.values.namePosition,
+        descriptionUse:
+          formValues.generalInformation.values.descriptionPosition,
+        businessManagerStaffMissionByRole: rolesDataEndpoint,
+      },
+    });
   };
 
   const handleSubmitClickApplication = () => {
@@ -127,18 +148,6 @@ const UseAddStaffRoles = (
     setShowModalApplicationStatus(!showRequestProcessModal);
     navigate("/positions/positions");
   };
-
-  useEffect(() => {
-    const requestLastStep = requestSteps[requestSteps.length - 1];
-    if (showRequestProcessModal && requestLastStep.status === "completed") {
-      const timer = setTimeout(() => {
-        setShowRequestProcessModal(false);
-        setShowModalApplicationStatus(!showModalApplicationStatus);
-      }, 3000);
-
-      return () => clearTimeout(timer);
-    }
-  }, [showRequestProcessModal, requestSteps, navigate]);
 
   return {
     currentStep,
@@ -158,9 +167,11 @@ const UseAddStaffRoles = (
     handleSubmitClickApplication,
     setCurrentStep,
     showRequestProcessModal,
+    saveData,
     smallScreen,
     roles,
     disabled,
+    setShowRequestProcessModal,
   };
 };
 

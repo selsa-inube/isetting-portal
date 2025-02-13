@@ -1,6 +1,5 @@
 import { createPortal } from "react-dom";
 import { MdClear } from "react-icons/md";
-
 import { Stack } from "@inubekit/stack";
 import { Button } from "@inubekit/button";
 import { Text } from "@inubekit/text";
@@ -11,7 +10,7 @@ import { useMediaQuery } from "@inubekit/hooks";
 import { Icon } from "@inubekit/icon";
 import { basic } from "@design/tokens";
 import { enviroment } from "@config/environment";
-import { IPosition } from "@pages/positions/outlets/addPosition/types";
+import { IPosition } from "@pages/positions/tabs/positionsTabs/outlets/addPosition/types";
 import { SubjectSearchCard } from "@design/cards/SubjectSearchCard";
 import { StyledModal, StyledDivider } from "./styles";
 import { InteractiveModalProps } from "./types";
