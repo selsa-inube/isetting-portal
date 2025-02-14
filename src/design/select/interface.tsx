@@ -4,10 +4,10 @@ import {
   MdCheckCircle,
   MdOutlineArrowDropDown,
 } from "react-icons/md";
-import { Text } from "@inubekit/text";
-import { Icon } from "@inubekit/icon";
+import { Text } from "@inubekit/inubekit";
+import { Icon } from "@inubekit/inubekit";
 import { Label } from "@inubekit/label";
-import { Stack } from "@inubekit/stack";
+import { Stack } from "@inubekit/inubekit";
 
 import { basic } from "@design/tokens";
 

@@ -1,6 +1,6 @@
 import { MdSearch } from "react-icons/md";
-import { Text } from "@inubekit/text";
-import { Stack } from "@inubekit/stack";
+import { Text } from "@inubekit/inubekit";
+import { Stack } from "@inubekit/inubekit";
 import { Input } from "@inubekit/input";
 import { basic } from "@design/tokens";
 import { RadioBusinessUnit } from "@design/feedback/RadioBusinessUnit";

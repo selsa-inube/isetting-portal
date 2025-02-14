@@ -1,5 +1,5 @@
 import { MdModeEdit, MdOutlineDelete } from "react-icons/md";
-import { Icon } from "@inubekit/icon";
+import { Icon } from "@inubekit/inubekit";
 import { IPosition } from "@pages/positions/tabs/positionsTabs/outlets/addPosition/types";
 import { DetailsModal } from "@pages/positions/tabs/positionsTabs/forms/detailsModal";
 import { IAction, IActions } from "@pages/positions/tabs/positionsTabs/types";

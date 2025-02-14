@@ -1,5 +1,5 @@
-import { Text } from "@inubekit/text";
-import { Stack } from "@inubekit/stack";
+import { Text } from "@inubekit/inubekit";
+import { Stack } from "@inubekit/inubekit";
 import { Avatar } from "@inubekit/avatar";
 import { basic } from "@design/tokens";
 

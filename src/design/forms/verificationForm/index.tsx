@@ -1,7 +1,7 @@
 import { MdOutlineArrowBack } from "react-icons/md";
 import { useMediaQuery } from "@inubekit/hooks";
 import { Button } from "@inubekit/button";
-import { Stack } from "@inubekit/stack";
+import { Stack } from "@inubekit/inubekit";
 import { basic } from "@design/tokens";
 import { Accordion } from "@design/data/acordion";
 import { IRequestSteps } from "@design/feedback/requestProcess/types";

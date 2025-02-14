@@ -1,5 +1,5 @@
 import { FormikProps } from "formik";
-import { Stack } from "@inubekit/stack";
+import { Stack } from "@inubekit/inubekit";
 import { Textarea } from "@inubekit/textarea";
 import { Input } from "@inubekit/input";
 import { basic } from "@design/tokens";

@@ -1,7 +1,7 @@
 import { MdSearch, MdPersonAddAlt } from "react-icons/md";
-import { Text } from "@inubekit/text";
+import { Text } from "@inubekit/inubekit";
 import { Textfield } from "@inubekit/textfield";
-import { Stack } from "@inubekit/stack";
+import { Stack } from "@inubekit/inubekit";
 import { Button } from "@inubekit/button";
 import {
   Col,

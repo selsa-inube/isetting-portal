@@ -2,7 +2,7 @@ import { useContext } from "react";
 
 import { MdOutlineChevronRight, MdOutlineDoorFront } from "react-icons/md";
 import { Header } from "@inubekit/header";
-import { Icon } from "@inubekit/icon";
+import { Icon } from "@inubekit/inubekit";
 
 import { nav, userMenu } from "@config/nav";
 import { Title } from "@design/label/Title";

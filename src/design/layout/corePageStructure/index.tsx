@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { Header } from "@inubekit/header";
 import { Nav } from "@inubekit/nav";
-import { Grid } from "@inubekit/grid";
+import { Grid } from "@inubekit/inubekit";
 import { useMediaQuery } from "@inubekit/hooks";
 import { enviroment } from "@config/environment";
 import { LogoutModal } from "@design/feedback/LogoutModal";

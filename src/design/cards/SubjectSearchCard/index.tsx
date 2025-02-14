@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { MdClear } from "react-icons/md";
-import { Stack } from "@inubekit/stack";
-import { Text } from "@inubekit/text";
+import { Stack } from "@inubekit/inubekit";
+import { Text } from "@inubekit/inubekit";
 import { useMediaQuery } from "@inubekit/hooks";
-import { Icon } from "@inubekit/icon";
-import { Grid } from "@inubekit/grid";
+import { Icon } from "@inubekit/inubekit";
+import { Grid } from "@inubekit/inubekit";
 import { basic } from "@design/tokens";
 import { enviroment } from "@config/environment";
 import { StyledSubjectSearchCard, StyledSubjectSearchCardText } from "./styles";

@@ -1,7 +1,7 @@
 import { MdSearch } from "react-icons/md";
-import { Text } from "@inubekit/text";
+import { Text } from "@inubekit/inubekit";
 import { RadioBusinessUnit } from "@design/feedback/RadioBusinessUnit";
-import { Stack } from "@inubekit/stack";
+import { Stack } from "@inubekit/inubekit";
 import { Textfield } from "@inubekit/textfield";
 import { Button } from "@inubekit/button";
 import { useMediaQuery } from "@inubekit/hooks";

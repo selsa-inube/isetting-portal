@@ -1,5 +1,6 @@
-import { Text, TextTokens } from "@inubekit/text";
-import { Icon } from "@inubekit/icon";
+import { TextTokens } from "@inubekit/text";
+import { Text } from "@inubekit/inubekit";
+import { Icon } from "@inubekit/inubekit";
 import { ComponentAppearance } from "@ptypes/aparences.types";
 import {
   StyledNotificationContainer,

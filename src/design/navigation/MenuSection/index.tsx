@@ -1,4 +1,4 @@
-import { Stack } from "@inubekit/stack";
+import { Stack } from "@inubekit/inubekit";
 import { Divider } from "@design/layout/Divider";
 import { basic } from "@design/tokens";
 import { MenuHeading } from "../MenuHeading";

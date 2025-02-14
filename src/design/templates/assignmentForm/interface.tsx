@@ -1,6 +1,6 @@
 import { MdSearch } from "react-icons/md";
 import { Button } from "@inubekit/button";
-import { Stack } from "@inubekit/stack";
+import { Stack } from "@inubekit/inubekit";
 import { Textfield } from "@inubekit/textfield";
 import {
   Col,
@@ -13,7 +13,7 @@ import {
   Td,
 } from "@inubekit/table";
 import { Toggle } from "@inubekit/toggle";
-import { Text } from "@inubekit/text";
+import { Text } from "@inubekit/inubekit";
 import { Fieldset } from "@inubekit/fieldset";
 import { MultipleChoices } from "@design/navigation/MultipleChoices";
 import { basic } from "@design/tokens";

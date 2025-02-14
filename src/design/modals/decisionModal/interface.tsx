@@ -1,8 +1,8 @@
 import { createPortal } from "react-dom";
 import { MdClear } from "react-icons/md";
 import { Button } from "@inubekit/button";
-import { Stack } from "@inubekit/stack";
-import { Text } from "@inubekit/text";
+import { Stack } from "@inubekit/inubekit";
+import { Text } from "@inubekit/inubekit";
 import { Blanket } from "@inubekit/blanket";
 import { Icon, IIconAppearance } from "@inubekit/icon";
 import { Textarea } from "@inubekit/textarea";
