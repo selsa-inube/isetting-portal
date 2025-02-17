@@ -1,27 +1,30 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { Outlet } from "react-router-dom";
-import { Header } from "@inubekit/header";
-import { Nav } from "@inubekit/nav";
+import { Outlet, useNavigate } from "react-router-dom";
+import { MdOutlineChevronRight } from "react-icons/md";
+import { useAuth0 } from "@auth0/auth0-react";
 import { Grid } from "@inubekit/grid";
+import { Header } from "@inubekit/header";
 import { useMediaQuery } from "@inubekit/hooks";
-import { enviroment } from "@config/environment";
-import { LogoutModal } from "@design/feedback/LogoutModal";
-import { nav, logoutConfig } from "@config/nav";
-import linparLogo from "@assets/images/linpar.png";
-import { AuthAndData } from "@context/authAndDataProvider";
+import { Icon } from "@inubekit/icon";
+
+import { BusinessUnitChange } from "@design/inputs/BusinessUnitChange";
+
 import {
   StyledAppPage,
+  StyledCollapse,
+  StyledCollapseIcon,
   StyledContainer,
   StyledContentImg,
+  StyledHeaderContainer,
   StyledLogo,
   StyledMain,
-  StyledContainerNav,
-  StyledHeaderContainer,
-  StyledUserMenuTrigger,
 } from "./styles";
 
-import { userMenu } from "./config/apps.config";
-
+import { AuthAndData } from "@context/authAndDataProvider";
+import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
+import { nav, userMenu } from "@config/nav";
+import { actionsConfig } from "@config/mainActionLogout";
+import { Nav } from "@inubekit/nav";
 const renderLogo = (imgUrl: string) => {
   return (
     <StyledContentImg to="/">
@@ -31,38 +34,31 @@ const renderLogo = (imgUrl: string) => {
 };
 
 const CorePageStructure = () => {
-  const [showUserMenu, setShowUserMenu] = useState(false);
-  const [showLogoutModal, setShowLogoutModal] = useState(false);
-  const userMenuRef = useRef<HTMLDivElement>(null);
+  const { appData, businessUnitsToTheStaff, setBusinessUnitSigla } =
+    useContext(AuthAndData);
+  const { logout } = useAuth0();
+  const [collapse, setCollapse] = useState(false);
+  const collapseMenuRef = useRef<HTMLDivElement>(null);
+  const businessUnitChangeRef = useRef<HTMLDivElement>(null);
+  const [selectedClient, setSelectedClient] = useState<string>("");
 
-  const smallScreen = useMediaQuery(enviroment.IS_MOBILE_849);
-
-  const handleClickOutside = (event: MouseEvent) => {
-    if (
-      userMenuRef.current &&
-      !userMenuRef.current.contains(event.target as Node)
-    ) {
-      setShowUserMenu(false);
-    }
-  };
+  const navigate = useNavigate();
+  const isTablet = useMediaQuery("(max-width: 849px)");
+  const isTabletMain = useMediaQuery("(max-width: 1000px)");
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+    if (appData.businessUnit.publicCode) {
+      setSelectedClient(appData.businessUnit.abbreviatedName);
+    }
+  }, [appData]);
 
-  const handleToggleUserMenu = () => {
-    setShowUserMenu(!showUserMenu);
+  const handleLogoClick = (businessUnit: IBusinessUnitsPortalStaff) => {
+    const selectJSON = JSON.stringify(businessUnit);
+    setBusinessUnitSigla(selectJSON);
+    setSelectedClient(businessUnit.abbreviatedName);
+    setCollapse(false);
+    navigate("/");
   };
-
-  const handleToggleLogoutModal = () => {
-    setShowLogoutModal(!showLogoutModal);
-    setShowUserMenu(false);
-  };
-
-  const { appData } = useContext(AuthAndData);
 
   return (
     <StyledAppPage>
@@ -70,41 +66,51 @@ const CorePageStructure = () => {
         <StyledHeaderContainer>
           <Header
             portalId="portal"
-            logoURL={renderLogo(linparLogo)}
+            navigation={nav}
             user={{
               username: appData.user.userName,
-              breakpoint: "600px",
+              breakpoint: "848px",
             }}
+            logoURL={renderLogo(appData.businessUnit.urlLogo)}
             menu={userMenu}
           />
-          <StyledUserMenuTrigger
-            onClick={handleToggleUserMenu}
-          ></StyledUserMenuTrigger>
         </StyledHeaderContainer>
-
-        {showLogoutModal && (
-          <LogoutModal
-            logoutPath="/logout"
-            handleShowBlanket={handleToggleLogoutModal}
-          />
+        {businessUnitsToTheStaff.length > 1 && (
+          <>
+            <StyledCollapseIcon
+              $collapse={collapse}
+              onClick={() => setCollapse(!collapse)}
+              $isTablet={isTablet}
+              ref={collapseMenuRef}
+            >
+              <Icon
+                icon={<MdOutlineChevronRight />}
+                appearance="primary"
+                size="24px"
+                cursorHover
+              />
+            </StyledCollapseIcon>
+            {collapse && (
+              <StyledCollapse ref={businessUnitChangeRef}>
+                <BusinessUnitChange
+                  businessUnits={businessUnitsToTheStaff}
+                  onLogoClick={handleLogoClick}
+                  selectedClient={selectedClient}
+                />
+              </StyledCollapse>
+            )}
+          </>
         )}
-
         <StyledContainer>
           <Grid
-            templateColumns={smallScreen ? "1fr" : "auto 1fr"}
+            templateColumns={!isTablet ? "auto 1fr" : "1fr"}
             alignContent="unset"
+            height={"90vh"}
           >
-            {!smallScreen && (
-              <StyledContainerNav>
-                <Nav
-                  navigation={nav.items}
-                  logoutPath={logoutConfig.logoutPath}
-                  logoutTitle={logoutConfig.logoutTitle}
-                />
-              </StyledContainerNav>
+            {!isTablet && (
+              <Nav navigation={nav.items} actions={actionsConfig(logout)} />
             )}
-
-            <StyledMain>
+            <StyledMain $isMobile={isTabletMain}>
               <Outlet />
             </StyledMain>
           </Grid>

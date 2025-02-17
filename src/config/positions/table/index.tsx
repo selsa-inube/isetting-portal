@@ -6,7 +6,7 @@ import { IAction, IActions } from "@pages/positions/tabs/positionsTabs/types";
 
 const titlesOptions = [
   {
-    id: "abbreviatedName",
+    id: "missionName",
     titleName: "Cargos",
     action: false,
     priority: 1,
