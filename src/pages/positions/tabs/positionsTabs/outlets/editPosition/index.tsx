@@ -3,11 +3,15 @@
 // import { ISaveDataRequest } from "@ptypes/saveData/ISaveDataRequest";
 // import { ISaveDataResponse } from "@ptypes/saveData/ISaveDataResponse";
 // import { EditDestinationUI } from "./interface";
+// import { AuthAndData } from "@context/authAndDataProvider";
+// import { UseSavePositions } from "@hooks/positions/useSavePositions";
+// import { editPositionTabsConfig } from "@config/positions/editPositions/tabs";
+// import { UseEditPositions } from "@hooks/positions/useEditPositions";
 
 // const EditDestination = () => {
 //   const location = useLocation();
 //   const { data } = location.state || {};
-//   const { appData } = useContext(AuthAndPortalData);
+//   const { appData } = useContext(AuthAndData);
 
 //   const {
 //     creditLineDecisions,
@@ -16,53 +20,61 @@
 //     isSelected,
 //     saveData,
 //     showRequestProcessModal,
-//     onSubmit,
-//     handleReset,
+//     // onSubmit,
+//     // handleReset,
 //     setCreditLineDecisions,
 //     setIsCurrentFormValid,
 //     handleTabChange,
 //     setShowRequestProcessModal,
 //     setErrorFetchSaveData,
 //     setShowModal,
-//   } = UseEditPosition(data, appData);
+//   } = UseEditPositions(data, appData);
 
 //   const {
-//     saveMoneyDestination,
+//     savePositions,
 //     requestSteps,
-//     loadingSendData,
-//     showPendingReqModal,
+//     loading,
+//     // showPendingReqModal,
 //     handleCloseRequestStatus,
-//     handleClosePendingReqModal,
-//   } = useSaveMoneyDestination(
+//     // handleClosePendingReqModal,
+//   } = UseSavePositions(
 //     appData.businessUnit.publicCode,
 //     appData.user.userAccount,
 //     showRequestProcessModal,
 //     saveData as ISaveDataRequest,
-//     setShowModal,
-//     setShowRequestProcessModal,
-
-//     setErrorFetchSaveData
+//     setShowModal
+//     // setShowRequestProcessModal,
+//     // setErrorFetchSaveData
 //   );
 
 //   return (
 //     <EditDestinationUI
 //       creditLineDecisions={creditLineDecisions}
-//       editDestinationTabsConfig={editDestinationTabsConfig}
+//       editPositionTabsConfig={editPositionTabsConfig}
 //       isSelected={isSelected}
 //       onTabChange={handleTabChange}
 //       generalInformationRef={generalInformationRef}
 //       initialGeneralInformationValues={formValues}
-//       onButtonClick={onSubmit}
-//       onReset={handleReset}
+//       // onButtonClick={onSubmit}
+//       // onReset={handleReset}
 //       setCreditLineDecisions={setCreditLineDecisions}
 //       setIsCurrentFormValid={setIsCurrentFormValid}
-//       saveMoneyDestination={saveMoneyDestination as ISaveDataResponse}
+//       savePositions={savePositions as ISaveDataResponse}
 //       requestSteps={requestSteps}
-//       loading={loadingSendData}
-//       showPendingReqModal={showPendingReqModal}
+//       loading={loading}
+//       //   showPendingReqModal={showPendingReqModal}
 //       showRequestProcessModal={showRequestProcessModal}
 //       onCloseRequestStatus={handleCloseRequestStatus}
-//       onClosePendingReqModal={handleClosePendingReqModal}
+//       showPendingReqModal={false}
+//       onClosePendingReqModal={function (): void {
+//         throw new Error("Function not implemented.");
+//       }} //   onClosePendingReqModal={handleClosePendingReqModal}
+//       onButtonClick={function (): void {
+//         throw new Error("Function not implemented.");
+//       }}
+//       onReset={function (): void {
+//         throw new Error("Function not implemented.");
+//       }}
 //     />
 //   );
 // };
