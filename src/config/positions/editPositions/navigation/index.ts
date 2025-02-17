@@ -12,7 +12,7 @@ const crumbsEditPosition = [
     isActive: false,
   },
   {
-    path: "/positions/positions",
+    path: "/positions/add-position",
     label: "Seleccion de roles",
     id: "status",
     isActive: true,

@@ -37,7 +37,7 @@ const AddPosition = () => {
   } = UseAddStaffRoles(rolesStaff);
 
   const { appData } = useContext(AuthAndData);
-
+  console.log(rolesStaff, "selected");
   const { savePositions, requestSteps, loading, handleCloseRequestStatus } =
     UseSavePositions(
       appData.businessUnit.publicCode,

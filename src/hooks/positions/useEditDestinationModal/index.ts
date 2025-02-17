@@ -7,11 +7,13 @@ const useEditDestinationModal = (data: IEntry) => {
 
   const navigate = useNavigate();
 
+  console.log(data);
+
   const destinationData = {
-    id: data.id,
-    nameDestination: data.name,
-    description: data.descriptionUse,
-    icon: data.iconReference,
+    missionId: data.missionId,
+    missionName: data.missionName,
+    descriptionUse: data.descriptionUse,
+    MissionByRole: data.MissionByRole,
   };
 
   const handleToggleModal = () => {

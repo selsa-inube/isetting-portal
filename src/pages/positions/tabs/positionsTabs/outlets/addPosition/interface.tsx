@@ -32,9 +32,7 @@ const AddStaffRolesUI = ({
   smallScreen,
   roles,
   onFinishForm,
-
   showModal,
-
   savePositions,
   requestSteps,
   showRequestProcessModal,

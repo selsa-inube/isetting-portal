@@ -1,239 +1,200 @@
-// import { useEffect, useRef, useState } from "react";
-// import { FormikProps } from "formik";
+import { useEffect, useRef, useState } from "react";
+import { FormikProps } from "formik";
 
-// import { ISaveDataRequest } from "@ptypes/saveData/ISaveDataRequest";
-// import { formatDate } from "@utils/date/formatDate";
-// import { IAppData } from "@ptypes/authAndPortalDataProvider/IAppData";
-// import { editPositionTabsConfig } from "@config/positions/editPositions/tabs";
-// import { IGeneralInformationEntry } from "@pages/positions/tabs/positionsTabs/outlets/addPosition/types";
-// import { IRuleDecision } from "@isettingkit/input";
+import { ISaveDataRequest } from "@ptypes/saveData/ISaveDataRequest";
+import { formatDate } from "@utils/date/formatDate";
+import { IAppData } from "@ptypes/authAndPortalDataProvider/IAppData";
+import { editPositionTabsConfig } from "@config/positions/editPositions/tabs";
+import {
+  IFormAddPosition,
+  IGeneralInformationEntry,
+} from "@pages/positions/tabs/positionsTabs/outlets/addPosition/types";
+import { IRuleDecision } from "@isettingkit/input";
 
-// const UseEditPositions = (
-//   data: {
-//     namePosition: string;
-//     descriptionPosition: string;
-//   },
-//   appData: IAppData
-// ) => {
-//   const normalizeData = {
-//     namePosition: data.namePosition,
-//     descriptionPosition: data.descriptionPosition,
-//   };
+import { IRoleForStaff } from "@ptypes/rolesForStaff";
 
-//   const [isSelected, setIsSelected] = useState<string>(
-//     editPositionTabsConfig.generalInformation.id
-//   );
-//   const [formValues, setFormValues] =
-//     useState<IGeneralInformationEntry>(normalizeData);
-//   const [isCurrentFormValid, setIsCurrentFormValid] = useState(false);
+const UseEditPositions = (
+  data: {
+    missionId: string;
+    missionName: string;
+    descriptionUse: string;
+    MissionByRole: IRoleForStaff[];
+  },
+  appData: IAppData,
+  rolesData: IRoleForStaff[] | undefined
+) => {
+  const normalizeGeneralData = {
+    missionId: data.missionId,
+    namePosition: data.missionName,
+    descriptionPosition: data.descriptionUse,
+  };
 
-//   const [showRequestProcessModal, setShowRequestProcessModal] = useState(false);
-//   const [saveData, setSaveData] = useState<ISaveDataRequest>();
-//   const [errorFetchSaveData, setErrorFetchSaveData] = useState(true);
-//   const [showModal, setShowModal] = useState(false);
-//   const [creditLineDecisions, setCreditLineDecisions] = useState<
-//     IRuleDecision[]
-//   >([]);
-//   const [newDecisions, setNewDecisions] = useState<IRuleDecision[]>();
-//   const generalInformationRef =
-//     useRef<FormikProps<IGeneralInformationEntry>>(null);
+  console.log("data.MissionByRole", data.MissionByRole);
 
-//   const [nameDecision, setNameDecision] = useState(
-//     generalInformationRef.current?.values.namePosition ?? ""
-//   );
+  const [isSelected, setIsSelected] = useState<string>(
+    editPositionTabsConfig.generalInformation.id
+  );
+  const [formValues, setFormValues] = useState<IFormAddPosition>({
+    generalInformation: {
+      isValid: false,
+      values: normalizeGeneralData,
+    },
+    rolesStaff: {
+      isValid: false,
+      values: [],
+    },
+    applicationStaff: {
+      isValid: false,
+      values: [],
+    },
+  });
 
-//   const ruleName = "LineOfCredit";
-//   const conditionRule = "MoneyDestination";
+  const [isCurrentFormValid, setIsCurrentFormValid] = useState(false);
 
-//   //   const { evaluateRuleData } = useEvaluateRuleByBusinessUnit(
-//   //     appData.businessUnit.publicCode,
-//   //     {
-//   //       ruleName: ruleName,
-//   //       conditions: [
-//   //         {
-//   //           condition: conditionRule,
-//   //           value: data.nameDestination,
-//   //         },
-//   //       ],
-//   //     }
-//   //   );
+  const [showRequestProcessModal, setShowRequestProcessModal] = useState(false);
+  const [saveData, setSaveData] = useState<ISaveDataRequest>();
+  const [errorFetchSaveData, setErrorFetchSaveData] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  const [creditLineDecisions, setCreditLineDecisions] = useState<
+    IRuleDecision[]
+  >([]);
+  // const [newDecisions, setNewDecisions] = useState<IRuleDecision[]>();
+  const generalInformationRef =
+    useRef<FormikProps<IGeneralInformationEntry>>(null);
 
-//   //   useEffect(() => {
-//   //     setNameDecision(formValues.nameDestination ?? "");
-//   //   }, [formValues.nameDestination]);
+  // const ruleName = "LineOfCredit";
+  const conditionRule = "MoneyDestination";
 
-//   //   const normalizeEvaluateRuleData = evaluateRuleData?.map((item) => {
-//   //     return {
-//   //       ...item,
-//   //       conditionThatEstablishesTheDecision:
-//   //         item.conditionThatEstablishesTheDecision?.map((condition) => {
-//   //           return {
-//   //             ...condition,
-//   //             hidden: condition.conditionName === conditionRule,
-//   //           };
-//   //         }),
-//   //     };
-//   //   });
+  useEffect(() => {
+    if (rolesData && rolesData.length > 0) {
+      const transformedRolesData = rolesData.map((role) => ({
+        id: role.roleId,
+        value: role.roleName,
+        isActive: role.isActive ?? false,
+      }));
 
-//   //   useEffect(() => {
-//   //     if (evaluateRuleData && normalizeEvaluateRuleData) {
-//   //       setCreditLineDecisions(normalizeEvaluateRuleData);
-//   //     }
-//   //   }, [evaluateRuleData]);
+      const transformedApplicationData = rolesData.map((role) => ({
+        id: role.application?.appId ?? "",
+        value: role.application?.abbreviatedName ?? "",
+        isActive: role.isActive ?? false,
+      }));
 
-//   //   const prevCreditLineDecisionsRef = useRef<IRuleDecision[]>([]);
-//   //   prevCreditLineDecisionsRef.current = normalizeEvaluateRuleData ?? [];
+      const roles = transformedRolesData.map((role) => {
+        const applicationStaff = transformedApplicationData.find(
+          (app) => app.id !== role.id
+        );
+        return {
+          ...role,
+          applicationStaff: applicationStaff?.value,
+        };
+      });
 
-//   // const newInsertValues = () => {
-//   //   if (!arraysEqual(prevCreditLineDecisionsRef.current, creditLineDecisions)) {
-//   //     return creditLineDecisions
-//   //       .filter(
-//   //         (decision) =>
-//   //           !findDecision(prevCreditLineDecisionsRef.current, decision)
-//   //       )
-//   //       .map((decision) => {
-//   //         const decisionByRule: IRuleDecision = {
-//   //           conditionThatEstablishesTheDecision:
-//   //             decision.conditionThatEstablishesTheDecision?.map((condition) => {
-//   //               return {
-//   //                 conditionName: condition.conditionName,
-//   //                 value: condition.value,
-//   //               };
-//   //             }) as ICondition[],
-//   //           effectiveFrom: formatDateDecision(decision.effectiveFrom as string),
-//   //           value: decision.value,
-//   //           transactionOperation: "Insert",
-//   //         };
+      const rolesDataPrueba = roles.map((role) => {
+        const active =
+          Array.isArray(data.MissionByRole) &&
+          data.MissionByRole.find((app) => app.roleName === role.value);
 
-//   //         if (decision.validUntil) {
-//   //           decisionByRule.validUntil = formatDateDecision(
-//   //             decision.validUntil as string
-//   //           );
-//   //         }
+        return {
+          ...role,
+          isActive: !!active, // Converts truthy/falsy values to boolean
+        };
+      });
 
-//   //         return {
-//   //           ruleName: decision.ruleName,
-//   //           decisionByRule: [decisionByRule],
-//   //         };
-//   //       });
-//   //   }
-//   // };
+      setFormValues((prev) => ({
+        ...prev,
+        rolesStaff: {
+          ...prev.rolesStaff,
+          isValid: true,
+          values: rolesDataPrueba,
+        },
+        applicationStaff: {
+          isValid: true,
+          values: transformedApplicationData,
+        },
+      }));
+    }
+  }, [rolesData]);
 
-//   // const newDeletedValues = () => {
-//   //   if (!arraysEqual(prevCreditLineDecisionsRef.current, creditLineDecisions)) {
-//   //     return prevCreditLineDecisionsRef.current
-//   //       .filter((decision) => !findDecision(creditLineDecisions, decision))
-//   //       .map((decision: IRuleDecision) => {
-//   //         const decisionByRule: IRuleDecision = {
-//   //           conditionThatEstablishesTheDecision:
-//   //             decision.conditionThatEstablishesTheDecision?.map((condition) => {
-//   //               return {
-//   //                 conditionName: condition.conditionName,
-//   //                 value: condition.value,
-//   //               };
-//   //             }) as ICondition[],
-//   //           effectiveFrom: formatDateDecision(decision.effectiveFrom as string),
-//   //           value: decision.value,
-//   //           transactionOperation: "Delete",
-//   //         };
+  // const roles = formValues.rolesStaff.values.map((role) => {
+  //   const applicationStaff = formValues.applicationStaff.values.find(
+  //     (app) => app.id !== role.id
+  //   );
+  //   return {
+  //     ...role,
+  //     applicationStaff: applicationStaff?.value,
+  //   };
+  // });
+  // const valuesEqual =
+  //   JSON.stringify(initialValues) === JSON.stringify(formik.values);
 
-//   //         if (decision.validUntil) {
-//   //           decisionByRule.validUntil = formatDateDecision(
-//   //             decision.validUntil as string
-//   //           );
-//   //         }
+  const onSubmit = () => {
+    const configurationRequestData: {
+      missionId: string;
+      abbreviatedName?: string;
+      descriptionUse?: string;
+    } = {
+      missionId: data.missionId,
+    };
+    if (
+      generalInformationRef.current?.values.namePosition !== undefined &&
+      (generalInformationRef.current?.values.namePosition !==
+        data.missionName ||
+        generalInformationRef.current?.values.descriptionPosition !==
+          data.descriptionUse)
+    ) {
+      configurationRequestData.abbreviatedName =
+        generalInformationRef.current?.values.namePosition ?? "";
+      configurationRequestData.descriptionUse =
+        generalInformationRef.current?.values.descriptionPosition ?? "";
+    }
 
-//   //         return {
-//   //           ruleName: decision.ruleName,
-//   //           decisionByRule: [decisionByRule],
-//   //         };
-//   //       });
-//   //   }
-//   // };
+    setSaveData({
+      applicationName: "ifac",
+      businessManagerCode: appData.businessManager.publicCode,
+      businessUnitCode: appData.businessUnit.publicCode,
+      description: "Solicitud de modificación de un destino de dinero",
+      entityName: conditionRule,
+      requestDate: formatDate(new Date()),
+      useCaseName: "ModifyMoneyDestination",
+      configurationRequestData,
+    });
+    setShowRequestProcessModal(true);
+  };
 
-//   // useEffect(() => {
-//   //   const insertValues = newInsertValues();
-//   //   const deleteValues = newDeletedValues();
+  //useEffect(() => {
+  //   if (!errorFetchSaveData) {
+  //     setFormValues(
+  //       generalInformationRef.current?.values as IGeneralInformationEntry
+  //     );
+  //   }
+  // }, [errorFetchSaveData]);
 
-//   //   setNewDecisions([...(insertValues ?? []), ...(deleteValues ?? [])]);
-//   // }, [creditLineDecisions]);
+  const handleTabChange = (tabId: string) => {
+    setIsSelected(tabId);
+  };
 
-//   // const onSubmit = () => {
-//   //   const configurationRequestData: {
-//   //     moneyDestinationId: string;
-//   //     abbreviatedName?: string;
-//   //     descriptionUse?: string;
-//   //     iconReference?: string;
-//   //     rules?: IRuleDecision[];
-//   //   } = {
-//   //     moneyDestinationId: data.id,
-//   //   };
-//   //   if (
-//   //     generalInformationRef.current?.values.nameDestination !== undefined &&
-//   //     (generalInformationRef.current?.values.nameDestination !==
-//   //       data.nameDestination ||
-//   //       generalInformationRef.current?.values.description !== data.description)
-//   //   ) {
-//   //     configurationRequestData.abbreviatedName =
-//   //       generalInformationRef.current?.values.nameDestination ?? "";
-//   //     configurationRequestData.descriptionUse =
-//   //       generalInformationRef.current?.values.description ?? "";
-//   //     configurationRequestData.iconReference =
-//   //       generalInformationRef.current?.values.icon ?? "";
-//   //   }
+  return {
+    creditLineDecisions,
+    formValues,
+    generalInformationRef,
+    isCurrentFormValid,
+    isSelected,
+    saveData,
+    showRequestProcessModal,
+    showModal,
+    errorFetchSaveData,
+    // formik,
+    // handleReset,
+    // onFormSubmit,
+    onSubmit,
+    setCreditLineDecisions,
+    setIsCurrentFormValid,
+    handleTabChange,
+    setShowRequestProcessModal,
+    setErrorFetchSaveData,
+    setShowModal,
+    // valuesEqual,
+  };
+};
 
-//   //   if (newDecisions && newDecisions.length > 0) {
-//   //     configurationRequestData.rules = newDecisions;
-//   //   }
-
-//   //   setSaveData({
-//   //     applicationName: "ifac",
-//   //     businessManagerCode: appData.businessManager.publicCode,
-//   //     businessUnitCode: appData.businessUnit.publicCode,
-//   //     description: "Solicitud de modificación de un destino de dinero",
-//   //     entityName: conditionRule,
-//   //     requestDate: formatDate(new Date()),
-//   //     useCaseName: "ModifyMoneyDestination",
-//   //     configurationRequestData,
-//   //   });
-//   //   setShowRequestProcessModal(true);
-//   // };
-
-//   // useEffect(() => {
-//   //   if (!errorFetchSaveData) {
-//   //     setFormValues(
-//   //       generalInformationRef.current?.values as IGeneralInformationEntry
-//   //     );
-//   //   }
-//   // }, [errorFetchSaveData]);
-
-//   // const handleReset = () => {
-//   //   setCreditLineDecisions(evaluateRuleData ?? []);
-//   // };
-
-//   const handleTabChange = (tabId: string) => {
-//     setIsSelected(tabId);
-//   };
-
-//   return {
-//     creditLineDecisions,
-//     formValues,
-//     generalInformationRef,
-//     isCurrentFormValid,
-//     nameDecision,
-//     isSelected,
-//     saveData,
-//     showRequestProcessModal,
-//     showModal,
-//     // handleReset,
-//     // onSubmit,
-//     setCreditLineDecisions,
-//     setIsCurrentFormValid,
-//     handleTabChange,
-//     setShowRequestProcessModal,
-//     setErrorFetchSaveData,
-//     setShowModal,
-//   };
-// };
-
-// export { UseEditPositions };
+export { UseEditPositions };

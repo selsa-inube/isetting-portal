@@ -11,7 +11,8 @@ import { Landing } from "@pages/login/landing";
 
 import { UnitNavigationHandler } from "@routes/unitNavigationHandler";
 import { Logout } from "@pages/login/logout";
-import { PositionsRoutes } from "@routes/privileges";
+
+import { MoneyDestinationRoutes } from "@routes/positions";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,7 +20,7 @@ const router = createBrowserRouter(
       <Route path="selectBusinessUnit/*" element={<UnitNavigationHandler />} />
       <Route path="/" element={<Landing />} errorElement={<ErrorPage />} />
       <Route path="/" element={<CorePageStructure />}>
-        <Route path="positions/*" element={<PositionsRoutes />} />
+        <Route path="positions/*" element={<MoneyDestinationRoutes />} />
         <Route path="rules/*" element={<RulesRoutes />} />
       </Route>
       <Route path="logout" element={<Logout />} />
