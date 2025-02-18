@@ -14,6 +14,7 @@ const DecisionModal = (props: IDecisionModal) => {
     portalId,
     title,
     appearance = ComponentAppearance.PRIMARY,
+    withCancelButton = true,
     onClick,
     onCloseModal,
     setFieldEntered,
@@ -52,6 +53,7 @@ const DecisionModal = (props: IDecisionModal) => {
       isMobileTextarea={isMobileTextarea}
       getFieldState={getFieldState}
       showCancelButton={showCancelButton}
+      withCancelButton={withCancelButton}
     />
   );
 };

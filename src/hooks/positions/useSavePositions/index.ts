@@ -21,6 +21,7 @@ const UseSavePositions = (
   setSendData: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   const [savePositions, setSavePositions] = useState<ISaveDataResponse>();
+  const [showPendingReqModal, setShowPendingReqModal] = useState(false);
   const [statusRequest, setStatusRequest] = useState<string>();
   const [loading, setLoading] = useState(false);
   const { addFlag } = useFlag();
@@ -173,6 +174,7 @@ const UseSavePositions = (
             clearInterval(timer);
             setTimeout(() => {
               setSendData(false);
+              setShowPendingReqModal(true);
             }, 1500);
           } else {
             await fetchRequestInProgressData();
@@ -220,11 +222,18 @@ const UseSavePositions = (
     handleStatusChange();
   }, [statusRequest]);
 
+  const handleClosePendingReqModal = () => {
+    setShowPendingReqModal(false);
+    navigate(navigatePage);
+  };
+
   return {
     savePositions,
     requestSteps,
     loading,
     handleCloseRequestStatus,
+    handleClosePendingReqModal,
+    showPendingReqModal,
   };
 };
 

@@ -1,6 +1,12 @@
 import { FormikProps } from "formik";
 import { IRuleDecision } from "@isettingkit/input";
-import { Breadcrumbs, Stack, Tabs, useMediaQuery } from "@inubekit/inubekit";
+import {
+  Breadcrumbs,
+  Button,
+  Stack,
+  Tabs,
+  useMediaQuery,
+} from "@inubekit/inubekit";
 
 import { ISaveDataResponse } from "@ptypes/saveData/ISaveDataResponse";
 
@@ -15,6 +21,12 @@ import { crumbsEditPosition } from "@config/positions/editPositions/navigation";
 import { GeneralInformationForm } from "../../forms/generalInformationForm";
 import { InitializerForm } from "@design/forms/InitializerForm";
 import { basic } from "@design/tokens";
+import { ComponentAppearance } from "@ptypes/aparences.types";
+import { RequestProcessModal } from "@design/modals/requestProcessModal";
+import { requestProcessMessage } from "@config/positionsTabs/requestProcessMessage";
+import { requestStatusMessage } from "@config/positionsTabs/generics/requestStatusMessage";
+import { DecisionModal } from "@design/modals/decisionModal";
+import { requestPendingModal } from "@config/positionsTabs/generics/requestPendingModal";
 
 interface IEditDestinationUI {
   editPositionTabsConfig: IEditDestinationTabsConfig;
@@ -41,13 +53,22 @@ const EditDestinationUI = (props: IEditDestinationUI) => {
     editPositionTabsConfig,
     generalInformationRef,
     initialValues,
+    savePositions,
     isSelected,
     loading,
+    showRequestProcessModal,
+    onButtonClick,
     onTabChange,
+    onCloseRequestStatus,
+    onClosePendingReqModal,
     setIsCurrentFormValid,
+    showPendingReqModal,
+    requestSteps,
+    onReset,
   } = props;
 
   const smallScreen = useMediaQuery("(max-width: 990px)");
+
   return (
     <Stack
       direction="column"
@@ -79,12 +100,9 @@ const EditDestinationUI = (props: IEditDestinationUI) => {
                 ref={generalInformationRef}
                 initialValues={initialValues.generalInformation.values}
                 onFormValid={setIsCurrentFormValid}
-                // onButtonClick={onButtonClick}
                 editDataOption
                 loading={loading}
-                handleNextStep={function (): void {
-                  throw new Error("Function not implemented.");
-                }}
+                handleNextStep={() => false}
               />
             )}
             {isSelected === editPositionTabsConfig.selectionRoles.id && (
@@ -98,11 +116,11 @@ const EditDestinationUI = (props: IEditDestinationUI) => {
         </Stack>
       </Stack>
       <Stack justifyContent="flex-end" gap={basic.spacing.s250}>
-        {/* <Button
+        <Button
           fullwidth={smallScreen}
-          onClick={() => formik.resetForm()}
+          onClick={onReset}
           appearance={ComponentAppearance.GRAY}
-          disabled={valuesEqual}
+          disabled={false}
         >
           Cancelar
         </Button>
@@ -110,19 +128,17 @@ const EditDestinationUI = (props: IEditDestinationUI) => {
         <Button
           fullwidth={smallScreen}
           onClick={onButtonClick}
-          disabled={
-            editDataOption ? isDisabledButton && !loading : isDisabledButton
-          }
+          disabled={false}
           loading={loading}
           appearance={ComponentAppearance.PRIMARY}
         >
-          {editDataOption ? "Guardar" : "Siguiente"}
-        </Button> */}
+          Guardar
+        </Button>
       </Stack>
-      {/* {showRequestProcessModal && savePositions && (
+      {showRequestProcessModal && savePositions && (
         <RequestProcessModal
           portalId="portal"
-          saveData={saveMoneyDestination}
+          saveData={savePositions}
           descriptionRequestProcess={requestProcessMessage}
           descriptionRequestStatus={requestStatusMessage}
           loading={loading}
@@ -131,21 +147,21 @@ const EditDestinationUI = (props: IEditDestinationUI) => {
           onCloseRequestStatus={onCloseRequestStatus}
         />
       )}
-      {showPendingReqModal && saveMoneyDestination.requestNumber && (
+      {showPendingReqModal && savePositions.requestNumber && (
         <DecisionModal
           portalId="portal"
-          title={requestPendingModal(saveMoneyDestination.requestNumber).title}
+          title={requestPendingModal(savePositions.requestNumber).title}
           description={
-            requestPendingModal(saveMoneyDestination.requestNumber).description
+            requestPendingModal(savePositions.requestNumber).description
           }
           actionText={
-            requestPendingModal(saveMoneyDestination.requestNumber).actionText
+            requestPendingModal(savePositions.requestNumber).actionText
           }
           onCloseModal={onClosePendingReqModal}
           onClick={onClosePendingReqModal}
           withCancelButton={false}
         />
-      )} */}
+      )}
     </Stack>
   );
 };

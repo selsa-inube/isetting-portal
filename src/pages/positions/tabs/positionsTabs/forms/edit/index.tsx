@@ -1,4 +1,4 @@
-import { editMoneyDestinationModal } from "@config/positionsTabs/generics/editMoneyDestinationModal";
+import { editPositionModal } from "@config/positionsTabs/generics/editPositionModal";
 import { EditRecord } from "@design/feedback/editRecord";
 import { IEntry } from "@design/table/types";
 import { useEditDestinationModal } from "@hooks/positions/useEditDestinationModal";
@@ -16,7 +16,7 @@ const Edit = (props: IEdit) => {
     <EditRecord
       showModal={showModal}
       portalId="portal"
-      editRecordMessage={editMoneyDestinationModal}
+      editRecordMessage={editPositionModal}
       onToggleModal={handleToggleModal}
       onEdit={handleEdit}
     />

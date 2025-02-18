@@ -10,8 +10,8 @@ import {
   IGeneralInformationEntry,
 } from "@pages/positions/tabs/positionsTabs/outlets/addPosition/types";
 import { IRuleDecision } from "@isettingkit/input";
-
 import { IRoleForStaff } from "@ptypes/rolesForStaff";
+import { IEntry } from "@design/templates/assignmentForm/types";
 
 const UseEditPositions = (
   data: {
@@ -29,12 +29,7 @@ const UseEditPositions = (
     descriptionPosition: data.descriptionUse,
   };
 
-  console.log("data.MissionByRole", data.MissionByRole);
-
-  const [isSelected, setIsSelected] = useState<string>(
-    editPositionTabsConfig.generalInformation.id
-  );
-  const [formValues, setFormValues] = useState<IFormAddPosition>({
+  const initialFormValues = {
     generalInformation: {
       isValid: false,
       values: normalizeGeneralData,
@@ -45,42 +40,56 @@ const UseEditPositions = (
     },
     applicationStaff: {
       isValid: false,
-      values: [],
+      values:
+        rolesData?.map((role) => ({
+          id: role.application?.appId ?? "",
+          value: role.application?.abbreviatedName ?? "",
+          isActive: role.isActive ?? false,
+        })) ?? [],
     },
-  });
+  };
 
+  const [isSelected, setIsSelected] = useState<string>(
+    editPositionTabsConfig.generalInformation.id
+  );
+  const transformedApplicationData = rolesData?.map((role) => ({
+    id: role.application?.appId ?? "",
+    value: role.application?.abbreviatedName ?? "",
+    isActive: role.isActive ?? false,
+  }));
+
+  const [formValues, setFormValues] =
+    useState<IFormAddPosition>(initialFormValues);
   const [isCurrentFormValid, setIsCurrentFormValid] = useState(false);
-
   const [showRequestProcessModal, setShowRequestProcessModal] = useState(false);
   const [saveData, setSaveData] = useState<ISaveDataRequest>();
   const [errorFetchSaveData, setErrorFetchSaveData] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const [selectedToggle, setSelectedToggle] = useState<IEntry[]>([]);
   const [creditLineDecisions, setCreditLineDecisions] = useState<
     IRuleDecision[]
   >([]);
-  // const [newDecisions, setNewDecisions] = useState<IRuleDecision[]>();
+
   const generalInformationRef =
     useRef<FormikProps<IGeneralInformationEntry>>(null);
 
-  // const ruleName = "LineOfCredit";
-  const conditionRule = "MoneyDestination";
+  const rolesDataEndpoint = formValues.rolesStaff.values
+    .filter((role) => role.isActive)
+    .map((role) => ({
+      missionId: role.id,
+      abbreviatedName: role.value,
+    }));
 
   useEffect(() => {
     if (rolesData && rolesData.length > 0) {
-      const transformedRolesData = rolesData.map((role) => ({
+      const transformedRolesData = rolesData?.map((role) => ({
         id: role.roleId,
         value: role.roleName,
         isActive: role.isActive ?? false,
       }));
 
-      const transformedApplicationData = rolesData.map((role) => ({
-        id: role.application?.appId ?? "",
-        value: role.application?.abbreviatedName ?? "",
-        isActive: role.isActive ?? false,
-      }));
-
-      const roles = transformedRolesData.map((role) => {
-        const applicationStaff = transformedApplicationData.find(
+      const roles = transformedRolesData?.map((role) => {
+        const applicationStaff = transformedApplicationData?.find(
           (app) => app.id !== role.id
         );
         return {
@@ -89,14 +98,14 @@ const UseEditPositions = (
         };
       });
 
-      const rolesDataPrueba = roles.map((role) => {
+      const rolesInitial = roles?.map((role) => {
         const active =
           Array.isArray(data.MissionByRole) &&
           data.MissionByRole.find((app) => app.roleName === role.value);
 
         return {
           ...role,
-          isActive: !!active, // Converts truthy/falsy values to boolean
+          isActive: !!active,
         };
       });
 
@@ -105,27 +114,15 @@ const UseEditPositions = (
         rolesStaff: {
           ...prev.rolesStaff,
           isValid: true,
-          values: rolesDataPrueba,
+          values: rolesInitial ?? [],
         },
         applicationStaff: {
           isValid: true,
-          values: transformedApplicationData,
+          values: transformedApplicationData ?? [],
         },
       }));
     }
   }, [rolesData]);
-
-  // const roles = formValues.rolesStaff.values.map((role) => {
-  //   const applicationStaff = formValues.applicationStaff.values.find(
-  //     (app) => app.id !== role.id
-  //   );
-  //   return {
-  //     ...role,
-  //     applicationStaff: applicationStaff?.value,
-  //   };
-  // });
-  // const valuesEqual =
-  //   JSON.stringify(initialValues) === JSON.stringify(formik.values);
 
   const onSubmit = () => {
     const configurationRequestData: {
@@ -135,6 +132,7 @@ const UseEditPositions = (
     } = {
       missionId: data.missionId,
     };
+
     if (
       generalInformationRef.current?.values.namePosition !== undefined &&
       (generalInformationRef.current?.values.namePosition !==
@@ -149,29 +147,79 @@ const UseEditPositions = (
     }
 
     setSaveData({
-      applicationName: "ifac",
+      applicationName: "istaff",
       businessManagerCode: appData.businessManager.publicCode,
       businessUnitCode: appData.businessUnit.publicCode,
-      description: "Solicitud de modificación de un destino de dinero",
-      entityName: conditionRule,
+      description: "Solicitud de modificación de un cargo",
+      entityName: "Mission",
       requestDate: formatDate(new Date()),
-      useCaseName: "ModifyMoneyDestination",
-      configurationRequestData,
+      useCaseName: "ModifyMission",
+
+      configurationRequestData: {
+        missionId: data.missionId,
+        abbreviatedName: formValues.generalInformation.values.namePosition,
+        descriptionUse:
+          formValues.generalInformation.values.descriptionPosition,
+        businessManagerStaffMissionByRole: rolesDataEndpoint,
+      },
     });
     setShowRequestProcessModal(true);
   };
 
-  //useEffect(() => {
-  //   if (!errorFetchSaveData) {
-  //     setFormValues(
-  //       generalInformationRef.current?.values as IGeneralInformationEntry
-  //     );
-  //   }
-  // }, [errorFetchSaveData]);
+  const handleReset = () => {
+    setFormValues(initialFormValues);
+
+    setSelectedToggle([]);
+    if (isSelected === editPositionTabsConfig.generalInformation.id) {
+      generalInformationRef.current?.resetForm();
+    }
+    if (isSelected === editPositionTabsConfig.selectionRoles.id) {
+      setFormValues((prev) => ({
+        ...prev,
+        rolesStaff: {
+          isValid: true,
+          values: formValues.rolesStaff.values.map((role) => ({
+            id: role.id,
+            value: role.value,
+            isActive: role.isActive,
+            applicationStaff: role.applicationStaff,
+          })),
+        },
+      }));
+    }
+  };
 
   const handleTabChange = (tabId: string) => {
     setIsSelected(tabId);
   };
+
+  const handleRoleToggle = (roleId: string) => {
+    const updatedRoles = formValues.rolesStaff.values.map((role) => {
+      if (role.id === roleId) {
+        const updatedRole = { ...role, isActive: !role.isActive };
+
+        setSelectedToggle((prev) =>
+          updatedRole.isActive
+            ? [...prev, updatedRole]
+            : prev.filter((item) => item.id !== updatedRole.id)
+        );
+
+        return updatedRole;
+      }
+      return role;
+    });
+
+    setFormValues((prev) => ({
+      ...prev,
+      rolesStaff: {
+        ...prev.rolesStaff,
+        values: updatedRoles,
+      },
+    }));
+  };
+  if (selectedToggle.length > 0) {
+    formValues.rolesStaff.values = selectedToggle;
+  }
 
   return {
     creditLineDecisions,
@@ -183,9 +231,7 @@ const UseEditPositions = (
     showRequestProcessModal,
     showModal,
     errorFetchSaveData,
-    // formik,
-    // handleReset,
-    // onFormSubmit,
+    handleReset,
     onSubmit,
     setCreditLineDecisions,
     setIsCurrentFormValid,
@@ -193,7 +239,8 @@ const UseEditPositions = (
     setShowRequestProcessModal,
     setErrorFetchSaveData,
     setShowModal,
-    // valuesEqual,
+    setSelectedToggle,
+    handleRoleToggle,
   };
 };
 

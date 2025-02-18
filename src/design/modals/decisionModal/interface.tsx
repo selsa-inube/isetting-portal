@@ -13,6 +13,7 @@ import { FormikValues } from "formik";
 interface IDecisionModalUI {
   actionText: string;
   appearance: IIconAppearance;
+  withCancelButton: boolean;
   comparisonData: boolean;
   description: string;
   formik: FormikValues;

@@ -22,66 +22,48 @@ const EditDestination = () => {
     isSelected,
     saveData,
     showRequestProcessModal,
-
-    // formik,
-    // handleReset,
-    // onFormSubmit,
-
+    onSubmit,
+    handleReset,
     setCreditLineDecisions,
     setIsCurrentFormValid,
     handleTabChange,
-
     setShowModal,
-    // valuesEqual,
   } = UseEditPositions(data, appData, rolesStaff);
 
   const {
     savePositions,
     requestSteps,
     loading,
-    // showPendingReqModal,
+    showPendingReqModal,
     handleCloseRequestStatus,
-    // handleClosePendingReqModal,
+    handleClosePendingReqModal,
   } = UseSavePositions(
     appData.businessUnit.publicCode,
     appData.user.userAccount,
     showRequestProcessModal,
     saveData as ISaveDataRequest,
     setShowModal
-    // setShowRequestProcessModal,
-    // setErrorFetchSaveData
   );
 
   return (
     <EditDestinationUI
-      // formik={formik}
       creditLineDecisions={creditLineDecisions}
       editPositionTabsConfig={editPositionTabsConfig}
       isSelected={isSelected}
       onTabChange={handleTabChange}
       generalInformationRef={generalInformationRef}
       initialValues={formValues}
-      // onButtonClick={onSubmit}
-      // onReset={handleReset}
       setCreditLineDecisions={setCreditLineDecisions}
       setIsCurrentFormValid={setIsCurrentFormValid}
       savePositions={savePositions as ISaveDataResponse}
       requestSteps={requestSteps}
       loading={loading}
-      //   showPendingReqModal={showPendingReqModal}
       showRequestProcessModal={showRequestProcessModal}
       onCloseRequestStatus={handleCloseRequestStatus}
-      showPendingReqModal={false}
-      onClosePendingReqModal={function (): void {
-        throw new Error("Function not implemented.");
-      }} //   onClosePendingReqModal={handleClosePendingReqModal}
-      onButtonClick={function (): void {
-        throw new Error("Function not implemented.");
-      }}
-      onReset={function (): void {
-        throw new Error("Function not implemented.");
-      }}
-      // valuesEqual={valuesEqual}
+      showPendingReqModal={showPendingReqModal}
+      onClosePendingReqModal={handleClosePendingReqModal}
+      onButtonClick={onSubmit}
+      onReset={handleReset}
     />
   );
 };
