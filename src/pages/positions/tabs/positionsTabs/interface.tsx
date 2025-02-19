@@ -17,7 +17,7 @@ import {
 } from "@inubekit/table";
 import { basic } from "@design/tokens";
 import { Loading } from "@pages/login/loading";
-import { actions, titlesOptions } from "@config/positions/table";
+import { actionsConfig, titlesOptions } from "@config/positions/table";
 import { StyledButtonWrapper } from "./styles";
 import { IPositions } from "./types";
 
@@ -99,7 +99,7 @@ const PositionsUI = (props: IPositions) => {
                       {title.titleName}
                     </Th>
                   ))}
-                  {ShowActionTitle(actions)}
+                  {ShowActionTitle(actionsConfig(() => {}))}
                 </Tr>
               </Thead>
               <Tbody>
@@ -113,14 +113,17 @@ const PositionsUI = (props: IPositions) => {
                         {entry[title.id]}
                       </Td>
                     ))}
-                    {ShowAction(actions, entry)}
+                    {ShowAction(
+                      actionsConfig(() => {}),
+                      { ...entry, id: entry.staffId }
+                    )}
                   </Tr>
                 ))}
               </Tbody>
               <Tfoot>
                 <Tr border="bottom">
                   <Td
-                    colSpan={titlesOptions.length + actions.length}
+                    colSpan={titlesOptions.length + actionsConfig.length}
                     type="custom"
                     align="right"
                   >

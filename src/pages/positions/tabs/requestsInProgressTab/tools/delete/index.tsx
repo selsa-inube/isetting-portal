@@ -21,6 +21,7 @@ const Delete = (props: IDelete) => {
       onToggleModal={handleToggleModal}
       onClick={handleClick}
       setJustificationDelete={setJustificationDelete}
+      loading={false}
     />
   );
 };
