@@ -1,4 +1,4 @@
-import { Tag } from "@inubekit/tag";
+import { Tag } from "@inubekit/inubekit";
 import { Text } from "@inubekit/text";
 import { basic } from "@design/tokens";
 import { SelectCheck } from "@design/select";

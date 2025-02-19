@@ -2,7 +2,7 @@ import { MdChevronLeft } from "react-icons/md";
 import { Grid } from "@inubekit/grid";
 import { Stack } from "@inubekit/stack";
 import { Text } from "@inubekit/text";
-import { Button } from "@inubekit/button";
+import { Button } from "@inubekit/inubekit";
 import { useMediaQueries, useMediaQuery } from "@inubekit/hooks";
 import { basic } from "@design/tokens";
 import { enviroment } from "@config/environment";

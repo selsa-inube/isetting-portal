@@ -1,4 +1,4 @@
-import { SkeletonLine } from "@inubekit/skeleton";
+import { SkeletonLine } from "@inubekit/inubekit";
 import { Td, Tr } from "@inubekit/table";
 
 import { ActionsLoading } from "../actionsLoading";

@@ -2,7 +2,7 @@ import { MdSearch, MdPersonAddAlt } from "react-icons/md";
 import { Text } from "@inubekit/text";
 import { Textfield } from "@inubekit/textfield";
 import { Stack } from "@inubekit/stack";
-import { Button } from "@inubekit/button";
+import { Button } from "@inubekit/inubekit";
 import {
   Col,
   Colgroup,

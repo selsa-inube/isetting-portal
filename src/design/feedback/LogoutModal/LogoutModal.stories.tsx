@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import { StoryFn } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-import { Button } from "@inubekit/button";
+import { Button } from "@inubekit/inubekit";
 import { Stack } from "@inubekit/stack";
 import { basic } from "@design/tokens";
 
