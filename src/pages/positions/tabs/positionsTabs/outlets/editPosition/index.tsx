@@ -2,14 +2,14 @@ import { useContext } from "react";
 import { useLocation } from "react-router-dom";
 import { ISaveDataRequest } from "@ptypes/saveData/ISaveDataRequest";
 import { ISaveDataResponse } from "@ptypes/saveData/ISaveDataResponse";
-import { EditDestinationUI } from "./interface";
+import { EditPositionsUI } from "./interface";
 import { AuthAndData } from "@context/authAndDataProvider";
 import { UseSavePositions } from "@hooks/positions/useSavePositions";
 import { editPositionTabsConfig } from "@config/positions/editPositions/tabs";
 import { UseEditPositions } from "@hooks/positions/useEditPositions";
 import { UseFetchRolesStaff } from "@hooks/positions/useFetchRolesStaff";
 
-const EditDestination = () => {
+const EditPositions = () => {
   const location = useLocation();
   const { data } = location.state || {};
   const { appData } = useContext(AuthAndData);
@@ -46,7 +46,7 @@ const EditDestination = () => {
   );
 
   return (
-    <EditDestinationUI
+    <EditPositionsUI
       creditLineDecisions={creditLineDecisions}
       editPositionTabsConfig={editPositionTabsConfig}
       isSelected={isSelected}
@@ -68,4 +68,4 @@ const EditDestination = () => {
   );
 };
 
-export { EditDestination };
+export { EditPositions };

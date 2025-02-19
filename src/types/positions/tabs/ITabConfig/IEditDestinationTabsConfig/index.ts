@@ -1,8 +1,8 @@
 import { ITabConfig } from "..";
 
-interface IEditDestinationTabsConfig {
+interface IEditPositionsTabsConfig {
   generalInformation: ITabConfig;
   selectionRoles: ITabConfig;
 }
 
-export type { IEditDestinationTabsConfig };
+export type { IEditPositionsTabsConfig };

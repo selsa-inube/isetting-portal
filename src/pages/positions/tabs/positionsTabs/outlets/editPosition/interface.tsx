@@ -9,16 +9,6 @@ import {
 } from "@inubekit/inubekit";
 
 import { ISaveDataResponse } from "@ptypes/saveData/ISaveDataResponse";
-
-import { IEditDestinationTabsConfig } from "@ptypes/positions/tabs/ITabConfig/IEditDestinationTabsConfig";
-import { IRequestSteps } from "@design/feedback/requestProcess/types";
-import {
-  IFormAddPosition,
-  IGeneralInformationEntry,
-} from "../addPosition/types";
-import { Title } from "@design/label/Title";
-import { crumbsEditPosition } from "@config/positions/editPositions/navigation";
-import { GeneralInformationForm } from "../../forms/generalInformationForm";
 import { InitializerForm } from "@design/forms/InitializerForm";
 import { basic } from "@design/tokens";
 import { ComponentAppearance } from "@ptypes/aparences.types";
@@ -27,9 +17,19 @@ import { requestProcessMessage } from "@config/positionsTabs/requestProcessMessa
 import { requestStatusMessage } from "@config/positionsTabs/generics/requestStatusMessage";
 import { DecisionModal } from "@design/modals/decisionModal";
 import { requestPendingModal } from "@config/positionsTabs/generics/requestPendingModal";
+import { IEditPositionsTabsConfig } from "@ptypes/positions/tabs/ITabConfig/IEditDestinationTabsConfig";
 
-interface IEditDestinationUI {
-  editPositionTabsConfig: IEditDestinationTabsConfig;
+import { IRequestSteps } from "@design/feedback/requestProcess/types";
+import {
+  IFormAddPosition,
+  IGeneralInformationEntry,
+} from "../addPosition/types";
+import { Title } from "@design/label/Title";
+import { crumbsEditPosition } from "@config/positions/editPositions/navigation";
+import { GeneralInformationForm } from "../../forms/generalInformationForm";
+
+interface IEditPositionsUI {
+  editPositionTabsConfig: IEditPositionsTabsConfig;
   creditLineDecisions: IRuleDecision[];
   generalInformationRef: React.RefObject<FormikProps<IGeneralInformationEntry>>;
   initialValues: IFormAddPosition;
@@ -48,7 +48,7 @@ interface IEditDestinationUI {
   onClosePendingReqModal: () => void;
 }
 
-const EditDestinationUI = (props: IEditDestinationUI) => {
+const EditPositionsUI = (props: IEditPositionsUI) => {
   const {
     editPositionTabsConfig,
     generalInformationRef,
@@ -166,4 +166,4 @@ const EditDestinationUI = (props: IEditDestinationUI) => {
   );
 };
 
-export { EditDestinationUI };
+export { EditPositionsUI };
