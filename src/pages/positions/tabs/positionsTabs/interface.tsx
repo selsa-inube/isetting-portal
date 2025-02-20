@@ -1,8 +1,8 @@
 import { MdSearch, MdPersonAddAlt } from "react-icons/md";
 import { Text } from "@inubekit/inubekit";
 import { Textfield } from "@inubekit/textfield";
-import { Stack } from "@inubekit/inubekit";
-import { Button } from "@inubekit/button";
+import { Button, Stack } from "@inubekit/inubekit";
+
 import {
   Col,
   Colgroup,
@@ -17,7 +17,7 @@ import {
 } from "@inubekit/table";
 import { basic } from "@design/tokens";
 import { Loading } from "@pages/login/loading";
-import { actions, titlesOptions } from "@config/positions/table";
+import { actionsConfig, titlesOptions } from "@config/positions/table";
 import { StyledButtonWrapper } from "./styles";
 import { IPositions } from "./types";
 
@@ -39,7 +39,6 @@ const PositionsUI = (props: IPositions) => {
     lastEntryInPage,
     paginatedData,
   } = props;
-
   return (
     <Stack
       direction="column"
@@ -99,7 +98,7 @@ const PositionsUI = (props: IPositions) => {
                       {title.titleName}
                     </Th>
                   ))}
-                  {ShowActionTitle(actions)}
+                  {ShowActionTitle(actionsConfig(() => {}))}
                 </Tr>
               </Thead>
               <Tbody>
@@ -113,16 +112,21 @@ const PositionsUI = (props: IPositions) => {
                         {entry[title.id]}
                       </Td>
                     ))}
-                    {ShowAction(actions, entry)}
+                    {ShowAction(
+                      actionsConfig(() => {}),
+                      { ...entry, id: entry.staffId }
+                    )}
                   </Tr>
                 ))}
               </Tbody>
               <Tfoot>
                 <Tr border="bottom">
                   <Td
-                    colSpan={titlesOptions.length + actions.length}
+                    colSpan={
+                      actionsConfig(() => {}).length + titlesOptions.length
+                    }
                     type="custom"
-                    align="right"
+                    align="left"
                   >
                     <Pagination
                       firstEntryInPage={firstEntryInPage}

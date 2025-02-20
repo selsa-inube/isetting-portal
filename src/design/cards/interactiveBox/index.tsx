@@ -3,7 +3,7 @@ import { Text } from "@inubekit/inubekit";
 import { Icon } from "@inubekit/inubekit";
 import { useMediaQuery } from "@inubekit/hooks";
 import { basic } from "@design/tokens";
-import { SkeletonIcon, SkeletonLine } from "@inubekit/skeleton";
+import { SkeletonIcon, SkeletonLine } from "@inubekit/inubekit";
 import { StyledInteractiveBox } from "./styles";
 
 interface IInteractiveBox {

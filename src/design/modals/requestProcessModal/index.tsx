@@ -7,7 +7,7 @@ import { basic } from "@design/tokens";
 import { Spinner } from "@inubekit/spinner";
 import { Stack } from "@inubekit/inubekit";
 import { ComponentAppearance } from "@ptypes/aparences.types";
-import { Blanket } from "@inubekit/blanket";
+import { Blanket } from "@inubekit/inubekit";
 import { useMediaQuery } from "@inubekit/hooks";
 import { Text } from "@inubekit/inubekit";
 import { ISpinnerAppearance } from "@inubekit/spinner";

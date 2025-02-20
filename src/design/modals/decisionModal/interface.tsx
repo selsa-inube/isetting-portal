@@ -1,19 +1,17 @@
 import { createPortal } from "react-dom";
 import { MdClear } from "react-icons/md";
-import { Button } from "@inubekit/button";
 import { Stack } from "@inubekit/inubekit";
 import { Text } from "@inubekit/inubekit";
-import { Blanket } from "@inubekit/blanket";
-import { Icon, IIconAppearance } from "@inubekit/icon";
-import { Textarea } from "@inubekit/textarea";
-import { Divider } from "@inubekit/divider";
-import { StyledContainerButton, StyledModal, StyledTextarea } from "./styles";
 import { FormikValues } from "formik";
+import { Button } from "@inubekit/inubekit";
+import { Blanket } from "@inubekit/inubekit";
+import { Icon, IIconAppearance } from "@inubekit/icon";
+import { Divider } from "@inubekit/inubekit";
+import { StyledContainerButton, StyledModal } from "./styles";
 
 interface IDecisionModalUI {
   actionText: string;
   appearance: IIconAppearance;
-  withCancelButton: boolean;
   comparisonData: boolean;
   description: string;
   formik: FormikValues;
@@ -32,26 +30,23 @@ interface IDecisionModalUI {
     fieldName: string
   ) => "invalid" | "pending" | undefined;
   showCancelButton?: boolean;
+  withCancelButton: boolean;
 }
 
 const DecisionModalUI = (props: IDecisionModalUI) => {
   const {
     actionText,
     appearance,
-    comparisonData,
     description,
-    formik,
     isLoading,
     icon,
-    justificationOfDecision,
     portalId,
     title,
     withIcon,
     onClick,
     onCloseModal,
     isMobile,
-    isMobileTextarea,
-    getFieldState,
+    withCancelButton,
     showCancelButton = true,
   } = props;
 
@@ -69,15 +64,17 @@ const DecisionModalUI = (props: IDecisionModalUI) => {
               {title}
             </Text>
             <StyledContainerButton>
-              <Button
-                spacing="compact"
-                appearance="dark"
-                variant="none"
-                onClick={onCloseModal}
-                iconAfter={<Icon appearance="dark" icon={<MdClear />} />}
-              >
-                Cerrar
-              </Button>
+              {withCancelButton && (
+                <Button
+                  spacing="compact"
+                  appearance="dark"
+                  variant="none"
+                  onClick={onCloseModal}
+                  iconAfter={<Icon appearance="dark" icon={<MdClear />} />}
+                >
+                  Cerrar
+                </Button>
+              )}
             </StyledContainerButton>
           </Stack>
           <Divider />
@@ -92,24 +89,6 @@ const DecisionModalUI = (props: IDecisionModalUI) => {
         <Text appearance="gray" type="body" size="medium">
           {description}
         </Text>
-
-        {justificationOfDecision && (
-          <StyledTextarea $smallScreen={isMobileTextarea}>
-            <Textarea
-              label=""
-              name="justification"
-              id="justification"
-              placeholder="Indique la razón por la que desea realizar esta acción"
-              value={formik.values.justification}
-              message={formik.errors.justification}
-              fullwidth
-              maxLength={130}
-              status={getFieldState(formik, "justification")}
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-            />
-          </StyledTextarea>
-        )}
 
         <Stack gap="s250" justifyContent="flex-end">
           {showCancelButton && (
@@ -128,7 +107,7 @@ const DecisionModalUI = (props: IDecisionModalUI) => {
             variant="filled"
             loading={isLoading}
             onClick={onClick}
-            disabled={comparisonData || !formik.isValid}
+            disabled={false}
           >
             {actionText}
           </Button>

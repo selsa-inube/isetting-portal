@@ -3,9 +3,9 @@ import { StyledContainerButton, StyledText } from "./styles";
 import { ComponentAppearance } from "@ptypes/aparences.types";
 import { basic } from "@design/tokens";
 import { Icon, IIconAppearance } from "@inubekit/icon";
-import { Button } from "@inubekit/button";
 import { Stack } from "@inubekit/inubekit";
 import { Text } from "@inubekit/inubekit";
+import { Button } from "@inubekit/inubekit";
 
 interface IRequestStatus {
   title: string;

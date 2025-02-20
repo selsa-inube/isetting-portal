@@ -14,11 +14,11 @@ const DecisionModal = (props: IDecisionModal) => {
     portalId,
     title,
     appearance = ComponentAppearance.PRIMARY,
-    withCancelButton = true,
     onClick,
     onCloseModal,
     setFieldEntered,
     showCancelButton = true,
+    withCancelButton = true,
   } = props;
 
   const { formik, isMobile, isMobileTextarea, getFieldState, comparisonData } =

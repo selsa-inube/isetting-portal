@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { MdOutlineChevronRight } from "react-icons/md";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Grid } from "@inubekit/grid";
+import { Grid } from "@inubekit/inubekit";
 import { Header } from "@inubekit/header";
 import { AuthAndData } from "@context/authAndDataProvider";
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
@@ -11,6 +11,7 @@ import { actionsConfig } from "@config/mainActionLogout";
 import { Nav } from "@inubekit/inubekit";
 import { useMediaQuery } from "@inubekit/hooks";
 import { Icon } from "@inubekit/icon";
+
 import { BusinessUnitChange } from "@design/inputs/BusinessUnitChange";
 import {
   StyledAppPage,

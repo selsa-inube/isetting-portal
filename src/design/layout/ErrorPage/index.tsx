@@ -2,13 +2,12 @@ import { MdChevronLeft } from "react-icons/md";
 import { Grid } from "@inubekit/inubekit";
 import { Stack } from "@inubekit/inubekit";
 import { Text } from "@inubekit/inubekit";
-import { Button } from "@inubekit/button";
+import { Button } from "@inubekit/inubekit";
 import { useMediaQueries, useMediaQuery } from "@inubekit/hooks";
 import { basic } from "@design/tokens";
 import { enviroment } from "@config/environment";
 import selsaLogo from "@assets/images/selsa.png";
 import errorImage from "@assets/images/timeout.png";
-
 import { StyledCompanyLogo, StyledErrorImage } from "./styles";
 
 interface IErrorPage {

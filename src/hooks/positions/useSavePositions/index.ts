@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { statusFlowAutomatic } from "@config/status/statusFlowAutomatic";
 import { ISaveDataResponse } from "@ptypes/saveData/ISaveDataResponse";
 import { ISaveDataRequest } from "@ptypes/saveData/ISaveDataRequest";
-import { IFlagAppearance, useFlag } from "@inubekit/flag";
+import { IFlagAppearance, useFlag } from "@inubekit/inubekit";
 import { IRequestSteps } from "@design/feedback/requestProcess/types";
 import { requestStepsInitial } from "@config/positions/addPositions/requestSteps";
 import { flowAutomaticMessages } from "@config/positionsTabs/generics/flowAutomaticMessages";
@@ -18,7 +18,8 @@ const UseSavePositions = (
   userAccount: string,
   sendData: boolean,
   data: ISaveDataRequest,
-  setSendData: React.Dispatch<React.SetStateAction<boolean>>
+  setSendData: React.Dispatch<React.SetStateAction<boolean>>,
+  setShowModal?: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   const [savePositions, setSavePositions] = useState<ISaveDataResponse>();
   const [showPendingReqModal, setShowPendingReqModal] = useState(false);
@@ -49,6 +50,7 @@ const UseSavePositions = (
       });
     } finally {
       setLoading(false);
+      if (setShowModal) setShowModal(false);
     }
   };
 

@@ -1,12 +1,11 @@
 import { MdClear, MdOutlineRemoveRedEye } from "react-icons/md";
 import { createPortal } from "react-dom";
-
 import { Text } from "@inubekit/inubekit";
 import { basic } from "@design/tokens";
 import { Stack } from "@inubekit/inubekit";
-import { Blanket } from "@inubekit/blanket";
-import { Button } from "@inubekit/button";
-import { Divider } from "@inubekit/divider";
+import { Blanket } from "@inubekit/inubekit";
+import { Button } from "@inubekit/inubekit";
+import { Divider } from "@inubekit/inubekit";
 import { useMediaQuery } from "@inubekit/hooks";
 import { IServerDomain } from "@ptypes/IServerDomain";
 import { Icon } from "@inubekit/inubekit";

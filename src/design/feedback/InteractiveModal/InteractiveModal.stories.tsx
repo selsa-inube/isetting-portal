@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Button } from "@inubekit/button";
+import { Button } from "@inubekit/inubekit";
 
 import { InteractiveModal } from ".";
 import { InteractiveModalProps } from "./types";

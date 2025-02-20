@@ -11,13 +11,15 @@ interface IDelete {
   messageDelete: IMessageModal;
   onToggleModal: () => void;
   onClick: () => void;
-  setJustificationDelete: (value: string) => void;
+  loading: boolean;
+  setJustificationDelete?: (value: string) => void;
 }
 
 const DeleteRecord = (props: IDelete) => {
   const {
     showModal,
     messageDelete,
+    loading,
     onToggleModal,
     onClick,
     setJustificationDelete,
@@ -53,6 +55,7 @@ const DeleteRecord = (props: IDelete) => {
           onCloseModal={onToggleModal}
           setFieldEntered={setJustificationDelete}
           appearance={ComponentAppearance.DANGER}
+          isLoading={loading}
         />
       )}
     </>

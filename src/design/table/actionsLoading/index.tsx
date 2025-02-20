@@ -1,4 +1,4 @@
-import { SkeletonLine } from "@inubekit/skeleton";
+import { SkeletonLine } from "@inubekit/inubekit";
 import { Td } from "@inubekit/table";
 
 const ActionsLoading = (numberActions: number) => {

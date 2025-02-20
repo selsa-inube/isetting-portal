@@ -1,12 +1,11 @@
 import { RouterProvider } from "react-router-dom";
-
+import { FlagProvider } from "@inubekit/inubekit";
 import { ErrorPage } from "@design/layout/ErrorPage";
 import { AuthAndDataProvider } from "@context/authAndDataProvider";
 import { router } from "@routes/mainNavigationConfig";
 import { UsePortalManager } from "@hooks/staffPortal/usePortalManage";
 import { GlobalStyles } from "./styles/global";
 import { ThemeProviderWrapper } from "./context/ThemeContext";
-import { FlagProvider } from "@inubekit/flag";
 
 const App = () => {
   const { isLoading, hasError, isAuthenticated } = UsePortalManager();

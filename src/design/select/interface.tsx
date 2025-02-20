@@ -4,11 +4,11 @@ import {
   MdCheckCircle,
   MdOutlineArrowDropDown,
 } from "react-icons/md";
+
 import { Text } from "@inubekit/inubekit";
 import { Icon } from "@inubekit/inubekit";
-import { Label } from "@inubekit/label";
 import { Stack } from "@inubekit/inubekit";
-
+import { Label } from "@inubekit/inubekit";
 import { basic } from "@design/tokens";
 
 import { OptionItemChecked } from "./OptionItem";
