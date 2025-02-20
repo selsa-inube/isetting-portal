@@ -1,7 +1,7 @@
 import { basic } from "@design/tokens";
 import { Stack } from "@inubekit/stack";
 import { useMediaQuery } from "@inubekit/hooks";
-import { Input } from "@inubekit/input";
+import { Input } from "@inubekit/inubekit";
 import { Table } from "@design/table";
 import {
   actionsConfig,

@@ -2,7 +2,11 @@ import { MdSearch } from "react-icons/md";
 import { Button } from "@inubekit/inubekit";
 import { Stack } from "@inubekit/stack";
 import { Textfield } from "@inubekit/textfield";
+
+import { Text } from "@inubekit/text";
 import {
+  Fieldset,
+  Toggle,
   Col,
   Colgroup,
   Table,
@@ -11,10 +15,7 @@ import {
   Tr,
   Th,
   Td,
-} from "@inubekit/table";
-import { Toggle } from "@inubekit/toggle";
-import { Text } from "@inubekit/text";
-import { Fieldset } from "@inubekit/inubekit";
+} from "@inubekit/inubekit";
 import { MultipleChoices } from "@design/navigation/MultipleChoices";
 import { basic } from "@design/tokens";
 import { StyledForm, StyledToggleContainer } from "./styles";

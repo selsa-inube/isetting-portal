@@ -9,7 +9,7 @@ import {
   Th,
   Thead,
   Tr,
-} from "@inubekit/table";
+} from "@inubekit/inubekit";
 
 import { IAction, IEntry, ITitle } from "./types";
 import { WidthColmnsData } from "./widthColumns";
@@ -65,7 +65,7 @@ const TableUI = (props: ITableUI) => {
         {WidthColmnsData(
           TitleColumns,
           widthPercentageTotalColumns,
-          columnWidths,
+          columnWidths
         )}
       </Colgroup>
 

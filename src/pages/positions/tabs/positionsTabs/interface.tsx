@@ -14,7 +14,7 @@ import {
   Td,
   Tfoot,
   Pagination,
-} from "@inubekit/table";
+} from "@inubekit/inubekit";
 import { basic } from "@design/tokens";
 import { Loading } from "@pages/login/loading";
 import { actionsConfig, titlesOptions } from "@config/positions/table";
