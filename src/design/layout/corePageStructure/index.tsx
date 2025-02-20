@@ -6,7 +6,11 @@ import { Grid } from "@inubekit/grid";
 import { Header } from "@inubekit/header";
 import { useMediaQuery } from "@inubekit/hooks";
 import { Icon } from "@inubekit/icon";
-
+import { AuthAndData } from "@context/authAndDataProvider";
+import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
+import { nav, userMenu } from "@config/nav";
+import { actionsConfig } from "@config/mainActionLogout";
+import { Nav } from "@inubekit/inubekit";
 import { BusinessUnitChange } from "@design/inputs/BusinessUnitChange";
 
 import {
@@ -20,11 +24,6 @@ import {
   StyledMain,
 } from "./styles";
 
-import { AuthAndData } from "@context/authAndDataProvider";
-import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
-import { nav, userMenu } from "@config/nav";
-import { actionsConfig } from "@config/mainActionLogout";
-import { Nav } from "@inubekit/nav";
 const renderLogo = (imgUrl: string) => {
   return (
     <StyledContentImg to="/">

@@ -4,7 +4,7 @@ import { Icon } from "@inubekit/icon";
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
 import { basic } from "@design/tokens";
 import { ComponentAppearance } from "@ptypes/aparences.types";
-import { Divider } from "@inubekit/divider";
+import { Divider } from "@inubekit/inubekit";
 import {
   StyledContainer,
   StyledUl,

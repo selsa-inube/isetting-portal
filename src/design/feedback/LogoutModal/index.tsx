@@ -1,8 +1,8 @@
 import { MdClose } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-import { Button } from "@inubekit/button";
-import { Blanket } from "@inubekit/blanket";
+import { Button } from "@inubekit/inubekit";
+import { Blanket } from "@inubekit/inubekit";
 import { Stack } from "@inubekit/stack";
 import { Text } from "@inubekit/text";
 import { Icon } from "@inubekit/icon";

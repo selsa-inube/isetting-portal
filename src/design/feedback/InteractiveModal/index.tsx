@@ -1,11 +1,11 @@
 import { createPortal } from "react-dom";
 import { MdClear } from "react-icons/md";
 import { Stack } from "@inubekit/stack";
-import { Button } from "@inubekit/button";
+import { Button } from "@inubekit/inubekit";
 import { Text } from "@inubekit/text";
 import { Textfield } from "@inubekit/textfield";
 import { Table, Thead, Tr, Td, Th, Tbody } from "@inubekit/table";
-import { Blanket } from "@inubekit/blanket";
+import { Blanket } from "@inubekit/inubekit";
 import { useMediaQuery } from "@inubekit/hooks";
 import { Icon } from "@inubekit/icon";
 import { basic } from "@design/tokens";

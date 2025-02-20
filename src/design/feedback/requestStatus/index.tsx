@@ -3,7 +3,7 @@ import { StyledContainerButton, StyledText } from "./styles";
 import { ComponentAppearance } from "@ptypes/aparences.types";
 import { basic } from "@design/tokens";
 import { Icon, IIconAppearance } from "@inubekit/icon";
-import { Button } from "@inubekit/button";
+import { Button } from "@inubekit/inubekit";
 import { Stack } from "@inubekit/stack";
 import { Text } from "@inubekit/text";
 

@@ -18,6 +18,7 @@ interface IDecisionModal {
   justificationOfDecision?: boolean;
   showCancelButton?: boolean;
   withIcon?: boolean;
+  withCancelButton?: boolean;
 }
 
 export type { IDecisionEntry, IDecisionModal };

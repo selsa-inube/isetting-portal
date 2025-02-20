@@ -34,6 +34,7 @@ const AddPosition = () => {
     roles,
     disabled,
     setShowRequestProcessModal,
+    setShowModal,
   } = UseAddStaffRoles(rolesStaff);
 
   const { appData } = useContext(AuthAndData);
@@ -44,7 +45,8 @@ const AddPosition = () => {
       appData.user.userAccount,
       showRequestProcessModal,
       saveData as ISaveDataRequest,
-      setShowRequestProcessModal
+      setShowRequestProcessModal,
+      setShowModal
     );
   return (
     <AddStaffRolesUI

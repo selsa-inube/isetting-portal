@@ -170,6 +170,7 @@ const UseAddStaffRoles = (rolesData: IRoleForStaff[] | undefined) => {
     saveData,
     smallScreen,
     roles,
+    setShowModal,
     disabled,
     setShowRequestProcessModal,
   };

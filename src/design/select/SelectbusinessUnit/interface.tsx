@@ -3,7 +3,7 @@ import { Text } from "@inubekit/text";
 import { RadioBusinessUnit } from "@design/feedback/RadioBusinessUnit";
 import { Stack } from "@inubekit/stack";
 import { Textfield } from "@inubekit/textfield";
-import { Button } from "@inubekit/button";
+import { Button } from "@inubekit/inubekit";
 import { useMediaQuery } from "@inubekit/hooks";
 
 import { basic } from "@design/tokens";

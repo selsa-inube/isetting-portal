@@ -1,8 +1,9 @@
-import { MdModeEdit, MdOutlineDelete } from "react-icons/md";
+import { MdModeEdit } from "react-icons/md";
 import { Icon } from "@inubekit/icon";
 import { IPosition } from "@pages/positions/tabs/positionsTabs/outlets/addPosition/types";
 import { DetailsModal } from "@pages/positions/tabs/positionsTabs/forms/detailsModal";
 import { IAction, IActions } from "@pages/positions/tabs/positionsTabs/types";
+import { Delete } from "@pages/positions/tabs/positionsTabs/forms/delete";
 
 const titlesOptions = [
   {
@@ -37,27 +38,39 @@ const labelsOptions = [
     type: "table",
   },
 ];
+const actionsConfig = (setEntryDeleted: (value: string | number) => void) => {
+  const actions: IAction[] = [
+    {
+      id: "details",
+      actionName: "Detalle",
+      content: (data: IActions) => (
+        <DetailsModal
+          data={data as unknown as IPosition}
+          labelsOptions={labelsOptions}
+        />
+      ),
+    },
+    {
+      id: "edit",
+      actionName: "Editar",
+      content: () => (
+        <Icon icon={<MdModeEdit />} size="16px" appearance="dark" />
+      ),
+    },
+    {
+      id: "delete",
+      actionName: "Eliminar",
+      content: (entry: IActions) => (
+        <Delete data={entry} setEntryDeleted={setEntryDeleted} />
+      ),
+    },
+  ];
+  return actions;
+};
 
-const actions: IAction[] = [
-  {
-    id: "details",
-    actionName: "Detalle",
-    content: (data: IActions) => (
-      <DetailsModal data={data as IPosition} labelsOptions={labelsOptions} />
-    ),
-  },
-  {
-    id: "edit",
-    actionName: "Editar",
-    content: () => <Icon icon={<MdModeEdit />} size="16px" appearance="dark" />,
-  },
-  {
-    id: "delete",
-    actionName: "Eliminar",
-    content: () => (
-      <Icon icon={<MdOutlineDelete />} size="16px" appearance="dark" />
-    ),
-  },
-];
-
-export { actions, labelsOptions, titlesOptions, positionsBreakPointsConfig };
+export {
+  actionsConfig,
+  labelsOptions,
+  titlesOptions,
+  positionsBreakPointsConfig,
+};

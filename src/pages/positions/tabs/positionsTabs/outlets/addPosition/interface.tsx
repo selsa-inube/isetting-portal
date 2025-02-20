@@ -3,7 +3,7 @@ import { Breadcrumbs } from "@inubekit/breadcrumbs";
 import { Assisted } from "@inubekit/assisted";
 import { PageTitle } from "@design/label/PageTitle";
 import { InitializerForm } from "@design/forms/InitializerForm";
-import { Button } from "@inubekit/button";
+import { Button } from "@inubekit/inubekit";
 import { basic } from "@design/tokens";
 import { DecisionModal } from "@design/modals/decisionModal";
 import { requestProcessMessage } from "@config/positionsTabs/requestProcessMessage";
