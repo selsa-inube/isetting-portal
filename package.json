@@ -39,6 +39,7 @@
     "@inubekit/textarea": "^2.45.0",
     "@inubekit/textfield": "^2.43.0",
     "@inubekit/toggle": "^3.8.2",
+    "@isettingkit/input": "^0.1.43",
     "axios": "^1.7.8",
     "crypto-js": "^4.2.0",
     "formik": "^2.4.6",

@@ -1,5 +1,5 @@
 import { StyledNoResults } from "@design/select/SelectbusinessUnit/styles";
-import { Text } from "@inubekit/text";
+import { Text } from "@inubekit/inubekit";
 
 interface INoResultsMessage {
   search: string;

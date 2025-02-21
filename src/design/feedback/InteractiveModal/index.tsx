@@ -1,12 +1,22 @@
 import { createPortal } from "react-dom";
 import { MdClear } from "react-icons/md";
-import { Stack } from "@inubekit/stack";
-import { Button, Table, Thead, Tr, Td, Th, Tbody } from "@inubekit/inubekit";
-import { Text } from "@inubekit/text";
+
+import {
+  Button,
+  Table,
+  Thead,
+  Tr,
+  Td,
+  Th,
+  Tbody,
+  Stack,
+  Text,
+} from "@inubekit/inubekit";
+
 import { Textfield } from "@inubekit/textfield";
 import { Blanket } from "@inubekit/inubekit";
 import { useMediaQuery } from "@inubekit/hooks";
-import { Icon } from "@inubekit/icon";
+import { Icon } from "@inubekit/inubekit";
 import { basic } from "@design/tokens";
 import { enviroment } from "@config/environment";
 import { IPosition } from "@pages/positions/tabs/positionsTabs/outlets/addPosition/types";

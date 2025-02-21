@@ -19,7 +19,7 @@ const UseSavePositions = (
   sendData: boolean,
   data: ISaveDataRequest,
   setSendData: React.Dispatch<React.SetStateAction<boolean>>,
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>
+  setShowModal?: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   const [savePositions, setSavePositions] = useState<ISaveDataResponse>();
   const [showPendingReqModal, setShowPendingReqModal] = useState(false);
@@ -50,7 +50,7 @@ const UseSavePositions = (
       });
     } finally {
       setLoading(false);
-      setShowModal(false);
+      if (setShowModal) setShowModal(false);
     }
   };
 

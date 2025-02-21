@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
-import { Grid } from "@inubekit/grid";
-import { Stack } from "@inubekit/stack";
-import { Text } from "@inubekit/text";
+import { Grid } from "@inubekit/inubekit";
+import { Stack } from "@inubekit/inubekit";
+import { Text } from "@inubekit/inubekit";
 import { basic } from "@design/tokens";
 import {
   StyledWelcomeContainer,

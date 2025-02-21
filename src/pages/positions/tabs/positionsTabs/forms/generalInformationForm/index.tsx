@@ -10,6 +10,7 @@ interface IGeneralInformationForm {
   handleNextStep: () => void;
   onFormValid?: React.Dispatch<React.SetStateAction<boolean>>;
   onSubmit?: (values: IGeneralInformationEntry) => void;
+  editDataOption?: boolean;
 }
 
 const GeneralInformationForm = forwardRef<

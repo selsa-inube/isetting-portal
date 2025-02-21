@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { MdOutlinePending } from "react-icons/md";
-import { Icon } from "@inubekit/icon";
+import { Icon } from "@inubekit/inubekit";
 
 import { IAction, IEntry } from "../types";
 import { StyledContainer, StyledContainerIcon } from "./styles";

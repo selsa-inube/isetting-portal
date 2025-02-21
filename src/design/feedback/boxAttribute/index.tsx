@@ -1,7 +1,7 @@
-import { Text } from "@inubekit/text";
-import { Stack } from "@inubekit/stack";
+import { Text } from "@inubekit/inubekit";
+import { Stack } from "@inubekit/inubekit";
 import { useMediaQuery } from "@inubekit/hooks";
-import { Grid } from "@inubekit/grid";
+import { Grid } from "@inubekit/inubekit";
 import { basic } from "@design/tokens";
 import { ComponentAppearance } from "@ptypes/aparences.types";
 import { StyledBoxAttribute } from "./styles";

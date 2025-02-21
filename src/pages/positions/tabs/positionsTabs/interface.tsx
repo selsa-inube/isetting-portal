@@ -1,8 +1,8 @@
 import { MdSearch, MdPersonAddAlt } from "react-icons/md";
-import { Text } from "@inubekit/text";
+import { Text } from "@inubekit/inubekit";
 import { Textfield } from "@inubekit/textfield";
-import { Stack } from "@inubekit/stack";
-import { Button } from "@inubekit/inubekit";
+import { Button, Stack } from "@inubekit/inubekit";
+
 import {
   Col,
   Colgroup,
@@ -39,7 +39,6 @@ const PositionsUI = (props: IPositions) => {
     lastEntryInPage,
     paginatedData,
   } = props;
-
   return (
     <Stack
       direction="column"
@@ -123,9 +122,11 @@ const PositionsUI = (props: IPositions) => {
               <Tfoot>
                 <Tr border="bottom">
                   <Td
-                    colSpan={titlesOptions.length + actionsConfig.length}
+                    colSpan={
+                      actionsConfig(() => {}).length + titlesOptions.length
+                    }
                     type="custom"
-                    align="right"
+                    align="left"
                   >
                     <Pagination
                       firstEntryInPage={firstEntryInPage}

@@ -1,7 +1,8 @@
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
-import { Text } from "@inubekit/text";
-import { Icon } from "@inubekit/icon";
-import { Divider } from "@inubekit/inubekit";
+
+import { Text } from "@inubekit/inubekit";
+import { Icon } from "@inubekit/inubekit";
+import { Divider } from "@inubekit/divider";
 import { ComponentAppearance } from "@ptypes/aparences.types";
 import { UseAccordion } from "@hooks/design/useAccordion";
 import { StyledContainer, StyledHead } from "./styles";

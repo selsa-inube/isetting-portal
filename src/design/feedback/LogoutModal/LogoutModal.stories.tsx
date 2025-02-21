@@ -1,12 +1,10 @@
 import { BrowserRouter } from "react-router-dom";
 import { useState } from "react";
-
 import { StoryFn } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
+import { Stack } from "@inubekit/inubekit";
 import { Button } from "@inubekit/inubekit";
-import { Stack } from "@inubekit/stack";
 import { basic } from "@design/tokens";
-
 import { ILogoutModal, LogoutModal } from ".";
 
 const story = {

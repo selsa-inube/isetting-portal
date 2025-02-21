@@ -1,7 +1,4 @@
 import { MdSearch } from "react-icons/md";
-import { Button } from "@inubekit/inubekit";
-import { Stack } from "@inubekit/stack";
-import { Textfield } from "@inubekit/textfield";
 
 import { Text } from "@inubekit/text";
 import {
@@ -15,7 +12,11 @@ import {
   Tr,
   Th,
   Td,
+  Textfield,
+  Button,
+  Stack,
 } from "@inubekit/inubekit";
+
 import { MultipleChoices } from "@design/navigation/MultipleChoices";
 import { basic } from "@design/tokens";
 import { StyledForm, StyledToggleContainer } from "./styles";

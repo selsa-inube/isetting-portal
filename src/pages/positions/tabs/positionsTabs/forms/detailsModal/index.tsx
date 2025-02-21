@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
-import { Icon } from "@inubekit/icon";
+import { Icon } from "@inubekit/inubekit";
 import { InteractiveModal } from "@design/feedback/InteractiveModal";
 import { IPosition } from "../../outlets/addPosition/types";
 

@@ -1,8 +1,8 @@
-import { MdModeEdit } from "react-icons/md";
-import { Icon } from "@inubekit/icon";
 import { IPosition } from "@pages/positions/tabs/positionsTabs/outlets/addPosition/types";
 import { DetailsModal } from "@pages/positions/tabs/positionsTabs/forms/detailsModal";
 import { IAction, IActions } from "@pages/positions/tabs/positionsTabs/types";
+import { Edit } from "@pages/positions/tabs/positionsTabs/forms/edit";
+import { IEntry } from "@design/table/types";
 import { Delete } from "@pages/positions/tabs/positionsTabs/forms/delete";
 
 const titlesOptions = [
@@ -53,9 +53,7 @@ const actionsConfig = (setEntryDeleted: (value: string | number) => void) => {
     {
       id: "edit",
       actionName: "Editar",
-      content: () => (
-        <Icon icon={<MdModeEdit />} size="16px" appearance="dark" />
-      ),
+      content: (entry: IActions) => <Edit data={entry as IEntry} />,
     },
     {
       id: "delete",

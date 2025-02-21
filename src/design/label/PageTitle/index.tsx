@@ -1,9 +1,9 @@
 import { MdArrowBack } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
-import { Stack } from "@inubekit/stack";
-import { Text } from "@inubekit/text";
-import { Icon } from "@inubekit/icon";
+import { Stack } from "@inubekit/inubekit";
+import { Text } from "@inubekit/inubekit";
+import { Icon } from "@inubekit/inubekit";
 import { useMediaQuery } from "@inubekit/hooks";
 
 import { basic } from "@design/tokens";

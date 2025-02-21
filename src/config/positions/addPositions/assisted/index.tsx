@@ -1,6 +1,5 @@
 import { MdErrorOutline, MdThumbUpOffAlt } from "react-icons/md";
-import { Icon } from "@inubekit/icon";
-import { IAssistedStep } from "@inubekit/inubekit";
+import { IAssistedStep, Icon } from "@inubekit/inubekit";
 
 const addStaffRolesSteps: IAssistedStep[] = [
   {

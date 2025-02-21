@@ -1,6 +1,6 @@
 import { ThemeProvider } from "styled-components";
+import { Stack } from "@inubekit/inubekit";
 import { Button } from "@inubekit/inubekit";
-import { Stack } from "@inubekit/stack";
 import { inube } from "@inubekit/foundations";
 import { basic } from "@design/tokens";
 

@@ -1,4 +1,4 @@
-import { Stack } from "@inubekit/stack";
+import { Stack } from "@inubekit/inubekit";
 import { Breadcrumbs } from "@inubekit/breadcrumbs";
 import { Assisted } from "@inubekit/inubekit";
 import { PageTitle } from "@design/label/PageTitle";
@@ -32,9 +32,7 @@ const AddStaffRolesUI = ({
   smallScreen,
   roles,
   onFinishForm,
-
   showModal,
-
   savePositions,
   requestSteps,
   showRequestProcessModal,

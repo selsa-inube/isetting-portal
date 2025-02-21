@@ -1,6 +1,6 @@
-import { Text } from "@inubekit/text";
-import { Icon } from "@inubekit/icon";
-import { Stack } from "@inubekit/stack";
+import { Text } from "@inubekit/inubekit";
+import { Icon } from "@inubekit/inubekit";
+import { Stack } from "@inubekit/inubekit";
 import { ComponentAppearance } from "@ptypes/aparences.types";
 import { basic } from "@design/tokens";
 import { StyledContainer } from "./styles";

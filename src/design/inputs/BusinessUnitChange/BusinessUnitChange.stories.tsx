@@ -1,5 +1,5 @@
 import { Meta } from "@storybook/react";
-import { Stack } from "@inubekit/stack";
+import { Stack } from "@inubekit/inubekit";
 import { businessUnitDataMock } from "@mocks/businessUnits/businessUnits.mock";
 import { AuthAndData } from "@context/authAndDataProvider";
 import { BusinessUnitChange } from ".";

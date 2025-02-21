@@ -1,6 +1,6 @@
-import { Grid } from "@inubekit/grid";
+import { Grid } from "@inubekit/inubekit";
 import { useMediaQueries, useMediaQuery } from "@inubekit/hooks";
-import { Text } from "@inubekit/text";
+import { Text } from "@inubekit/inubekit";
 import { basic } from "@design/tokens";
 import { enviroment } from "@config/environment";
 

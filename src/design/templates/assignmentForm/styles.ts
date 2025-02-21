@@ -3,6 +3,7 @@ import { basic } from "@design/tokens";
 
 const StyledForm = styled.form`
   width: 100%;
+  margin-bottom: 50px;
 `;
 
 const StyledEntriesContainer = styled.div`
