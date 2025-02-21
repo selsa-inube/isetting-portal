@@ -1,7 +1,6 @@
 import { FormikProps } from "formik";
 import { Stack } from "@inubekit/stack";
-import { Textarea } from "@inubekit/textarea";
-import { Input } from "@inubekit/input";
+import { Textarea, Input } from "@inubekit/inubekit";
 import { basic } from "@design/tokens";
 import { getFieldState } from "@utils/forms";
 import { StyledContainer, StyledContainerFields } from "./styles";

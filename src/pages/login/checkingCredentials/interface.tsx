@@ -1,4 +1,4 @@
-import { Spinner } from "@inubekit/spinner";
+import { Spinner } from "@inubekit/inubekit";
 import { Stack } from "@inubekit/stack";
 import { Text } from "@inubekit/text";
 

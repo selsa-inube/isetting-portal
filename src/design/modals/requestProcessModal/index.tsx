@@ -4,13 +4,13 @@ import { RequestStatus } from "@design/feedback/requestStatus";
 
 import { IRequestSteps } from "@design/feedback/requestProcess/types";
 import { basic } from "@design/tokens";
-import { Spinner } from "@inubekit/spinner";
+import { Spinner } from "@inubekit/inubekit";
 import { Stack } from "@inubekit/stack";
 import { ComponentAppearance } from "@ptypes/aparences.types";
 import { Blanket } from "@inubekit/inubekit";
 import { useMediaQuery } from "@inubekit/hooks";
 import { Text } from "@inubekit/text";
-import { ISpinnerAppearance } from "@inubekit/spinner";
+import { ISpinnerAppearance } from "@inubekit/inubekit";
 import { RequestProcess } from "@design/feedback/requestProcess";
 import { ISaveDataResponse } from "@ptypes/saveData/ISaveDataResponse";
 import { statusFlowAutomatic } from "@config/status/statusFlowAutomatic";

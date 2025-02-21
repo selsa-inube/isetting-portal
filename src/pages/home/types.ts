@@ -1,4 +1,4 @@
-import { INavNavigation } from "@inubekit/nav";
+import { INavNavigation } from "@inubekit/inubekit";
 import { IBusinessUnitsPortalStaff } from "@ptypes/staffPortalBusiness.types";
 
 interface ICardData {

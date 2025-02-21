@@ -1,6 +1,6 @@
 import React from "react";
 import { FormikProps } from "formik";
-import { IAssistedStep } from "@inubekit/assisted";
+import { IAssistedStep } from "@inubekit/inubekit";
 import { IEntry } from "@design/templates/assignmentForm/types";
 import { IAssignmentFormEntry } from "@ptypes/positions/forms";
 import { IRequestSteps } from "@design/feedback/requestProcess/types";
