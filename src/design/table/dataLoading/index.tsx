@@ -1,6 +1,4 @@
-import { SkeletonLine } from "@inubekit/inubekit";
-import { Td, Tr } from "@inubekit/table";
-
+import { SkeletonLine, Td, Tr } from "@inubekit/inubekit";
 import { ActionsLoading } from "../actionsLoading";
 import { ITitle } from "../types";
 

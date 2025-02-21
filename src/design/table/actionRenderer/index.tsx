@@ -1,4 +1,4 @@
-import { Td, Th } from "@inubekit/table";
+import { Td, Th } from "@inubekit/inubekit";
 import { IAction, IActions } from "@pages/positions/tabs/positionsTabs/types";
 
 const ActionRenderer = () => {

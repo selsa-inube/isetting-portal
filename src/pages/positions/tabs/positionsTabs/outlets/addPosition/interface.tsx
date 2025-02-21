@@ -1,6 +1,6 @@
 import { Stack } from "@inubekit/inubekit";
 import { Breadcrumbs } from "@inubekit/breadcrumbs";
-import { Assisted } from "@inubekit/assisted";
+import { Assisted } from "@inubekit/inubekit";
 import { PageTitle } from "@design/label/PageTitle";
 import { InitializerForm } from "@design/forms/InitializerForm";
 import { Button } from "@inubekit/inubekit";

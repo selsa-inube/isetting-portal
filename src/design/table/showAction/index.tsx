@@ -1,4 +1,4 @@
-import { Td } from "@inubekit/table";
+import { Td } from "@inubekit/inubekit";
 import { IEntrys } from "@design/templates/assignmentForm/types";
 import { ActionMobile } from "../actionMobile";
 import { IAction } from "../types";

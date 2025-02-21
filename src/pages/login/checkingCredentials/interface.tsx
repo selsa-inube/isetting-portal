@@ -1,6 +1,4 @@
-import { Spinner } from "@inubekit/spinner";
-import { Stack } from "@inubekit/inubekit";
-import { Text } from "@inubekit/inubekit";
+import { Spinner, Text, Stack } from "@inubekit/inubekit";
 
 const CheckingCredentialsUI = () => {
   return (
